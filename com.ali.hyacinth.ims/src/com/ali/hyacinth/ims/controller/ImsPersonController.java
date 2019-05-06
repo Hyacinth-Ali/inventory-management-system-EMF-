@@ -183,7 +183,13 @@ public class ImsPersonController {
 		
 		Customer customer = findCustomer(id);
 		if (customer != null) {
-			EcoreUtil.delete(customer);
+			if (customer.getPerson().getRoles().size() == 1) {
+				EcoreUtil.delete(customer.getPerson());
+				EcoreUtil.delete(customer);
+			} else {
+				EcoreUtil.delete(customer);
+			}
+			
 		} else {
 			throw new InvalidInputException("The customer does not exist.");
 		}
@@ -202,7 +208,20 @@ public class ImsPersonController {
 	 */
 	public static void upDateCustomerID(String oldID, String newID) 
 			throws InvalidInputException {
+		
+		String error = "";
+		if (oldID == null || oldID.length() == 0) {
+			error = "The current ID cannot be empty";
+		}
+		if (newID == null || newID.length() == 0) {
+			error = "The ID of a customer cannot be empty";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		//find the customer
 		Customer customer = findCustomer(oldID);
+		//confirm that the customer exist
 		if (customer != null) {
 			try {
 				customer.setCustomerID(newID);
@@ -225,7 +244,21 @@ public class ImsPersonController {
 	 */
 	public static void upDateCustomerName(String id, String newName) 
 			throws InvalidInputException {
+		
+		String error = "";
+		
+		if (id == null || id.length() == 0) {
+			error = "The current ID cannot be empty";
+		}
+		if (newName == null || newName.length() == 0) {
+			error = "The name of a customer cannot be empty";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
 		Customer customer = findCustomer(id);
+		
 		if (customer != null) {
 			try {
 				customer.getPerson().setName(newName);
@@ -291,6 +324,11 @@ public class ImsPersonController {
 	 * @throws InvalidInputException
 	 */
 	public static void updatePerson(Person person, String newName) throws InvalidInputException {
+		
+		if (newName == null || newName.length() == 0) {
+			throw new InvalidInputException("The name of a person cannot be empty");
+		}
+		
 		try {
 			person.setName(newName);
 			ImsResource.save(ImsApplication.getIms());
@@ -344,6 +382,47 @@ public class ImsPersonController {
 	}
 	
 	/**
+	  * Adds manager to existing person
+	  * @param customerID of the customer
+	  * @param person associated with customer role.
+	  * @throws InvalidInputException
+	  */
+	public static void addManager(String userName, String password, Person person) throws InvalidInputException{
+		IMS ims = ImsApplication.getIms();
+		Manager m = null;
+		String error = "";
+		
+		if (userName == null || userName.length() == 0) {
+			error = "The user name of a manager cannot be empty";
+		}
+		if (password == null || password.length() == 0) {
+			error = "The password of a manager cannot be empty";
+		}
+		if (!isManagerUsernameUnique(userName)) {
+			error = "This user name : " + userName + " already exist";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
+		try {
+			m = ImsFactory.eINSTANCE.createManager();
+			m.setUserName(userName);
+			m.setPassword(password);
+			m.setPerson(person);
+			ims.getManagers().add(m);
+			ImsResource.save(ims);
+		} catch (RuntimeException e) {
+			if (m != null) {
+				EcoreUtil.delete(m, true);
+			}
+			error = e.getMessage();
+			throw new InvalidInputException(error);
+		}
+		
+	}
+	
+	/**
 	 * Determine the uniqueness of a manager username.
 	 * @param userName
 	 * @return 
@@ -377,6 +456,9 @@ public class ImsPersonController {
 		if (password == null || password == "") {
 			error = "You cannot create a manager with empty password.";
 		}
+		if (userName == null || userName == "") {
+			error = "The user name of a manager cannot be empty.";
+		}
 		if (!isManagerUsernameUnique(userName)) {
 			error = "The user name : " + userName + " already exist.";
 		}
@@ -390,6 +472,7 @@ public class ImsPersonController {
 			m = ImsFactory.eINSTANCE.createManager();
 			m.setPassword(password);
 			m.setUserName(userName);
+			m.setPerson(p);
 			ims.getPersons().add(p);
 			ims.getManagers().add(m);
 			ImsResource.save(ims);
@@ -414,7 +497,15 @@ public class ImsPersonController {
 		
 		Manager manager = findManager(userName);
 		if (manager != null) {
-			EcoreUtil.delete(manager, true);
+			if (manager.getPerson().getRoles().size() == 1) {
+				EcoreUtil.delete(manager.getPerson());
+				EcoreUtil.delete(manager);
+			} else {
+				EcoreUtil.delete(manager);
+			}
+			
+		} else {
+			throw new InvalidInputException("The manager does not exist.");
 		}
 		try {
 			ImsResource.save(ImsApplication.getIms());
@@ -431,6 +522,18 @@ public class ImsPersonController {
 	 */
 	public static void upDateManagerUsername(String oldUserName, String newUserName) 
 			throws InvalidInputException {
+		
+		String error = "";
+		
+		if (oldUserName == null || oldUserName.length() == 0) {
+			error = "The current user name of the manager cannot be empty";
+		}
+		if (newUserName == null || newUserName.length() == 0) {
+			error = "The user name of a manager cannot be empty";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
 		Manager manager = findManager(oldUserName);
 		if (manager != null) {
 			try {
@@ -454,6 +557,18 @@ public class ImsPersonController {
 	 */
 	public static void upDateManagerPassword(String userName, String newPassword) 
 			throws InvalidInputException {
+		String error = "";
+		
+		if (userName == null || userName.length() == 0) {
+			error = "The current user name of the manager cannot be empty";
+		}
+		if (newPassword == null || newPassword.length() == 0) {
+			error = "The password of a manager cannot be empty";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
 		Manager manager = findManager(userName);
 		if (manager != null) {
 			try {
@@ -477,6 +592,18 @@ public class ImsPersonController {
 	 */
 	public static void upDateManagerName(String userName, String newName) 
 			throws InvalidInputException {
+		
+		String error = "";
+		
+		if (userName == null || userName.length() == 0) {
+			error = "The current user name of the manager cannot be empty";
+		}
+		if (newName == null || newName.length() == 0) {
+			error = "The name of a manager cannot be empty";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
 		Manager manager = findManager(userName);
 		if (manager != null) {
 			try {

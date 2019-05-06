@@ -12,8 +12,8 @@
         iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="3" eType="#//PersonRole"
-        eOpposite="#//PersonRole/person"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roles" lowerBound="1" upperBound="3"
+        eType="#//PersonRole" eOpposite="#//PersonRole/person"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sales" upperBound="-1"
         eType="#//Transaction" eOpposite="#//Transaction/seller"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="purchases" upperBound="-1"

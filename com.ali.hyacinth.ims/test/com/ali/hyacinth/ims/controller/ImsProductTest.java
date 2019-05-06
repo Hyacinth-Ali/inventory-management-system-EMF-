@@ -22,7 +22,7 @@ import com.ali.hyacinth.ims.util.ResourceHelper;
 import com.ali.hyacinth.ims.controller.Constants;
 import com.ali.hyacinth.ims.resource.ImsResource;
 
-class TestProduct {
+class ImsProductTest {
 
 	//private static IMS ims = null;
 	@BeforeAll
