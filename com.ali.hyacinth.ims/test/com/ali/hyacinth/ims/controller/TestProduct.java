@@ -24,6 +24,8 @@ import com.ali.hyacinth.ims.ImsPackage;
 import com.ali.hyacinth.ims.application.ImsApplication;
 import com.ali.hyacinth.ims.util.ImsResourceFactoryImpl;
 import com.ali.hyacinth.ims.util.ResourceHelper;
+
+
 import com.ali.hyacinth.ims.controller.Constants;
 import com.ali.hyacinth.ims.resource.ImsResource;
 
@@ -96,23 +98,110 @@ class TestProduct {
 		if (numberOfProducts > 0) {
 			assertEquals(name, ims.getProducts().get(0).getName());
 			assertEquals(0, ims.getProducts().get(0).getItems().size());
+			assertEquals(1, ims.eContents().size());
 		}
 	}
 	
 	@Test
-	public void testCheck() {
+	public void testCreateProductNull() {
 		IMS ims = ImsApplication.getIms();
-		String name = "product2";
-		float price = 200;
+		String name = null;
+		float price = 100;
+		String error = null;
+		try {
+			ImsController.createProduct(name, price);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		// check error
+		assertEquals("The name of a product cannot be empty.", error);
+		// check no change in memory
+		checkResultProduct(name, price, ims, 0);
+	}
+	
+	@Test
+	public void testDeleteProductSucces() {
+		IMS ims = ImsApplication.getIms();
+		String name = Constants.PRODUCT_NAME;
+		float price = Constants.PRODUCT_PRICE;
 		
 		try {
 			ImsController.createProduct(name, price);
 		} catch (InvalidInputException e) {
-			// check that no error occurred
+			//check that no error occured.
+			fail(); 
+		}
+		//check model in memory
+		checkResultProduct(name, price, ims, 1);
+		
+		try {
+			ImsController.deleteProduct(name);
+		} catch (InvalidInputException e) {
+			//check that no error occured.
 			fail();
 		}
-		// check model in memory
-				checkResultProduct(name, price, ims, 1);
+		
+		//check model in memory
+		checkResultProduct(name, price, ims, 0);
+	}
+	
+	@Test
+	public void testCreateProductEmpty() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "";
+		float price = 100;
+
+		String error = null;
+		try {
+			ImsController.createProduct(name, price);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("The name of a product cannot be empty.", error);
+		// check no change in memory
+		checkResultProduct(name, price, ims, 0);
+	}
+	
+	@Test
+	public void testCreateProductZeroPrice() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		float price = 0;
+
+		String error = null;
+		
+		try {
+			ImsController.createProduct(name, price);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("The price of a product cannot be zero", error);
+		// check no change in memory
+		checkResultProduct(name, price, ims, 0);
+	}
+	
+	@Test
+	public void testCreateProductNegativePrice() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		float price = -12;
+
+		String error = null;
+		
+		try {
+			ImsController.createProduct(name, price);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("The price of a product cannot be negative.", error);
+		// check no change in memory
+		checkResultProduct(name, price, ims, 0);
 	}
 
 }

@@ -7,5 +7,7 @@ public class Constants {
 	public static final String COMPLETE_FILE_PATH = "resource/testdata.ims";
 	
 	public static final String PRODUCT_NAME = "product";
+	
+	public static final int PRODUCT_PRICE = 100;
 
 }

@@ -30,11 +30,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getItems <em>Items</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getPrice <em>Price</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getId <em>Id</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ProductImpl extends NameElementImpl implements Product {
+public class ProductImpl extends NamedElementImpl implements Product {
 	/**
 	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -63,6 +64,26 @@ public class ProductImpl extends NameElementImpl implements Product {
 	 * @ordered
 	 */
 	protected float price = PRICE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,6 +142,27 @@ public class ProductImpl extends NameElementImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -142,6 +184,8 @@ public class ProductImpl extends NameElementImpl implements Product {
 				return getItems();
 			case ImsPackage.PRODUCT__PRICE:
 				return getPrice();
+			case ImsPackage.PRODUCT__ID:
+				return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -162,6 +206,9 @@ public class ProductImpl extends NameElementImpl implements Product {
 			case ImsPackage.PRODUCT__PRICE:
 				setPrice((Float)newValue);
 				return;
+			case ImsPackage.PRODUCT__ID:
+				setId((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -180,6 +227,9 @@ public class ProductImpl extends NameElementImpl implements Product {
 			case ImsPackage.PRODUCT__PRICE:
 				setPrice(PRICE_EDEFAULT);
 				return;
+			case ImsPackage.PRODUCT__ID:
+				setId(ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -196,6 +246,8 @@ public class ProductImpl extends NameElementImpl implements Product {
 				return items != null && !items.isEmpty();
 			case ImsPackage.PRODUCT__PRICE:
 				return price != PRICE_EDEFAULT;
+			case ImsPackage.PRODUCT__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -212,6 +264,8 @@ public class ProductImpl extends NameElementImpl implements Product {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (price: ");
 		result.append(price);
+		result.append(", id: ");
+		result.append(id);
 		result.append(')');
 		return result.toString();
 	}

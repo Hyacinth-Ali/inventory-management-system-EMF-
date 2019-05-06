@@ -10,7 +10,7 @@ import com.ali.hyacinth.ims.ImsPackage;
 import com.ali.hyacinth.ims.Item;
 import com.ali.hyacinth.ims.ItemStatus;
 import com.ali.hyacinth.ims.Manager;
-import com.ali.hyacinth.ims.NameElement;
+import com.ali.hyacinth.ims.NamedElement;
 import com.ali.hyacinth.ims.Order;
 import com.ali.hyacinth.ims.Person;
 import com.ali.hyacinth.ims.PersonRole;
@@ -40,7 +40,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass nameElementEClass = null;
+	private EClass namedElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -213,8 +213,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getNameElement() {
-		return nameElementEClass;
+	public EClass getNamedElement() {
+		return namedElementEClass;
 	}
 
 	/**
@@ -222,8 +222,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNameElement_Name() {
-		return (EAttribute)nameElementEClass.getEStructuralFeatures().get(0);
+	public EAttribute getNamedElement_Name() {
+		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -251,6 +251,15 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 */
 	public EAttribute getProduct_Price() {
 		return (EAttribute)productEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProduct_Id() {
+		return (EAttribute)productEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -609,7 +618,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIMS_Item() {
+	public EReference getIMS_Products() {
 		return (EReference)imsEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -618,7 +627,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIMS_Products() {
+	public EReference getIMS_Suppliers() {
 		return (EReference)imsEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -627,7 +636,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIMS_Suppliers() {
+	public EReference getIMS_Managers() {
 		return (EReference)imsEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -636,7 +645,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIMS_Managers() {
+	public EReference getIMS_Orders() {
 		return (EReference)imsEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -645,7 +654,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIMS_Orders() {
+	public EReference getIMS_Audits() {
 		return (EReference)imsEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -654,7 +663,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIMS_Audits() {
+	public EReference getIMS_Persons() {
 		return (EReference)imsEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -663,7 +672,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIMS_Persons() {
+	public EReference getIMS_Regularemployees() {
 		return (EReference)imsEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -672,7 +681,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIMS_Regularemployees() {
+	public EReference getIMS_Customers() {
 		return (EReference)imsEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -681,7 +690,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIMS_Customers() {
+	public EReference getIMS_Transactions() {
 		return (EReference)imsEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -690,26 +699,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIMS_Transactions() {
-		return (EReference)imsEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getIMS_Receipts() {
-		return (EReference)imsEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getIMS_FileName() {
-		return (EAttribute)imsEClass.getEStructuralFeatures().get(11);
+		return (EReference)imsEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -749,12 +740,13 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		nameElementEClass = createEClass(NAME_ELEMENT);
-		createEAttribute(nameElementEClass, NAME_ELEMENT__NAME);
+		namedElementEClass = createEClass(NAMED_ELEMENT);
+		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
 		productEClass = createEClass(PRODUCT);
 		createEReference(productEClass, PRODUCT__ITEMS);
 		createEAttribute(productEClass, PRODUCT__PRICE);
+		createEAttribute(productEClass, PRODUCT__ID);
 
 		personEClass = createEClass(PERSON);
 		createEReference(personEClass, PERSON__ROLE);
@@ -807,7 +799,6 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEReference(orderEClass, ORDER__PRODUCTS);
 
 		imsEClass = createEClass(IMS);
-		createEReference(imsEClass, IMS__ITEM);
 		createEReference(imsEClass, IMS__PRODUCTS);
 		createEReference(imsEClass, IMS__SUPPLIERS);
 		createEReference(imsEClass, IMS__MANAGERS);
@@ -818,7 +809,6 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEReference(imsEClass, IMS__CUSTOMERS);
 		createEReference(imsEClass, IMS__TRANSACTIONS);
 		createEReference(imsEClass, IMS__RECEIPTS);
-		createEAttribute(imsEClass, IMS__FILE_NAME);
 
 		// Create enums
 		itemStatusEEnum = createEEnum(ITEM_STATUS);
@@ -852,21 +842,22 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		productEClass.getESuperTypes().add(this.getNameElement());
-		personEClass.getESuperTypes().add(this.getNameElement());
+		productEClass.getESuperTypes().add(this.getNamedElement());
+		personEClass.getESuperTypes().add(this.getNamedElement());
 		regularEmployeeEClass.getESuperTypes().add(this.getEmployeeRole());
 		managerEClass.getESuperTypes().add(this.getEmployeeRole());
 		customerEClass.getESuperTypes().add(this.getPersonRole());
 		employeeRoleEClass.getESuperTypes().add(this.getPersonRole());
-		supplierEClass.getESuperTypes().add(this.getNameElement());
+		supplierEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(nameElementEClass, NameElement.class, "NameElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNameElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NameElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productEClass, Product.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProduct_Items(), this.getItem(), null, "items", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProduct_Price(), ecorePackage.getEFloat(), "price", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProduct_Id(), ecorePackage.getEString(), "id", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPerson_Role(), this.getPersonRole(), this.getPersonRole_Person(), "role", null, 0, 3, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -919,7 +910,6 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEReference(getOrder_Products(), this.getProduct(), null, "products", null, 0, -1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(imsEClass, com.ali.hyacinth.ims.IMS.class, "IMS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIMS_Item(), this.getItem(), null, "item", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIMS_Products(), this.getProduct(), null, "products", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIMS_Suppliers(), this.getSupplier(), null, "suppliers", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIMS_Managers(), this.getManager(), null, "managers", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -930,7 +920,6 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEReference(getIMS_Customers(), this.getCustomer(), null, "customers", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIMS_Transactions(), this.getTransaction(), null, "transactions", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIMS_Receipts(), this.getReceipt(), null, "receipts", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIMS_FileName(), ecorePackage.getEString(), "fileName", null, 0, 1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(itemStatusEEnum, ItemStatus.class, "ItemStatus");

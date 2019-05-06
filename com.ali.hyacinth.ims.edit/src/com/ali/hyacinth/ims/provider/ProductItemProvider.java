@@ -26,7 +26,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ProductItemProvider extends NameElementItemProvider {
+public class ProductItemProvider extends NamedElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -49,6 +49,7 @@ public class ProductItemProvider extends NameElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addPricePropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -71,6 +72,28 @@ public class ProductItemProvider extends NameElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Product_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Product_id_feature", "_UI_Product_type"),
+				 ImsPackage.Literals.PRODUCT__ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -144,6 +167,7 @@ public class ProductItemProvider extends NameElementItemProvider {
 
 		switch (notification.getFeatureID(Product.class)) {
 			case ImsPackage.PRODUCT__PRICE:
+			case ImsPackage.PRODUCT__ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ImsPackage.PRODUCT__ITEMS:

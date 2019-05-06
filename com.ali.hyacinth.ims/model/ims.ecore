@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ims" nsURI="http://hyacinth.com/ims" nsPrefix="ims">
-  <eClassifiers xsi:type="ecore:EClass" name="NameElement" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Product" eSuperTypes="#//NameElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Product" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="#//NameElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="role" upperBound="3" eType="#//PersonRole"
         eOpposite="#//PersonRole/person"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sales" upperBound="-1"
@@ -59,7 +61,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="person" lowerBound="1"
         eType="#//Person" eOpposite="#//Person/role"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Supplier" eSuperTypes="#//NameElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Supplier" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Item">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//ItemStatus"/>
   </eClassifiers>
@@ -77,8 +79,6 @@
         eType="#//Product"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IMS">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="item" upperBound="-1" eType="#//Item"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="products" upperBound="-1"
         eType="#//Product" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="suppliers" upperBound="-1"
@@ -99,6 +99,5 @@
         eType="#//Transaction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="receipts" upperBound="-1"
         eType="#//Receipt" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

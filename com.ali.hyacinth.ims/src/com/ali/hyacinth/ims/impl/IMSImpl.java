@@ -6,7 +6,6 @@ import com.ali.hyacinth.ims.Audit;
 import com.ali.hyacinth.ims.Customer;
 import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsPackage;
-import com.ali.hyacinth.ims.Item;
 import com.ali.hyacinth.ims.Manager;
 import com.ali.hyacinth.ims.Order;
 import com.ali.hyacinth.ims.Person;
@@ -17,16 +16,12 @@ import com.ali.hyacinth.ims.Supplier;
 import com.ali.hyacinth.ims.Transaction;
 
 import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -40,7 +35,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getItem <em>Item</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getProducts <em>Products</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getSuppliers <em>Suppliers</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getManagers <em>Managers</em>}</li>
@@ -51,22 +45,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getCustomers <em>Customers</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getTransactions <em>Transactions</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getReceipts <em>Receipts</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getFileName <em>File Name</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
-	/**
-	 * The cached value of the '{@link #getItem() <em>Item</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getItem()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Item> item;
-
 	/**
 	 * The cached value of the '{@link #getProducts() <em>Products</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -168,26 +151,6 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 	protected EList<Receipt> receipts;
 
 	/**
-	 * The default value of the '{@link #getFileName() <em>File Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFileName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String FILE_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getFileName() <em>File Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFileName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String fileName = FILE_NAME_EDEFAULT;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -204,18 +167,6 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 	@Override
 	protected EClass eStaticClass() {
 		return ImsPackage.Literals.IMS;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Item> getItem() {
-		if (item == null) {
-			item = new EObjectContainmentEList<Item>(Item.class, this, ImsPackage.IMS__ITEM);
-		}
-		return item;
 	}
 
 	/**
@@ -343,32 +294,9 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getFileName() {
-		return fileName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFileName(String newFileName) {
-		String oldFileName = fileName;
-		fileName = newFileName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.IMS__FILE_NAME, oldFileName, fileName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ImsPackage.IMS__ITEM:
-				return ((InternalEList<?>)getItem()).basicRemove(otherEnd, msgs);
 			case ImsPackage.IMS__PRODUCTS:
 				return ((InternalEList<?>)getProducts()).basicRemove(otherEnd, msgs);
 			case ImsPackage.IMS__SUPPLIERS:
@@ -401,8 +329,6 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ImsPackage.IMS__ITEM:
-				return getItem();
 			case ImsPackage.IMS__PRODUCTS:
 				return getProducts();
 			case ImsPackage.IMS__SUPPLIERS:
@@ -423,8 +349,6 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 				return getTransactions();
 			case ImsPackage.IMS__RECEIPTS:
 				return getReceipts();
-			case ImsPackage.IMS__FILE_NAME:
-				return getFileName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -438,10 +362,6 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ImsPackage.IMS__ITEM:
-				getItem().clear();
-				getItem().addAll((Collection<? extends Item>)newValue);
-				return;
 			case ImsPackage.IMS__PRODUCTS:
 				getProducts().clear();
 				getProducts().addAll((Collection<? extends Product>)newValue);
@@ -482,9 +402,6 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 				getReceipts().clear();
 				getReceipts().addAll((Collection<? extends Receipt>)newValue);
 				return;
-			case ImsPackage.IMS__FILE_NAME:
-				setFileName((String)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -497,9 +414,6 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ImsPackage.IMS__ITEM:
-				getItem().clear();
-				return;
 			case ImsPackage.IMS__PRODUCTS:
 				getProducts().clear();
 				return;
@@ -530,9 +444,6 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 			case ImsPackage.IMS__RECEIPTS:
 				getReceipts().clear();
 				return;
-			case ImsPackage.IMS__FILE_NAME:
-				setFileName(FILE_NAME_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -545,8 +456,6 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ImsPackage.IMS__ITEM:
-				return item != null && !item.isEmpty();
 			case ImsPackage.IMS__PRODUCTS:
 				return products != null && !products.isEmpty();
 			case ImsPackage.IMS__SUPPLIERS:
@@ -567,26 +476,8 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 				return transactions != null && !transactions.isEmpty();
 			case ImsPackage.IMS__RECEIPTS:
 				return receipts != null && !receipts.isEmpty();
-			case ImsPackage.IMS__FILE_NAME:
-				return FILE_NAME_EDEFAULT == null ? fileName != null : !FILE_NAME_EDEFAULT.equals(fileName);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (fileName: ");
-		result.append(fileName);
-		result.append(')');
-		return result.toString();
 	}
 
 } //IMSImpl

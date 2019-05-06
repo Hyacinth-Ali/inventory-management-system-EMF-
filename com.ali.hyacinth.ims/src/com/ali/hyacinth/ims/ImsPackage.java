@@ -58,14 +58,14 @@ public interface ImsPackage extends EPackage {
 	ImsPackage eINSTANCE = com.ali.hyacinth.ims.impl.ImsPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link com.ali.hyacinth.ims.impl.NameElementImpl <em>Name Element</em>}' class.
+	 * The meta object id for the '{@link com.ali.hyacinth.ims.impl.NamedElementImpl <em>Named Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.ali.hyacinth.ims.impl.NameElementImpl
-	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getNameElement()
+	 * @see com.ali.hyacinth.ims.impl.NamedElementImpl
+	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getNamedElement()
 	 * @generated
 	 */
-	int NAME_ELEMENT = 0;
+	int NAMED_ELEMENT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -74,25 +74,25 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAME_ELEMENT__NAME = 0;
+	int NAMED_ELEMENT__NAME = 0;
 
 	/**
-	 * The number of structural features of the '<em>Name Element</em>' class.
+	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAME_ELEMENT_FEATURE_COUNT = 1;
+	int NAMED_ELEMENT_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>Name Element</em>' class.
+	 * The number of operations of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAME_ELEMENT_OPERATION_COUNT = 0;
+	int NAMED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link com.ali.hyacinth.ims.impl.ProductImpl <em>Product</em>}' class.
@@ -111,7 +111,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT__NAME = NAME_ELEMENT__NAME;
+	int PRODUCT__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -120,7 +120,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT__ITEMS = NAME_ELEMENT_FEATURE_COUNT + 0;
+	int PRODUCT__ITEMS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Price</b></em>' attribute.
@@ -129,7 +129,16 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT__PRICE = NAME_ELEMENT_FEATURE_COUNT + 1;
+	int PRODUCT__PRICE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__ID = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Product</em>' class.
@@ -138,7 +147,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_FEATURE_COUNT = NAME_ELEMENT_FEATURE_COUNT + 2;
+	int PRODUCT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Product</em>' class.
@@ -147,7 +156,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_OPERATION_COUNT = NAME_ELEMENT_OPERATION_COUNT + 0;
+	int PRODUCT_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link com.ali.hyacinth.ims.impl.PersonImpl <em>Person</em>}' class.
@@ -166,7 +175,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__NAME = NAME_ELEMENT__NAME;
+	int PERSON__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Role</b></em>' reference list.
@@ -175,7 +184,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__ROLE = NAME_ELEMENT_FEATURE_COUNT + 0;
+	int PERSON__ROLE = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Sales</b></em>' reference list.
@@ -184,7 +193,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__SALES = NAME_ELEMENT_FEATURE_COUNT + 1;
+	int PERSON__SALES = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Purchases</b></em>' reference list.
@@ -193,7 +202,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__PURCHASES = NAME_ELEMENT_FEATURE_COUNT + 2;
+	int PERSON__PURCHASES = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Person</em>' class.
@@ -202,7 +211,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_FEATURE_COUNT = NAME_ELEMENT_FEATURE_COUNT + 3;
+	int PERSON_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Person</em>' class.
@@ -211,7 +220,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON_OPERATION_COUNT = NAME_ELEMENT_OPERATION_COUNT + 0;
+	int PERSON_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link com.ali.hyacinth.ims.impl.PersonRoleImpl <em>Person Role</em>}' class.
@@ -688,7 +697,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SUPPLIER__NAME = NAME_ELEMENT__NAME;
+	int SUPPLIER__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Supplier</em>' class.
@@ -697,7 +706,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SUPPLIER_FEATURE_COUNT = NAME_ELEMENT_FEATURE_COUNT + 0;
+	int SUPPLIER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Supplier</em>' class.
@@ -706,7 +715,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SUPPLIER_OPERATION_COUNT = NAME_ELEMENT_OPERATION_COUNT + 0;
+	int SUPPLIER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link com.ali.hyacinth.ims.impl.ItemImpl <em>Item</em>}' class.
@@ -820,22 +829,13 @@ public interface ImsPackage extends EPackage {
 	int IMS = 14;
 
 	/**
-	 * The feature id for the '<em><b>Item</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IMS__ITEM = 0;
-
-	/**
 	 * The feature id for the '<em><b>Products</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IMS__PRODUCTS = 1;
+	int IMS__PRODUCTS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Suppliers</b></em>' containment reference list.
@@ -844,7 +844,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMS__SUPPLIERS = 2;
+	int IMS__SUPPLIERS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Managers</b></em>' containment reference list.
@@ -853,7 +853,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMS__MANAGERS = 3;
+	int IMS__MANAGERS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Orders</b></em>' containment reference list.
@@ -862,7 +862,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMS__ORDERS = 4;
+	int IMS__ORDERS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Audits</b></em>' containment reference list.
@@ -871,7 +871,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMS__AUDITS = 5;
+	int IMS__AUDITS = 4;
 
 	/**
 	 * The feature id for the '<em><b>Persons</b></em>' containment reference list.
@@ -880,7 +880,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMS__PERSONS = 6;
+	int IMS__PERSONS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Regularemployees</b></em>' containment reference list.
@@ -889,7 +889,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMS__REGULAREMPLOYEES = 7;
+	int IMS__REGULAREMPLOYEES = 6;
 
 	/**
 	 * The feature id for the '<em><b>Customers</b></em>' containment reference list.
@@ -898,7 +898,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMS__CUSTOMERS = 8;
+	int IMS__CUSTOMERS = 7;
 
 	/**
 	 * The feature id for the '<em><b>Transactions</b></em>' containment reference list.
@@ -907,7 +907,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMS__TRANSACTIONS = 9;
+	int IMS__TRANSACTIONS = 8;
 
 	/**
 	 * The feature id for the '<em><b>Receipts</b></em>' containment reference list.
@@ -916,16 +916,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMS__RECEIPTS = 10;
-
-	/**
-	 * The feature id for the '<em><b>File Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IMS__FILE_NAME = 11;
+	int IMS__RECEIPTS = 9;
 
 	/**
 	 * The number of structural features of the '<em>IMS</em>' class.
@@ -934,7 +925,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IMS_FEATURE_COUNT = 12;
+	int IMS_FEATURE_COUNT = 10;
 
 	/**
 	 * The number of operations of the '<em>IMS</em>' class.
@@ -957,25 +948,25 @@ public interface ImsPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.NameElement <em>Name Element</em>}'.
+	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Name Element</em>'.
-	 * @see com.ali.hyacinth.ims.NameElement
+	 * @return the meta object for class '<em>Named Element</em>'.
+	 * @see com.ali.hyacinth.ims.NamedElement
 	 * @generated
 	 */
-	EClass getNameElement();
+	EClass getNamedElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.ali.hyacinth.ims.NameElement#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link com.ali.hyacinth.ims.NamedElement#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see com.ali.hyacinth.ims.NameElement#getName()
-	 * @see #getNameElement()
+	 * @see com.ali.hyacinth.ims.NamedElement#getName()
+	 * @see #getNamedElement()
 	 * @generated
 	 */
-	EAttribute getNameElement_Name();
+	EAttribute getNamedElement_Name();
 
 	/**
 	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.Product <em>Product</em>}'.
@@ -1008,6 +999,17 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProduct_Price();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.ali.hyacinth.ims.Product#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see com.ali.hyacinth.ims.Product#getId()
+	 * @see #getProduct()
+	 * @generated
+	 */
+	EAttribute getProduct_Id();
 
 	/**
 	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.Person <em>Person</em>}'.
@@ -1426,17 +1428,6 @@ public interface ImsPackage extends EPackage {
 	EClass getIMS();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link com.ali.hyacinth.ims.IMS#getItem <em>Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Item</em>'.
-	 * @see com.ali.hyacinth.ims.IMS#getItem()
-	 * @see #getIMS()
-	 * @generated
-	 */
-	EReference getIMS_Item();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link com.ali.hyacinth.ims.IMS#getProducts <em>Products</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1547,17 +1538,6 @@ public interface ImsPackage extends EPackage {
 	EReference getIMS_Receipts();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.ali.hyacinth.ims.IMS#getFileName <em>File Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>File Name</em>'.
-	 * @see com.ali.hyacinth.ims.IMS#getFileName()
-	 * @see #getIMS()
-	 * @generated
-	 */
-	EAttribute getIMS_FileName();
-
-	/**
 	 * Returns the meta object for enum '{@link com.ali.hyacinth.ims.ItemStatus <em>Item Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1591,14 +1571,14 @@ public interface ImsPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.NameElementImpl <em>Name Element</em>}' class.
+		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.NamedElementImpl <em>Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see com.ali.hyacinth.ims.impl.NameElementImpl
-		 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getNameElement()
+		 * @see com.ali.hyacinth.ims.impl.NamedElementImpl
+		 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getNamedElement()
 		 * @generated
 		 */
-		EClass NAME_ELEMENT = eINSTANCE.getNameElement();
+		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1606,7 +1586,7 @@ public interface ImsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NAME_ELEMENT__NAME = eINSTANCE.getNameElement_Name();
+		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 		/**
 		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.ProductImpl <em>Product</em>}' class.
@@ -1633,6 +1613,14 @@ public interface ImsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PRODUCT__PRICE = eINSTANCE.getProduct_Price();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT__ID = eINSTANCE.getProduct_Id();
 
 		/**
 		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.PersonImpl <em>Person</em>}' class.
@@ -1973,14 +1961,6 @@ public interface ImsPackage extends EPackage {
 		EClass IMS = eINSTANCE.getIMS();
 
 		/**
-		 * The meta object literal for the '<em><b>Item</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference IMS__ITEM = eINSTANCE.getIMS_Item();
-
-		/**
 		 * The meta object literal for the '<em><b>Products</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2059,14 +2039,6 @@ public interface ImsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference IMS__RECEIPTS = eINSTANCE.getIMS_Receipts();
-
-		/**
-		 * The meta object literal for the '<em><b>File Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute IMS__FILE_NAME = eINSTANCE.getIMS_FileName();
 
 		/**
 		 * The meta object literal for the '{@link com.ali.hyacinth.ims.ItemStatus <em>Item Status</em>}' enum.

@@ -13,5 +13,5 @@ package com.ali.hyacinth.ims;
  * @model
  * @generated
  */
-public interface Supplier extends NameElement {
+public interface Supplier extends NamedElement {
 } // Supplier

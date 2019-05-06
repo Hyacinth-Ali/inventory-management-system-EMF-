@@ -6,21 +6,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Name Element</b></em>'.
+ * A representation of the model object '<em><b>Named Element</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.ali.hyacinth.ims.NameElement#getName <em>Name</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.NamedElement#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see com.ali.hyacinth.ims.ImsPackage#getNameElement()
+ * @see com.ali.hyacinth.ims.ImsPackage#getNamedElement()
  * @model abstract="true"
  * @generated
  */
-public interface NameElement extends EObject {
+public interface NamedElement extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -31,14 +31,14 @@ public interface NameElement extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see com.ali.hyacinth.ims.ImsPackage#getNameElement_Name()
+	 * @see com.ali.hyacinth.ims.ImsPackage#getNamedElement_Name()
 	 * @model
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link com.ali.hyacinth.ims.NameElement#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link com.ali.hyacinth.ims.NamedElement#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -47,4 +47,4 @@ public interface NameElement extends EObject {
 	 */
 	void setName(String value);
 
-} // NameElement
+} // NamedElement

@@ -3,7 +3,7 @@
 package com.ali.hyacinth.ims.impl;
 
 import com.ali.hyacinth.ims.ImsPackage;
-import com.ali.hyacinth.ims.NameElement;
+import com.ali.hyacinth.ims.NamedElement;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Name Element</b></em>'.
+ * An implementation of the model object '<em><b>Named Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.ali.hyacinth.ims.impl.NameElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.impl.NamedElementImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class NameElementImpl extends MinimalEObjectImpl.Container implements NameElement {
+public abstract class NamedElementImpl extends MinimalEObjectImpl.Container implements NamedElement {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -51,7 +51,7 @@ public abstract class NameElementImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected NameElementImpl() {
+	protected NamedElementImpl() {
 		super();
 	}
 
@@ -62,7 +62,7 @@ public abstract class NameElementImpl extends MinimalEObjectImpl.Container imple
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ImsPackage.Literals.NAME_ELEMENT;
+		return ImsPackage.Literals.NAMED_ELEMENT;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public abstract class NameElementImpl extends MinimalEObjectImpl.Container imple
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.NAME_ELEMENT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.NAMED_ELEMENT__NAME, oldName, name));
 	}
 
 	/**
@@ -94,7 +94,7 @@ public abstract class NameElementImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ImsPackage.NAME_ELEMENT__NAME:
+			case ImsPackage.NAMED_ELEMENT__NAME:
 				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -108,7 +108,7 @@ public abstract class NameElementImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ImsPackage.NAME_ELEMENT__NAME:
+			case ImsPackage.NAMED_ELEMENT__NAME:
 				setName((String)newValue);
 				return;
 		}
@@ -123,7 +123,7 @@ public abstract class NameElementImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ImsPackage.NAME_ELEMENT__NAME:
+			case ImsPackage.NAMED_ELEMENT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
@@ -138,7 +138,7 @@ public abstract class NameElementImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ImsPackage.NAME_ELEMENT__NAME:
+			case ImsPackage.NAMED_ELEMENT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
@@ -160,4 +160,4 @@ public abstract class NameElementImpl extends MinimalEObjectImpl.Container imple
 		return result.toString();
 	}
 
-} //NameElementImpl
+} //NamedElementImpl

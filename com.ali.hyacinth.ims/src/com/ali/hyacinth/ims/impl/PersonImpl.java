@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class PersonImpl extends NameElementImpl implements Person {
+public class PersonImpl extends NamedElementImpl implements Person {
 	/**
 	 * The cached value of the '{@link #getRole() <em>Role</em>}' reference list.
 	 * <!-- begin-user-doc -->

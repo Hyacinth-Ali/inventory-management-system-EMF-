@@ -66,23 +66,23 @@ public class ImsSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ImsPackage.NAME_ELEMENT: {
-				NameElement nameElement = (NameElement)theEObject;
-				T result = caseNameElement(nameElement);
+			case ImsPackage.NAMED_ELEMENT: {
+				NamedElement namedElement = (NamedElement)theEObject;
+				T result = caseNamedElement(namedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ImsPackage.PRODUCT: {
 				Product product = (Product)theEObject;
 				T result = caseProduct(product);
-				if (result == null) result = caseNameElement(product);
+				if (result == null) result = caseNamedElement(product);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ImsPackage.PERSON: {
 				Person person = (Person)theEObject;
 				T result = casePerson(person);
-				if (result == null) result = caseNameElement(person);
+				if (result == null) result = caseNamedElement(person);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -143,7 +143,7 @@ public class ImsSwitch<T> extends Switch<T> {
 			case ImsPackage.SUPPLIER: {
 				Supplier supplier = (Supplier)theEObject;
 				T result = caseSupplier(supplier);
-				if (result == null) result = caseNameElement(supplier);
+				if (result == null) result = caseNamedElement(supplier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -170,17 +170,17 @@ public class ImsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Name Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Name Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseNameElement(NameElement object) {
+	public T caseNamedElement(NamedElement object) {
 		return null;
 	}
 

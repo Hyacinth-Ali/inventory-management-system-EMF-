@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.ali.hyacinth.ims.IMS#getItem <em>Item</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.IMS#getProducts <em>Products</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.IMS#getSuppliers <em>Suppliers</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.IMS#getManagers <em>Managers</em>}</li>
@@ -26,7 +25,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.ali.hyacinth.ims.IMS#getCustomers <em>Customers</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.IMS#getTransactions <em>Transactions</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.IMS#getReceipts <em>Receipts</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.IMS#getFileName <em>File Name</em>}</li>
  * </ul>
  *
  * @see com.ali.hyacinth.ims.ImsPackage#getIMS()
@@ -34,22 +32,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface IMS extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Item</b></em>' containment reference list.
-	 * The list contents are of type {@link com.ali.hyacinth.ims.Item}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Item</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Item</em>' containment reference list.
-	 * @see com.ali.hyacinth.ims.ImsPackage#getIMS_Item()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Item> getItem();
-
 	/**
 	 * Returns the value of the '<em><b>Products</b></em>' containment reference list.
 	 * The list contents are of type {@link com.ali.hyacinth.ims.Product}.
@@ -209,31 +191,5 @@ public interface IMS extends EObject {
 	 * @generated
 	 */
 	EList<Receipt> getReceipts();
-
-	/**
-	 * Returns the value of the '<em><b>File Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>File Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>File Name</em>' attribute.
-	 * @see #setFileName(String)
-	 * @see com.ali.hyacinth.ims.ImsPackage#getIMS_FileName()
-	 * @model
-	 * @generated
-	 */
-	String getFileName();
-
-	/**
-	 * Sets the value of the '{@link com.ali.hyacinth.ims.IMS#getFileName <em>File Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>File Name</em>' attribute.
-	 * @see #getFileName()
-	 * @generated
-	 */
-	void setFileName(String value);
 
 } // IMS
