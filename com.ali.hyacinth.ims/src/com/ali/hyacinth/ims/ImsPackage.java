@@ -178,13 +178,13 @@ public interface ImsPackage extends EPackage {
 	int PERSON__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Role</b></em>' reference list.
+	 * The feature id for the '<em><b>Roles</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSON__ROLE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int PERSON__ROLES = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Sales</b></em>' reference list.
@@ -1022,15 +1022,15 @@ public interface ImsPackage extends EPackage {
 	EClass getPerson();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.ali.hyacinth.ims.Person#getRole <em>Role</em>}'.
+	 * Returns the meta object for the reference list '{@link com.ali.hyacinth.ims.Person#getRoles <em>Roles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Role</em>'.
-	 * @see com.ali.hyacinth.ims.Person#getRole()
+	 * @return the meta object for the reference list '<em>Roles</em>'.
+	 * @see com.ali.hyacinth.ims.Person#getRoles()
 	 * @see #getPerson()
 	 * @generated
 	 */
-	EReference getPerson_Role();
+	EReference getPerson_Roles();
 
 	/**
 	 * Returns the meta object for the reference list '{@link com.ali.hyacinth.ims.Person#getSales <em>Sales</em>}'.
@@ -1633,12 +1633,12 @@ public interface ImsPackage extends EPackage {
 		EClass PERSON = eINSTANCE.getPerson();
 
 		/**
-		 * The meta object literal for the '<em><b>Role</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Roles</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PERSON__ROLE = eINSTANCE.getPerson_Role();
+		EReference PERSON__ROLES = eINSTANCE.getPerson_Roles();
 
 		/**
 		 * The meta object literal for the '<em><b>Sales</b></em>' reference list feature.

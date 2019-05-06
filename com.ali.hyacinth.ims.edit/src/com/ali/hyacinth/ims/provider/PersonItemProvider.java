@@ -43,7 +43,7 @@ public class PersonItemProvider extends NamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addRolePropertyDescriptor(object);
+			addRolesPropertyDescriptor(object);
 			addSalesPropertyDescriptor(object);
 			addPurchasesPropertyDescriptor(object);
 		}
@@ -51,19 +51,19 @@ public class PersonItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Role feature.
+	 * This adds a property descriptor for the Roles feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRolePropertyDescriptor(Object object) {
+	protected void addRolesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Person_role_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Person_role_feature", "_UI_Person_type"),
-				 ImsPackage.Literals.PERSON__ROLE,
+				 getString("_UI_Person_roles_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Person_roles_feature", "_UI_Person_type"),
+				 ImsPackage.Literals.PERSON__ROLES,
 				 true,
 				 false,
 				 true,

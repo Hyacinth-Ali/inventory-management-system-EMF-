@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.ali.hyacinth.ims.Person#getRole <em>Role</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.Person#getRoles <em>Roles</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Person#getSales <em>Sales</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Person#getPurchases <em>Purchases</em>}</li>
  * </ul>
@@ -24,22 +24,22 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Person extends NamedElement {
 	/**
-	 * Returns the value of the '<em><b>Role</b></em>' reference list.
+	 * Returns the value of the '<em><b>Roles</b></em>' reference list.
 	 * The list contents are of type {@link com.ali.hyacinth.ims.PersonRole}.
 	 * It is bidirectional and its opposite is '{@link com.ali.hyacinth.ims.PersonRole#getPerson <em>Person</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Role</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Roles</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Role</em>' reference list.
-	 * @see com.ali.hyacinth.ims.ImsPackage#getPerson_Role()
+	 * @return the value of the '<em>Roles</em>' reference list.
+	 * @see com.ali.hyacinth.ims.ImsPackage#getPerson_Roles()
 	 * @see com.ali.hyacinth.ims.PersonRole#getPerson
 	 * @model opposite="person" upper="3"
 	 * @generated
 	 */
-	EList<PersonRole> getRole();
+	EList<PersonRole> getRoles();
 
 	/**
 	 * Returns the value of the '<em><b>Sales</b></em>' reference list.

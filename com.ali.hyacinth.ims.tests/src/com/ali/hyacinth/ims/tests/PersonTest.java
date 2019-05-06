@@ -13,7 +13,7 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PersonTest extends NameElementTest {
+public class PersonTest extends NamedElementTest {
 
 	/**
 	 * <!-- begin-user-doc -->

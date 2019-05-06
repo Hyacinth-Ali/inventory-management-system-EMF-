@@ -12,7 +12,7 @@
         iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="role" upperBound="3" eType="#//PersonRole"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="3" eType="#//PersonRole"
         eOpposite="#//PersonRole/person"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sales" upperBound="-1"
         eType="#//Transaction" eOpposite="#//Transaction/seller"/>
@@ -59,7 +59,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PersonRole" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="person" lowerBound="1"
-        eType="#//Person" eOpposite="#//Person/role"/>
+        eType="#//Person" eOpposite="#//Person/roles"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Supplier" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Item">

@@ -108,9 +108,9 @@ public abstract class PersonRoleImpl extends MinimalEObjectImpl.Container implem
 		if (newPerson != person) {
 			NotificationChain msgs = null;
 			if (person != null)
-				msgs = ((InternalEObject)person).eInverseRemove(this, ImsPackage.PERSON__ROLE, Person.class, msgs);
+				msgs = ((InternalEObject)person).eInverseRemove(this, ImsPackage.PERSON__ROLES, Person.class, msgs);
 			if (newPerson != null)
-				msgs = ((InternalEObject)newPerson).eInverseAdd(this, ImsPackage.PERSON__ROLE, Person.class, msgs);
+				msgs = ((InternalEObject)newPerson).eInverseAdd(this, ImsPackage.PERSON__ROLES, Person.class, msgs);
 			msgs = basicSetPerson(newPerson, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -128,7 +128,7 @@ public abstract class PersonRoleImpl extends MinimalEObjectImpl.Container implem
 		switch (featureID) {
 			case ImsPackage.PERSON_ROLE__PERSON:
 				if (person != null)
-					msgs = ((InternalEObject)person).eInverseRemove(this, ImsPackage.PERSON__ROLE, Person.class, msgs);
+					msgs = ((InternalEObject)person).eInverseRemove(this, ImsPackage.PERSON__ROLES, Person.class, msgs);
 				return basicSetPerson((Person)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);

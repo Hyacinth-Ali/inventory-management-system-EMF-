@@ -20,11 +20,10 @@ public class TOManager
   // CONSTRUCTOR
   //------------------------
 
-  public TOManager(String aName, String aUserName, String aPassword)
+  public TOManager(String aName, String aUserName)
   {
     name = aName;
     userName = aUserName;
-    password = aPassword;
   }
 
   //------------------------

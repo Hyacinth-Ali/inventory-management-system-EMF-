@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.ali.hyacinth.ims.impl.PersonImpl#getRole <em>Role</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.impl.PersonImpl#getRoles <em>Roles</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.PersonImpl#getSales <em>Sales</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.PersonImpl#getPurchases <em>Purchases</em>}</li>
  * </ul>
@@ -36,14 +36,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class PersonImpl extends NamedElementImpl implements Person {
 	/**
-	 * The cached value of the '{@link #getRole() <em>Role</em>}' reference list.
+	 * The cached value of the '{@link #getRoles() <em>Roles</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRole()
+	 * @see #getRoles()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PersonRole> role;
+	protected EList<PersonRole> roles;
 
 	/**
 	 * The cached value of the '{@link #getSales() <em>Sales</em>}' reference list.
@@ -89,11 +89,11 @@ public class PersonImpl extends NamedElementImpl implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<PersonRole> getRole() {
-		if (role == null) {
-			role = new EObjectWithInverseResolvingEList<PersonRole>(PersonRole.class, this, ImsPackage.PERSON__ROLE, ImsPackage.PERSON_ROLE__PERSON);
+	public EList<PersonRole> getRoles() {
+		if (roles == null) {
+			roles = new EObjectWithInverseResolvingEList<PersonRole>(PersonRole.class, this, ImsPackage.PERSON__ROLES, ImsPackage.PERSON_ROLE__PERSON);
 		}
-		return role;
+		return roles;
 	}
 
 	/**
@@ -129,8 +129,8 @@ public class PersonImpl extends NamedElementImpl implements Person {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ImsPackage.PERSON__ROLE:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRole()).basicAdd(otherEnd, msgs);
+			case ImsPackage.PERSON__ROLES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRoles()).basicAdd(otherEnd, msgs);
 			case ImsPackage.PERSON__SALES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSales()).basicAdd(otherEnd, msgs);
 			case ImsPackage.PERSON__PURCHASES:
@@ -147,8 +147,8 @@ public class PersonImpl extends NamedElementImpl implements Person {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ImsPackage.PERSON__ROLE:
-				return ((InternalEList<?>)getRole()).basicRemove(otherEnd, msgs);
+			case ImsPackage.PERSON__ROLES:
+				return ((InternalEList<?>)getRoles()).basicRemove(otherEnd, msgs);
 			case ImsPackage.PERSON__SALES:
 				return ((InternalEList<?>)getSales()).basicRemove(otherEnd, msgs);
 			case ImsPackage.PERSON__PURCHASES:
@@ -165,8 +165,8 @@ public class PersonImpl extends NamedElementImpl implements Person {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ImsPackage.PERSON__ROLE:
-				return getRole();
+			case ImsPackage.PERSON__ROLES:
+				return getRoles();
 			case ImsPackage.PERSON__SALES:
 				return getSales();
 			case ImsPackage.PERSON__PURCHASES:
@@ -184,9 +184,9 @@ public class PersonImpl extends NamedElementImpl implements Person {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ImsPackage.PERSON__ROLE:
-				getRole().clear();
-				getRole().addAll((Collection<? extends PersonRole>)newValue);
+			case ImsPackage.PERSON__ROLES:
+				getRoles().clear();
+				getRoles().addAll((Collection<? extends PersonRole>)newValue);
 				return;
 			case ImsPackage.PERSON__SALES:
 				getSales().clear();
@@ -208,8 +208,8 @@ public class PersonImpl extends NamedElementImpl implements Person {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ImsPackage.PERSON__ROLE:
-				getRole().clear();
+			case ImsPackage.PERSON__ROLES:
+				getRoles().clear();
 				return;
 			case ImsPackage.PERSON__SALES:
 				getSales().clear();
@@ -229,8 +229,8 @@ public class PersonImpl extends NamedElementImpl implements Person {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ImsPackage.PERSON__ROLE:
-				return role != null && !role.isEmpty();
+			case ImsPackage.PERSON__ROLES:
+				return roles != null && !roles.isEmpty();
 			case ImsPackage.PERSON__SALES:
 				return sales != null && !sales.isEmpty();
 			case ImsPackage.PERSON__PURCHASES:

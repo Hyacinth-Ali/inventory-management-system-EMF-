@@ -276,7 +276,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPerson_Role() {
+	public EReference getPerson_Roles() {
 		return (EReference)personEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -749,7 +749,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEAttribute(productEClass, PRODUCT__ID);
 
 		personEClass = createEClass(PERSON);
-		createEReference(personEClass, PERSON__ROLE);
+		createEReference(personEClass, PERSON__ROLES);
 		createEReference(personEClass, PERSON__SALES);
 		createEReference(personEClass, PERSON__PURCHASES);
 
@@ -860,7 +860,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEAttribute(getProduct_Id(), ecorePackage.getEString(), "id", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPerson_Role(), this.getPersonRole(), this.getPersonRole_Person(), "role", null, 0, 3, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPerson_Roles(), this.getPersonRole(), this.getPersonRole_Person(), "roles", null, 0, 3, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_Sales(), this.getTransaction(), this.getTransaction_Seller(), "sales", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_Purchases(), this.getTransaction(), this.getTransaction_Buyer(), "purchases", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -896,7 +896,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEAttribute(getEmployeeRole_Password(), ecorePackage.getEString(), "password", null, 0, 1, EmployeeRole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personRoleEClass, PersonRole.class, "PersonRole", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPersonRole_Person(), this.getPerson(), this.getPerson_Role(), "person", null, 1, 1, PersonRole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPersonRole_Person(), this.getPerson(), this.getPerson_Roles(), "person", null, 1, 1, PersonRole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(supplierEClass, Supplier.class, "Supplier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

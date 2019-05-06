@@ -14,6 +14,7 @@ public class TOCustomer
   //TOCustomer Attributes
   private String id;
   private String name;
+  private float debt;
 
   //------------------------
   // CONSTRUCTOR
@@ -65,4 +66,14 @@ public class TOCustomer
             "id" + ":" + getId()+ "," +
             "name" + ":" + getName()+ "]";
   }
+
+public float getDebt() {
+	return debt;
+}
+
+public void setDebt(float debt) {
+	this.debt = debt;
+}
+  
+  
 }

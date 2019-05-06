@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface PersonRole extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Person</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link com.ali.hyacinth.ims.Person#getRole <em>Role</em>}'.
+	 * It is bidirectional and its opposite is '{@link com.ali.hyacinth.ims.Person#getRoles <em>Roles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Person</em>' reference isn't clear,
@@ -33,8 +33,8 @@ public interface PersonRole extends EObject {
 	 * @return the value of the '<em>Person</em>' reference.
 	 * @see #setPerson(Person)
 	 * @see com.ali.hyacinth.ims.ImsPackage#getPersonRole_Person()
-	 * @see com.ali.hyacinth.ims.Person#getRole
-	 * @model opposite="role" required="true"
+	 * @see com.ali.hyacinth.ims.Person#getRoles
+	 * @model opposite="roles" required="true"
 	 * @generated
 	 */
 	Person getPerson();
