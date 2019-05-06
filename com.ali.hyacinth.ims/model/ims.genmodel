@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ali.hyacinth.ims/src" modelPluginID="com.ali.hyacinth.ims"
+    modelName="Ims" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>ims.ecore</foreignModel>
+  <genPackages prefix="Ims" basePackage="com.ali.hyacinth" resource="XMI" disposableProviderFactory="true"
+      ecorePackage="ims.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ims.ecore#//ItemStatus">
+      <genEnumLiterals ecoreEnumLiteral="ims.ecore#//ItemStatus/ordered"/>
+      <genEnumLiterals ecoreEnumLiteral="ims.ecore#//ItemStatus/inStore"/>
+      <genEnumLiterals ecoreEnumLiteral="ims.ecore#//ItemStatus/sold"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="ims.ecore#//NameElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//NameElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ims.ecore#//Product">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//Product/item"/>
+    </genClasses>
+    <genClasses ecoreClass="ims.ecore#//Person">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Person/role"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Person/sales"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Person/purchases"/>
+    </genClasses>
+    <genClasses ecoreClass="ims.ecore#//RegularEmployee"/>
+    <genClasses ecoreClass="ims.ecore#//Manager"/>
+    <genClasses ecoreClass="ims.ecore#//Transaction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Transaction/seller"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Transaction/buyer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Transaction/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Transaction/totalAmount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Transaction/amountPaid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Transaction/amountUnpaid"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Transaction/products"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Transaction/price"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Transaction/receipts"/>
+    </genClasses>
+    <genClasses ecoreClass="ims.ecore#//Receipt">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Receipt/transaction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Receipt/date"/>
+    </genClasses>
+    <genClasses ecoreClass="ims.ecore#//Audit">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Audit/transactions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Audit/orders"/>
+    </genClasses>
+    <genClasses ecoreClass="ims.ecore#//Customer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Customer/debt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Customer/customerID"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ims.ecore#//EmployeeRole">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//EmployeeRole/userName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//EmployeeRole/password"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ims.ecore#//PersonRole">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//PersonRole/person"/>
+    </genClasses>
+    <genClasses ecoreClass="ims.ecore#//Supplier"/>
+    <genClasses ecoreClass="ims.ecore#//Item">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Item/status"/>
+    </genClasses>
+    <genClasses ecoreClass="ims.ecore#//Order">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Order/orderedDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Order/arrivalDate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Order/supplier"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Order/products"/>
+    </genClasses>
+    <genClasses ecoreClass="ims.ecore#//IMS">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/item"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/productS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/supplierS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/managerS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/orderS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/auditS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/personS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/regularemployeeS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/customerS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/transactionS"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/receiptS"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

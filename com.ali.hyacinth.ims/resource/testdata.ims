@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ims="http://hyacinth.com/ims">
+  <products name="product" price="100.0"/>
+</ims:IMS>
