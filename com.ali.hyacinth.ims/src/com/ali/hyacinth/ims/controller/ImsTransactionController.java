@@ -7,18 +7,15 @@ import java.util.List;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.ali.hyacinth.ims.Customer;
-import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsFactory;
 import com.ali.hyacinth.ims.Manager;
 import com.ali.hyacinth.ims.Product;
+import com.ali.hyacinth.ims.ProductTransaction;
 import com.ali.hyacinth.ims.Transaction;
-import com.ali.hyacinth.ims.TransactionItem;
-import com.ali.hyacinth.ims.TransactionPrice;
 import com.ali.hyacinth.ims.application.ImsApplication;
+import com.ali.hyacinth.ims.transferobjects.Receipt;
 import com.ali.hyacinth.ims.transferobjects.TOProduct;
-import com.ali.hyacinth.ims.transferobjects.TOTransactionComplete;
-import com.ali.hyacinth.ims.transferobjects.TOTransactionItem;
-import com.ali.hyacinth.ims.transferobjects.TOTransactionPrice;
+import com.ali.hyacinth.ims.transferobjects.TOProductTransaction;
 
 public class ImsTransactionController {
 	
@@ -87,7 +84,7 @@ public class ImsTransactionController {
 	 * @throws InvalidInputException
 	 */
 	public static void createTransaction(Date date, String customerID, String managerUserName) throws InvalidInputException {
-		IMS ims = ImsApplication.getIms();
+		//IMS ims = ImsApplication.getIms();
 		Customer c = findCustomer(customerID);
 		Manager manager = findManager(managerUserName);
 		String error = "";
@@ -113,33 +110,22 @@ public class ImsTransactionController {
 	}
 	
 	/**
-	 * Add products for a transaction.
+	 * Add products for a transaction, ensure that number of item in store is more than the required quantity
+	 * before calling this method.
 	 * @param transaction to be added products
 	 * @param product to be added to a transaction.
 	 * @throws InvalidInputException
 	 */
 	public static void addTransactionProduct(Transaction transaction, Product product, int quantity) throws InvalidInputException {
-		String error = "";
 		
 		if (quantity <= 0) {
-			error = "Quantity of items must be greater than zero.";
+			throw new InvalidInputException("Quantity of items must be greater than zero.");
 		}
-		for (Product p : transaction.getProducts()) {
-			if (p.equals(product)) {
-				error = "The product has already been added to this transaction, modify instead.";
-			}
-		}
-		
-		if (error.length() > 0) {
-			throw new InvalidInputException(error);
-		}
-		TransactionItem item = ImsFactory.eINSTANCE.createTransactionItem();
-		item.setQuantity(quantity);
-		TransactionPrice transactionPrice = ImsFactory.eINSTANCE.createTransactionPrice();
-		transactionPrice.setPrice(product.getPrice() * product.getTransactionitem().getQuantity());
-		product.setTransactionitem(item);
-		product.setTransactionprice(transactionPrice);
-		transaction.getProducts().add(product);
+		ProductTransaction productTransaction = ImsFactory.eINSTANCE.createProductTransaction();
+		productTransaction.setProduct(product);
+		productTransaction.setQuantity(quantity);
+		productTransaction.setPrice(quantity * product.getItemPrice());
+		transaction.getProducttransactions().add(productTransaction);
 	}
 	
 	/**
@@ -169,8 +155,8 @@ public class ImsTransactionController {
 		Transaction transaction = findTransaction(id);
 		float totalAmount = 0.0f;
 		if (transaction != null) {
-			for (Product product : transaction.getProducts()) {
-				float amount = product.getTransactionprice().getPrice();
+			for (ProductTransaction productTransaction : transaction.getProducttransactions()) {
+				float amount = productTransaction.getPrice();
 				totalAmount += amount;
 			}
 		} else {
@@ -186,7 +172,7 @@ public class ImsTransactionController {
 	 * @return the transaction
 	 * @throws InvalidInputException
 	 */
-	public static TOTransaction firstCheckOut(String id) throws InvalidInputException {
+	/*public static TOTransaction firstCheckOut(String id) throws InvalidInputException {
 		
 		Transaction transaction = findTransaction(id);
 		TOTransaction toTransaction = null;
@@ -199,46 +185,78 @@ public class ImsTransactionController {
 		}
 		return toTransaction;
 		
-	}
+	}*/
 	
 	/**
-	 * Final step to purchase products
+	 * Final step to purchase products, generate receipt.
 	 * @param transaction of the purchase
 	 * @param amountPaid paid for the transaction
 	 * @throws InvalidInputException
 	 */
-	public static TOTransactionComplete purchase(String id, float amountPaid) throws InvalidInputException {
+	public static Receipt purchase(String id, float amountPaid) throws InvalidInputException {
 		Transaction transaction = findTransaction(id);
-		TOTransactionComplete tComplete = null;
+		Receipt receipt = null;
 		if (transaction != null) {
 			transaction.setAmountPaid(amountPaid);
-			tComplete = new TOTransactionComplete();
-			tComplete.setTotalAmount(transaction.getTotalAmount());
-			tComplete.setAmoundPaid(transaction.getAmountPaid());
-			tComplete.setDate(transaction.getDate());
+			receipt = new Receipt();
+			receipt.setTotalAmount(transaction.getTotalAmount());
+			receipt.setAmoundPaid(transaction.getAmountPaid());
+			receipt.setDate(transaction.getDate());
 			try {
-				for (Product product : transaction.getProducts()) {
-					TOProduct tProduct = new TOProduct();
-					tProduct.setName(product.getName());
-					tProduct.setItemPrice(product.getPrice());
+				for (ProductTransaction pTransaction : transaction.getProducttransactions()) {
+					TOProduct toProduct = new TOProduct();
+					toProduct.setName(pTransaction.getProduct().getName());
+					toProduct.setItemPrice(pTransaction.getProduct().getItemPrice());
 					
-					TOTransactionPrice tPrice = new TOTransactionPrice();
-					tPrice.setPrice(product.getTransactionprice().getPrice());
+					TOProductTransaction toPTransaction = new TOProductTransaction(toProduct);
+					toPTransaction.setPrice(pTransaction.getPrice());
+					toPTransaction.setQuantity(pTransaction.getQuantity());
 					
-					TOTransactionItem tItem = new TOTransactionItem();
-					tItem.setQuantity(product.getTransactionitem().getQuantity());
-					
-					tProduct.setItem(tItem);
-					tProduct.setPrice(tPrice);
-					
-					tComplete.addProduct(tProduct);
+					receipt.addPTransaction(toPTransaction);
 				}
 			} catch (RuntimeException e) {
 				throw new InvalidInputException(e.getMessage());
 			}
 		}
 		
-		return tComplete;
+		return receipt;
+		
+	}
+	
+	/**
+	 * Check out a transaction.
+	 * @param transaction of the purchase
+	 * @param amountPaid paid for the transaction
+	 * @throws InvalidInputException
+	 */
+	public static Receipt checkout(String id) throws InvalidInputException {
+		Transaction transaction = findTransaction(id);
+		Receipt receipt = null;
+		if (transaction != null) {
+			receipt = new Receipt();
+			float totalamount = 0.0f;
+			try {
+				for (ProductTransaction pTransaction : transaction.getProducttransactions()) {
+					TOProduct toProduct = new TOProduct();
+					toProduct.setName(pTransaction.getProduct().getName());
+					toProduct.setItemPrice(pTransaction.getProduct().getItemPrice());
+					
+					TOProductTransaction toPTransaction = new TOProductTransaction(toProduct);
+					toPTransaction.setPrice(pTransaction.getPrice());
+					toPTransaction.setQuantity(pTransaction.getQuantity());
+					
+					receipt.addPTransaction(toPTransaction);
+					
+					totalamount += toPTransaction.getPrice();
+				}
+			} catch (RuntimeException e) {
+				throw new InvalidInputException(e.getMessage());
+			}
+			receipt.setTotalAmount(totalamount);
+			receipt.setDate(transaction.getDate());
+		}
+		
+		return receipt;
 		
 	}
 	
@@ -251,9 +269,8 @@ public class ImsTransactionController {
 		Transaction transaction = findTransaction(id);
 		if (transaction != null) {
 			try {
-				for (Product product : transaction.getProducts()) {
-					EcoreUtil.delete(product.getTransactionitem());
-					EcoreUtil.delete(product.getTransactionprice());
+				for (ProductTransaction productTransaction : transaction.getProducttransactions()) {
+					EcoreUtil.delete(productTransaction);
 				}
 				EcoreUtil.delete(transaction, true);
 			} catch (RuntimeException e) {
@@ -262,6 +279,22 @@ public class ImsTransactionController {
 		} else {
 			throw new InvalidInputException("The transaction does not exist.");
 		}
+		
+	}
+	
+	public static void updateTransaction(String id, Product product, int quantity) throws InvalidInputException {
+		Transaction transaction = findTransaction(id);
+		
+		if (transaction != null) {
+			for (ProductTransaction productTransaction : transaction.getProducttransactions()) {
+				if (productTransaction.getProduct().equals(product)) {
+					productTransaction.setQuantity(quantity);
+				}
+			}
+		} else {
+			throw new InvalidInputException("The transaction does not exist.");
+		}
+		
 		
 	}
 

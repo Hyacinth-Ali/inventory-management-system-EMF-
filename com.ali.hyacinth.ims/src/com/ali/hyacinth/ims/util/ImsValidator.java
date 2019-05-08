@@ -116,10 +116,8 @@ public class ImsValidator extends EObjectValidator {
 				return validateOrder((Order)value, diagnostics, context);
 			case ImsPackage.IMS:
 				return validateIMS((IMS)value, diagnostics, context);
-			case ImsPackage.TRANSACTION_ITEM:
-				return validateTransactionItem((TransactionItem)value, diagnostics, context);
-			case ImsPackage.TRANSACTION_PRICE:
-				return validateTransactionPrice((TransactionPrice)value, diagnostics, context);
+			case ImsPackage.PRODUCT_TRANSACTION:
+				return validateProductTransaction((ProductTransaction)value, diagnostics, context);
 			case ImsPackage.ITEM_STATUS:
 				return validateItemStatus((ItemStatus)value, diagnostics, context);
 			default:
@@ -310,17 +308,8 @@ public class ImsValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTransactionItem(TransactionItem transactionItem, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(transactionItem, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateTransactionPrice(TransactionPrice transactionPrice, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(transactionPrice, diagnostics, context);
+	public boolean validateProductTransaction(ProductTransaction productTransaction, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(productTransaction, diagnostics, context);
 	}
 
 	/**

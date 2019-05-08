@@ -15,11 +15,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="Product" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="itemPrice" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transactionitem" eType="#//TransactionItem"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transactionprice" eType="#//TransactionPrice"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="roles" lowerBound="1" upperBound="3"
@@ -45,17 +44,10 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amountUnpaid" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat" derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="products" upperBound="-1"
-        eType="#//Product"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="receipts" upperBound="-1"
-        eType="#//Receipt" eOpposite="#//Receipt/transaction"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Receipt">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transaction" lowerBound="1"
-        eType="#//Transaction" eOpposite="#//Transaction/receipts"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="producttransactions" upperBound="-1"
+        eType="#//ProductTransaction"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Audit">
     <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" upperBound="-1"
@@ -119,13 +111,11 @@
         eType="#//Customer" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" upperBound="-1"
         eType="#//Transaction" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="receipts" upperBound="-1"
-        eType="#//Receipt" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TransactionItem">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TransactionPrice">
+  <eClassifiers xsi:type="ecore:EClass" name="ProductTransaction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="product" lowerBound="1"
+        eType="#//Product"/>
   </eClassifiers>
 </ecore:EPackage>

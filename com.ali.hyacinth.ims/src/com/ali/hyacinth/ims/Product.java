@@ -14,10 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link com.ali.hyacinth.ims.Product#getItems <em>Items</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.Product#getPrice <em>Price</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.Product#getItemPrice <em>Item Price</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Product#getId <em>Id</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.Product#getTransactionitem <em>Transactionitem</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.Product#getTransactionprice <em>Transactionprice</em>}</li>
  * </ul>
  *
  * @see com.ali.hyacinth.ims.ImsPackage#getProduct()
@@ -42,30 +40,30 @@ public interface Product extends NamedElement {
 	EList<Item> getItems();
 
 	/**
-	 * Returns the value of the '<em><b>Price</b></em>' attribute.
+	 * Returns the value of the '<em><b>Item Price</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Price</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Item Price</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Price</em>' attribute.
-	 * @see #setPrice(float)
-	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Price()
+	 * @return the value of the '<em>Item Price</em>' attribute.
+	 * @see #setItemPrice(float)
+	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_ItemPrice()
 	 * @model required="true"
 	 * @generated
 	 */
-	float getPrice();
+	float getItemPrice();
 
 	/**
-	 * Sets the value of the '{@link com.ali.hyacinth.ims.Product#getPrice <em>Price</em>}' attribute.
+	 * Sets the value of the '{@link com.ali.hyacinth.ims.Product#getItemPrice <em>Item Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Price</em>' attribute.
-	 * @see #getPrice()
+	 * @param value the new value of the '<em>Item Price</em>' attribute.
+	 * @see #getItemPrice()
 	 * @generated
 	 */
-	void setPrice(float value);
+	void setItemPrice(float value);
 
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
@@ -92,57 +90,5 @@ public interface Product extends NamedElement {
 	 * @generated
 	 */
 	void setId(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Transactionitem</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Transactionitem</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Transactionitem</em>' reference.
-	 * @see #setTransactionitem(TransactionItem)
-	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Transactionitem()
-	 * @model
-	 * @generated
-	 */
-	TransactionItem getTransactionitem();
-
-	/**
-	 * Sets the value of the '{@link com.ali.hyacinth.ims.Product#getTransactionitem <em>Transactionitem</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transactionitem</em>' reference.
-	 * @see #getTransactionitem()
-	 * @generated
-	 */
-	void setTransactionitem(TransactionItem value);
-
-	/**
-	 * Returns the value of the '<em><b>Transactionprice</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Transactionprice</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Transactionprice</em>' reference.
-	 * @see #setTransactionprice(TransactionPrice)
-	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Transactionprice()
-	 * @model
-	 * @generated
-	 */
-	TransactionPrice getTransactionprice();
-
-	/**
-	 * Sets the value of the '{@link com.ali.hyacinth.ims.Product#getTransactionprice <em>Transactionprice</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transactionprice</em>' reference.
-	 * @see #getTransactionprice()
-	 * @generated
-	 */
-	void setTransactionprice(TransactionPrice value);
 
 } // Product

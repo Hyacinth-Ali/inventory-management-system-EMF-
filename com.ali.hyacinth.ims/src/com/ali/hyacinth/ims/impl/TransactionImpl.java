@@ -4,7 +4,7 @@ package com.ali.hyacinth.ims.impl;
 
 import com.ali.hyacinth.ims.ImsPackage;
 import com.ali.hyacinth.ims.Person;
-import com.ali.hyacinth.ims.Product;
+import com.ali.hyacinth.ims.ProductTransaction;
 import com.ali.hyacinth.ims.Receipt;
 import com.ali.hyacinth.ims.Transaction;
 
@@ -40,9 +40,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getTotalAmount <em>Total Amount</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getAmountPaid <em>Amount Paid</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getAmountUnpaid <em>Amount Unpaid</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getProducts <em>Products</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getReceipts <em>Receipts</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getId <em>Id</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getProducttransactions <em>Producttransactions</em>}</li>
  * </ul>
  *
  * @generated
@@ -149,16 +149,6 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	protected float amountUnpaid = AMOUNT_UNPAID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getProducts() <em>Products</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProducts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Product> products;
-
-	/**
 	 * The cached value of the '{@link #getReceipts() <em>Receipts</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -187,6 +177,16 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getProducttransactions() <em>Producttransactions</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProducttransactions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ProductTransaction> producttransactions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -416,18 +416,6 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Product> getProducts() {
-		if (products == null) {
-			products = new EObjectResolvingEList<Product>(Product.class, this, ImsPackage.TRANSACTION__PRODUCTS);
-		}
-		return products;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Receipt> getReceipts() {
 		if (receipts == null) {
 			receipts = new EObjectWithInverseResolvingEList<Receipt>(Receipt.class, this, ImsPackage.TRANSACTION__RECEIPTS, ImsPackage.RECEIPT__TRANSACTION);
@@ -454,6 +442,18 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.TRANSACTION__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ProductTransaction> getProducttransactions() {
+		if (producttransactions == null) {
+			producttransactions = new EObjectResolvingEList<ProductTransaction>(ProductTransaction.class, this, ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS);
+		}
+		return producttransactions;
 	}
 
 	/**
@@ -519,12 +519,12 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				return getAmountPaid();
 			case ImsPackage.TRANSACTION__AMOUNT_UNPAID:
 				return getAmountUnpaid();
-			case ImsPackage.TRANSACTION__PRODUCTS:
-				return getProducts();
 			case ImsPackage.TRANSACTION__RECEIPTS:
 				return getReceipts();
 			case ImsPackage.TRANSACTION__ID:
 				return getId();
+			case ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS:
+				return getProducttransactions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -556,16 +556,16 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 			case ImsPackage.TRANSACTION__AMOUNT_UNPAID:
 				setAmountUnpaid((Float)newValue);
 				return;
-			case ImsPackage.TRANSACTION__PRODUCTS:
-				getProducts().clear();
-				getProducts().addAll((Collection<? extends Product>)newValue);
-				return;
 			case ImsPackage.TRANSACTION__RECEIPTS:
 				getReceipts().clear();
 				getReceipts().addAll((Collection<? extends Receipt>)newValue);
 				return;
 			case ImsPackage.TRANSACTION__ID:
 				setId((String)newValue);
+				return;
+			case ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS:
+				getProducttransactions().clear();
+				getProducttransactions().addAll((Collection<? extends ProductTransaction>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -597,14 +597,14 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 			case ImsPackage.TRANSACTION__AMOUNT_UNPAID:
 				setAmountUnpaid(AMOUNT_UNPAID_EDEFAULT);
 				return;
-			case ImsPackage.TRANSACTION__PRODUCTS:
-				getProducts().clear();
-				return;
 			case ImsPackage.TRANSACTION__RECEIPTS:
 				getReceipts().clear();
 				return;
 			case ImsPackage.TRANSACTION__ID:
 				setId(ID_EDEFAULT);
+				return;
+			case ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS:
+				getProducttransactions().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -630,12 +630,12 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				return amountPaid != AMOUNT_PAID_EDEFAULT;
 			case ImsPackage.TRANSACTION__AMOUNT_UNPAID:
 				return amountUnpaid != AMOUNT_UNPAID_EDEFAULT;
-			case ImsPackage.TRANSACTION__PRODUCTS:
-				return products != null && !products.isEmpty();
 			case ImsPackage.TRANSACTION__RECEIPTS:
 				return receipts != null && !receipts.isEmpty();
 			case ImsPackage.TRANSACTION__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS:
+				return producttransactions != null && !producttransactions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -13,6 +13,7 @@ import com.ali.hyacinth.ims.ItemStatus;
 import com.ali.hyacinth.ims.Product;
 import com.ali.hyacinth.ims.application.ImsApplication;
 import com.ali.hyacinth.ims.resource.ImsResource;
+import com.ali.hyacinth.ims.transferobjects.TOProduct;
 
 public class ImsProductController {
 	
@@ -46,7 +47,7 @@ public class ImsProductController {
 		try {
 			Product product = ImsFactory.eINSTANCE.createProduct();
 			product.setName(name);
-			product.setPrice(price);
+			product.setItemPrice(price);
 			ims.getProducts().add(product);
 			ImsResource.save(ims);
 		} catch (RuntimeException e) {
@@ -176,7 +177,9 @@ public class ImsProductController {
 	public static List<TOProduct> getProducts() {
 		ArrayList<TOProduct> products = new ArrayList<TOProduct>();
 		for (Product p : ImsApplication.getIms().getProducts()) {
-			TOProduct toProduct = new TOProduct(p.getName(), p.getPrice());
+			TOProduct toProduct = new TOProduct();
+			toProduct.setItemPrice(p.getItemPrice());
+			toProduct.setName(p.getName());
 			products.add(toProduct);
 		}
 		return products;
@@ -211,7 +214,7 @@ public class ImsProductController {
 		Product product = findProduct(name);
 		if (product != null) {
 			try {
-				product.setPrice(newPrice);
+				product.setItemPrice(newPrice);
 				ImsResource.save((IMS)product.eContainer());
 			} catch (RuntimeException e) {
 				throw new InvalidInputException(e.getMessage());

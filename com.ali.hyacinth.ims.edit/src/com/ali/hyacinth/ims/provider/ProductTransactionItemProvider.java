@@ -4,7 +4,7 @@ package com.ali.hyacinth.ims.provider;
 
 
 import com.ali.hyacinth.ims.ImsPackage;
-import com.ali.hyacinth.ims.TransactionItem;
+import com.ali.hyacinth.ims.ProductTransaction;
 
 import java.util.Collection;
 import java.util.List;
@@ -26,12 +26,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link com.ali.hyacinth.ims.TransactionItem} object.
+ * This is the item provider adapter for a {@link com.ali.hyacinth.ims.ProductTransaction} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TransactionItemItemProvider 
+public class ProductTransactionItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -45,7 +45,7 @@ public class TransactionItemItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TransactionItemItemProvider(AdapterFactory adapterFactory) {
+	public ProductTransactionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,9 +60,33 @@ public class TransactionItemItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addPricePropertyDescriptor(object);
 			addQuantityPropertyDescriptor(object);
+			addProductPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Price feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPricePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ProductTransaction_price_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProductTransaction_price_feature", "_UI_ProductTransaction_type"),
+				 ImsPackage.Literals.PRODUCT_TRANSACTION__PRICE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -76,9 +100,9 @@ public class TransactionItemItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TransactionItem_quantity_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_TransactionItem_quantity_feature", "_UI_TransactionItem_type"),
-				 ImsPackage.Literals.TRANSACTION_ITEM__QUANTITY,
+				 getString("_UI_ProductTransaction_quantity_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProductTransaction_quantity_feature", "_UI_ProductTransaction_type"),
+				 ImsPackage.Literals.PRODUCT_TRANSACTION__QUANTITY,
 				 true,
 				 false,
 				 false,
@@ -88,14 +112,36 @@ public class TransactionItemItemProvider
 	}
 
 	/**
-	 * This returns TransactionItem.gif.
+	 * This adds a property descriptor for the Product feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addProductPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ProductTransaction_product_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProductTransaction_product_feature", "_UI_ProductTransaction_type"),
+				 ImsPackage.Literals.PRODUCT_TRANSACTION__PRODUCT,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns ProductTransaction.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TransactionItem"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProductTransaction"));
 	}
 
 	/**
@@ -106,8 +152,8 @@ public class TransactionItemItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		TransactionItem transactionItem = (TransactionItem)object;
-		return getString("_UI_TransactionItem_type") + " " + transactionItem.getQuantity();
+		ProductTransaction productTransaction = (ProductTransaction)object;
+		return getString("_UI_ProductTransaction_type") + " " + productTransaction.getPrice();
 	}
 	
 
@@ -122,8 +168,9 @@ public class TransactionItemItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TransactionItem.class)) {
-			case ImsPackage.TRANSACTION_ITEM__QUANTITY:
+		switch (notification.getFeatureID(ProductTransaction.class)) {
+			case ImsPackage.PRODUCT_TRANSACTION__PRICE:
+			case ImsPackage.PRODUCT_TRANSACTION__QUANTITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

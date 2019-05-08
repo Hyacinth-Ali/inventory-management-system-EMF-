@@ -5,32 +5,32 @@ package com.ali.hyacinth.ims.transferobjects;
 import java.util.Date;
 import java.util.*;
 
-// line 3 "../../../../../IMSTransferObjects.ump"
-public class TOTransactionComplete
+// line 4 "../../../../../IMSTransferObjects.ump"
+public class Receipt
 {
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
-  //TOTransactionComplete Attributes
+  //Receipt Attributes
   private Date date;
   private double totalAmount;
   private double amoundPaid;
 
-  //TOTransactionComplete Associations
-  private List<TOProduct> products;
+  //Receipt Associations
+  private List<TOProductTransaction> pTransactions;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public TOTransactionComplete()
+  public Receipt()
   {
     date = null;
     totalAmount = 0;
     amoundPaid = 0;
-    products = new ArrayList<TOProduct>();
+    pTransactions = new ArrayList<TOProductTransaction>();
   }
 
   //------------------------
@@ -76,96 +76,96 @@ public class TOTransactionComplete
     return amoundPaid;
   }
   /* Code from template association_GetMany */
-  public TOProduct getProduct(int index)
+  public TOProductTransaction getPTransaction(int index)
   {
-    TOProduct aProduct = products.get(index);
-    return aProduct;
+    TOProductTransaction aPTransaction = pTransactions.get(index);
+    return aPTransaction;
   }
 
-  public List<TOProduct> getProducts()
+  public List<TOProductTransaction> getPTransactions()
   {
-    List<TOProduct> newProducts = Collections.unmodifiableList(products);
-    return newProducts;
+    List<TOProductTransaction> newPTransactions = Collections.unmodifiableList(pTransactions);
+    return newPTransactions;
   }
 
-  public int numberOfProducts()
+  public int numberOfPTransactions()
   {
-    int number = products.size();
+    int number = pTransactions.size();
     return number;
   }
 
-  public boolean hasProducts()
+  public boolean hasPTransactions()
   {
-    boolean has = products.size() > 0;
+    boolean has = pTransactions.size() > 0;
     return has;
   }
 
-  public int indexOfProduct(TOProduct aProduct)
+  public int indexOfPTransaction(TOProductTransaction aPTransaction)
   {
-    int index = products.indexOf(aProduct);
+    int index = pTransactions.indexOf(aPTransaction);
     return index;
   }
   /* Code from template association_MinimumNumberOfMethod */
-  public static int minimumNumberOfProducts()
+  public static int minimumNumberOfPTransactions()
   {
     return 0;
   }
   /* Code from template association_AddUnidirectionalMany */
-  public boolean addProduct(TOProduct aProduct)
+  public boolean addPTransaction(TOProductTransaction aPTransaction)
   {
     boolean wasAdded = false;
-    if (products.contains(aProduct)) { return false; }
-    products.add(aProduct);
+    if (pTransactions.contains(aPTransaction)) { return false; }
+    pTransactions.add(aPTransaction);
     wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeProduct(TOProduct aProduct)
+  public boolean removePTransaction(TOProductTransaction aPTransaction)
   {
     boolean wasRemoved = false;
-    if (products.contains(aProduct))
+    if (pTransactions.contains(aPTransaction))
     {
-      products.remove(aProduct);
+      pTransactions.remove(aPTransaction);
       wasRemoved = true;
     }
     return wasRemoved;
   }
   /* Code from template association_AddIndexControlFunctions */
-  public boolean addProductAt(TOProduct aProduct, int index)
+  public boolean addPTransactionAt(TOProductTransaction aPTransaction, int index)
   {  
     boolean wasAdded = false;
-    if(addProduct(aProduct))
+    if(addPTransaction(aPTransaction))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfProducts()) { index = numberOfProducts() - 1; }
-      products.remove(aProduct);
-      products.add(index, aProduct);
+      if(index > numberOfPTransactions()) { index = numberOfPTransactions() - 1; }
+      pTransactions.remove(aPTransaction);
+      pTransactions.add(index, aPTransaction);
       wasAdded = true;
     }
     return wasAdded;
   }
 
-  public boolean addOrMoveProductAt(TOProduct aProduct, int index)
+  public boolean addOrMovePTransactionAt(TOProductTransaction aPTransaction, int index)
   {
     boolean wasAdded = false;
-    if(products.contains(aProduct))
+    if(pTransactions.contains(aPTransaction))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfProducts()) { index = numberOfProducts() - 1; }
-      products.remove(aProduct);
-      products.add(index, aProduct);
+      if(index > numberOfPTransactions()) { index = numberOfPTransactions() - 1; }
+      pTransactions.remove(aPTransaction);
+      pTransactions.add(index, aPTransaction);
       wasAdded = true;
     } 
     else 
     {
-      wasAdded = addProductAt(aProduct, index);
+      wasAdded = addPTransactionAt(aPTransaction, index);
     }
     return wasAdded;
   }
 
   public void delete()
   {
-    products.clear();
+    pTransactions.clear();
   }
 
 

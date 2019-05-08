@@ -48,28 +48,26 @@ public class ProductItemProvider extends NamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPricePropertyDescriptor(object);
+			addItemPricePropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
-			addTransactionitemPropertyDescriptor(object);
-			addTransactionpricePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Price feature.
+	 * This adds a property descriptor for the Item Price feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPricePropertyDescriptor(Object object) {
+	protected void addItemPricePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Product_price_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Product_price_feature", "_UI_Product_type"),
-				 ImsPackage.Literals.PRODUCT__PRICE,
+				 getString("_UI_Product_itemPrice_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Product_itemPrice_feature", "_UI_Product_type"),
+				 ImsPackage.Literals.PRODUCT__ITEM_PRICE,
 				 true,
 				 false,
 				 false,
@@ -96,50 +94,6 @@ public class ProductItemProvider extends NamedElementItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Transactionitem feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTransactionitemPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Product_transactionitem_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Product_transactionitem_feature", "_UI_Product_type"),
-				 ImsPackage.Literals.PRODUCT__TRANSACTIONITEM,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Transactionprice feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTransactionpricePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Product_transactionprice_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Product_transactionprice_feature", "_UI_Product_type"),
-				 ImsPackage.Literals.PRODUCT__TRANSACTIONPRICE,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}
@@ -212,7 +166,7 @@ public class ProductItemProvider extends NamedElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Product.class)) {
-			case ImsPackage.PRODUCT__PRICE:
+			case ImsPackage.PRODUCT__ITEM_PRICE:
 			case ImsPackage.PRODUCT__ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
