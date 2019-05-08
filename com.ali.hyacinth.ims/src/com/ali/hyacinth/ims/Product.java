@@ -16,6 +16,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link com.ali.hyacinth.ims.Product#getItems <em>Items</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Product#getPrice <em>Price</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Product#getId <em>Id</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.Product#getTransactionitem <em>Transactionitem</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.Product#getTransactionprice <em>Transactionprice</em>}</li>
  * </ul>
  *
  * @see com.ali.hyacinth.ims.ImsPackage#getProduct()
@@ -50,7 +52,7 @@ public interface Product extends NamedElement {
 	 * @return the value of the '<em>Price</em>' attribute.
 	 * @see #setPrice(float)
 	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Price()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	float getPrice();
@@ -90,5 +92,57 @@ public interface Product extends NamedElement {
 	 * @generated
 	 */
 	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Transactionitem</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transactionitem</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transactionitem</em>' reference.
+	 * @see #setTransactionitem(TransactionItem)
+	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Transactionitem()
+	 * @model
+	 * @generated
+	 */
+	TransactionItem getTransactionitem();
+
+	/**
+	 * Sets the value of the '{@link com.ali.hyacinth.ims.Product#getTransactionitem <em>Transactionitem</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transactionitem</em>' reference.
+	 * @see #getTransactionitem()
+	 * @generated
+	 */
+	void setTransactionitem(TransactionItem value);
+
+	/**
+	 * Returns the value of the '<em><b>Transactionprice</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transactionprice</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transactionprice</em>' reference.
+	 * @see #setTransactionprice(TransactionPrice)
+	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Transactionprice()
+	 * @model
+	 * @generated
+	 */
+	TransactionPrice getTransactionprice();
+
+	/**
+	 * Sets the value of the '{@link com.ali.hyacinth.ims.Product#getTransactionprice <em>Transactionprice</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Transactionprice</em>' reference.
+	 * @see #getTransactionprice()
+	 * @generated
+	 */
+	void setTransactionprice(TransactionPrice value);
 
 } // Product

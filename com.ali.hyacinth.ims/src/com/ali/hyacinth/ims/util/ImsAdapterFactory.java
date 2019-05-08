@@ -128,6 +128,14 @@ public class ImsAdapterFactory extends AdapterFactoryImpl {
 				return createIMSAdapter();
 			}
 			@Override
+			public Adapter caseTransactionItem(TransactionItem object) {
+				return createTransactionItemAdapter();
+			}
+			@Override
+			public Adapter caseTransactionPrice(TransactionPrice object) {
+				return createTransactionPriceAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -354,6 +362,34 @@ public class ImsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIMSAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.ali.hyacinth.ims.TransactionItem <em>Transaction Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.ali.hyacinth.ims.TransactionItem
+	 * @generated
+	 */
+	public Adapter createTransactionItemAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.ali.hyacinth.ims.TransactionPrice <em>Transaction Price</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.ali.hyacinth.ims.TransactionPrice
+	 * @generated
+	 */
+	public Adapter createTransactionPriceAdapter() {
 		return null;
 	}
 

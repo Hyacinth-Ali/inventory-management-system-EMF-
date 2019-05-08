@@ -1,0 +1,25 @@
+namespace com.ali.hyacinth.ims.transferobjects;
+
+
+class TOTransactionComplete {
+	lazy Date date;
+	lazy Double totalAmount;
+	lazy Double amoundPaid;	
+	1 -> 0..* TOProduct products;
+}
+
+class TOTransactionItem {
+	lazy Integer quantity;
+}
+
+class TOTransactionPrice {
+	lazy Double price;
+}
+
+class TOProduct {
+	lazy String name;
+	lazy Double itemPrice;
+	Double totalPrice = {getItemPrice() * item.getQuantity() }
+	1 -> 0..1 TOTransactionItem item;
+	1 -> 0..1 TOTransactionPrice price;
+}

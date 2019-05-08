@@ -1,27 +1,25 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.29.0.4181.a593105a9 modeling language!*/
 
-package com.ali.hyacinth.ims.controller;
+package com.ali.hyacinth.ims.transferobjects;
 
-// line 8 "../../../../IMSTransferObjects.ump"
-public class TOProduct
+// line 13 "../../../../../IMSTransferObjects.ump"
+public class TOTransactionPrice
 {
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
-  //TOProduct Attributes
-  private String name;
-  private double price;
+  //TOTransactionPrice Attributes
+  private int price;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public TOProduct(String aName, double aPrice)
+  public TOTransactionPrice(int aPrice)
   {
-    name = aName;
     price = aPrice;
   }
 
@@ -29,15 +27,7 @@ public class TOProduct
   // INTERFACE
   //------------------------
 
-  public boolean setName(String aName)
-  {
-    boolean wasSet = false;
-    name = aName;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setPrice(double aPrice)
+  public boolean setPrice(int aPrice)
   {
     boolean wasSet = false;
     price = aPrice;
@@ -45,12 +35,7 @@ public class TOProduct
     return wasSet;
   }
 
-  public String getName()
-  {
-    return name;
-  }
-
-  public double getPrice()
+  public int getPrice()
   {
     return price;
   }
@@ -62,7 +47,6 @@ public class TOProduct
   public String toString()
   {
     return super.toString() + "["+
-            "name" + ":" + getName()+ "," +
             "price" + ":" + getPrice()+ "]";
   }
 }

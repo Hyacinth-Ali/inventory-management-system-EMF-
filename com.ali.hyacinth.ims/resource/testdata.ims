@@ -1,5 +1,2 @@
 <?xml version="1.0" encoding="ASCII"?>
-<ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ims="http://hyacinth.com/ims">
-  <managers person="//@persons.0" userName="manager1" password="1234"/>
-  <persons name="person" roles="//@managers.0"/>
-</ims:IMS>
+<ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ims="http://hyacinth.com/ims"/>

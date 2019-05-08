@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated ims -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.ali.hyacinth.ims.presentation.ImsModelWizardID"
+            name="%_UI_ImsModelWizard_label"
+            class="com.ali.hyacinth.ims.presentation.ImsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ImsModelFile.gif">
+         <description>%_UI_ImsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated ims -->
+      <editor
+            id="com.ali.hyacinth.ims.presentation.ImsEditorID"
+            name="%_UI_ImsEditor_label"
+            icon="icons/full/obj16/ImsModelFile.gif"
+            extensions="ims"
+            class="com.ali.hyacinth.ims.presentation.ImsEditor"
+            contributorClass="com.ali.hyacinth.ims.presentation.ImsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

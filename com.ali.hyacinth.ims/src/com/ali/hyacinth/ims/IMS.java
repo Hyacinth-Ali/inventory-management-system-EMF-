@@ -28,7 +28,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see com.ali.hyacinth.ims.ImsPackage#getIMS()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='oneKindRolePerPerson'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot oneKindRolePerPerson='Tuple {\n\tmessage : String = \'A person cannot play more than one kind of role.\',\n\tstatus : Boolean = \n\t\tself.customers -&gt; forAll(c1, c2 | c1.person &lt;&gt; c2.person)\n}.status'"
  * @generated
  */
 public interface IMS extends EObject {

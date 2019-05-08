@@ -1,43 +1,33 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.29.0.4181.a593105a9 modeling language!*/
 
-package com.ali.hyacinth.ims.controller;
+package com.ali.hyacinth.ims.transferobjects;
 
-// line 26 "../../../../IMSTransferObjects.ump"
-public class TOTransactionProducts
+// line 10 "../../../../../IMSTransferObjects.ump"
+public class TOTransactionItem
 {
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
-  //TOTransactionProducts Attributes
-  private String name;
-  private String quantity;
+  //TOTransactionItem Attributes
+  private int quantity;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public TOTransactionProducts(String aName, String aQuantity)
+  public TOTransactionItem()
   {
-    name = aName;
-    quantity = aQuantity;
+    quantity = 0;
   }
 
   //------------------------
   // INTERFACE
   //------------------------
 
-  public boolean setName(String aName)
-  {
-    boolean wasSet = false;
-    name = aName;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setQuantity(String aQuantity)
+  public boolean setQuantity(int aQuantity)
   {
     boolean wasSet = false;
     quantity = aQuantity;
@@ -45,12 +35,7 @@ public class TOTransactionProducts
     return wasSet;
   }
 
-  public String getName()
-  {
-    return name;
-  }
-
-  public String getQuantity()
+  public int getQuantity()
   {
     return quantity;
   }
@@ -62,7 +47,6 @@ public class TOTransactionProducts
   public String toString()
   {
     return super.toString() + "["+
-            "name" + ":" + getName()+ "," +
             "quantity" + ":" + getQuantity()+ "]";
   }
 }

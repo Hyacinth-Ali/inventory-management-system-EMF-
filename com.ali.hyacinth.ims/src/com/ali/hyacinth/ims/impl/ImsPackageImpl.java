@@ -20,12 +20,16 @@ import com.ali.hyacinth.ims.RegularEmployee;
 import com.ali.hyacinth.ims.Supplier;
 import com.ali.hyacinth.ims.Transaction;
 
+import com.ali.hyacinth.ims.TransactionItem;
+import com.ali.hyacinth.ims.TransactionPrice;
+import com.ali.hyacinth.ims.util.ImsValidator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -145,6 +149,20 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass transactionItemEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass transactionPriceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum itemStatusEEnum = null;
 
 	/**
@@ -198,6 +216,15 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 
 		// Initialize created meta-data
 		theImsPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theImsPackage, 
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return ImsValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theImsPackage.freeze();
@@ -267,6 +294,24 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProduct_Transactionitem() {
+		return (EReference)productEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProduct_Transactionprice() {
+		return (EReference)productEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPerson() {
 		return personEClass;
 	}
@@ -314,6 +359,15 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 */
 	public EClass getManager() {
 		return managerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getManager_Audit() {
+		return (EReference)managerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -393,8 +447,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTransaction_Price() {
-		return (EAttribute)transactionEClass.getEStructuralFeatures().get(7);
+	public EReference getTransaction_Receipts() {
+		return (EReference)transactionEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -402,8 +456,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransaction_Receipts() {
-		return (EReference)transactionEClass.getEStructuralFeatures().get(8);
+	public EAttribute getTransaction_Id() {
+		return (EAttribute)transactionEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -708,6 +762,42 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTransactionItem() {
+		return transactionItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransactionItem_Quantity() {
+		return (EAttribute)transactionItemEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTransactionPrice() {
+		return transactionPriceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransactionPrice_Price() {
+		return (EAttribute)transactionPriceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getItemStatus() {
 		return itemStatusEEnum;
 	}
@@ -747,6 +837,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEReference(productEClass, PRODUCT__ITEMS);
 		createEAttribute(productEClass, PRODUCT__PRICE);
 		createEAttribute(productEClass, PRODUCT__ID);
+		createEReference(productEClass, PRODUCT__TRANSACTIONITEM);
+		createEReference(productEClass, PRODUCT__TRANSACTIONPRICE);
 
 		personEClass = createEClass(PERSON);
 		createEReference(personEClass, PERSON__ROLES);
@@ -756,6 +848,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		regularEmployeeEClass = createEClass(REGULAR_EMPLOYEE);
 
 		managerEClass = createEClass(MANAGER);
+		createEReference(managerEClass, MANAGER__AUDIT);
 
 		transactionEClass = createEClass(TRANSACTION);
 		createEReference(transactionEClass, TRANSACTION__SELLER);
@@ -765,8 +858,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEAttribute(transactionEClass, TRANSACTION__AMOUNT_PAID);
 		createEAttribute(transactionEClass, TRANSACTION__AMOUNT_UNPAID);
 		createEReference(transactionEClass, TRANSACTION__PRODUCTS);
-		createEAttribute(transactionEClass, TRANSACTION__PRICE);
 		createEReference(transactionEClass, TRANSACTION__RECEIPTS);
+		createEAttribute(transactionEClass, TRANSACTION__ID);
 
 		receiptEClass = createEClass(RECEIPT);
 		createEReference(receiptEClass, RECEIPT__TRANSACTION);
@@ -809,6 +902,12 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEReference(imsEClass, IMS__CUSTOMERS);
 		createEReference(imsEClass, IMS__TRANSACTIONS);
 		createEReference(imsEClass, IMS__RECEIPTS);
+
+		transactionItemEClass = createEClass(TRANSACTION_ITEM);
+		createEAttribute(transactionItemEClass, TRANSACTION_ITEM__QUANTITY);
+
+		transactionPriceEClass = createEClass(TRANSACTION_PRICE);
+		createEAttribute(transactionPriceEClass, TRANSACTION_PRICE__PRICE);
 
 		// Create enums
 		itemStatusEEnum = createEEnum(ITEM_STATUS);
@@ -856,28 +955,31 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 
 		initEClass(productEClass, Product.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProduct_Items(), this.getItem(), null, "items", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProduct_Price(), ecorePackage.getEFloat(), "price", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProduct_Price(), ecorePackage.getEFloat(), "price", null, 1, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProduct_Id(), ecorePackage.getEString(), "id", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProduct_Transactionitem(), this.getTransactionItem(), null, "transactionitem", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProduct_Transactionprice(), this.getTransactionPrice(), null, "transactionprice", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPerson_Roles(), this.getPersonRole(), this.getPersonRole_Person(), "roles", null, 0, 3, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPerson_Roles(), this.getPersonRole(), this.getPersonRole_Person(), "roles", null, 1, 3, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_Sales(), this.getTransaction(), this.getTransaction_Seller(), "sales", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPerson_Purchases(), this.getTransaction(), this.getTransaction_Buyer(), "purchases", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(regularEmployeeEClass, RegularEmployee.class, "RegularEmployee", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(managerEClass, Manager.class, "Manager", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getManager_Audit(), this.getAudit(), null, "audit", null, 0, 1, Manager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transactionEClass, Transaction.class, "Transaction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransaction_Seller(), this.getPerson(), this.getPerson_Sales(), "seller", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransaction_Buyer(), this.getPerson(), this.getPerson_Purchases(), "buyer", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransaction_Date(), ecorePackage.getEDate(), "date", null, 0, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransaction_TotalAmount(), ecorePackage.getEFloat(), "totalAmount", null, 0, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransaction_AmountPaid(), ecorePackage.getEFloat(), "amountPaid", null, 0, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransaction_AmountUnpaid(), ecorePackage.getEFloat(), "amountUnpaid", null, 0, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransaction_TotalAmount(), ecorePackage.getEFloat(), "totalAmount", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransaction_AmountPaid(), ecorePackage.getEFloat(), "amountPaid", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransaction_AmountUnpaid(), ecorePackage.getEFloat(), "amountUnpaid", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getTransaction_Products(), this.getProduct(), null, "products", null, 0, -1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransaction_Price(), ecorePackage.getEInt(), "price", null, 0, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransaction_Receipts(), this.getReceipt(), this.getReceipt_Transaction(), "receipts", null, 0, -1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransaction_Id(), ecorePackage.getEString(), "id", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(receiptEClass, Receipt.class, "Receipt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReceipt_Transaction(), this.getTransaction(), this.getTransaction_Receipts(), "transaction", null, 1, 1, Receipt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -888,11 +990,11 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEReference(getAudit_Orders(), this.getOrder(), null, "orders", null, 0, -1, Audit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(customerEClass, Customer.class, "Customer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCustomer_Debt(), ecorePackage.getEFloat(), "debt", null, 0, 1, Customer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCustomer_CustomerID(), ecorePackage.getEString(), "customerID", null, 1, 1, Customer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCustomer_Debt(), ecorePackage.getEFloat(), "debt", null, 1, 1, Customer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCustomer_CustomerID(), ecorePackage.getEString(), "customerID", null, 1, 1, Customer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(employeeRoleEClass, EmployeeRole.class, "EmployeeRole", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEmployeeRole_UserName(), ecorePackage.getEString(), "userName", null, 0, 1, EmployeeRole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEmployeeRole_UserName(), ecorePackage.getEString(), "userName", null, 0, 1, EmployeeRole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEmployeeRole_Password(), ecorePackage.getEString(), "password", null, 0, 1, EmployeeRole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personRoleEClass, PersonRole.class, "PersonRole", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -921,6 +1023,12 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEReference(getIMS_Transactions(), this.getTransaction(), null, "transactions", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIMS_Receipts(), this.getReceipt(), null, "receipts", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(transactionItemEClass, TransactionItem.class, "TransactionItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTransactionItem_Quantity(), ecorePackage.getEInt(), "quantity", null, 0, 1, TransactionItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(transactionPriceEClass, TransactionPrice.class, "TransactionPrice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTransactionPrice_Price(), ecorePackage.getEFloat(), "price", null, 0, 1, TransactionPrice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(itemStatusEEnum, ItemStatus.class, "ItemStatus");
 		addEEnumLiteral(itemStatusEEnum, ItemStatus.ORDERED);
@@ -929,6 +1037,70 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/OCL/Import
+		createImportAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createImportAnnotations() {
+		String source = "http://www.eclipse.org/OCL/Import";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "ecore", "http://www.eclipse.org/emf/2002/Ecore"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
+		   });	
+		addAnnotation
+		  (imsEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "oneKindRolePerPerson"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";	
+		addAnnotation
+		  (imsEClass, 
+		   source, 
+		   new String[] {
+			 "oneKindRolePerPerson", "Tuple {\n\tmessage : String = \'A person cannot play more than one kind of role.\',\n\tstatus : Boolean = \n\t\tself.customers -> forAll(c1, c2 | c1.person <> c2.person)\n}.status"
+		   });
 	}
 
 } //ImsPackageImpl

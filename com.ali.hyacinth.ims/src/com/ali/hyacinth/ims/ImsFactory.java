@@ -130,6 +130,24 @@ public interface ImsFactory extends EFactory {
 	IMS createIMS();
 
 	/**
+	 * Returns a new object of class '<em>Transaction Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Transaction Item</em>'.
+	 * @generated
+	 */
+	TransactionItem createTransactionItem();
+
+	/**
+	 * Returns a new object of class '<em>Transaction Price</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Transaction Price</em>'.
+	 * @generated
+	 */
+	TransactionPrice createTransactionPrice();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

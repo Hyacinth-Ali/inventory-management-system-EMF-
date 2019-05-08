@@ -19,14 +19,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//Product/items"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Product/price"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Product/id"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Product/transactionitem"/>
     </genClasses>
     <genClasses ecoreClass="ims.ecore#//Person">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Person/role"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Person/roles"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Person/sales"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Person/purchases"/>
     </genClasses>
     <genClasses ecoreClass="ims.ecore#//RegularEmployee"/>
-    <genClasses ecoreClass="ims.ecore#//Manager"/>
+    <genClasses ecoreClass="ims.ecore#//Manager">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Manager/audit"/>
+    </genClasses>
     <genClasses ecoreClass="ims.ecore#//Transaction">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Transaction/seller"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Transaction/buyer"/>
@@ -35,7 +38,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Transaction/amountPaid"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Transaction/amountUnpaid"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Transaction/products"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//Transaction/price"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ims.ecore#//Transaction/receipts"/>
     </genClasses>
     <genClasses ecoreClass="ims.ecore#//Receipt">
@@ -78,6 +80,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/customers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/transactions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ims.ecore#//IMS/receipts"/>
+    </genClasses>
+    <genClasses ecoreClass="ims.ecore#//TransactionItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ims.ecore#//TransactionItem/quantity"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

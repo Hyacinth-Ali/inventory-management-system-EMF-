@@ -69,6 +69,8 @@ public class ImsFactoryImpl extends EFactoryImpl implements ImsFactory {
 			case ImsPackage.ITEM: return createItem();
 			case ImsPackage.ORDER: return createOrder();
 			case ImsPackage.IMS: return createIMS();
+			case ImsPackage.TRANSACTION_ITEM: return createTransactionItem();
+			case ImsPackage.TRANSACTION_PRICE: return createTransactionPrice();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -222,6 +224,26 @@ public class ImsFactoryImpl extends EFactoryImpl implements ImsFactory {
 	public IMS createIMS() {
 		IMSImpl ims = new IMSImpl();
 		return ims;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TransactionItem createTransactionItem() {
+		TransactionItemImpl transactionItem = new TransactionItemImpl();
+		return transactionItem;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TransactionPrice createTransactionPrice() {
+		TransactionPriceImpl transactionPrice = new TransactionPriceImpl();
+		return transactionPrice;
 	}
 
 	/**

@@ -32,7 +32,7 @@ public interface EmployeeRole extends PersonRole {
 	 * @return the value of the '<em>User Name</em>' attribute.
 	 * @see #setUserName(String)
 	 * @see com.ali.hyacinth.ims.ImsPackage#getEmployeeRole_UserName()
-	 * @model
+	 * @model id="true"
 	 * @generated
 	 */
 	String getUserName();

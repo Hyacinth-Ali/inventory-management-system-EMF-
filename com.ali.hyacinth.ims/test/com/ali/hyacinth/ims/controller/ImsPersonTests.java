@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsPackage;
+import com.ali.hyacinth.ims.Person;
 import com.ali.hyacinth.ims.application.ImsApplication;
 import com.ali.hyacinth.ims.resource.ImsResource;
 import com.ali.hyacinth.ims.util.ImsResourceFactoryImpl;
@@ -125,6 +126,7 @@ class ImsPersonTests {
 	}
 	
 	private void checkResultPerson(String name, IMS ims, int numberOfPersons) {
+		System.out.println(EcoreUtil.generateUUID());
 		assertEquals(numberOfPersons, ims.getPersons().size());
 		if (numberOfPersons > 0) {
 			assertEquals(name, ims.getPersons().get(0).getName());
@@ -260,12 +262,317 @@ class ImsPersonTests {
 		checkResultCustomer(name, customerID, ims, 0, 0);
 	}
 	
+	@Test
+	public void testUpdateCustomerIDSucces() {
+		IMS ims = ImsApplication.getIms();
+		String name = "customer";
+		String customerID = "customer1";
+		String newID = "customer2";
+		
+		try {
+			ImsPersonController.createCustomer(customerID, name);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultCustomer(name, customerID, ims, 1, 1);
+		
+		try {
+			ImsPersonController.upDateCustomerID(customerID, newID);
+		} catch (InvalidInputException e) {
+			fail();
+		}	
+		
+		//check model in memory
+		checkResultCustomer(name, newID, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateCustomerOldIDNull() {
+		IMS ims = ImsApplication.getIms();
+		String name = "customer";
+		String customerID = "customer1";
+		String newID = "customer2";
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createCustomer(customerID, name);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultCustomer(name, customerID, ims, 1, 1);
+		customerID = null;
+		try {
+			ImsPersonController.upDateCustomerID(customerID, newID);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		customerID = ims.getCustomers().get(0).getCustomerID();
+		
+		//check error
+		assertEquals(error, "The current ID cannot be empty");
+		
+		//check model in memory
+		checkResultCustomer(name, customerID, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateCustomerNewIDNull() {
+		IMS ims = ImsApplication.getIms();
+		String name = "customer";
+		String customerID = "customer1";
+		String newID = null;
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createCustomer(customerID, name);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultCustomer(name, customerID, ims, 1, 1);
+		
+		try {
+			ImsPersonController.upDateCustomerID(customerID, newID);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The ID of a customer cannot be empty");
+		
+		//check model in memory
+		checkResultCustomer(name, customerID, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateCustomerNewIDEmpty() {
+		IMS ims = ImsApplication.getIms();
+		String name = "customer";
+		String customerID = "customer1";
+		String newID = "";
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createCustomer(customerID, name);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultCustomer(name, customerID, ims, 1, 1);
+		
+		try {
+			ImsPersonController.upDateCustomerID(customerID, newID);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The ID of a customer cannot be empty");
+		
+		//check model in memory
+		checkResultCustomer(name, customerID, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateCustomerIDNonExist() {
+		IMS ims = ImsApplication.getIms();
+		String name = "customer";
+		String customerID = "customer1";
+		String newID = "12345";
+		String customerID2 = "customer2";
+		
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createCustomer(customerID, name);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultCustomer(name, customerID, ims, 1, 1);
+		
+		try {
+			ImsPersonController.upDateCustomerID(customerID2, newID);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The customer does not exist.");
+		
+		//check model in memory
+		checkResultCustomer(name, customerID, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateCustomerNameNonExist() {
+		IMS ims = ImsApplication.getIms();
+		String name = "customer";
+		String customerID = "customer1";
+		String newName = "customer4";
+		String customerID2 = "customer2";
+		
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createCustomer(customerID, name);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultCustomer(name, customerID, ims, 1, 1);
+		
+		try {
+			ImsPersonController.upDateCustomerName(customerID2, newName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The customer does not exist.");
+		
+		//check model in memory
+		checkResultCustomer(name, customerID, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateCustomerNullNewName() {
+		IMS ims = ImsApplication.getIms();
+		String name = "customer";
+		String customerID = "customer1";
+		String newName = null;
+		
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createCustomer(customerID, name);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultCustomer(name, customerID, ims, 1, 1);
+		
+		try {
+			ImsPersonController.upDateCustomerName(customerID, newName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The name of a customer cannot be empty");
+		
+		//check model in memory
+		checkResultCustomer(name, customerID, ims, 1, 1);
+	}
+	
+	
+	@Test
+	public void testUpdateCustomerNameSuccess() {
+		IMS ims = ImsApplication.getIms();
+		String name = "customer";
+		String customerID = "customer1";
+		String newName = "customer2";
+		
+		
+		try {
+			ImsPersonController.createCustomer(customerID, name);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultCustomer(name, customerID, ims, 1, 1);
+		
+		try {
+			ImsPersonController.upDateCustomerName(customerID, newName);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		
+		//check error
+		//assertEquals(error, "The name of a customer cannot be empty");
+		
+		//check model in memory
+		checkResultCustomer(newName, customerID, ims, 1, 1);
+	}
+
+	@Test
+	public void testUpdateCustomerEmptyNewName() {
+		IMS ims = ImsApplication.getIms();
+		String oldName = "customer old";
+		String customerID = "customer1";
+		String newName = "";
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createCustomer(customerID, oldName);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultCustomer(oldName, customerID, ims, 1, 1);
+		
+		try {
+			ImsPersonController.upDateCustomerName(customerID, newName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The name of a customer cannot be empty");
+		
+		//check model in memory
+		checkResultCustomer(newName, customerID, ims, 1, 1);
+	}
+
+	
+	@Test
+	public void testUpdateCustomerOldIDEmpty() {
+		IMS ims = ImsApplication.getIms();
+		String name = "customer";
+		String oldID = "customer1";
+		String newID = "customer2";
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createCustomer(oldID, name);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultCustomer(name, oldID, ims, 1, 1);
+		oldID = "";
+		try {
+			ImsPersonController.upDateCustomerID(oldID, newID);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		oldID = ims.getCustomers().get(0).getCustomerID();
+		
+		//check error
+		assertEquals(error, "The current ID cannot be empty");
+		
+		//check model in memory
+		checkResultCustomer(name, oldID, ims, 1, 1);
+	}
+	
+	/**
+	 * Person remaining test, update person, update manager (3)
+	 */
+	/**
+	 * 
+	 * @param name
+	 * @param customerID
+	 * @param ims
+	 * @param numberOfPersons
+	 * @param numberOfCustomers
+	 */
+	
+	
 	private void checkResultCustomer(String name, String customerID, IMS ims, int numberOfPersons, int numberOfCustomers) {
 		assertEquals(numberOfPersons, ims.getPersons().size());
 		assertEquals(numberOfCustomers, ims.getCustomers().size());
 		if (numberOfCustomers > 0) {
-			assertEquals(name, ims.getPersons().get(0).getName());
-			assertEquals(customerID, ims.getCustomers().get(0).getCustomerID());
+ 			assertEquals(customerID, ims.getCustomers().get(0).getCustomerID());
 			assertEquals(2, ims.eContents().size());
 		}
 		assertEquals(0, ims.getTransactions().size());
@@ -548,6 +855,37 @@ class ImsPersonTests {
 		assertEquals("This id " + customerID + " already exist", error);
 		
 	}
+
+	@Test
+	public void testAddCustomerDouble() {
+		IMS ims = ImsApplication.getIms();
+		String name = "customer";
+		String customerID = "customer1";
+		String customerID2 = "customer2";
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createCustomer(customerID, name);
+		} catch (InvalidInputException e) {
+			fail();
+		}	
+		// check model in memory
+		checkResultCustomer(name, customerID, ims, 1, 1);
+		
+		try {
+			ImsPersonController.addCustomer(customerID2, 
+					ImsApplication.getIms().getPersons().get(0));
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		// check model in memory
+		checkResultCustomer(name, customerID, ims, 1, 1);
+		
+		//check error
+		assertEquals("This person already exist as a customer.", error);
+		
+	}
 	
 	@Test
 	public void testAddManagerDuplicateUsernamer() {
@@ -606,6 +944,38 @@ class ImsPersonTests {
 		} catch (InvalidInputException e) {
 			fail();
 		}
+		
+		// check model in memory
+		checkResultManager(name, userName, password, ims, 1, 1);
+	}
+	
+	@Test
+	public void testAddManagerDouble() {
+		IMS ims = ImsApplication.getIms();
+		String name = "manager";
+		String userName = "manager1";
+		String password = "customer1";
+		String userName2 = "manager2";
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createManager(name, userName, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		
+		// check model in memory
+		checkResultManager(name, userName, password, ims, 1, 1);
+		
+		try {
+			Person p = ImsApplication.getIms().getPersons().get(0);
+			ImsPersonController.addManager(userName2, password, p);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "This person already exist as a manger.");
 		
 		// check model in memory
 		checkResultManager(name, userName, password, ims, 1, 1);
@@ -739,6 +1109,381 @@ class ImsPersonTests {
 		//check model in memory
 		checkResultManager(name, userName, password, ims, 0, 0);
 	}
+	
+	@Test
+	public void testUpdateManagerOldUsernameEmpty() {
+		IMS ims = ImsApplication.getIms();
+		String oldUsername = "manager";
+		String managerName = "manager1";
+		String password = "12456";
+		String newUsername = "manager3";
+		String error = "";
+		
+		try {
+			ImsPersonController.createManager(managerName, oldUsername, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, oldUsername, password, ims, 1, 1);
+		oldUsername = "";
+		try {
+			ImsPersonController.upDateManagerUsername(oldUsername, newUsername);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		oldUsername = ims.getManagers().get(0).getUserName();
+		
+		//check error
+		assertEquals(error, "The current user name of the manager cannot be empty");
+		
+		//check model in memory
+		checkResultManager(managerName, oldUsername, password, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateManagerNewUsernameEmpty() {
+		IMS ims = ImsApplication.getIms();
+		String oldUsername = "manager";
+		String managerName = "manager1";
+		String password = "12456";
+		String newUsername = "";
+		String error = "";
+		
+		try {
+			ImsPersonController.createManager(managerName, oldUsername, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, oldUsername, password, ims, 1, 1);
+		try {
+			ImsPersonController.upDateManagerUsername(oldUsername, newUsername);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The user name of a manager cannot be empty");
+		
+		//check model in memory
+		checkResultManager(managerName, oldUsername, password, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateManagerOldUsernameNull() {
+		IMS ims = ImsApplication.getIms();
+		String oldUsername = "manager";
+		String managerName = "manager1";
+		String password = "12456";
+		String newUsername = "manager3";
+		String error = "";
+		
+		try {
+			ImsPersonController.createManager(managerName, oldUsername, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, oldUsername, password, ims, 1, 1);
+		oldUsername = null;
+		try {
+			ImsPersonController.upDateManagerUsername(oldUsername, newUsername);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		oldUsername = ims.getManagers().get(0).getUserName();
+		
+		//check error
+		assertEquals(error, "The current user name of the manager cannot be empty");
+		
+		//check model in memory
+		checkResultManager(managerName, oldUsername, password, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateManagerNewNameNull() {
+		IMS ims = ImsApplication.getIms();
+		String username = "manager";
+		String managerName = "manager1";
+		String password = "12456";
+		String newName = null;
+		String error = "";
+		
+		try {
+			ImsPersonController.createManager(managerName, username, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, username, password, ims, 1, 1);
+		try {
+			ImsPersonController.upDateManagerName(username, newName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The name of a manager cannot be empty");
+		
+		//check model in memory
+		checkResultManager(managerName, username, password, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateManagerNewNameEmpty() {
+		IMS ims = ImsApplication.getIms();
+		String username = "manager";
+		String managerName = "manager1";
+		String password = "12456";
+		String newName = "";
+		String error = "";
+		
+		try {
+			ImsPersonController.createManager(managerName, username, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, username, password, ims, 1, 1);
+		try {
+			ImsPersonController.upDateManagerName(username, newName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The name of a manager cannot be empty");
+		
+		//check model in memory
+		checkResultManager(managerName, username, password, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateManagerNewNameSuccess() {
+		IMS ims = ImsApplication.getIms();
+		String username = "manager";
+		String managerName = "manager1";
+		String password = "12456";
+		String newName = "manager2";
+		
+		try {
+			ImsPersonController.createManager(managerName, username, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, username, password, ims, 1, 1);
+		try {
+			ImsPersonController.upDateManagerName(username, newName);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		
+		//check error
+		//assertEquals(error, "The name of a manager cannot be empty");
+		
+		//check model in memory
+		checkResultManager(newName, username, password, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateManagerNameNonExist() {
+		IMS ims = ImsApplication.getIms();
+		String username = "manager";
+		String UserNameWrong = "customer3";
+		String managerName = "manager1";
+		String password = "12456";
+		String newName = "manager2";
+		
+		String error = "";		
+		try {
+			ImsPersonController.createManager(managerName, username, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, username, password, ims, 1, 1);
+		try {
+			ImsPersonController.upDateManagerName(UserNameWrong, newName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The manager does not exist.");
+		
+		//check model in memory
+		checkResultManager(managerName, username, password, ims, 1, 1);
+	}
+	
+	
+	@Test
+	public void testUpdateManagerUsernameSuccess() {
+		IMS ims = ImsApplication.getIms();
+		String oldUsername = "manager";
+		String managerName = "manager1";
+		String password = "12456";
+		String newUsername = "manager2";
+		
+		try {
+			ImsPersonController.createManager(managerName, oldUsername, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, oldUsername, password, ims, 1, 1);
+		
+		try {
+			ImsPersonController.upDateManagerUsername(oldUsername, newUsername);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		
+		//check error
+		//assertEquals(error, "The user name of a manager cannot be empty");
+		
+		//check model in memory
+		checkResultManager(managerName, newUsername, password, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateManagerUsernameNonExist() {
+		IMS ims = ImsApplication.getIms();
+		String oldUsername = "manager";
+		String managerName = "manager1";
+		String password = "12456";
+		String newUsername = "manager2";
+		String userNameNonExist = "managerNonExist";
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createManager(managerName, oldUsername, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, oldUsername, password, ims, 1, 1);
+		
+		try {
+			ImsPersonController.upDateManagerUsername(userNameNonExist, newUsername);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The manager does not exist.");
+		
+		//check model in memory
+		checkResultManager(managerName, oldUsername, password, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateManagerNewPasswordEmpty() {
+		IMS ims = ImsApplication.getIms();
+		String username = "manager";
+		String managerName = "manager1";
+		String password = "12456";
+		String newPassword = "";
+		String error = "";
+		
+		try {
+			ImsPersonController.createManager(managerName, username, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, username, password, ims, 1, 1);
+		try {
+			ImsPersonController.upDateManagerPassword(username, newPassword);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The password of a manager cannot be empty");
+		
+		//check model in memory
+		checkResultManager(managerName, username, password, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateManagerNewPasswordNull() {
+		IMS ims = ImsApplication.getIms();
+		String username = "manager";
+		String managerName = "manager1";
+		String password = "12456";
+		String newPassword = null;
+		String error = "";
+		
+		try {
+			ImsPersonController.createManager(managerName, username, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, username, password, ims, 1, 1);
+		try {
+			ImsPersonController.upDateManagerPassword(username, newPassword);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The password of a manager cannot be empty");
+		
+		//check model in memory
+		checkResultManager(managerName, username, password, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateManagerNewPasswordSuccess() {
+		IMS ims = ImsApplication.getIms();
+		String username = "manager";
+		String managerName = "manager1";
+		String password = "12456";
+		String newPassword = "1245689";
+		
+		try {
+			ImsPersonController.createManager(managerName, username, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, username, password, ims, 1, 1);
+		try {
+			ImsPersonController.upDateManagerPassword(username, newPassword);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		
+		//check error
+		//assertEquals(error, "The password of a manager cannot be empty");
+		
+		//check model in memory
+		checkResultManager(managerName, username, newPassword, ims, 1, 1);
+	}
+	
+	@Test
+	public void testUpdateManagerNewPasswordNonExist() {
+		IMS ims = ImsApplication.getIms();
+		String username = "manager";
+		String usernameWrong = "managerwrong";
+		String managerName = "manager1";
+		String password = "12456";
+		String newPassword = "1245689";
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createManager(managerName, username, password);
+		} catch (InvalidInputException e) {
+			fail();
+		}		
+		checkResultManager(managerName, username, password, ims, 1, 1);
+		try {
+			ImsPersonController.upDateManagerPassword(usernameWrong, newPassword);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		//check error
+		assertEquals(error, "The manager does not exist.");
+		
+		//check model in memory
+		checkResultManager(managerName, username, password, ims, 1, 1);
+	}
+
+
 
 	private void checkResultManagerandCustomer(String name, String userName, String password, String customerID, 
 			IMS ims, int numberOfPersons, int numberOfManagers, int numberOfCustomers) {

@@ -348,6 +348,52 @@ public class ImsItemProviderAdapterFactory extends ImsAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.ali.hyacinth.ims.TransactionItem} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TransactionItemItemProvider transactionItemItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.ali.hyacinth.ims.TransactionItem}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTransactionItemAdapter() {
+		if (transactionItemItemProvider == null) {
+			transactionItemItemProvider = new TransactionItemItemProvider(this);
+		}
+
+		return transactionItemItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.ali.hyacinth.ims.TransactionPrice} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TransactionPriceItemProvider transactionPriceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.ali.hyacinth.ims.TransactionPrice}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTransactionPriceAdapter() {
+		if (transactionPriceItemProvider == null) {
+			transactionPriceItemProvider = new TransactionPriceItemProvider(this);
+		}
+
+		return transactionPriceItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -458,6 +504,8 @@ public class ImsItemProviderAdapterFactory extends ImsAdapterFactory implements 
 		if (itemItemProvider != null) itemItemProvider.dispose();
 		if (orderItemProvider != null) orderItemProvider.dispose();
 		if (imsItemProvider != null) imsItemProvider.dispose();
+		if (transactionItemItemProvider != null) transactionItemItemProvider.dispose();
+		if (transactionPriceItemProvider != null) transactionPriceItemProvider.dispose();
 	}
 
 }

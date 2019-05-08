@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see com.ali.hyacinth.ims.ImsFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
  * @generated
  */
 public interface ImsPackage extends EPackage {
@@ -141,13 +143,31 @@ public interface ImsPackage extends EPackage {
 	int PRODUCT__ID = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Transactionitem</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__TRANSACTIONITEM = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Transactionprice</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__TRANSACTIONPRICE = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Product</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int PRODUCT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Product</em>' class.
@@ -407,13 +427,22 @@ public interface ImsPackage extends EPackage {
 	int MANAGER__PASSWORD = EMPLOYEE_ROLE__PASSWORD;
 
 	/**
+	 * The feature id for the '<em><b>Audit</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGER__AUDIT = EMPLOYEE_ROLE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Manager</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MANAGER_FEATURE_COUNT = EMPLOYEE_ROLE_FEATURE_COUNT + 0;
+	int MANAGER_FEATURE_COUNT = EMPLOYEE_ROLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Manager</em>' class.
@@ -498,22 +527,22 @@ public interface ImsPackage extends EPackage {
 	int TRANSACTION__PRODUCTS = 6;
 
 	/**
-	 * The feature id for the '<em><b>Price</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSACTION__PRICE = 7;
-
-	/**
 	 * The feature id for the '<em><b>Receipts</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSACTION__RECEIPTS = 8;
+	int TRANSACTION__RECEIPTS = 7;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSACTION__ID = 8;
 
 	/**
 	 * The number of structural features of the '<em>Transaction</em>' class.
@@ -937,6 +966,80 @@ public interface ImsPackage extends EPackage {
 	int IMS_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link com.ali.hyacinth.ims.impl.TransactionItemImpl <em>Transaction Item</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.ali.hyacinth.ims.impl.TransactionItemImpl
+	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getTransactionItem()
+	 * @generated
+	 */
+	int TRANSACTION_ITEM = 15;
+
+	/**
+	 * The feature id for the '<em><b>Quantity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSACTION_ITEM__QUANTITY = 0;
+
+	/**
+	 * The number of structural features of the '<em>Transaction Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSACTION_ITEM_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Transaction Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSACTION_ITEM_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link com.ali.hyacinth.ims.impl.TransactionPriceImpl <em>Transaction Price</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.ali.hyacinth.ims.impl.TransactionPriceImpl
+	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getTransactionPrice()
+	 * @generated
+	 */
+	int TRANSACTION_PRICE = 16;
+
+	/**
+	 * The feature id for the '<em><b>Price</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSACTION_PRICE__PRICE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Transaction Price</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSACTION_PRICE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Transaction Price</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSACTION_PRICE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link com.ali.hyacinth.ims.ItemStatus <em>Item Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -944,7 +1047,7 @@ public interface ImsPackage extends EPackage {
 	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getItemStatus()
 	 * @generated
 	 */
-	int ITEM_STATUS = 15;
+	int ITEM_STATUS = 17;
 
 
 	/**
@@ -1012,6 +1115,28 @@ public interface ImsPackage extends EPackage {
 	EAttribute getProduct_Id();
 
 	/**
+	 * Returns the meta object for the reference '{@link com.ali.hyacinth.ims.Product#getTransactionitem <em>Transactionitem</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Transactionitem</em>'.
+	 * @see com.ali.hyacinth.ims.Product#getTransactionitem()
+	 * @see #getProduct()
+	 * @generated
+	 */
+	EReference getProduct_Transactionitem();
+
+	/**
+	 * Returns the meta object for the reference '{@link com.ali.hyacinth.ims.Product#getTransactionprice <em>Transactionprice</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Transactionprice</em>'.
+	 * @see com.ali.hyacinth.ims.Product#getTransactionprice()
+	 * @see #getProduct()
+	 * @generated
+	 */
+	EReference getProduct_Transactionprice();
+
+	/**
 	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.Person <em>Person</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1073,6 +1198,17 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getManager();
+
+	/**
+	 * Returns the meta object for the reference '{@link com.ali.hyacinth.ims.Manager#getAudit <em>Audit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Audit</em>'.
+	 * @see com.ali.hyacinth.ims.Manager#getAudit()
+	 * @see #getManager()
+	 * @generated
+	 */
+	EReference getManager_Audit();
 
 	/**
 	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.Transaction <em>Transaction</em>}'.
@@ -1162,17 +1298,6 @@ public interface ImsPackage extends EPackage {
 	EReference getTransaction_Products();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.ali.hyacinth.ims.Transaction#getPrice <em>Price</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Price</em>'.
-	 * @see com.ali.hyacinth.ims.Transaction#getPrice()
-	 * @see #getTransaction()
-	 * @generated
-	 */
-	EAttribute getTransaction_Price();
-
-	/**
 	 * Returns the meta object for the reference list '{@link com.ali.hyacinth.ims.Transaction#getReceipts <em>Receipts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1182,6 +1307,17 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTransaction_Receipts();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.ali.hyacinth.ims.Transaction#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see com.ali.hyacinth.ims.Transaction#getId()
+	 * @see #getTransaction()
+	 * @generated
+	 */
+	EAttribute getTransaction_Id();
 
 	/**
 	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.Receipt <em>Receipt</em>}'.
@@ -1538,6 +1674,48 @@ public interface ImsPackage extends EPackage {
 	EReference getIMS_Receipts();
 
 	/**
+	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.TransactionItem <em>Transaction Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Transaction Item</em>'.
+	 * @see com.ali.hyacinth.ims.TransactionItem
+	 * @generated
+	 */
+	EClass getTransactionItem();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.ali.hyacinth.ims.TransactionItem#getQuantity <em>Quantity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Quantity</em>'.
+	 * @see com.ali.hyacinth.ims.TransactionItem#getQuantity()
+	 * @see #getTransactionItem()
+	 * @generated
+	 */
+	EAttribute getTransactionItem_Quantity();
+
+	/**
+	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.TransactionPrice <em>Transaction Price</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Transaction Price</em>'.
+	 * @see com.ali.hyacinth.ims.TransactionPrice
+	 * @generated
+	 */
+	EClass getTransactionPrice();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.ali.hyacinth.ims.TransactionPrice#getPrice <em>Price</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Price</em>'.
+	 * @see com.ali.hyacinth.ims.TransactionPrice#getPrice()
+	 * @see #getTransactionPrice()
+	 * @generated
+	 */
+	EAttribute getTransactionPrice_Price();
+
+	/**
 	 * Returns the meta object for enum '{@link com.ali.hyacinth.ims.ItemStatus <em>Item Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1623,6 +1801,22 @@ public interface ImsPackage extends EPackage {
 		EAttribute PRODUCT__ID = eINSTANCE.getProduct_Id();
 
 		/**
+		 * The meta object literal for the '<em><b>Transactionitem</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT__TRANSACTIONITEM = eINSTANCE.getProduct_Transactionitem();
+
+		/**
+		 * The meta object literal for the '<em><b>Transactionprice</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT__TRANSACTIONPRICE = eINSTANCE.getProduct_Transactionprice();
+
+		/**
 		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.PersonImpl <em>Person</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1675,6 +1869,14 @@ public interface ImsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MANAGER = eINSTANCE.getManager();
+
+		/**
+		 * The meta object literal for the '<em><b>Audit</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MANAGER__AUDIT = eINSTANCE.getManager_Audit();
 
 		/**
 		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.TransactionImpl <em>Transaction</em>}' class.
@@ -1743,20 +1945,20 @@ public interface ImsPackage extends EPackage {
 		EReference TRANSACTION__PRODUCTS = eINSTANCE.getTransaction_Products();
 
 		/**
-		 * The meta object literal for the '<em><b>Price</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TRANSACTION__PRICE = eINSTANCE.getTransaction_Price();
-
-		/**
 		 * The meta object literal for the '<em><b>Receipts</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference TRANSACTION__RECEIPTS = eINSTANCE.getTransaction_Receipts();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSACTION__ID = eINSTANCE.getTransaction_Id();
 
 		/**
 		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.ReceiptImpl <em>Receipt</em>}' class.
@@ -2039,6 +2241,42 @@ public interface ImsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference IMS__RECEIPTS = eINSTANCE.getIMS_Receipts();
+
+		/**
+		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.TransactionItemImpl <em>Transaction Item</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.ali.hyacinth.ims.impl.TransactionItemImpl
+		 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getTransactionItem()
+		 * @generated
+		 */
+		EClass TRANSACTION_ITEM = eINSTANCE.getTransactionItem();
+
+		/**
+		 * The meta object literal for the '<em><b>Quantity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSACTION_ITEM__QUANTITY = eINSTANCE.getTransactionItem_Quantity();
+
+		/**
+		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.TransactionPriceImpl <em>Transaction Price</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.ali.hyacinth.ims.impl.TransactionPriceImpl
+		 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getTransactionPrice()
+		 * @generated
+		 */
+		EClass TRANSACTION_PRICE = eINSTANCE.getTransactionPrice();
+
+		/**
+		 * The meta object literal for the '<em><b>Price</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSACTION_PRICE__PRICE = eINSTANCE.getTransactionPrice_Price();
 
 		/**
 		 * The meta object literal for the '{@link com.ali.hyacinth.ims.ItemStatus <em>Item Status</em>}' enum.

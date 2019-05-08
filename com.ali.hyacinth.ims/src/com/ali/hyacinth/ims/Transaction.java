@@ -24,8 +24,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getAmountPaid <em>Amount Paid</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getAmountUnpaid <em>Amount Unpaid</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getProducts <em>Products</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.Transaction#getPrice <em>Price</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getReceipts <em>Receipts</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.Transaction#getId <em>Id</em>}</li>
  * </ul>
  *
  * @see com.ali.hyacinth.ims.ImsPackage#getTransaction()
@@ -126,7 +126,7 @@ public interface Transaction extends EObject {
 	 * @return the value of the '<em>Total Amount</em>' attribute.
 	 * @see #setTotalAmount(float)
 	 * @see com.ali.hyacinth.ims.ImsPackage#getTransaction_TotalAmount()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	float getTotalAmount();
@@ -152,7 +152,7 @@ public interface Transaction extends EObject {
 	 * @return the value of the '<em>Amount Paid</em>' attribute.
 	 * @see #setAmountPaid(float)
 	 * @see com.ali.hyacinth.ims.ImsPackage#getTransaction_AmountPaid()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	float getAmountPaid();
@@ -178,7 +178,7 @@ public interface Transaction extends EObject {
 	 * @return the value of the '<em>Amount Unpaid</em>' attribute.
 	 * @see #setAmountUnpaid(float)
 	 * @see com.ali.hyacinth.ims.ImsPackage#getTransaction_AmountUnpaid()
-	 * @model derived="true"
+	 * @model required="true" derived="true"
 	 * @generated
 	 */
 	float getAmountUnpaid();
@@ -210,32 +210,6 @@ public interface Transaction extends EObject {
 	EList<Product> getProducts();
 
 	/**
-	 * Returns the value of the '<em><b>Price</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Price</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Price</em>' attribute.
-	 * @see #setPrice(int)
-	 * @see com.ali.hyacinth.ims.ImsPackage#getTransaction_Price()
-	 * @model
-	 * @generated
-	 */
-	int getPrice();
-
-	/**
-	 * Sets the value of the '{@link com.ali.hyacinth.ims.Transaction#getPrice <em>Price</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Price</em>' attribute.
-	 * @see #getPrice()
-	 * @generated
-	 */
-	void setPrice(int value);
-
-	/**
 	 * Returns the value of the '<em><b>Receipts</b></em>' reference list.
 	 * The list contents are of type {@link com.ali.hyacinth.ims.Receipt}.
 	 * It is bidirectional and its opposite is '{@link com.ali.hyacinth.ims.Receipt#getTransaction <em>Transaction</em>}'.
@@ -252,5 +226,31 @@ public interface Transaction extends EObject {
 	 * @generated
 	 */
 	EList<Receipt> getReceipts();
+
+	/**
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(String)
+	 * @see com.ali.hyacinth.ims.ImsPackage#getTransaction_Id()
+	 * @model id="true" required="true"
+	 * @generated
+	 */
+	String getId();
+
+	/**
+	 * Sets the value of the '{@link com.ali.hyacinth.ims.Transaction#getId <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
+	 * @generated
+	 */
+	void setId(String value);
 
 } // Transaction

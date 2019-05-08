@@ -6,6 +6,8 @@ import com.ali.hyacinth.ims.ImsPackage;
 import com.ali.hyacinth.ims.Item;
 import com.ali.hyacinth.ims.Product;
 
+import com.ali.hyacinth.ims.TransactionItem;
+import com.ali.hyacinth.ims.TransactionPrice;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -31,6 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getItems <em>Items</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getPrice <em>Price</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getId <em>Id</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getTransactionitem <em>Transactionitem</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getTransactionprice <em>Transactionprice</em>}</li>
  * </ul>
  *
  * @generated
@@ -84,6 +88,26 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getTransactionitem() <em>Transactionitem</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransactionitem()
+	 * @generated
+	 * @ordered
+	 */
+	protected TransactionItem transactionitem;
+
+	/**
+	 * The cached value of the '{@link #getTransactionprice() <em>Transactionprice</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransactionprice()
+	 * @generated
+	 * @ordered
+	 */
+	protected TransactionPrice transactionprice;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,6 +187,82 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TransactionItem getTransactionitem() {
+		if (transactionitem != null && transactionitem.eIsProxy()) {
+			InternalEObject oldTransactionitem = (InternalEObject)transactionitem;
+			transactionitem = (TransactionItem)eResolveProxy(oldTransactionitem);
+			if (transactionitem != oldTransactionitem) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ImsPackage.PRODUCT__TRANSACTIONITEM, oldTransactionitem, transactionitem));
+			}
+		}
+		return transactionitem;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TransactionItem basicGetTransactionitem() {
+		return transactionitem;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransactionitem(TransactionItem newTransactionitem) {
+		TransactionItem oldTransactionitem = transactionitem;
+		transactionitem = newTransactionitem;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT__TRANSACTIONITEM, oldTransactionitem, transactionitem));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TransactionPrice getTransactionprice() {
+		if (transactionprice != null && transactionprice.eIsProxy()) {
+			InternalEObject oldTransactionprice = (InternalEObject)transactionprice;
+			transactionprice = (TransactionPrice)eResolveProxy(oldTransactionprice);
+			if (transactionprice != oldTransactionprice) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ImsPackage.PRODUCT__TRANSACTIONPRICE, oldTransactionprice, transactionprice));
+			}
+		}
+		return transactionprice;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TransactionPrice basicGetTransactionprice() {
+		return transactionprice;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTransactionprice(TransactionPrice newTransactionprice) {
+		TransactionPrice oldTransactionprice = transactionprice;
+		transactionprice = newTransactionprice;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT__TRANSACTIONPRICE, oldTransactionprice, transactionprice));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -186,6 +286,12 @@ public class ProductImpl extends NamedElementImpl implements Product {
 				return getPrice();
 			case ImsPackage.PRODUCT__ID:
 				return getId();
+			case ImsPackage.PRODUCT__TRANSACTIONITEM:
+				if (resolve) return getTransactionitem();
+				return basicGetTransactionitem();
+			case ImsPackage.PRODUCT__TRANSACTIONPRICE:
+				if (resolve) return getTransactionprice();
+				return basicGetTransactionprice();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -209,6 +315,12 @@ public class ProductImpl extends NamedElementImpl implements Product {
 			case ImsPackage.PRODUCT__ID:
 				setId((String)newValue);
 				return;
+			case ImsPackage.PRODUCT__TRANSACTIONITEM:
+				setTransactionitem((TransactionItem)newValue);
+				return;
+			case ImsPackage.PRODUCT__TRANSACTIONPRICE:
+				setTransactionprice((TransactionPrice)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -230,6 +342,12 @@ public class ProductImpl extends NamedElementImpl implements Product {
 			case ImsPackage.PRODUCT__ID:
 				setId(ID_EDEFAULT);
 				return;
+			case ImsPackage.PRODUCT__TRANSACTIONITEM:
+				setTransactionitem((TransactionItem)null);
+				return;
+			case ImsPackage.PRODUCT__TRANSACTIONPRICE:
+				setTransactionprice((TransactionPrice)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -248,6 +366,10 @@ public class ProductImpl extends NamedElementImpl implements Product {
 				return price != PRICE_EDEFAULT;
 			case ImsPackage.PRODUCT__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case ImsPackage.PRODUCT__TRANSACTIONITEM:
+				return transactionitem != null;
+			case ImsPackage.PRODUCT__TRANSACTIONPRICE:
+				return transactionprice != null;
 		}
 		return super.eIsSet(featureID);
 	}

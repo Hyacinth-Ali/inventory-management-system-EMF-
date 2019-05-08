@@ -32,7 +32,7 @@ public interface Customer extends PersonRole {
 	 * @return the value of the '<em>Debt</em>' attribute.
 	 * @see #setDebt(float)
 	 * @see com.ali.hyacinth.ims.ImsPackage#getCustomer_Debt()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	float getDebt();
@@ -58,7 +58,7 @@ public interface Customer extends PersonRole {
 	 * @return the value of the '<em>Customer ID</em>' attribute.
 	 * @see #setCustomerID(String)
 	 * @see com.ali.hyacinth.ims.ImsPackage#getCustomer_CustomerID()
-	 * @model required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getCustomerID();

@@ -36,7 +36,7 @@ public interface Person extends NamedElement {
 	 * @return the value of the '<em>Roles</em>' reference list.
 	 * @see com.ali.hyacinth.ims.ImsPackage#getPerson_Roles()
 	 * @see com.ali.hyacinth.ims.PersonRole#getPerson
-	 * @model opposite="person" upper="3"
+	 * @model opposite="person" required="true" upper="3"
 	 * @generated
 	 */
 	EList<PersonRole> getRoles();

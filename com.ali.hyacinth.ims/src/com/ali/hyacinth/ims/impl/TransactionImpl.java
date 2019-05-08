@@ -41,8 +41,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getAmountPaid <em>Amount Paid</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getAmountUnpaid <em>Amount Unpaid</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getProducts <em>Products</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getPrice <em>Price</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getReceipts <em>Receipts</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getId <em>Id</em>}</li>
  * </ul>
  *
  * @generated
@@ -159,26 +159,6 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	protected EList<Product> products;
 
 	/**
-	 * The default value of the '{@link #getPrice() <em>Price</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPrice()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int PRICE_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getPrice() <em>Price</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPrice()
-	 * @generated
-	 * @ordered
-	 */
-	protected int price = PRICE_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getReceipts() <em>Receipts</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -187,6 +167,26 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	 * @ordered
 	 */
 	protected EList<Receipt> receipts;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -428,32 +428,32 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getPrice() {
-		return price;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPrice(int newPrice) {
-		int oldPrice = price;
-		price = newPrice;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.TRANSACTION__PRICE, oldPrice, price));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Receipt> getReceipts() {
 		if (receipts == null) {
 			receipts = new EObjectWithInverseResolvingEList<Receipt>(Receipt.class, this, ImsPackage.TRANSACTION__RECEIPTS, ImsPackage.RECEIPT__TRANSACTION);
 		}
 		return receipts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.TRANSACTION__ID, oldId, id));
 	}
 
 	/**
@@ -521,10 +521,10 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				return getAmountUnpaid();
 			case ImsPackage.TRANSACTION__PRODUCTS:
 				return getProducts();
-			case ImsPackage.TRANSACTION__PRICE:
-				return getPrice();
 			case ImsPackage.TRANSACTION__RECEIPTS:
 				return getReceipts();
+			case ImsPackage.TRANSACTION__ID:
+				return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -560,12 +560,12 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				getProducts().clear();
 				getProducts().addAll((Collection<? extends Product>)newValue);
 				return;
-			case ImsPackage.TRANSACTION__PRICE:
-				setPrice((Integer)newValue);
-				return;
 			case ImsPackage.TRANSACTION__RECEIPTS:
 				getReceipts().clear();
 				getReceipts().addAll((Collection<? extends Receipt>)newValue);
+				return;
+			case ImsPackage.TRANSACTION__ID:
+				setId((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -600,11 +600,11 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 			case ImsPackage.TRANSACTION__PRODUCTS:
 				getProducts().clear();
 				return;
-			case ImsPackage.TRANSACTION__PRICE:
-				setPrice(PRICE_EDEFAULT);
-				return;
 			case ImsPackage.TRANSACTION__RECEIPTS:
 				getReceipts().clear();
+				return;
+			case ImsPackage.TRANSACTION__ID:
+				setId(ID_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -632,10 +632,10 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				return amountUnpaid != AMOUNT_UNPAID_EDEFAULT;
 			case ImsPackage.TRANSACTION__PRODUCTS:
 				return products != null && !products.isEmpty();
-			case ImsPackage.TRANSACTION__PRICE:
-				return price != PRICE_EDEFAULT;
 			case ImsPackage.TRANSACTION__RECEIPTS:
 				return receipts != null && !receipts.isEmpty();
+			case ImsPackage.TRANSACTION__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -658,8 +658,8 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 		result.append(amountPaid);
 		result.append(", amountUnpaid: ");
 		result.append(amountUnpaid);
-		result.append(", price: ");
-		result.append(price);
+		result.append(", id: ");
+		result.append(id);
 		result.append(')');
 		return result.toString();
 	}

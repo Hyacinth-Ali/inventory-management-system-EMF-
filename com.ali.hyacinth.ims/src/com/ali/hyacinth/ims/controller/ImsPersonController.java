@@ -137,10 +137,16 @@ public class ImsPersonController {
 		
 		if (customerID == null || customerID.length() == 0) {
 			error = "The ID of a customer cannot be empty";
-		}
-		if (!isCustomerIdUnique(customerID)) {
+		} else if (!isCustomerIdUnique(customerID)) {
 			error = "This id " + customerID + " already exist";
+		} else {
+			for (PersonRole role : person.getRoles()) {
+				if (role instanceof Customer) {
+					error = "This person already exist as a customer.";
+				}
+			}
 		}
+		
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
 		}
@@ -395,12 +401,19 @@ public class ImsPersonController {
 		if (userName == null || userName.length() == 0) {
 			error = "The user name of a manager cannot be empty";
 		}
-		if (password == null || password.length() == 0) {
+		else if (password == null || password.length() == 0) {
 			error = "The password of a manager cannot be empty";
 		}
-		if (!isManagerUsernameUnique(userName)) {
+		else if (!isManagerUsernameUnique(userName)) {
 			error = "This user name : " + userName + " already exist";
+		} else {
+			for (PersonRole role : person.getRoles()) {
+				if (role instanceof Manager) {
+					error = "This person already exist as a manger.";
+				}
+			}
 		}
+		
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
 		}
