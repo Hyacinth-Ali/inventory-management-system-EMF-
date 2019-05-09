@@ -7,6 +7,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.ali.hyacinth.ims.Customer;
+import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsFactory;
 import com.ali.hyacinth.ims.Manager;
 import com.ali.hyacinth.ims.Product;
@@ -84,7 +85,7 @@ public class ImsTransactionController {
 	 * @throws InvalidInputException
 	 */
 	public static void createTransaction(Date date, String customerID, String managerUserName) throws InvalidInputException {
-		//IMS ims = ImsApplication.getIms();
+		IMS ims = ImsApplication.getIms();
 		Customer c = findCustomer(customerID);
 		Manager manager = findManager(managerUserName);
 		String error = "";
@@ -93,7 +94,9 @@ public class ImsTransactionController {
 			error = "The customer does not exist, register first.";
 		} else if (manager == null) {
 			error = "You need a manager to create a transaction.";
-		}
+		} else if (c.getPerson().equals(manager.getPerson())) {
+			error = "The same person cannot be both seller and buyer.";
+		} 
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
 		}
@@ -104,6 +107,9 @@ public class ImsTransactionController {
 			transaction.setId(EcoreUtil.generateUUID());
 			transaction.setBuyer(c.getPerson());
 			transaction.setSeller(manager.getPerson());
+			ims.getTransactions().add(transaction);
+			System.out.println(transaction.getId());
+			System.out.println(date);
 		} catch (RuntimeException e) {
 			throw new InvalidInputException(e.getMessage());
 		}
@@ -117,9 +123,14 @@ public class ImsTransactionController {
 	 * @throws InvalidInputException
 	 */
 	public static void addTransactionProduct(Transaction transaction, Product product, int quantity) throws InvalidInputException {
-		
+		String error = "";
 		if (quantity <= 0) {
-			throw new InvalidInputException("Quantity of items must be greater than zero.");
+			error = "Quantity of items must be greater than zero.";
+		} else if(quantity > product.getItems().size()) {
+			error = "Sorry! we do not have enough product in store.";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
 		}
 		ProductTransaction productTransaction = ImsFactory.eINSTANCE.createProductTransaction();
 		productTransaction.setProduct(product);

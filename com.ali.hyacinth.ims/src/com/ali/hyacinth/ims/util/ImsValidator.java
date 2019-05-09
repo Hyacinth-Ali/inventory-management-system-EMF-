@@ -98,8 +98,6 @@ public class ImsValidator extends EObjectValidator {
 				return validateManager((Manager)value, diagnostics, context);
 			case ImsPackage.TRANSACTION:
 				return validateTransaction((Transaction)value, diagnostics, context);
-			case ImsPackage.RECEIPT:
-				return validateReceipt((Receipt)value, diagnostics, context);
 			case ImsPackage.AUDIT:
 				return validateAudit((Audit)value, diagnostics, context);
 			case ImsPackage.CUSTOMER:
@@ -177,15 +175,6 @@ public class ImsValidator extends EObjectValidator {
 	 */
 	public boolean validateTransaction(Transaction transaction, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(transaction, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateReceipt(Receipt receipt, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(receipt, diagnostics, context);
 	}
 
 	/**

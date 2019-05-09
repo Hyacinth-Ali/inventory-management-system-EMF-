@@ -5,7 +5,7 @@ class Receipt {
 	lazy Date date;
 	lazy Double totalAmount;
 	lazy Double amoundPaid;	
-	1 -> 0..* TOProductTransaction pTransactions;
+	0..1 -- 0..* TOProductTransaction pTransactions;
 }
 
 class TOProduct {
@@ -16,5 +16,5 @@ class TOProduct {
 class TOProductTransaction {
 	lazy Integer quantity;
 	lazy Double price;
-	1 -> 1 TOProduct toProduct;
+	0..1 -- 1 TOProduct toProduct;
 }

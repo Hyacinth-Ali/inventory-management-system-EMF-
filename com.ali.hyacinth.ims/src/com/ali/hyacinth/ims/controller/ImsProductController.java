@@ -94,13 +94,13 @@ public class ImsProductController {
 		}
 		
 		try {
-			for (int count = 1; count <= quantity; quantity++) {
+			for (int count = 1; count <= quantity; count++) {
 				Item item = ImsFactory.eINSTANCE.createItem();
 				//The default value anyway
 				item.setStatus(ItemStatus.IN_STORE);
 				product.getItems().add(item);
 			}
-			ImsResource.save((IMS)product.eContainer());
+			//ImsResource.save((IMS)product.eContainer());
 		} catch (RuntimeException e) {
 			throw new InvalidInputException(e.getMessage());
 		}

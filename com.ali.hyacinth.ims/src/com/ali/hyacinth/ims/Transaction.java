@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getTotalAmount <em>Total Amount</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getAmountPaid <em>Amount Paid</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getAmountUnpaid <em>Amount Unpaid</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.Transaction#getReceipts <em>Receipts</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getId <em>Id</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getProducttransactions <em>Producttransactions</em>}</li>
  * </ul>
@@ -194,24 +193,6 @@ public interface Transaction extends EObject {
 	void setAmountUnpaid(float value);
 
 	/**
-	 * Returns the value of the '<em><b>Receipts</b></em>' reference list.
-	 * The list contents are of type {@link com.ali.hyacinth.ims.Receipt}.
-	 * It is bidirectional and its opposite is '{@link com.ali.hyacinth.ims.Receipt#getTransaction <em>Transaction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Receipts</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Receipts</em>' reference list.
-	 * @see com.ali.hyacinth.ims.ImsPackage#getTransaction_Receipts()
-	 * @see com.ali.hyacinth.ims.Receipt#getTransaction
-	 * @model opposite="transaction"
-	 * @generated
-	 */
-	EList<Receipt> getReceipts();
-
-	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -238,7 +219,7 @@ public interface Transaction extends EObject {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Producttransactions</b></em>' reference list.
+	 * Returns the value of the '<em><b>Producttransactions</b></em>' containment reference list.
 	 * The list contents are of type {@link com.ali.hyacinth.ims.ProductTransaction}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -246,9 +227,9 @@ public interface Transaction extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Producttransactions</em>' reference list.
+	 * @return the value of the '<em>Producttransactions</em>' containment reference list.
 	 * @see com.ali.hyacinth.ims.ImsPackage#getTransaction_Producttransactions()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ProductTransaction> getProducttransactions();

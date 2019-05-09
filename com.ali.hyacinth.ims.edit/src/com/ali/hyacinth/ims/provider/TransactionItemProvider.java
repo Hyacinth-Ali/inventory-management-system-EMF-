@@ -66,7 +66,6 @@ public class TransactionItemProvider
 			addTotalAmountPropertyDescriptor(object);
 			addAmountPaidPropertyDescriptor(object);
 			addAmountUnpaidPropertyDescriptor(object);
-			addReceiptsPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addProducttransactionsPropertyDescriptor(object);
 		}
@@ -201,28 +200,6 @@ public class TransactionItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Receipts feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addReceiptsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Transaction_receipts_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Transaction_receipts_feature", "_UI_Transaction_type"),
-				 ImsPackage.Literals.TRANSACTION__RECEIPTS,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}

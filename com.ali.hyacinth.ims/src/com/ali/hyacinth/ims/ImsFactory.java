@@ -67,15 +67,6 @@ public interface ImsFactory extends EFactory {
 	Transaction createTransaction();
 
 	/**
-	 * Returns a new object of class '<em>Receipt</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Receipt</em>'.
-	 * @generated
-	 */
-	Receipt createReceipt();
-
-	/**
 	 * Returns a new object of class '<em>Audit</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

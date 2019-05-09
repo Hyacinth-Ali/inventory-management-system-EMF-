@@ -16,7 +16,6 @@ import com.ali.hyacinth.ims.Person;
 import com.ali.hyacinth.ims.PersonRole;
 import com.ali.hyacinth.ims.Product;
 import com.ali.hyacinth.ims.ProductTransaction;
-import com.ali.hyacinth.ims.Receipt;
 import com.ali.hyacinth.ims.RegularEmployee;
 import com.ali.hyacinth.ims.Supplier;
 import com.ali.hyacinth.ims.Transaction;
@@ -78,13 +77,6 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * @generated
 	 */
 	private EClass transactionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass receiptEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -411,17 +403,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransaction_Receipts() {
-		return (EReference)transactionEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getTransaction_Id() {
-		return (EAttribute)transactionEClass.getEStructuralFeatures().get(7);
+		return (EAttribute)transactionEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -430,34 +413,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * @generated
 	 */
 	public EReference getTransaction_Producttransactions() {
-		return (EReference)transactionEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getReceipt() {
-		return receiptEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getReceipt_Transaction() {
-		return (EReference)receiptEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getReceipt_Date() {
-		return (EAttribute)receiptEClass.getEStructuralFeatures().get(1);
+		return (EReference)transactionEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -726,7 +682,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIMS_Receipts() {
+	public EReference getIMS_Producttransactions() {
 		return (EReference)imsEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -828,13 +784,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEAttribute(transactionEClass, TRANSACTION__TOTAL_AMOUNT);
 		createEAttribute(transactionEClass, TRANSACTION__AMOUNT_PAID);
 		createEAttribute(transactionEClass, TRANSACTION__AMOUNT_UNPAID);
-		createEReference(transactionEClass, TRANSACTION__RECEIPTS);
 		createEAttribute(transactionEClass, TRANSACTION__ID);
 		createEReference(transactionEClass, TRANSACTION__PRODUCTTRANSACTIONS);
-
-		receiptEClass = createEClass(RECEIPT);
-		createEReference(receiptEClass, RECEIPT__TRANSACTION);
-		createEAttribute(receiptEClass, RECEIPT__DATE);
 
 		auditEClass = createEClass(AUDIT);
 		createEReference(auditEClass, AUDIT__TRANSACTIONS);
@@ -872,7 +823,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEReference(imsEClass, IMS__REGULAREMPLOYEES);
 		createEReference(imsEClass, IMS__CUSTOMERS);
 		createEReference(imsEClass, IMS__TRANSACTIONS);
-		createEReference(imsEClass, IMS__RECEIPTS);
+		createEReference(imsEClass, IMS__PRODUCTTRANSACTIONS);
 
 		productTransactionEClass = createEClass(PRODUCT_TRANSACTION);
 		createEAttribute(productTransactionEClass, PRODUCT_TRANSACTION__PRICE);
@@ -945,13 +896,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEAttribute(getTransaction_TotalAmount(), ecorePackage.getEFloat(), "totalAmount", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransaction_AmountPaid(), ecorePackage.getEFloat(), "amountPaid", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransaction_AmountUnpaid(), ecorePackage.getEFloat(), "amountUnpaid", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getTransaction_Receipts(), this.getReceipt(), this.getReceipt_Transaction(), "receipts", null, 0, -1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransaction_Id(), ecorePackage.getEString(), "id", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransaction_Producttransactions(), this.getProductTransaction(), null, "producttransactions", null, 0, -1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(receiptEClass, Receipt.class, "Receipt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReceipt_Transaction(), this.getTransaction(), this.getTransaction_Receipts(), "transaction", null, 1, 1, Receipt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReceipt_Date(), ecorePackage.getEDate(), "date", null, 0, 1, Receipt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransaction_Producttransactions(), this.getProductTransaction(), null, "producttransactions", null, 0, -1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(auditEClass, Audit.class, "Audit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAudit_Transactions(), this.getTransaction(), null, "transactions", null, 0, -1, Audit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -989,7 +935,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEReference(getIMS_Regularemployees(), this.getRegularEmployee(), null, "regularemployees", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIMS_Customers(), this.getCustomer(), null, "customers", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIMS_Transactions(), this.getTransaction(), null, "transactions", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIMS_Receipts(), this.getReceipt(), null, "receipts", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIMS_Producttransactions(), this.getProductTransaction(), null, "producttransactions", null, 0, -1, com.ali.hyacinth.ims.IMS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productTransactionEClass, ProductTransaction.class, "ProductTransaction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductTransaction_Price(), ecorePackage.getEFloat(), "price", null, 0, 1, ProductTransaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -85,7 +85,7 @@ public class IMSItemProvider
 			childrenFeatures.add(ImsPackage.Literals.IMS__REGULAREMPLOYEES);
 			childrenFeatures.add(ImsPackage.Literals.IMS__CUSTOMERS);
 			childrenFeatures.add(ImsPackage.Literals.IMS__TRANSACTIONS);
-			childrenFeatures.add(ImsPackage.Literals.IMS__RECEIPTS);
+			childrenFeatures.add(ImsPackage.Literals.IMS__PRODUCTTRANSACTIONS);
 		}
 		return childrenFeatures;
 	}
@@ -147,7 +147,7 @@ public class IMSItemProvider
 			case ImsPackage.IMS__REGULAREMPLOYEES:
 			case ImsPackage.IMS__CUSTOMERS:
 			case ImsPackage.IMS__TRANSACTIONS:
-			case ImsPackage.IMS__RECEIPTS:
+			case ImsPackage.IMS__PRODUCTTRANSACTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -212,8 +212,8 @@ public class IMSItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ImsPackage.Literals.IMS__RECEIPTS,
-				 ImsFactory.eINSTANCE.createReceipt()));
+				(ImsPackage.Literals.IMS__PRODUCTTRANSACTIONS,
+				 ImsFactory.eINSTANCE.createProductTransaction()));
 	}
 
 	/**

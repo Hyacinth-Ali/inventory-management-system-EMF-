@@ -110,12 +110,25 @@ public class Receipt
   {
     return 0;
   }
-  /* Code from template association_AddUnidirectionalMany */
+  /* Code from template association_AddManyToOptionalOne */
   public boolean addPTransaction(TOProductTransaction aPTransaction)
   {
     boolean wasAdded = false;
     if (pTransactions.contains(aPTransaction)) { return false; }
-    pTransactions.add(aPTransaction);
+    Receipt existingReceipt = aPTransaction.getReceipt();
+    if (existingReceipt == null)
+    {
+      aPTransaction.setReceipt(this);
+    }
+    else if (!this.equals(existingReceipt))
+    {
+      existingReceipt.removePTransaction(aPTransaction);
+      addPTransaction(aPTransaction);
+    }
+    else
+    {
+      pTransactions.add(aPTransaction);
+    }
     wasAdded = true;
     return wasAdded;
   }
@@ -126,6 +139,7 @@ public class Receipt
     if (pTransactions.contains(aPTransaction))
     {
       pTransactions.remove(aPTransaction);
+      aPTransaction.setReceipt(null);
       wasRemoved = true;
     }
     return wasRemoved;
@@ -165,7 +179,10 @@ public class Receipt
 
   public void delete()
   {
-    pTransactions.clear();
+    while( !pTransactions.isEmpty() )
+    {
+      pTransactions.get(0).setReceipt(null);
+    }
   }
 
 

@@ -15,6 +15,9 @@ public class TOProduct
   private String name;
   private double itemPrice;
 
+  //TOProduct Associations
+  private TOProductTransaction tOProductTransaction;
+
   //------------------------
   // CONSTRUCTOR
   //------------------------
@@ -54,15 +57,61 @@ public class TOProduct
   {
     return itemPrice;
   }
+  /* Code from template association_GetOne */
+  public TOProductTransaction getTOProductTransaction()
+  {
+    return tOProductTransaction;
+  }
+
+  public boolean hasTOProductTransaction()
+  {
+    boolean has = tOProductTransaction != null;
+    return has;
+  }
+  /* Code from template association_SetOptionalOneToOne */
+  public boolean setTOProductTransaction(TOProductTransaction aNewTOProductTransaction)
+  {
+    boolean wasSet = false;
+    if (tOProductTransaction != null && !tOProductTransaction.equals(aNewTOProductTransaction) && equals(tOProductTransaction.getToProduct()))
+    {
+      //Unable to setTOProductTransaction, as existing tOProductTransaction would become an orphan
+      return wasSet;
+    }
+
+    tOProductTransaction = aNewTOProductTransaction;
+    TOProduct anOldToProduct = aNewTOProductTransaction != null ? aNewTOProductTransaction.getToProduct() : null;
+
+    if (!this.equals(anOldToProduct))
+    {
+      if (anOldToProduct != null)
+      {
+        anOldToProduct.tOProductTransaction = null;
+      }
+      if (tOProductTransaction != null)
+      {
+        tOProductTransaction.setToProduct(this);
+      }
+    }
+    wasSet = true;
+    return wasSet;
+  }
 
   public void delete()
-  {}
+  {
+    TOProductTransaction existingTOProductTransaction = tOProductTransaction;
+    tOProductTransaction = null;
+    if (existingTOProductTransaction != null)
+    {
+      existingTOProductTransaction.delete();
+    }
+  }
 
 
   public String toString()
   {
     return super.toString() + "["+
             "name" + ":" + getName()+ "," +
-            "itemPrice" + ":" + getItemPrice()+ "]";
+            "itemPrice" + ":" + getItemPrice()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "tOProductTransaction = "+(getTOProductTransaction()!=null?Integer.toHexString(System.identityHashCode(getTOProductTransaction())):"null");
   }
 }

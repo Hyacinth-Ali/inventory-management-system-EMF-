@@ -92,10 +92,6 @@ public class ImsAdapterFactory extends AdapterFactoryImpl {
 				return createTransactionAdapter();
 			}
 			@Override
-			public Adapter caseReceipt(Receipt object) {
-				return createReceiptAdapter();
-			}
-			@Override
 			public Adapter caseAudit(Audit object) {
 				return createAuditAdapter();
 			}
@@ -232,20 +228,6 @@ public class ImsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTransactionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.ali.hyacinth.ims.Receipt <em>Receipt</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.ali.hyacinth.ims.Receipt
-	 * @generated
-	 */
-	public Adapter createReceiptAdapter() {
 		return null;
 	}
 

@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ims="http://hyacinth.com/ims"/>
+<ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ims="http://hyacinth.com/ims">
+  <products name="product" itemPrice="45.0"/>
+  <managers person="//@persons.0" userName="manager1" password="12456"/>
+  <persons name="john" roles="manager1"/>
+  <persons name="john" roles="customer1"/>
+  <customers person="//@persons.1" customerID="customer1"/>
+</ims:IMS>

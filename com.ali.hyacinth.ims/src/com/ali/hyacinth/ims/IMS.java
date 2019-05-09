@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.ali.hyacinth.ims.IMS#getRegularemployees <em>Regularemployees</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.IMS#getCustomers <em>Customers</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.IMS#getTransactions <em>Transactions</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.IMS#getReceipts <em>Receipts</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.IMS#getProducttransactions <em>Producttransactions</em>}</li>
  * </ul>
  *
  * @see com.ali.hyacinth.ims.ImsPackage#getIMS()
@@ -178,19 +178,19 @@ public interface IMS extends EObject {
 	EList<Transaction> getTransactions();
 
 	/**
-	 * Returns the value of the '<em><b>Receipts</b></em>' containment reference list.
-	 * The list contents are of type {@link com.ali.hyacinth.ims.Receipt}.
+	 * Returns the value of the '<em><b>Producttransactions</b></em>' containment reference list.
+	 * The list contents are of type {@link com.ali.hyacinth.ims.ProductTransaction}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Receipts</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Producttransactions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Receipts</em>' containment reference list.
-	 * @see com.ali.hyacinth.ims.ImsPackage#getIMS_Receipts()
+	 * @return the value of the '<em>Producttransactions</em>' containment reference list.
+	 * @see com.ali.hyacinth.ims.ImsPackage#getIMS_Producttransactions()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Receipt> getReceipts();
+	EList<ProductTransaction> getProducttransactions();
 
 } // IMS

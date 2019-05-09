@@ -62,7 +62,6 @@ public class ImsFactoryImpl extends EFactoryImpl implements ImsFactory {
 			case ImsPackage.REGULAR_EMPLOYEE: return createRegularEmployee();
 			case ImsPackage.MANAGER: return createManager();
 			case ImsPackage.TRANSACTION: return createTransaction();
-			case ImsPackage.RECEIPT: return createReceipt();
 			case ImsPackage.AUDIT: return createAudit();
 			case ImsPackage.CUSTOMER: return createCustomer();
 			case ImsPackage.SUPPLIER: return createSupplier();
@@ -153,16 +152,6 @@ public class ImsFactoryImpl extends EFactoryImpl implements ImsFactory {
 	public Transaction createTransaction() {
 		TransactionImpl transaction = new TransactionImpl();
 		return transaction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Receipt createReceipt() {
-		ReceiptImpl receipt = new ReceiptImpl();
-		return receipt;
 	}
 
 	/**

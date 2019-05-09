@@ -10,7 +10,7 @@ import com.ali.hyacinth.ims.Manager;
 import com.ali.hyacinth.ims.Order;
 import com.ali.hyacinth.ims.Person;
 import com.ali.hyacinth.ims.Product;
-import com.ali.hyacinth.ims.Receipt;
+import com.ali.hyacinth.ims.ProductTransaction;
 import com.ali.hyacinth.ims.RegularEmployee;
 import com.ali.hyacinth.ims.Supplier;
 import com.ali.hyacinth.ims.Transaction;
@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getRegularemployees <em>Regularemployees</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getCustomers <em>Customers</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getTransactions <em>Transactions</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getReceipts <em>Receipts</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.impl.IMSImpl#getProducttransactions <em>Producttransactions</em>}</li>
  * </ul>
  *
  * @generated
@@ -141,14 +141,14 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 	protected EList<Transaction> transactions;
 
 	/**
-	 * The cached value of the '{@link #getReceipts() <em>Receipts</em>}' containment reference list.
+	 * The cached value of the '{@link #getProducttransactions() <em>Producttransactions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReceipts()
+	 * @see #getProducttransactions()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Receipt> receipts;
+	protected EList<ProductTransaction> producttransactions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -282,11 +282,11 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Receipt> getReceipts() {
-		if (receipts == null) {
-			receipts = new EObjectContainmentEList<Receipt>(Receipt.class, this, ImsPackage.IMS__RECEIPTS);
+	public EList<ProductTransaction> getProducttransactions() {
+		if (producttransactions == null) {
+			producttransactions = new EObjectContainmentEList<ProductTransaction>(ProductTransaction.class, this, ImsPackage.IMS__PRODUCTTRANSACTIONS);
 		}
-		return receipts;
+		return producttransactions;
 	}
 
 	/**
@@ -315,8 +315,8 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 				return ((InternalEList<?>)getCustomers()).basicRemove(otherEnd, msgs);
 			case ImsPackage.IMS__TRANSACTIONS:
 				return ((InternalEList<?>)getTransactions()).basicRemove(otherEnd, msgs);
-			case ImsPackage.IMS__RECEIPTS:
-				return ((InternalEList<?>)getReceipts()).basicRemove(otherEnd, msgs);
+			case ImsPackage.IMS__PRODUCTTRANSACTIONS:
+				return ((InternalEList<?>)getProducttransactions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -347,8 +347,8 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 				return getCustomers();
 			case ImsPackage.IMS__TRANSACTIONS:
 				return getTransactions();
-			case ImsPackage.IMS__RECEIPTS:
-				return getReceipts();
+			case ImsPackage.IMS__PRODUCTTRANSACTIONS:
+				return getProducttransactions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -398,9 +398,9 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 				getTransactions().clear();
 				getTransactions().addAll((Collection<? extends Transaction>)newValue);
 				return;
-			case ImsPackage.IMS__RECEIPTS:
-				getReceipts().clear();
-				getReceipts().addAll((Collection<? extends Receipt>)newValue);
+			case ImsPackage.IMS__PRODUCTTRANSACTIONS:
+				getProducttransactions().clear();
+				getProducttransactions().addAll((Collection<? extends ProductTransaction>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -441,8 +441,8 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 			case ImsPackage.IMS__TRANSACTIONS:
 				getTransactions().clear();
 				return;
-			case ImsPackage.IMS__RECEIPTS:
-				getReceipts().clear();
+			case ImsPackage.IMS__PRODUCTTRANSACTIONS:
+				getProducttransactions().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -474,8 +474,8 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 				return customers != null && !customers.isEmpty();
 			case ImsPackage.IMS__TRANSACTIONS:
 				return transactions != null && !transactions.isEmpty();
-			case ImsPackage.IMS__RECEIPTS:
-				return receipts != null && !receipts.isEmpty();
+			case ImsPackage.IMS__PRODUCTTRANSACTIONS:
+				return producttransactions != null && !producttransactions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

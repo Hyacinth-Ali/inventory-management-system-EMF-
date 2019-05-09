@@ -5,7 +5,6 @@ package com.ali.hyacinth.ims.impl;
 import com.ali.hyacinth.ims.ImsPackage;
 import com.ali.hyacinth.ims.Person;
 import com.ali.hyacinth.ims.ProductTransaction;
-import com.ali.hyacinth.ims.Receipt;
 import com.ali.hyacinth.ims.Transaction;
 
 import java.util.Collection;
@@ -22,8 +21,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -40,7 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getTotalAmount <em>Total Amount</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getAmountPaid <em>Amount Paid</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getAmountUnpaid <em>Amount Unpaid</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getReceipts <em>Receipts</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getProducttransactions <em>Producttransactions</em>}</li>
  * </ul>
@@ -149,16 +146,6 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	protected float amountUnpaid = AMOUNT_UNPAID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getReceipts() <em>Receipts</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReceipts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Receipt> receipts;
-
-	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -179,7 +166,7 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getProducttransactions() <em>Producttransactions</em>}' reference list.
+	 * The cached value of the '{@link #getProducttransactions() <em>Producttransactions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getProducttransactions()
@@ -416,18 +403,6 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Receipt> getReceipts() {
-		if (receipts == null) {
-			receipts = new EObjectWithInverseResolvingEList<Receipt>(Receipt.class, this, ImsPackage.TRANSACTION__RECEIPTS, ImsPackage.RECEIPT__TRANSACTION);
-		}
-		return receipts;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getId() {
 		return id;
 	}
@@ -451,7 +426,7 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	 */
 	public EList<ProductTransaction> getProducttransactions() {
 		if (producttransactions == null) {
-			producttransactions = new EObjectResolvingEList<ProductTransaction>(ProductTransaction.class, this, ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS);
+			producttransactions = new EObjectContainmentEList<ProductTransaction>(ProductTransaction.class, this, ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS);
 		}
 		return producttransactions;
 	}
@@ -473,8 +448,6 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				if (buyer != null)
 					msgs = ((InternalEObject)buyer).eInverseRemove(this, ImsPackage.PERSON__PURCHASES, Person.class, msgs);
 				return basicSetBuyer((Person)otherEnd, msgs);
-			case ImsPackage.TRANSACTION__RECEIPTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReceipts()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -491,8 +464,8 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				return basicSetSeller(null, msgs);
 			case ImsPackage.TRANSACTION__BUYER:
 				return basicSetBuyer(null, msgs);
-			case ImsPackage.TRANSACTION__RECEIPTS:
-				return ((InternalEList<?>)getReceipts()).basicRemove(otherEnd, msgs);
+			case ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS:
+				return ((InternalEList<?>)getProducttransactions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -519,8 +492,6 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				return getAmountPaid();
 			case ImsPackage.TRANSACTION__AMOUNT_UNPAID:
 				return getAmountUnpaid();
-			case ImsPackage.TRANSACTION__RECEIPTS:
-				return getReceipts();
 			case ImsPackage.TRANSACTION__ID:
 				return getId();
 			case ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS:
@@ -555,10 +526,6 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				return;
 			case ImsPackage.TRANSACTION__AMOUNT_UNPAID:
 				setAmountUnpaid((Float)newValue);
-				return;
-			case ImsPackage.TRANSACTION__RECEIPTS:
-				getReceipts().clear();
-				getReceipts().addAll((Collection<? extends Receipt>)newValue);
 				return;
 			case ImsPackage.TRANSACTION__ID:
 				setId((String)newValue);
@@ -597,9 +564,6 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 			case ImsPackage.TRANSACTION__AMOUNT_UNPAID:
 				setAmountUnpaid(AMOUNT_UNPAID_EDEFAULT);
 				return;
-			case ImsPackage.TRANSACTION__RECEIPTS:
-				getReceipts().clear();
-				return;
 			case ImsPackage.TRANSACTION__ID:
 				setId(ID_EDEFAULT);
 				return;
@@ -630,8 +594,6 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				return amountPaid != AMOUNT_PAID_EDEFAULT;
 			case ImsPackage.TRANSACTION__AMOUNT_UNPAID:
 				return amountUnpaid != AMOUNT_UNPAID_EDEFAULT;
-			case ImsPackage.TRANSACTION__RECEIPTS:
-				return receipts != null && !receipts.isEmpty();
 			case ImsPackage.TRANSACTION__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS:

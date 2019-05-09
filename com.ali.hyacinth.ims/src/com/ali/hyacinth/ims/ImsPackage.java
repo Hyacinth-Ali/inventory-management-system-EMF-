@@ -232,7 +232,7 @@ public interface ImsPackage extends EPackage {
 	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getPersonRole()
 	 * @generated
 	 */
-	int PERSON_ROLE = 10;
+	int PERSON_ROLE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Person</b></em>' reference.
@@ -269,7 +269,7 @@ public interface ImsPackage extends EPackage {
 	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getEmployeeRole()
 	 * @generated
 	 */
-	int EMPLOYEE_ROLE = 9;
+	int EMPLOYEE_ROLE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Person</b></em>' reference.
@@ -500,31 +500,22 @@ public interface ImsPackage extends EPackage {
 	int TRANSACTION__AMOUNT_UNPAID = 5;
 
 	/**
-	 * The feature id for the '<em><b>Receipts</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSACTION__RECEIPTS = 6;
-
-	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSACTION__ID = 7;
+	int TRANSACTION__ID = 6;
 
 	/**
-	 * The feature id for the '<em><b>Producttransactions</b></em>' reference list.
+	 * The feature id for the '<em><b>Producttransactions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSACTION__PRODUCTTRANSACTIONS = 8;
+	int TRANSACTION__PRODUCTTRANSACTIONS = 7;
 
 	/**
 	 * The number of structural features of the '<em>Transaction</em>' class.
@@ -533,7 +524,7 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSACTION_FEATURE_COUNT = 9;
+	int TRANSACTION_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Transaction</em>' class.
@@ -545,52 +536,6 @@ public interface ImsPackage extends EPackage {
 	int TRANSACTION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link com.ali.hyacinth.ims.impl.ReceiptImpl <em>Receipt</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.ali.hyacinth.ims.impl.ReceiptImpl
-	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getReceipt()
-	 * @generated
-	 */
-	int RECEIPT = 6;
-
-	/**
-	 * The feature id for the '<em><b>Transaction</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEIPT__TRANSACTION = 0;
-
-	/**
-	 * The feature id for the '<em><b>Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEIPT__DATE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Receipt</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEIPT_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Receipt</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECEIPT_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link com.ali.hyacinth.ims.impl.AuditImpl <em>Audit</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -598,7 +543,7 @@ public interface ImsPackage extends EPackage {
 	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getAudit()
 	 * @generated
 	 */
-	int AUDIT = 7;
+	int AUDIT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Transactions</b></em>' reference list.
@@ -644,7 +589,7 @@ public interface ImsPackage extends EPackage {
 	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getCustomer()
 	 * @generated
 	 */
-	int CUSTOMER = 8;
+	int CUSTOMER = 7;
 
 	/**
 	 * The feature id for the '<em><b>Person</b></em>' reference.
@@ -699,7 +644,7 @@ public interface ImsPackage extends EPackage {
 	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getSupplier()
 	 * @generated
 	 */
-	int SUPPLIER = 11;
+	int SUPPLIER = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -736,7 +681,7 @@ public interface ImsPackage extends EPackage {
 	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getItem()
 	 * @generated
 	 */
-	int ITEM = 12;
+	int ITEM = 11;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -773,7 +718,7 @@ public interface ImsPackage extends EPackage {
 	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getOrder()
 	 * @generated
 	 */
-	int ORDER = 13;
+	int ORDER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Ordered Date</b></em>' attribute.
@@ -837,7 +782,7 @@ public interface ImsPackage extends EPackage {
 	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getIMS()
 	 * @generated
 	 */
-	int IMS = 14;
+	int IMS = 13;
 
 	/**
 	 * The feature id for the '<em><b>Products</b></em>' containment reference list.
@@ -921,13 +866,13 @@ public interface ImsPackage extends EPackage {
 	int IMS__TRANSACTIONS = 8;
 
 	/**
-	 * The feature id for the '<em><b>Receipts</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Producttransactions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IMS__RECEIPTS = 9;
+	int IMS__PRODUCTTRANSACTIONS = 9;
 
 	/**
 	 * The number of structural features of the '<em>IMS</em>' class.
@@ -955,7 +900,7 @@ public interface ImsPackage extends EPackage {
 	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getProductTransaction()
 	 * @generated
 	 */
-	int PRODUCT_TRANSACTION = 15;
+	int PRODUCT_TRANSACTION = 14;
 
 	/**
 	 * The feature id for the '<em><b>Price</b></em>' attribute.
@@ -1010,7 +955,7 @@ public interface ImsPackage extends EPackage {
 	 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getItemStatus()
 	 * @generated
 	 */
-	int ITEM_STATUS = 16;
+	int ITEM_STATUS = 15;
 
 
 	/**
@@ -1228,17 +1173,6 @@ public interface ImsPackage extends EPackage {
 	EAttribute getTransaction_AmountUnpaid();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.ali.hyacinth.ims.Transaction#getReceipts <em>Receipts</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Receipts</em>'.
-	 * @see com.ali.hyacinth.ims.Transaction#getReceipts()
-	 * @see #getTransaction()
-	 * @generated
-	 */
-	EReference getTransaction_Receipts();
-
-	/**
 	 * Returns the meta object for the attribute '{@link com.ali.hyacinth.ims.Transaction#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1250,47 +1184,15 @@ public interface ImsPackage extends EPackage {
 	EAttribute getTransaction_Id();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.ali.hyacinth.ims.Transaction#getProducttransactions <em>Producttransactions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link com.ali.hyacinth.ims.Transaction#getProducttransactions <em>Producttransactions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Producttransactions</em>'.
+	 * @return the meta object for the containment reference list '<em>Producttransactions</em>'.
 	 * @see com.ali.hyacinth.ims.Transaction#getProducttransactions()
 	 * @see #getTransaction()
 	 * @generated
 	 */
 	EReference getTransaction_Producttransactions();
-
-	/**
-	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.Receipt <em>Receipt</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Receipt</em>'.
-	 * @see com.ali.hyacinth.ims.Receipt
-	 * @generated
-	 */
-	EClass getReceipt();
-
-	/**
-	 * Returns the meta object for the reference '{@link com.ali.hyacinth.ims.Receipt#getTransaction <em>Transaction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Transaction</em>'.
-	 * @see com.ali.hyacinth.ims.Receipt#getTransaction()
-	 * @see #getReceipt()
-	 * @generated
-	 */
-	EReference getReceipt_Transaction();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.ali.hyacinth.ims.Receipt#getDate <em>Date</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Date</em>'.
-	 * @see com.ali.hyacinth.ims.Receipt#getDate()
-	 * @see #getReceipt()
-	 * @generated
-	 */
-	EAttribute getReceipt_Date();
 
 	/**
 	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.Audit <em>Audit</em>}'.
@@ -1604,15 +1506,15 @@ public interface ImsPackage extends EPackage {
 	EReference getIMS_Transactions();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link com.ali.hyacinth.ims.IMS#getReceipts <em>Receipts</em>}'.
+	 * Returns the meta object for the containment reference list '{@link com.ali.hyacinth.ims.IMS#getProducttransactions <em>Producttransactions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Receipts</em>'.
-	 * @see com.ali.hyacinth.ims.IMS#getReceipts()
+	 * @return the meta object for the containment reference list '<em>Producttransactions</em>'.
+	 * @see com.ali.hyacinth.ims.IMS#getProducttransactions()
 	 * @see #getIMS()
 	 * @generated
 	 */
-	EReference getIMS_Receipts();
+	EReference getIMS_Producttransactions();
 
 	/**
 	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.ProductTransaction <em>Product Transaction</em>}'.
@@ -1863,14 +1765,6 @@ public interface ImsPackage extends EPackage {
 		EAttribute TRANSACTION__AMOUNT_UNPAID = eINSTANCE.getTransaction_AmountUnpaid();
 
 		/**
-		 * The meta object literal for the '<em><b>Receipts</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRANSACTION__RECEIPTS = eINSTANCE.getTransaction_Receipts();
-
-		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1879,38 +1773,12 @@ public interface ImsPackage extends EPackage {
 		EAttribute TRANSACTION__ID = eINSTANCE.getTransaction_Id();
 
 		/**
-		 * The meta object literal for the '<em><b>Producttransactions</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Producttransactions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference TRANSACTION__PRODUCTTRANSACTIONS = eINSTANCE.getTransaction_Producttransactions();
-
-		/**
-		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.ReceiptImpl <em>Receipt</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.ali.hyacinth.ims.impl.ReceiptImpl
-		 * @see com.ali.hyacinth.ims.impl.ImsPackageImpl#getReceipt()
-		 * @generated
-		 */
-		EClass RECEIPT = eINSTANCE.getReceipt();
-
-		/**
-		 * The meta object literal for the '<em><b>Transaction</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RECEIPT__TRANSACTION = eINSTANCE.getReceipt_Transaction();
-
-		/**
-		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RECEIPT__DATE = eINSTANCE.getReceipt_Date();
 
 		/**
 		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.AuditImpl <em>Audit</em>}' class.
@@ -2161,12 +2029,12 @@ public interface ImsPackage extends EPackage {
 		EReference IMS__TRANSACTIONS = eINSTANCE.getIMS_Transactions();
 
 		/**
-		 * The meta object literal for the '<em><b>Receipts</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Producttransactions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference IMS__RECEIPTS = eINSTANCE.getIMS_Receipts();
+		EReference IMS__PRODUCTTRANSACTIONS = eINSTANCE.getIMS_Producttransactions();
 
 		/**
 		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.ProductTransactionImpl <em>Product Transaction</em>}' class.
