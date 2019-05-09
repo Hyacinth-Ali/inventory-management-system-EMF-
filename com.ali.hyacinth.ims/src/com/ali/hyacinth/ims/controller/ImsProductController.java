@@ -23,7 +23,7 @@ public class ImsProductController {
 	 * @param price of an item of the product
 	 * @throws InvalidInputException and exception that can be thrown.
 	 */
-	public static void createProduct(String name, float price) throws InvalidInputException {
+	public static void createProduct(String name, float price, int quantity) throws InvalidInputException {
 		String error = "";
 		if (name == null || name.equals("")) {
 			error = "The name of a product cannot be empty.";
@@ -34,10 +34,12 @@ public class ImsProductController {
 		if (price == 0) {
 			error = "The price of a product cannot be zero";
 		}
+		if (quantity <= 0) {
+			error = "Quantity of a product cannot be less than one.";
+		}
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
 		}
-		
 		IMS ims = ImsApplication.getIms();
 		for (Product p : ims.getProducts()) {
 			if (p.getName().equals(name)) {
@@ -48,6 +50,7 @@ public class ImsProductController {
 			Product product = ImsFactory.eINSTANCE.createProduct();
 			product.setName(name);
 			product.setItemPrice(price);
+			product.setQuantity(quantity);
 			ims.getProducts().add(product);
 			ImsResource.save(ims);
 		} catch (RuntimeException e) {
@@ -62,13 +65,13 @@ public class ImsProductController {
 	 * @param quantity number of items
 	 * @throws InvalidInputException
 	 */
-	public static void addOrderItems(Product product, int quantity) throws InvalidInputException {
+	/*public static void addOrderItems(Product product, int quantity) throws InvalidInputException {
 		
-		if (quantity < 0) {
-			throw new InvalidInputException("Quantity of product cannot be negative");
+		if (quantity <= 0) {
+			throw new InvalidInputException("Quantity of product cannot be zero or negative");
 		}
 		try {
-			for (int count = 1; count <= quantity; quantity++) {
+			for (int count = 1; count <= quantity; count++) {
 				Item item = ImsFactory.eINSTANCE.createItem();
 				//The default value anyway
 				item.setStatus(ItemStatus.ORDERED);
@@ -79,7 +82,7 @@ public class ImsProductController {
 			throw new InvalidInputException(e.getMessage());
 		}
 		
-	}
+	}*/
 	
 	/**
 	 * Adds items to existing product items.
@@ -87,10 +90,10 @@ public class ImsProductController {
 	 * @param quantity number of items
 	 * @throws InvalidInputException
 	 */
-	public static void addExistingItems(Product product, int quantity) throws InvalidInputException {
+	/*public static void addExistingItems(Product product, int quantity) throws InvalidInputException {
 		
-		if (quantity < 0) {
-			throw new InvalidInputException("Quantity of product cannot be negative");
+		if (quantity <= 0) {
+			throw new InvalidInputException("Quantity of product cannot be zero or negative");
 		}
 		
 		try {
@@ -104,7 +107,7 @@ public class ImsProductController {
 		} catch (RuntimeException e) {
 			throw new InvalidInputException(e.getMessage());
 		}
-	}
+	}*/
 	
 	/**
 	 * Change the status of an item to sold during purchase.

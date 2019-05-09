@@ -9,6 +9,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.ali.hyacinth.ims.Customer;
 import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsFactory;
+import com.ali.hyacinth.ims.Item;
+import com.ali.hyacinth.ims.ItemStatus;
 import com.ali.hyacinth.ims.Manager;
 import com.ali.hyacinth.ims.Product;
 import com.ali.hyacinth.ims.ProductTransaction;
@@ -85,10 +87,23 @@ public class ImsTransactionController {
 	 * @throws InvalidInputException
 	 */
 	public static void createTransaction(Date date, String customerID, String managerUserName) throws InvalidInputException {
+		String error = "";
+		
+		if (customerID == null || customerID.length() == 0) {
+			error = "Select customer first.";
+		}
+		if (managerUserName == null || managerUserName.length() == 0) {
+			error = "Select manager first.";
+		}
+		
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
 		IMS ims = ImsApplication.getIms();
 		Customer c = findCustomer(customerID);
 		Manager manager = findManager(managerUserName);
-		String error = "";
+		
 		
 		if (c == null) {
 			error = "The customer does not exist, register first.";
@@ -205,6 +220,15 @@ public class ImsTransactionController {
 	 * @throws InvalidInputException
 	 */
 	public static Receipt purchase(String id, float amountPaid) throws InvalidInputException {
+		String error = "";
+		if (id == null || id.length() == 0) {
+			error = "Please select an exisiting transaction to check out.";
+		} else if (amountPaid <= 0) {
+			error = "The amount to pay cannot be zero or negative.";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
 		Transaction transaction = findTransaction(id);
 		Receipt receipt = null;
 		if (transaction != null) {
@@ -224,6 +248,11 @@ public class ImsTransactionController {
 					toPTransaction.setQuantity(pTransaction.getQuantity());
 					
 					receipt.addPTransaction(toPTransaction);
+					
+					List<Item> items = new ArrayList<Item>(pTransaction.getProduct().getItems());
+					for (int count = 0; count < pTransaction.getQuantity(); count++) {
+						items.get(count).setStatus(ItemStatus.SOLD);
+					}
 				}
 			} catch (RuntimeException e) {
 				throw new InvalidInputException(e.getMessage());

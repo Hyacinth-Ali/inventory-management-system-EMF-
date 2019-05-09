@@ -8,6 +8,7 @@ import com.ali.hyacinth.ims.ProductTransaction;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -172,11 +173,63 @@ public class ProductTransactionImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProduct(Product newProduct) {
+	public NotificationChain basicSetProduct(Product newProduct, NotificationChain msgs) {
 		Product oldProduct = product;
 		product = newProduct;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, oldProduct, product));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, oldProduct, newProduct);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProduct(Product newProduct) {
+		if (newProduct != product) {
+			NotificationChain msgs = null;
+			if (product != null)
+				msgs = ((InternalEObject)product).eInverseRemove(this, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, Product.class, msgs);
+			if (newProduct != null)
+				msgs = ((InternalEObject)newProduct).eInverseAdd(this, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, Product.class, msgs);
+			msgs = basicSetProduct(newProduct, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, newProduct, newProduct));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ImsPackage.PRODUCT_TRANSACTION__PRODUCT:
+				if (product != null)
+					msgs = ((InternalEObject)product).eInverseRemove(this, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, Product.class, msgs);
+				return basicSetProduct((Product)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ImsPackage.PRODUCT_TRANSACTION__PRODUCT:
+				return basicSetProduct(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

@@ -7,7 +7,6 @@ import com.ali.hyacinth.ims.Customer;
 import com.ali.hyacinth.ims.EmployeeRole;
 import com.ali.hyacinth.ims.ImsFactory;
 import com.ali.hyacinth.ims.ImsPackage;
-import com.ali.hyacinth.ims.Item;
 import com.ali.hyacinth.ims.ItemStatus;
 import com.ali.hyacinth.ims.Manager;
 import com.ali.hyacinth.ims.NamedElement;
@@ -112,13 +111,6 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * @generated
 	 */
 	private EClass supplierEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass itemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -250,17 +242,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProduct_Items() {
-		return (EReference)productEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getProduct_ItemPrice() {
-		return (EAttribute)productEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)productEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -269,7 +252,25 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * @generated
 	 */
 	public EAttribute getProduct_Id() {
+		return (EAttribute)productEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProduct_Quantity() {
 		return (EAttribute)productEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProduct_Producttransactions() {
+		return (EReference)productEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -529,24 +530,6 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getItem() {
-		return itemEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getItem_Status() {
-		return (EAttribute)itemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getOrder() {
 		return orderEClass;
 	}
@@ -763,9 +746,10 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
 		productEClass = createEClass(PRODUCT);
-		createEReference(productEClass, PRODUCT__ITEMS);
 		createEAttribute(productEClass, PRODUCT__ITEM_PRICE);
 		createEAttribute(productEClass, PRODUCT__ID);
+		createEAttribute(productEClass, PRODUCT__QUANTITY);
+		createEReference(productEClass, PRODUCT__PRODUCTTRANSACTIONS);
 
 		personEClass = createEClass(PERSON);
 		createEReference(personEClass, PERSON__ROLES);
@@ -803,9 +787,6 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEReference(personRoleEClass, PERSON_ROLE__PERSON);
 
 		supplierEClass = createEClass(SUPPLIER);
-
-		itemEClass = createEClass(ITEM);
-		createEAttribute(itemEClass, ITEM__STATUS);
 
 		orderEClass = createEClass(ORDER);
 		createEAttribute(orderEClass, ORDER__ORDERED_DATE);
@@ -875,9 +856,10 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productEClass, Product.class, "Product", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProduct_Items(), this.getItem(), null, "items", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProduct_ItemPrice(), ecorePackage.getEFloat(), "itemPrice", null, 1, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProduct_Id(), ecorePackage.getEString(), "id", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProduct_Quantity(), ecorePackage.getEInt(), "quantity", null, 1, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProduct_Producttransactions(), this.getProductTransaction(), this.getProductTransaction_Product(), "producttransactions", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPerson_Roles(), this.getPersonRole(), this.getPersonRole_Person(), "roles", null, 1, 3, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -916,9 +898,6 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 
 		initEClass(supplierEClass, Supplier.class, "Supplier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getItem_Status(), this.getItemStatus(), "status", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(orderEClass, Order.class, "Order", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOrder_OrderedDate(), ecorePackage.getEDate(), "orderedDate", null, 1, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_ArrivalDate(), ecorePackage.getEDate(), "arrivalDate", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -940,7 +919,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEClass(productTransactionEClass, ProductTransaction.class, "ProductTransaction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductTransaction_Price(), ecorePackage.getEFloat(), "price", null, 0, 1, ProductTransaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductTransaction_Quantity(), ecorePackage.getEInt(), "quantity", null, 0, 1, ProductTransaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProductTransaction_Product(), this.getProduct(), null, "product", null, 1, 1, ProductTransaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProductTransaction_Product(), this.getProduct(), this.getProduct_Producttransactions(), "product", null, 1, 1, ProductTransaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(itemStatusEEnum, ItemStatus.class, "ItemStatus");

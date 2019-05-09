@@ -94,15 +94,6 @@ public interface ImsFactory extends EFactory {
 	Supplier createSupplier();
 
 	/**
-	 * Returns a new object of class '<em>Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Item</em>'.
-	 * @generated
-	 */
-	Item createItem();
-
-	/**
 	 * Returns a new object of class '<em>Order</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

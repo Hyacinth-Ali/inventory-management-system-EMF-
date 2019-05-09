@@ -112,12 +112,13 @@ class ImsTransactionTests {
 	}
 	
 	@Test
-	public void testCreateTransactionEmptyBuyer() throws InvalidInputException {
+	public void testCreateTransactionWrongCustomer() throws InvalidInputException {
 		IMS ims = ImsApplication.getIms();
 		String name = "john";
 		String userName = "manager1";
 		String password = "12456";
 		String customerID = "customer1";
+		String customerID2 = "12457896";
 		String productName = "product";
 		float totalAmount = 100f;
 		float amountPaid = 100f;
@@ -125,6 +126,8 @@ class ImsTransactionTests {
 		String id = "_GnUEsHH6Eem3Hp-Jh3HlXg";
 		float price = 45f;
 		Date date = new Date();
+		
+		String error = "";
 		
 		try {
 			ImsPersonController.createPerson(name);
@@ -142,17 +145,249 @@ class ImsTransactionTests {
 		Product product = ims.getProducts().get(0);
 		
 		try {
-			ImsTransactionController.createTransaction(date, customerID, userName);
+			ImsTransactionController.createTransaction(date, customerID2, userName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("The customer does not exist, register first.", error);
+		// check no change in memory
+		checkResultTransaction(customer, manager, product, ims, date, totalAmount, 
+				amountPaid, id, amountUnpaid, 0, 0, 0);
+	}
+	
+	@Test
+	public void testCreateTransactionEmptyCustomer() throws InvalidInputException {
+		IMS ims = ImsApplication.getIms();
+		String name = "john";
+		String userName = "manager1";
+		String password = "12456";
+		String customerID = "customer1";
+		String customerID2 = "12457896";
+		String productName = "product";
+		float totalAmount = 100f;
+		float amountPaid = 100f;
+		float amountUnpaid = 10f;
+		String id = "_GnUEsHH6Eem3Hp-Jh3HlXg";
+		float price = 45f;
+		Date date = new Date();
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createPerson(name);
+			ImsPersonController.createPerson(name);
+			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
+			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
+			ImsProductController.createProduct(productName, price);
+			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
 		} catch (RuntimeException e) {
 			fail();
 		}
 		
+		Customer customer = ims.getCustomers().get(0);
+		Manager manager = ims.getManagers().get(0);
+		Product product = ims.getProducts().get(0);
+		
+		try {
+			ImsTransactionController.createTransaction(date, "", userName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
 		// check error
-		//assertEquals("The price of a product cannot be negative.", error);
+		assertEquals("Select customer first.", error);
 		// check no change in memory
 		checkResultTransaction(customer, manager, product, ims, date, totalAmount, 
-				amountPaid, id, amountUnpaid, 1, 0, 0);
+				amountPaid, id, amountUnpaid, 0, 0, 0);
 	}
+	
+	@Test
+	public void testCreateTransactionNullCustomer() throws InvalidInputException {
+		IMS ims = ImsApplication.getIms();
+		String name = "john";
+		String userName = "manager1";
+		String password = "12456";
+		String customerID = "customer1";
+		String customerID2 = "12457896";
+		String productName = "product";
+		float totalAmount = 100f;
+		float amountPaid = 100f;
+		float amountUnpaid = 10f;
+		String id = "_GnUEsHH6Eem3Hp-Jh3HlXg";
+		float price = 45f;
+		Date date = new Date();
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createPerson(name);
+			ImsPersonController.createPerson(name);
+			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
+			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
+			ImsProductController.createProduct(productName, price);
+			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+		} catch (RuntimeException e) {
+			fail();
+		}
+		
+		Customer customer = ims.getCustomers().get(0);
+		Manager manager = ims.getManagers().get(0);
+		Product product = ims.getProducts().get(0);
+		
+		try {
+			ImsTransactionController.createTransaction(date, null, userName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("Select customer first.", error);
+		// check no change in memory
+		checkResultTransaction(customer, manager, product, ims, date, totalAmount, 
+				amountPaid, id, amountUnpaid, 0, 0, 0);
+	}
+	
+	@Test
+	public void testCreateTransactionWrongManager() throws InvalidInputException {
+		IMS ims = ImsApplication.getIms();
+		String name = "john";
+		String userName = "manager1";
+		String password = "12456";
+		String customerID = "customer1";
+		String userName2 = "12457896";
+		String productName = "product";
+		float totalAmount = 100f;
+		float amountPaid = 100f;
+		float amountUnpaid = 10f;
+		String id = "_GnUEsHH6Eem3Hp-Jh3HlXg";
+		float price = 45f;
+		Date date = new Date();
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createPerson(name);
+			ImsPersonController.createPerson(name);
+			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
+			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
+			ImsProductController.createProduct(productName, price);
+			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+		} catch (RuntimeException e) {
+			fail();
+		}
+		
+		Customer customer = ims.getCustomers().get(0);
+		Manager manager = ims.getManagers().get(0);
+		Product product = ims.getProducts().get(0);
+		
+		try {
+			ImsTransactionController.createTransaction(date, customerID, userName2);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("You need a manager to create a transaction.", error);
+		// check no change in memory
+		checkResultTransaction(customer, manager, product, ims, date, totalAmount, 
+				amountPaid, id, amountUnpaid, 0, 0, 0);
+	}
+	
+	@Test
+	public void testCreateTransactionEmptyManager() throws InvalidInputException {
+		IMS ims = ImsApplication.getIms();
+		String name = "john";
+		String userName = "manager1";
+		String password = "12456";
+		String customerID = "customer1";
+		String customerID2 = "12457896";
+		String productName = "product";
+		float totalAmount = 100f;
+		float amountPaid = 100f;
+		float amountUnpaid = 10f;
+		String id = "_GnUEsHH6Eem3Hp-Jh3HlXg";
+		float price = 45f;
+		Date date = new Date();
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createPerson(name);
+			ImsPersonController.createPerson(name);
+			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
+			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
+			ImsProductController.createProduct(productName, price);
+			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+		} catch (RuntimeException e) {
+			fail();
+		}
+		
+		Customer customer = ims.getCustomers().get(0);
+		Manager manager = ims.getManagers().get(0);
+		Product product = ims.getProducts().get(0);
+		
+		try {
+			ImsTransactionController.createTransaction(date, customerID, "");
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("Select manager first.", error);
+		// check no change in memory
+		checkResultTransaction(customer, manager, product, ims, date, totalAmount, 
+				amountPaid, id, amountUnpaid, 0, 0, 0);
+	}
+	
+	@Test
+	public void testCreateTransactionNullManager() throws InvalidInputException {
+		IMS ims = ImsApplication.getIms();
+		String name = "john";
+		String userName = "manager1";
+		String password = "12456";
+		String customerID = "customer1";
+		String customerID2 = "12457896";
+		String productName = "product";
+		float totalAmount = 100f;
+		float amountPaid = 100f;
+		float amountUnpaid = 10f;
+		String id = "_GnUEsHH6Eem3Hp-Jh3HlXg";
+		float price = 45f;
+		Date date = new Date();
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createPerson(name);
+			ImsPersonController.createPerson(name);
+			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
+			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
+			ImsProductController.createProduct(productName, price);
+			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+		} catch (RuntimeException e) {
+			fail();
+		}
+		
+		Customer customer = ims.getCustomers().get(0);
+		Manager manager = ims.getManagers().get(0);
+		Product product = ims.getProducts().get(0);
+		
+		try {
+			ImsTransactionController.createTransaction(date, customerID, null);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		
+		// check error
+		assertEquals("Select manager first.", error);
+		// check no change in memory
+		checkResultTransaction(customer, manager, product, ims, date, totalAmount, 
+				amountPaid, id, amountUnpaid, 0, 0, 0);
+	}
+	
+	
 	
 	@Test
 	public void testaddProductTransactionSuccess() throws InvalidInputException {
@@ -244,13 +479,102 @@ class ImsTransactionTests {
 				amountPaid, id, amountUnpaid, 1, 0, 0);
 	}
 	
+	@Test
+	public void testaddProductTransactionZeroQuantity() throws InvalidInputException {
+		IMS ims = ImsApplication.getIms();
+		String name = "john";
+		String userName = "manager1";
+		String password = "12456";
+		String customerID = "customer1";
+		String productName = "product";
+		float totalAmount = 100f;
+		float amountPaid = 100f;
+		float amountUnpaid = 10f;
+		String id = "_GnUEsHH6Eem3Hp-Jh3HlXg";
+		float price = 45f;
+		Date date = new Date();
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createPerson(name);
+			ImsPersonController.createPerson(name);
+			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
+			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
+			ImsProductController.createProduct(productName, price);
+			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+		} catch (RuntimeException e) {
+			fail();
+		}
+		
+		Customer customer = ims.getCustomers().get(0);
+		Manager manager = ims.getManagers().get(0);
+		Product product = ims.getProducts().get(0);
+		
+		try {
+			ImsTransactionController.createTransaction(date, customerID, userName);
+			ImsTransactionController.addTransactionProduct(ims.getTransactions().get(0), product, 0);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		// check error
+		assertEquals("Quantity of items must be greater than zero.", error);
+		// check no change in memory
+		checkResultTransaction(customer, manager, product, ims, date, totalAmount, 
+				amountPaid, id, amountUnpaid, 1, 0, 0);
+	}
+	
+	@Test
+	public void testaddProductTransactionExcessQuantity() throws InvalidInputException {
+		IMS ims = ImsApplication.getIms();
+		String name = "john";
+		String userName = "manager1";
+		String password = "12456";
+		String customerID = "customer1";
+		String productName = "product";
+		float totalAmount = 100f;
+		float amountPaid = 100f;
+		float amountUnpaid = 10f;
+		String id = "_GnUEsHH6Eem3Hp-Jh3HlXg";
+		float price = 45f;
+		Date date = new Date();
+		
+		String error = "";
+		
+		try {
+			ImsPersonController.createPerson(name);
+			ImsPersonController.createPerson(name);
+			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
+			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
+			ImsProductController.createProduct(productName, price);
+			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+		} catch (RuntimeException e) {
+			fail();
+		}
+		
+		Customer customer = ims.getCustomers().get(0);
+		Manager manager = ims.getManagers().get(0);
+		Product product = ims.getProducts().get(0);
+		
+		try {
+			ImsTransactionController.createTransaction(date, customerID, userName);
+			ImsTransactionController.addTransactionProduct(ims.getTransactions().get(0), product, 10);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		// check error
+		assertEquals("Sorry! we do not have enough product in store.", error);
+		// check no change in memory
+		checkResultTransaction(customer, manager, product, ims, date, totalAmount, 
+				amountPaid, id, amountUnpaid, 1, 0, 0);
+	}
 	
 	private void checkResultTransaction(Customer c, Manager m, Product p, IMS ims,
 			Date date, float amt, float amtPaid, String id, 
 			float amtUnpaid, int numberOfTrans, int numberOfPT, int numberOfP) {
-		assertEquals(numberOfPT, ims.getTransactions().get(0).getProducttransactions().size());
 		assertEquals(numberOfTrans, ims.getTransactions().size());
 		if (numberOfTrans > 0) {
+			assertEquals(numberOfPT, ims.getTransactions().get(0).getProducttransactions().size());
 			assertEquals(date, ims.getTransactions().get(0).getDate());
 			//assertEquals(id, ims.getTransactions().get(0).getId());
 			assertEquals(2, ims.getPersons().size());

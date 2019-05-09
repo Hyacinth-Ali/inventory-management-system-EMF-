@@ -141,12 +141,6 @@ public class ImsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ImsPackage.ITEM: {
-				Item item = (Item)theEObject;
-				T result = caseItem(item);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ImsPackage.ORDER: {
 				Order order = (Order)theEObject;
 				T result = caseOrder(order);
@@ -331,21 +325,6 @@ public class ImsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSupplier(Supplier object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Item</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseItem(Item object) {
 		return null;
 	}
 

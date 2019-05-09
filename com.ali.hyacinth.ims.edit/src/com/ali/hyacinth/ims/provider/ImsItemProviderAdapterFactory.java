@@ -256,29 +256,6 @@ public class ImsItemProviderAdapterFactory extends ImsAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link com.ali.hyacinth.ims.Item} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ItemItemProvider itemItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link com.ali.hyacinth.ims.Item}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createItemAdapter() {
-		if (itemItemProvider == null) {
-			itemItemProvider = new ItemItemProvider(this);
-		}
-
-		return itemItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link com.ali.hyacinth.ims.Order} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -454,7 +431,6 @@ public class ImsItemProviderAdapterFactory extends ImsAdapterFactory implements 
 		if (auditItemProvider != null) auditItemProvider.dispose();
 		if (customerItemProvider != null) customerItemProvider.dispose();
 		if (supplierItemProvider != null) supplierItemProvider.dispose();
-		if (itemItemProvider != null) itemItemProvider.dispose();
 		if (orderItemProvider != null) orderItemProvider.dispose();
 		if (imsItemProvider != null) imsItemProvider.dispose();
 		if (productTransactionItemProvider != null) productTransactionItemProvider.dispose();

@@ -77,6 +77,7 @@ public interface ProductTransaction extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Product</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link com.ali.hyacinth.ims.Product#getProducttransactions <em>Producttransactions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Product</em>' reference isn't clear,
@@ -86,7 +87,8 @@ public interface ProductTransaction extends EObject {
 	 * @return the value of the '<em>Product</em>' reference.
 	 * @see #setProduct(Product)
 	 * @see com.ali.hyacinth.ims.ImsPackage#getProductTransaction_Product()
-	 * @model required="true"
+	 * @see com.ali.hyacinth.ims.Product#getProducttransactions
+	 * @model opposite="producttransactions" required="true"
 	 * @generated
 	 */
 	Product getProduct();

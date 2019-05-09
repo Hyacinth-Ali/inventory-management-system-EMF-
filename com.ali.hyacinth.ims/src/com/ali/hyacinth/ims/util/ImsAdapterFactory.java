@@ -112,10 +112,6 @@ public class ImsAdapterFactory extends AdapterFactoryImpl {
 				return createSupplierAdapter();
 			}
 			@Override
-			public Adapter caseItem(Item object) {
-				return createItemAdapter();
-			}
-			@Override
 			public Adapter caseOrder(Order object) {
 				return createOrderAdapter();
 			}
@@ -298,20 +294,6 @@ public class ImsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSupplierAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.ali.hyacinth.ims.Item <em>Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.ali.hyacinth.ims.Item
-	 * @generated
-	 */
-	public Adapter createItemAdapter() {
 		return null;
 	}
 

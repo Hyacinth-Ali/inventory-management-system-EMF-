@@ -3,7 +3,6 @@
 package com.ali.hyacinth.ims.provider;
 
 
-import com.ali.hyacinth.ims.ImsFactory;
 import com.ali.hyacinth.ims.ImsPackage;
 import com.ali.hyacinth.ims.Product;
 
@@ -12,9 +11,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -50,6 +46,8 @@ public class ProductItemProvider extends NamedElementItemProvider {
 
 			addItemPricePropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
+			addQuantityPropertyDescriptor(object);
+			addProducttransactionsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -99,33 +97,47 @@ public class ProductItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Quantity feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(ImsPackage.Literals.PRODUCT__ITEMS);
-		}
-		return childrenFeatures;
+	protected void addQuantityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Product_quantity_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Product_quantity_feature", "_UI_Product_type"),
+				 ImsPackage.Literals.PRODUCT__QUANTITY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Producttransactions feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addProducttransactionsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Product_producttransactions_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Product_producttransactions_feature", "_UI_Product_type"),
+				 ImsPackage.Literals.PRODUCT__PRODUCTTRANSACTIONS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -168,10 +180,8 @@ public class ProductItemProvider extends NamedElementItemProvider {
 		switch (notification.getFeatureID(Product.class)) {
 			case ImsPackage.PRODUCT__ITEM_PRICE:
 			case ImsPackage.PRODUCT__ID:
+			case ImsPackage.PRODUCT__QUANTITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case ImsPackage.PRODUCT__ITEMS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -187,11 +197,6 @@ public class ProductItemProvider extends NamedElementItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ImsPackage.Literals.PRODUCT__ITEMS,
-				 ImsFactory.eINSTANCE.createItem()));
 	}
 
 }

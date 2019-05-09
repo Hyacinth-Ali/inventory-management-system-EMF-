@@ -13,9 +13,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.ali.hyacinth.ims.Product#getItems <em>Items</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Product#getItemPrice <em>Item Price</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Product#getId <em>Id</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.Product#getQuantity <em>Quantity</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.Product#getProducttransactions <em>Producttransactions</em>}</li>
  * </ul>
  *
  * @see com.ali.hyacinth.ims.ImsPackage#getProduct()
@@ -23,22 +24,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Product extends NamedElement {
-	/**
-	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
-	 * The list contents are of type {@link com.ali.hyacinth.ims.Item}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Items</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Items</em>' containment reference list.
-	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Items()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Item> getItems();
-
 	/**
 	 * Returns the value of the '<em><b>Item Price</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -90,5 +75,49 @@ public interface Product extends NamedElement {
 	 * @generated
 	 */
 	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Quantity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Quantity</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Quantity</em>' attribute.
+	 * @see #setQuantity(int)
+	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Quantity()
+	 * @model required="true"
+	 * @generated
+	 */
+	int getQuantity();
+
+	/**
+	 * Sets the value of the '{@link com.ali.hyacinth.ims.Product#getQuantity <em>Quantity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Quantity</em>' attribute.
+	 * @see #getQuantity()
+	 * @generated
+	 */
+	void setQuantity(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Producttransactions</b></em>' reference list.
+	 * The list contents are of type {@link com.ali.hyacinth.ims.ProductTransaction}.
+	 * It is bidirectional and its opposite is '{@link com.ali.hyacinth.ims.ProductTransaction#getProduct <em>Product</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Producttransactions</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Producttransactions</em>' reference list.
+	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Producttransactions()
+	 * @see com.ali.hyacinth.ims.ProductTransaction#getProduct
+	 * @model opposite="product"
+	 * @generated
+	 */
+	EList<ProductTransaction> getProducttransactions();
 
 } // Product

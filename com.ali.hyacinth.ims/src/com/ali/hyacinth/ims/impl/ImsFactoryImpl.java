@@ -65,7 +65,6 @@ public class ImsFactoryImpl extends EFactoryImpl implements ImsFactory {
 			case ImsPackage.AUDIT: return createAudit();
 			case ImsPackage.CUSTOMER: return createCustomer();
 			case ImsPackage.SUPPLIER: return createSupplier();
-			case ImsPackage.ITEM: return createItem();
 			case ImsPackage.ORDER: return createOrder();
 			case ImsPackage.IMS: return createIMS();
 			case ImsPackage.PRODUCT_TRANSACTION: return createProductTransaction();
@@ -182,16 +181,6 @@ public class ImsFactoryImpl extends EFactoryImpl implements ImsFactory {
 	public Supplier createSupplier() {
 		SupplierImpl supplier = new SupplierImpl();
 		return supplier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Item createItem() {
-		ItemImpl item = new ItemImpl();
-		return item;
 	}
 
 	/**

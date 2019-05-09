@@ -108,8 +108,6 @@ public class ImsValidator extends EObjectValidator {
 				return validatePersonRole((PersonRole)value, diagnostics, context);
 			case ImsPackage.SUPPLIER:
 				return validateSupplier((Supplier)value, diagnostics, context);
-			case ImsPackage.ITEM:
-				return validateItem((Item)value, diagnostics, context);
 			case ImsPackage.ORDER:
 				return validateOrder((Order)value, diagnostics, context);
 			case ImsPackage.IMS:
@@ -220,15 +218,6 @@ public class ImsValidator extends EObjectValidator {
 	 */
 	public boolean validateSupplier(Supplier supplier, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(supplier, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateItem(Item item, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(item, diagnostics, context);
 	}
 
 	/**
