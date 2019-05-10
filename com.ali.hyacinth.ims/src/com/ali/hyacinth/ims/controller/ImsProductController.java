@@ -8,7 +8,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsFactory;
-import com.ali.hyacinth.ims.Item;
 import com.ali.hyacinth.ims.ItemStatus;
 import com.ali.hyacinth.ims.Product;
 import com.ali.hyacinth.ims.application.ImsApplication;
@@ -58,84 +57,6 @@ public class ImsProductController {
 		}
 		
 	}
-	
-	/**
-	 * Adds items to existing product for a new order.
-	 * @param product to be added items
-	 * @param quantity number of items
-	 * @throws InvalidInputException
-	 */
-	/*public static void addOrderItems(Product product, int quantity) throws InvalidInputException {
-		
-		if (quantity <= 0) {
-			throw new InvalidInputException("Quantity of product cannot be zero or negative");
-		}
-		try {
-			for (int count = 1; count <= quantity; count++) {
-				Item item = ImsFactory.eINSTANCE.createItem();
-				//The default value anyway
-				item.setStatus(ItemStatus.ORDERED);
-				product.getItems().add(item);
-			}
-			ImsResource.save((IMS)product.eContainer());
-		} catch (RuntimeException e) {
-			throw new InvalidInputException(e.getMessage());
-		}
-		
-	}*/
-	
-	/**
-	 * Adds items to existing product items.
-	 * @param product to be added items
-	 * @param quantity number of items
-	 * @throws InvalidInputException
-	 */
-	/*public static void addExistingItems(Product product, int quantity) throws InvalidInputException {
-		
-		if (quantity <= 0) {
-			throw new InvalidInputException("Quantity of product cannot be zero or negative");
-		}
-		
-		try {
-			for (int count = 1; count <= quantity; count++) {
-				Item item = ImsFactory.eINSTANCE.createItem();
-				//The default value anyway
-				item.setStatus(ItemStatus.IN_STORE);
-				product.getItems().add(item);
-			}
-			//ImsResource.save((IMS)product.eContainer());
-		} catch (RuntimeException e) {
-			throw new InvalidInputException(e.getMessage());
-		}
-	}*/
-	
-	/**
-	 * Change the status of an item to sold during purchase.
-	 * @param product of the items
-	 * @param quantity of the items to be removed
-	 * @throws InvalidInputException
-	 *//*
-	public static void removeProductItems(Product product, int quantity) throws InvalidInputException {
-		int itemsInStore = product.getItems().size();
-		//check that quantity in store is more than demanding quantities.
-		if (quantity > itemsInStore) {
-			throw new InvalidInputException("quantity of " + product.getName() + " is more than what we have inn store.");
-		} else {
-			for (Item item : product.getItems()) {
-				if (quantity > 0) {
-					try {
-						product.removeItem(item);
-						ImsPersistence.save(ImsApplication.getIms());
-						quantity--;
-					} catch (RuntimeException e) {
-						throw new InvalidInputException(e.getMessage());
-					}
-				}
-				
-			}
-		}
-		
-	}*/
 	
 	/**
 	 * Delete an instance of a product.
@@ -195,6 +116,17 @@ public class ImsProductController {
 	 * @throws InvalidInputException
 	 */
 	public static void updateProductName(String oldName, String newName) throws InvalidInputException {
+		String error = "";
+		if (oldName == null || oldName.length() == 0) {
+			error = "The name of a product cannot be empty.";
+		}
+		if (newName == null || newName.length() == 0) {
+			error = "Name of a product cannot be empty.";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
 		Product product = findProduct(oldName);
 		if (product != null) {
 			try {
@@ -204,6 +136,8 @@ public class ImsProductController {
 				throw new InvalidInputException(e.getMessage());
 			}
 			
+		} else {
+			throw new InvalidInputException("The product does not exist.");
 		}
 	}
 	
@@ -214,6 +148,16 @@ public class ImsProductController {
 	 * @throws InvalidInputException
 	 */
 	public static void updateProductPrice(String name, float newPrice) throws InvalidInputException {
+		String error = "";
+		if (name == null || name.length() == 0) {
+			error = "The name of a product cannot be empty.";
+		}
+		if (newPrice <= 0) {
+			error = "Price of a product cannot be less than zero or negative.";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
 		Product product = findProduct(name);
 		if (product != null) {
 			try {
@@ -223,6 +167,39 @@ public class ImsProductController {
 				throw new InvalidInputException(e.getMessage());
 			}
 			
+		} else {
+			throw new InvalidInputException("The product does not exist");
+		}
+	}
+	
+	/**
+	 * Updates product quantity.
+	 * @param name of the product.
+	 * @param newPrice new price of the product.
+	 * @throws InvalidInputException
+	 */
+	public static void addProductItem(String name, int newQuantity) throws InvalidInputException {
+		String error = "";
+		if (name == null || name.length() == 0) {
+			error = "The name of a product cannot be empty.";
+		}
+		if (newQuantity < 0) {
+			error = "Quantity of a product cannot be less than zero.";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		Product product = findProduct(name);
+		if (product != null) {
+			try {
+				product.setQuantity(product.getQuantity() + newQuantity);
+				ImsResource.save((IMS)product.eContainer());
+			} catch (RuntimeException e) {
+				throw new InvalidInputException(e.getMessage());
+			}
+			
+		} else {
+			throw new InvalidInputException("The product does not exist.");
 		}
 	}
 	

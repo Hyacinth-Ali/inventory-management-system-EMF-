@@ -85,18 +85,21 @@ class ImsProductTest {
 		}
 		
 		// check model in memory
-		checkResultProduct(name, price, quantity, ims, 1, 0);
+		checkResultProduct(name, price, quantity, ims, 1);
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	private void checkResultProduct(String name, float price, int quantity, IMS ims, 
-			int numberOfProducts, int numberOfItems) {
+			int numberOfProducts) {
 		assertEquals(numberOfProducts, ims.getProducts().size());
 		if (numberOfProducts > 0) {
 			assertEquals(name, ims.getProducts().get(0).getName());
 			assertEquals(quantity, ims.getProducts().get(0).getQuantity());
+			//assertEquals(price, ims.getProducts().get(0).getItemPrice());
 			assertEquals(1, ims.eContents().size());
 		} 
+		assertEquals(0, ims.getProducttransactions().size());
 	}			
 				
 	@Test
@@ -114,7 +117,7 @@ class ImsProductTest {
 		// check error
 		assertEquals("The name of a product cannot be empty.", error);
 		// check no change in memory
-		checkResultProduct(name, price, quantity, ims, 0, 0);
+		checkResultProduct(name, price, quantity, ims, 0);
 	}
 	
 	@Test
@@ -131,7 +134,7 @@ class ImsProductTest {
 			fail(); 
 		}
 		//check model in memory
-		checkResultProduct(name, price, quantity, ims, 1, 0);
+		checkResultProduct(name, price, quantity, ims, 1);
 		
 		try {
 			ImsProductController.deleteProduct(name);
@@ -141,7 +144,7 @@ class ImsProductTest {
 		}
 		
 		//check model in memory
-		checkResultProduct(name, price, quantity, ims, 0, 0);
+		checkResultProduct(name, price, quantity, ims, 0);
 	}
 	
 	@Test
@@ -161,7 +164,7 @@ class ImsProductTest {
 		// check error
 		assertEquals("The name of a product cannot be empty.", error);
 		// check no change in memory
-		checkResultProduct(name, price, quantity, ims, 0, 0);
+		checkResultProduct(name, price, quantity, ims, 0);
 	}
 	
 	@Test
@@ -182,7 +185,7 @@ class ImsProductTest {
 		// check error
 		assertEquals("The price of a product cannot be zero", error);
 		// check no change in memory
-		checkResultProduct(name, price, quantity, ims, 0, 0);
+		checkResultProduct(name, price, quantity, ims, 0);
 	}
 	
 	@Test
@@ -203,7 +206,7 @@ class ImsProductTest {
 		// check error
 		assertEquals("Quantity of a product cannot be less than one.", error);
 		// check no change in memory
-		checkResultProduct(name, price, quantity, ims, 0, 0);
+		checkResultProduct(name, price, quantity, ims, 0);
 	}
 	
 	@Test
@@ -224,7 +227,7 @@ class ImsProductTest {
 		// check error
 		assertEquals("Quantity of a product cannot be less than one.", error);
 		// check no change in memory
-		checkResultProduct(name, price, quantity, ims, 0, 0);
+		checkResultProduct(name, price, quantity, ims, 0);
 	}
 	
 	@Test
@@ -245,8 +248,457 @@ class ImsProductTest {
 		// check error
 		assertEquals("The price of a product cannot be negative.", error);
 		// check no change in memory
-		checkResultProduct(name, price, quantity, ims, 0, 0);
+		checkResultProduct(name, price, quantity, ims, 0);
+	}
+	
+	@Test
+	public void testUpdateProductNameScuccess() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		String newName = "product2";
+		float price = 12;
+		int quantity = 100;
+
+		//String error = null;
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		
+		try {
+			ImsProductController.updateProductName(name, newName);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		checkResultProduct(newName, price, quantity, ims, 1);
+	}
+	
+	@Test
+	public void testUpdateProductNewNameNull() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		String newName = null;
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		
+		try {
+			ImsProductController.updateProductName(name, newName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "Name of a product cannot be empty.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+	
+	@Test
+	public void testUpdateProductOldNameNull() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		String newName = "product2";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		name = null;
+		try {
+			ImsProductController.updateProductName(name, newName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		name = "product";
+		//check error
+		assertEquals(error, "The name of a product cannot be empty.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
 	}
 
+	@Test
+	public void testUpdateProductNameNonExist() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		String newName = "product2";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.updateProductName(newName, newName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "The product does not exist.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+
+	
+	@Test
+	public void testUpdateProductOldNameEmpty() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		String newName = "product2";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.updateProductName("", newName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "The name of a product cannot be empty.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+	
+	@Test
+	public void testUpdateProductNewameEmpty() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		String newName = "";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.updateProductName(name, newName);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "Name of a product cannot be empty.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+	
+	@Test
+	public void testUpdateProductPriceSuccess() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		float price = 12;
+		int quantity = 100;
+
+		//String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.updateProductPrice(name, 45);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		//check error
+		//assertEquals(error, "Name of a product cannot be empty.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+
+	@Test
+	public void testUpdateProductPriceNegative() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.updateProductPrice(name, -45);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "Price of a product cannot be less than zero or negative.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+
+
+	@Test
+	public void testUpdateProductPriceZero() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.updateProductPrice(name, 0);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "Price of a product cannot be less than zero or negative.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+
+	@Test
+	public void testUpdateProductPriceOldNameNull() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		String newName = "product2";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		name = null;
+		try {
+			ImsProductController.updateProductPrice(null, 71);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		name = "product";
+		//check error
+		assertEquals(error, "The name of a product cannot be empty.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+
+	@Test
+	public void testUpdateProductPriceNonExist() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		String newName = "product2";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.updateProductPrice(newName, 89);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "The product does not exist");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+
+	
+	@Test
+	public void testUpdateProductPriceOldNameEmpty() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.updateProductPrice("", 78);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "The name of a product cannot be empty.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+	
+	@Test
+	public void testAddProductItemsSuccess() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		float price = 12;
+		int quantity = 100;
+		int newQuantity = 78;
+
+		//String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.addProductItem(name, newQuantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+	
+		//check error
+		//assertEquals(error, "Name of a product cannot be empty.");
+		//check memory
+		checkResultProduct(name, price, quantity+newQuantity, ims, 1);
+	}
+
+	@Test
+	public void testAddProductItemsNegative() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.addProductItem(name, -56);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "Quantity of a product cannot be less than zero.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+
+
+
+	@Test
+	public void testAddProductItemsOldNameNull() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		String newName = "product2";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		name = null;
+		try {
+			ImsProductController.addProductItem(null, 56);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		name = "product";
+		//check error
+		assertEquals(error, "The name of a product cannot be empty.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+
+	@Test
+	public void testAddProductItemsNonExist() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		String newName = "product2";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.addProductItem(newName, 78);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "The product does not exist.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+
+	
+	@Test
+	public void testAddProductItemsOldNameEmpty() {
+		IMS ims = ImsApplication.getIms();		
+		String name = "product";
+		float price = 12;
+		int quantity = 100;
+
+		String error = "";
+		
+		try {
+			ImsProductController.createProduct(name, price, quantity);
+		} catch (InvalidInputException e) {
+			fail();
+		}
+		try {
+			ImsProductController.addProductItem("", 56);
+		} catch (InvalidInputException e) {
+			error = e.getMessage();
+		}
+		//check error
+		assertEquals(error, "The name of a product cannot be empty.");
+		//check memory
+		checkResultProduct(name, price, quantity, ims, 1);
+	}
+	
+	
 
 }

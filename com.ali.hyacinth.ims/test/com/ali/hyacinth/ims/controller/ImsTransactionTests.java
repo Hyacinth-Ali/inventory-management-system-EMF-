@@ -76,6 +76,7 @@ class ImsTransactionTests {
 		String password = "12456";
 		String customerID = "customer1";
 		String productName = "product";
+		int quantity = 78;
 		float totalAmount = 100f;
 		float amountPaid = 100f;
 		float amountUnpaid = 10f;
@@ -88,8 +89,7 @@ class ImsTransactionTests {
 			ImsPersonController.createPerson(name);
 			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
 			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
-			ImsProductController.createProduct(productName, price);
-			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+			ImsProductController.createProduct(productName, price, quantity);
 		} catch (RuntimeException e) {
 			fail();
 		}
@@ -120,6 +120,7 @@ class ImsTransactionTests {
 		String customerID = "customer1";
 		String customerID2 = "12457896";
 		String productName = "product";
+		int quantity = 1005;
 		float totalAmount = 100f;
 		float amountPaid = 100f;
 		float amountUnpaid = 10f;
@@ -134,8 +135,7 @@ class ImsTransactionTests {
 			ImsPersonController.createPerson(name);
 			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
 			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
-			ImsProductController.createProduct(productName, price);
-			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+			ImsProductController.createProduct(productName, price, quantity);
 		} catch (RuntimeException e) {
 			fail();
 		}
@@ -166,6 +166,7 @@ class ImsTransactionTests {
 		String customerID = "customer1";
 		String customerID2 = "12457896";
 		String productName = "product";
+		int quantity = 7899;
 		float totalAmount = 100f;
 		float amountPaid = 100f;
 		float amountUnpaid = 10f;
@@ -180,8 +181,7 @@ class ImsTransactionTests {
 			ImsPersonController.createPerson(name);
 			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
 			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
-			ImsProductController.createProduct(productName, price);
-			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+			ImsProductController.createProduct(productName, price, quantity);
 		} catch (RuntimeException e) {
 			fail();
 		}
@@ -212,6 +212,7 @@ class ImsTransactionTests {
 		String customerID = "customer1";
 		String customerID2 = "12457896";
 		String productName = "product";
+		int quantity = 7845;
 		float totalAmount = 100f;
 		float amountPaid = 100f;
 		float amountUnpaid = 10f;
@@ -226,8 +227,7 @@ class ImsTransactionTests {
 			ImsPersonController.createPerson(name);
 			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
 			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
-			ImsProductController.createProduct(productName, price);
-			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+			ImsProductController.createProduct(productName, price, quantity);
 		} catch (RuntimeException e) {
 			fail();
 		}
@@ -258,6 +258,7 @@ class ImsTransactionTests {
 		String customerID = "customer1";
 		String userName2 = "12457896";
 		String productName = "product";
+		int quantity = 457;
 		float totalAmount = 100f;
 		float amountPaid = 100f;
 		float amountUnpaid = 10f;
@@ -272,8 +273,7 @@ class ImsTransactionTests {
 			ImsPersonController.createPerson(name);
 			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
 			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
-			ImsProductController.createProduct(productName, price);
-			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+			ImsProductController.createProduct(productName, price, quantity);
 		} catch (RuntimeException e) {
 			fail();
 		}
@@ -304,6 +304,7 @@ class ImsTransactionTests {
 		String customerID = "customer1";
 		String customerID2 = "12457896";
 		String productName = "product";
+		int quantity = 457;
 		float totalAmount = 100f;
 		float amountPaid = 100f;
 		float amountUnpaid = 10f;
@@ -318,8 +319,7 @@ class ImsTransactionTests {
 			ImsPersonController.createPerson(name);
 			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
 			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
-			ImsProductController.createProduct(productName, price);
-			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+			ImsProductController.createProduct(productName, price, quantity);
 		} catch (RuntimeException e) {
 			fail();
 		}
@@ -350,6 +350,7 @@ class ImsTransactionTests {
 		String customerID = "customer1";
 		String customerID2 = "12457896";
 		String productName = "product";
+		int quantity = 457;
 		float totalAmount = 100f;
 		float amountPaid = 100f;
 		float amountUnpaid = 10f;
@@ -364,8 +365,7 @@ class ImsTransactionTests {
 			ImsPersonController.createPerson(name);
 			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
 			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
-			ImsProductController.createProduct(productName, price);
-			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+			ImsProductController.createProduct(productName, price, quantity);
 		} catch (RuntimeException e) {
 			fail();
 		}
@@ -397,6 +397,7 @@ class ImsTransactionTests {
 		String password = "12456";
 		String customerID = "customer1";
 		String productName = "product";
+		int quantity = 457;
 		float totalAmount = 100f;
 		float amountPaid = 100f;
 		float amountUnpaid = 10f;
@@ -409,8 +410,7 @@ class ImsTransactionTests {
 			ImsPersonController.createPerson(name);
 			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
 			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
-			ImsProductController.createProduct(productName, price);
-			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+			ImsProductController.createProduct(productName, price, quantity);
 		} catch (RuntimeException e) {
 			fail();
 		}
@@ -442,6 +442,7 @@ class ImsTransactionTests {
 		String password = "12456";
 		String customerID = "customer1";
 		String productName = "product";
+		int quantity = 457;
 		float totalAmount = 100f;
 		float amountPaid = 100f;
 		float amountUnpaid = 10f;
@@ -456,8 +457,7 @@ class ImsTransactionTests {
 			ImsPersonController.createPerson(name);
 			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
 			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
-			ImsProductController.createProduct(productName, price);
-			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+			ImsProductController.createProduct(productName, price, quantity);
 		} catch (RuntimeException e) {
 			fail();
 		}
@@ -487,6 +487,7 @@ class ImsTransactionTests {
 		String password = "12456";
 		String customerID = "customer1";
 		String productName = "product";
+		int quantity = 457;
 		float totalAmount = 100f;
 		float amountPaid = 100f;
 		float amountUnpaid = 10f;
@@ -501,8 +502,7 @@ class ImsTransactionTests {
 			ImsPersonController.createPerson(name);
 			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
 			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
-			ImsProductController.createProduct(productName, price);
-			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+			ImsProductController.createProduct(productName, price, quantity);
 		} catch (RuntimeException e) {
 			fail();
 		}
@@ -532,6 +532,7 @@ class ImsTransactionTests {
 		String password = "12456";
 		String customerID = "customer1";
 		String productName = "product";
+		int quantity = 5;
 		float totalAmount = 100f;
 		float amountPaid = 100f;
 		float amountUnpaid = 10f;
@@ -546,8 +547,7 @@ class ImsTransactionTests {
 			ImsPersonController.createPerson(name);
 			ImsPersonController.addManager(userName, password, ims.getPersons().get(0));
 			ImsPersonController.addCustomer(customerID, ims.getPersons().get(1));
-			ImsProductController.createProduct(productName, price);
-			ImsProductController.addExistingItems(ims.getProducts().get(0), 5);
+			ImsProductController.createProduct(productName, price, quantity);
 		} catch (RuntimeException e) {
 			fail();
 		}

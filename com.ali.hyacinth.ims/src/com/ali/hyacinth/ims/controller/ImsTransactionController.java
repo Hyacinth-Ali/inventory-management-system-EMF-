@@ -141,7 +141,7 @@ public class ImsTransactionController {
 		String error = "";
 		if (quantity <= 0) {
 			error = "Quantity of items must be greater than zero.";
-		} else if(quantity > product.getItems().size()) {
+		} else if(quantity > product.getQuantity()) {
 			error = "Sorry! we do not have enough product in store.";
 		}
 		if (error.length() > 0) {
@@ -249,10 +249,8 @@ public class ImsTransactionController {
 					
 					receipt.addPTransaction(toPTransaction);
 					
-					List<Item> items = new ArrayList<Item>(pTransaction.getProduct().getItems());
-					for (int count = 0; count < pTransaction.getQuantity(); count++) {
-						items.get(count).setStatus(ItemStatus.SOLD);
-					}
+					pTransaction.getProduct().setQuantity(pTransaction.getProduct().getQuantity() - 
+							pTransaction.getQuantity());
 				}
 			} catch (RuntimeException e) {
 				throw new InvalidInputException(e.getMessage());
