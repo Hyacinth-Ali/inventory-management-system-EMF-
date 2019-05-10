@@ -6,6 +6,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.ali.hyacinth.ims.Customer;
+import com.ali.hyacinth.ims.EmployeeRole;
 import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsFactory;
 import com.ali.hyacinth.ims.Manager;
@@ -14,6 +15,7 @@ import com.ali.hyacinth.ims.PersonRole;
 import com.ali.hyacinth.ims.Transaction;
 import com.ali.hyacinth.ims.application.ImsApplication;
 import com.ali.hyacinth.ims.resource.ImsResource;
+
 
 public class ImsPersonController {
 	
@@ -376,7 +378,7 @@ public class ImsPersonController {
 	 * @param personName of the manager
 	 * @return the manager
 	 */
-	private static Manager findManager(String userName) {
+	public static Manager findManager(String userName) {
 		Manager manager = null;
 		for (Manager m : ImsApplication.getIms().getManagers()) {
 			if (userName.equals(m.getUserName())) {
@@ -459,21 +461,23 @@ public class ImsPersonController {
 	 */
 	public static void createManager(String name, String userName, String password) throws InvalidInputException{
 		IMS ims = ImsApplication.getIms();
+		EmployeeRole employee = ImsApplication.getCurrentEmployee();
 		String error = "";
 		Manager m = null;
 		Person p = null;
 		
 		if (name == null || name == "") {
 			error = "The name of a person cannot be empty.";
-		} 
-		if (password == null || password == "") {
+		} else if (password == null || password == "") {
 			error = "You cannot create a manager with empty password.";
-		}
-		if (userName == null || userName == "") {
+		} else if (userName == null || userName == "") {
 			error = "The user name of a manager cannot be empty.";
-		}
-		if (!isManagerUsernameUnique(userName)) {
+		} else if (!isManagerUsernameUnique(userName)) {
 			error = "The user name : " + userName + " already exist.";
+		} else {
+			if (employee != null) {
+				error = "Cannot register a new employee while an employee is logged in.";
+			}
 		}
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
@@ -636,7 +640,6 @@ public class ImsPersonController {
 	
 	/*********************************/
 	// Manager Controllers, End
-	/**********************************/
-	
+	/**********************************/	
 
 }

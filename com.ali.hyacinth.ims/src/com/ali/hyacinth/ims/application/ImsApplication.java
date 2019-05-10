@@ -1,7 +1,10 @@
 package com.ali.hyacinth.ims.application;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import com.ali.hyacinth.ims.Customer;
+import com.ali.hyacinth.ims.EmployeeRole;
 import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsFactory;
 import com.ali.hyacinth.ims.ImsPackage;
@@ -9,10 +12,10 @@ import com.ali.hyacinth.ims.resource.ImsResource;
 import com.ali.hyacinth.ims.util.ImsResourceFactoryImpl;
 import com.ali.hyacinth.ims.util.ResourceHelper;
 
-
 public class ImsApplication {
 	
 	private static IMS ims;
+	private static EmployeeRole currentEmployee;
 
 	public static void main(String[] args) {
 		/**
@@ -58,21 +61,27 @@ public class ImsApplication {
 		
 	}
 
-	
 	/**
-	 * Saves model in resource
-	 * @param ims to be saved
-	 *//*
-	public static void save(IMS ims) {
-		String file = "resource/" + ims.getFileName() + ".ims";
-		ResourceHelper.INSTANCE.saveResource(ims, file);
-		currentIMS = ims;
+	 * @return the currentEmployee
+	 */
+	public static EmployeeRole getCurrentEmployee() {
+		return currentEmployee;
 	}
 
-	public static String getFileName() {
-		return fileName;
-	}*/
+	/**
+	 * @param currentEmployee the currentEmployee to set
+	 */
+	public static void setCurrentEmployee(EmployeeRole employee) {
+		currentEmployee = employee;
+	}
 	
+	public static void resetBlock223() {
+		if(ims!=null) {
+			EcoreUtil.deleteAll(ims.eContents(), true);;
+		}
+		setCurrentEmployee(null);
+		ims = ImsResource.load();
+	}
 	
 
 }
