@@ -466,11 +466,11 @@ public class ImsPersonController {
 		Manager m = null;
 		Person p = null;
 		
-		if (name == null || name == "") {
+		if (name == null || name.length() == 0) {
 			error = "The name of a person cannot be empty.";
 		} else if (password == null || password == "") {
 			error = "You cannot create a manager with empty password.";
-		} else if (userName == null || userName == "") {
+		} else if (userName == null || userName.length() == 0) {
 			error = "The user name of a manager cannot be empty.";
 		} else if (!isManagerUsernameUnique(userName)) {
 			error = "The user name : " + userName + " already exist.";
@@ -493,6 +493,7 @@ public class ImsPersonController {
 			ims.getPersons().add(p);
 			ims.getManagers().add(m);
 			ImsResource.save(ims);
+			ImsApplication.unloadIms();
 		} catch (RuntimeException e) {
 			if (p != null) {
 				EcoreUtil.delete(p);

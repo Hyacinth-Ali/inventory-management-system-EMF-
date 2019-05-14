@@ -1,5 +1,9 @@
 package com.ali.hyacinth.ims.application;
 
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -8,6 +12,8 @@ import com.ali.hyacinth.ims.EmployeeRole;
 import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsFactory;
 import com.ali.hyacinth.ims.ImsPackage;
+import com.ali.hyacinth.ims.gui.LoginPage;
+import com.ali.hyacinth.ims.gui.RegisterPage;
 import com.ali.hyacinth.ims.resource.ImsResource;
 import com.ali.hyacinth.ims.util.ImsResourceFactoryImpl;
 import com.ali.hyacinth.ims.util.ResourceHelper;
@@ -16,6 +22,7 @@ public class ImsApplication {
 	
 	private static IMS ims;
 	private static EmployeeRole currentEmployee;
+	private static JFrame frame;
 
 	public static void main(String[] args) {
 		/**
@@ -31,6 +38,17 @@ public class ImsApplication {
 		/**
 		 * Start application
 		 */
+        
+        EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame = new LoginPage();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
 	}
 	
@@ -82,6 +100,21 @@ public class ImsApplication {
 		setCurrentEmployee(null);
 		ims = ImsResource.load();
 	}
+
+	/**
+	 * @return the frame
+	 */
+	public static JFrame getFrame() {
+		return frame;
+	}
+
+	/**
+	 * @param frame the frame to set
+	 */
+	public static void setFrame(JFrame frame) {
+		ImsApplication.frame = frame;
+	}
+	
 	
 
 }
