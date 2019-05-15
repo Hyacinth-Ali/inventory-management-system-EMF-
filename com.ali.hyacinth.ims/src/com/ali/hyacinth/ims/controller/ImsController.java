@@ -30,16 +30,16 @@ public class ImsController {
 	public static void login(String username, String password) throws InvalidInputException {
 		EmployeeRole currentEmployee = ImsApplication.getCurrentEmployee();
 		Manager manager = ImsPersonController.findManager(username);
-		ImsApplication.resetBlock223();
 		String error = "";
 		//Person person = User.getWithUsername(username);
 		if (currentEmployee != null) {
 			error = "Cannot login while a person is already logged in.";
 		} else if (manager == null) {
-			error = "The username does not exist.";
+			error = "The manager does not exist.";
 		} else {
 			if (manager.getPassword().equals(password)) {
 				ImsApplication.setCurrentEmployee(manager);
+				ImsApplication.resetBlock223();
 				return;	
 			}
 			error = "The username and password do not match.";
@@ -50,6 +50,7 @@ public class ImsController {
 	}
 
 	public static void logout() {
+		ImsApplication.unloadIms();
 		ImsApplication.setCurrentEmployee(null);
 	}
 

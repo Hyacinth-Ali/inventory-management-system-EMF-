@@ -23,6 +23,7 @@ import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
@@ -63,6 +64,9 @@ public class LoginPage extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginPage() {
+		
+		UIManager.put("OptionPane.messageForeground", Color.green);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 515);
 		contentPane = new JPanel();
@@ -118,8 +122,10 @@ public class LoginPage extends JFrame {
 		JButton btnLogout = new JButton("LOGOUT");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ImsApplication.setCurrentEmployee(null);
-				dispose();
+				error = "";
+				ImsController.logout();
+				JOptionPane.showMessageDialog(ImsApplication.getFrame(), "Successfully logged out", 
+						"Logout status", JOptionPane.INFORMATION_MESSAGE);				refreshData();
 			}
 		});
 		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -137,18 +143,27 @@ public class LoginPage extends JFrame {
 				char[] pass = passwordField.getPassword();
 				String password = new String(pass);
 				
+				boolean loggedIn = true;
+				
 				if (name != null && name.length() > 0) {
 					if (password != null && password.length() > 0) {
 						try {
 							ImsController.login(name, password);
 						} catch (InvalidInputException e) {
+							loggedIn = false;
 							error = e.getMessage();
 						}
 					} else {
+						loggedIn = false;
 						error = "You can't log in with empt password";
 					}
 				} else {
+					loggedIn = false;
 					error = "You can't log in with empt user name";
+				}
+				if(loggedIn) {
+					JOptionPane.showMessageDialog(ImsApplication.getFrame(), "Successfully logged in.", 
+							"Login Status", JOptionPane.CLOSED_OPTION);
 				}
 				
 				//update visuals
@@ -269,7 +284,7 @@ public class LoginPage extends JFrame {
 	
 	private void refreshData() {
 		//error
-		errorMessage.setText("");
+		errorMessage.setText(error);
 		
 		//clear contents
 		userName.setText("");

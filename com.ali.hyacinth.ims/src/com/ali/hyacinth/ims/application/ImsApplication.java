@@ -94,10 +94,10 @@ public class ImsApplication {
 	}
 	
 	public static void resetBlock223() {
-		if(ims!=null) {
+		/*if(ims!=null) {
 			EcoreUtil.deleteAll(ims.eContents(), true);;
-		}
-		setCurrentEmployee(null);
+		}*/
+		//setCurrentEmployee(null);
 		ims = ImsResource.load();
 	}
 
