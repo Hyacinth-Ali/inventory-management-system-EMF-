@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ims="http://hyacinth.com/ims">
-  <managers href="resource/data.ims#manager1"/>
-  <managers href="resource/data.ims#manager2"/>
-  <managers href="resource/data.ims#manager3"/>
-  <managers person="//@persons.3" userName="manager4" password="123"/>
-  <persons href="resource/data.ims#//@persons.0"/>
-  <persons href="resource/data.ims#//@persons.1"/>
-  <persons href="resource/data.ims#//@persons.2"/>
-  <persons name="Manager HYacinth" roles="manager4"/>
+  <managers person="//@persons.0" userName="manager1" password="123"/>
+  <managers person="//@persons.1" userName="manager2" password="1234"/>
+  <managers person="//@persons.2" userName="manager3" password="123"/>
+  <managers person="//@persons.3" userName="manager4" password="12345"/>
+  <persons name="Hyacinth" roles="manager1"/>
+  <persons name="Chijioke" roles="manager2"/>
+  <persons name="Dindu" roles="manager3"/>
+  <persons name="Ogoo" roles="manager4"/>
 </ims:IMS>

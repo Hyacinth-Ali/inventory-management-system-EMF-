@@ -69,7 +69,7 @@ public class ImsApplication {
 	 * unloads ims from data base.
 	 * @return ims
 	 */
-	public static void unloadIms() {
+	/*public static void unloadIms() {
 		if (ims != null) {
 			if (ims.eResource() != null) {
 				Resource resource = ims.eResource();
@@ -77,7 +77,7 @@ public class ImsApplication {
 			}
 		}
 		
-	}
+	}*/
 
 	/**
 	 * @return the currentEmployee
@@ -98,7 +98,7 @@ public class ImsApplication {
 			EcoreUtil.deleteAll(ims.eContents(), true);;
 		}*/
 		//setCurrentEmployee(null);
-		ims = ImsResource.load();
+		//ims = ImsResource.load();
 	}
 
 	/**

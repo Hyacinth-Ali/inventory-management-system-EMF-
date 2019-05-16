@@ -67,7 +67,7 @@ class ImsProductTest {
 	
 	@AfterAll
 	public static void tearDown() {
-		ImsApplication.unloadIms();
+		//ImsApplication.unloadIms();
 	}
 	
 	@Test

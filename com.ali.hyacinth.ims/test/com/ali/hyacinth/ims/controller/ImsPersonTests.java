@@ -50,7 +50,7 @@ class ImsPersonTests {
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		ImsApplication.unloadIms();
+		//ImsApplication.unloadIms();
 	}
 
 	@BeforeEach
@@ -1007,7 +1007,7 @@ class ImsPersonTests {
 		checkResultManager(name, userName, password, ims, 1, 1);
 		
 		//check error
-		assertEquals("The user name : " + userName + " already exist.", error);
+		assertEquals("The user name, " + userName + ",  already exist.", error);
 		
 	}
 

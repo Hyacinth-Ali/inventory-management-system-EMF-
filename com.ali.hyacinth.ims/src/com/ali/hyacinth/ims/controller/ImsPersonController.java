@@ -473,7 +473,7 @@ public class ImsPersonController {
 		} else if (userName == null || userName.length() == 0) {
 			error = "The user name of a manager cannot be empty.";
 		} else if (!isManagerUsernameUnique(userName)) {
-			error = "The user name : " + userName + " already exist.";
+			error = "The user name, " + userName + ",  already exist.";
 		} else {
 			if (employee != null) {
 				error = "Cannot register a new employee while an employee is logged in.";
@@ -493,7 +493,6 @@ public class ImsPersonController {
 			ims.getPersons().add(p);
 			ims.getManagers().add(m);
 			ImsResource.save(ims);
-			ImsApplication.unloadIms();
 		} catch (RuntimeException e) {
 			if (p != null) {
 				EcoreUtil.delete(p);

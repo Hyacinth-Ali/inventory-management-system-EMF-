@@ -10,7 +10,7 @@ import com.ali.hyacinth.ims.util.ResourceHelper;
 
 public class ImsResource {
 	
-private static String filename = "data";
+private static String filename = "data3";
 	
 	public static void save(IMS ims) {
 		String file = "resource/" + filename + ".ims";

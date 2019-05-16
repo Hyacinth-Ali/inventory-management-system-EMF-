@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ims:IMS xmlns:ims="http://hyacinth.com/ims">
+  <managers person="//@persons.0" userName="manager1" password="123"/>
+  <managers person="//@persons.1" userName="manager2" password="123"/>
+  <persons name="Ogoo" roles="manager1"/>
+  <persons name="Hyacinth" roles="manager2"/>
+</ims:IMS>

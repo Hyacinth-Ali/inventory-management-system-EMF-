@@ -53,7 +53,7 @@ class ImsTransactionTests {
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		ImsApplication.unloadIms();
+		//ImsApplication.unloadIms();
 	}
 
 	@BeforeEach

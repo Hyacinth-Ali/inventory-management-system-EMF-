@@ -155,11 +155,11 @@ public class LoginPage extends JFrame {
 						}
 					} else {
 						loggedIn = false;
-						error = "You can't log in with empt password";
+						error = "You can't log in with empty password";
 					}
 				} else {
 					loggedIn = false;
-					error = "You can't log in with empt user name";
+					error = "You can't log in with empty user name";
 				}
 				if(loggedIn) {
 					JOptionPane.showMessageDialog(ImsApplication.getFrame(), "Successfully logged in.", 
@@ -178,7 +178,7 @@ public class LoginPage extends JFrame {
 		
 		errorMessage = new JLabel("Error Mesages");
 		errorMessage.setForeground(Color.RED);
-		errorMessage.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		errorMessage.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		
 		JButton btnRegister = new JButton("REGISTER");
 		btnRegister.addActionListener(new ActionListener() {

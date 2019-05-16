@@ -32,7 +32,7 @@ public interface NamedElement extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see com.ali.hyacinth.ims.ImsPackage#getNamedElement_Name()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	String getName();

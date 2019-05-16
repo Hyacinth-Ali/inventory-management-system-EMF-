@@ -8,7 +8,7 @@ import com.ali.hyacinth.ims.resource.ImsResource;
 
 public class ImsController {
 	
-	public static void saveGame() throws InvalidInputException {
+	public static void saveIMS() throws InvalidInputException {
 		EmployeeRole employee = ImsApplication.getCurrentEmployee();
 		String error = "";
 		if (!(employee instanceof Manager)) {
@@ -18,7 +18,7 @@ public class ImsController {
 			try {
 				IMS ims = ImsApplication.getIms();
 				ImsResource.save(ims);
-				ImsApplication.unloadIms();
+				//ImsApplication.unloadIms();
 			} catch (RuntimeException e) {
 				throw new InvalidInputException(e.getMessage());
 			}
@@ -50,7 +50,7 @@ public class ImsController {
 	}
 
 	public static void logout() {
-		ImsApplication.unloadIms();
+		//ImsApplication.unloadIms();
 		ImsApplication.setCurrentEmployee(null);
 	}
 
