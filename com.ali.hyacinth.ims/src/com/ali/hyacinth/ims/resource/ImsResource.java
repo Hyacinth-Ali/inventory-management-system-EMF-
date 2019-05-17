@@ -6,15 +6,21 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsFactory;
+import com.ali.hyacinth.ims.controller.InvalidInputException;
 import com.ali.hyacinth.ims.util.ResourceHelper;
 
 public class ImsResource {
 	
 private static String filename = "data3";
 	
-	public static void save(IMS ims) {
-		String file = "resource/" + filename + ".ims";
-		ResourceHelper.INSTANCE.saveResource(ims, file);
+	public static void save(IMS ims) throws InvalidInputException {
+		try {
+			String file = "resource/" + filename + ".ims";
+			ResourceHelper.INSTANCE.saveResource(ims, file);
+		} catch (RuntimeException e) {
+			throw new InvalidInputException("Could not save data to file "+ filename + ".");
+		}
+		
 	}
 	
 	public static IMS load() {

@@ -104,6 +104,7 @@ public class ImsProductController {
 			TOProduct toProduct = new TOProduct();
 			toProduct.setItemPrice(p.getItemPrice());
 			toProduct.setName(p.getName());
+			toProduct.setQuantity(p.getQuantity());
 			products.add(toProduct);
 		}
 		return products;
@@ -162,6 +163,37 @@ public class ImsProductController {
 		if (product != null) {
 			try {
 				product.setItemPrice(newPrice);
+				ImsResource.save((IMS)product.eContainer());
+			} catch (RuntimeException e) {
+				throw new InvalidInputException(e.getMessage());
+			}
+			
+		} else {
+			throw new InvalidInputException("The product does not exist");
+		}
+	}
+	
+	/**
+	 * Updates product price.
+	 * @param name of the product.
+	 * @param newPrice new price of the product.
+	 * @throws InvalidInputException
+	 */
+	public static void updateProductQuantity(String name, int newQuantity) throws InvalidInputException {
+		String error = "";
+		if (name == null || name.length() == 0) {
+			error = "The name of a product cannot be empty.";
+		}
+		if (newQuantity <= 0) {
+			error = "Quantity of a product cannot be less than zero or negative.";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		Product product = findProduct(name);
+		if (product != null) {
+			try {
+				product.setQuantity(newQuantity);
 				ImsResource.save((IMS)product.eContainer());
 			} catch (RuntimeException e) {
 				throw new InvalidInputException(e.getMessage());

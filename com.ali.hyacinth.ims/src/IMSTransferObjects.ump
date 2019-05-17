@@ -11,6 +11,7 @@ class Receipt {
 class TOProduct {
 	lazy String name;
 	lazy Double itemPrice;
+	lazy Integer quantity;
 }
 
 class TOProductTransaction {

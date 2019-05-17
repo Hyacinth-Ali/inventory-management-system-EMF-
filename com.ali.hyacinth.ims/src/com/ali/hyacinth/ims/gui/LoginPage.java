@@ -122,10 +122,9 @@ public class LoginPage extends JFrame {
 		JButton btnLogout = new JButton("LOGOUT");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				error = "";
-				ImsController.logout();
 				JOptionPane.showMessageDialog(ImsApplication.getFrame(), "Successfully logged out", 
-						"Logout status", JOptionPane.INFORMATION_MESSAGE);				refreshData();
+						"Logout status", JOptionPane.INFORMATION_MESSAGE);				
+				dispose();
 			}
 		});
 		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -162,14 +161,14 @@ public class LoginPage extends JFrame {
 					error = "You can't log in with empty user name";
 				}
 				if(loggedIn) {
-					JOptionPane.showMessageDialog(ImsApplication.getFrame(), "Successfully logged in.", 
-							"Login Status", JOptionPane.CLOSED_OPTION);
 					/**
-					 * Launch the main oage.
+					 * Launch the main page.
 					 */
 					try {
 						ImsPage frame = new ImsPage();
 						frame.setVisible(true);
+						ImsApplication.getFrame().setVisible(false);
+						ImsApplication.setFrame(frame);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

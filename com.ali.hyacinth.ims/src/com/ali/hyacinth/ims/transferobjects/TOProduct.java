@@ -14,6 +14,7 @@ public class TOProduct
   //TOProduct Attributes
   private String name;
   private double itemPrice;
+  private int quantity;
 
   //TOProduct Associations
   private TOProductTransaction tOProductTransaction;
@@ -26,6 +27,7 @@ public class TOProduct
   {
     name = null;
     itemPrice = 0;
+    quantity = 0;
   }
 
   //------------------------
@@ -48,6 +50,14 @@ public class TOProduct
     return wasSet;
   }
 
+  public boolean setQuantity(int aQuantity)
+  {
+    boolean wasSet = false;
+    quantity = aQuantity;
+    wasSet = true;
+    return wasSet;
+  }
+
   public String getName()
   {
     return name;
@@ -56,6 +66,11 @@ public class TOProduct
   public double getItemPrice()
   {
     return itemPrice;
+  }
+
+  public int getQuantity()
+  {
+    return quantity;
   }
   /* Code from template association_GetOne */
   public TOProductTransaction getTOProductTransaction()
@@ -111,7 +126,8 @@ public class TOProduct
   {
     return super.toString() + "["+
             "name" + ":" + getName()+ "," +
-            "itemPrice" + ":" + getItemPrice()+ "]" + System.getProperties().getProperty("line.separator") +
+            "itemPrice" + ":" + getItemPrice()+ "," +
+            "quantity" + ":" + getQuantity()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "tOProductTransaction = "+(getTOProductTransaction()!=null?Integer.toHexString(System.identityHashCode(getTOProductTransaction())):"null");
   }
 }

@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ims="http://hyacinth.com/ims">
-  <products name="Tire" itemPrice="1245.0" quantity="100"/>
-  <products name="Tube" itemPrice="1245.0" quantity="100"/>
-  <products name="Engine" itemPrice="1245.0" quantity="100"/>
-  <products name="Mirror" itemPrice="1245.0" quantity="100"/>
-  <products name="Chain" itemPrice="1245.0" quantity="100"/>
+  <products name="Tube" itemPrice="4000.0" quantity="100"/>
+  <products name="Tire" itemPrice="456.0" quantity="4578"/>
+  <products name="Spokes" itemPrice="1000.0" quantity="478"/>
+  <products name="Tubes" itemPrice="45.89" quantity="1000"/>
+  <products name="Engine1" itemPrice="12356.0" quantity="10000"/>
+  <products name="Engine3" itemPrice="4589.0" quantity="78954"/>
+  <products name="Block5" itemPrice="1245.0" quantity="1245"/>
+  <products name="Engine4" itemPrice="45897.0" quantity="4589"/>
+  <products name="Tire2" itemPrice="45.0" quantity="45"/>
+  <products name="Tire5" itemPrice="457.0" quantity="4578"/>
+  <products name="Chain5" itemPrice="4578.0" quantity="1245"/>
+  <products name="Tube45" itemPrice="255.0" quantity="45788"/>
+  <products name="Engine45" itemPrice="1245.0" quantity="4578"/>
+  <products name="Tire67" itemPrice="45.0" quantity="457"/>
+  <products name="Chain56" itemPrice="245.0" quantity="789"/>
+  <products name="Oil" itemPrice="4578.0" quantity="789"/>
+  <products name="Tire345" itemPrice="1245.0" quantity="2000"/>
+  <products name="Tire100" itemPrice="245.0" quantity="12456"/>
+  <products name="Tube789" itemPrice="245.0" quantity="7894"/>
+  <products name="Tube435" itemPrice="1457.0" quantity="4578"/>
+  <products name="Engine6" itemPrice="2458.0" quantity="7894"/>
+  <products name="Engine7" itemPrice="455.0" quantity="788"/>
+  <products name="Engine8" itemPrice="5689.0" quantity="879"/>
+  <products name="Engine9" itemPrice="478.0" quantity="789"/>
+  <products name="Engine10" itemPrice="1045.0" quantity="4569"/>
+  <products name="Engine11" itemPrice="14578.0" quantity="14589"/>
+  <products name="Engine34" itemPrice="1245.0" quantity="789"/>
+  <products name="Tube18" itemPrice="145.0" quantity="789"/>
   <managers person="//@persons.0" userName="manager1" password="123"/>
   <managers person="//@persons.1" userName="manager2" password="123"/>
   <managers person="//@persons.2" userName="manager3" password="123456"/>

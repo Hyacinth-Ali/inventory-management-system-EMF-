@@ -49,8 +49,8 @@ public class ImsController {
 		}
 	}
 
-	public static void logout() {
-		//ImsApplication.unloadIms();
+	public static void logout() throws InvalidInputException {
+		ImsResource.save(ImsApplication.getIms());
 		ImsApplication.setCurrentEmployee(null);
 	}
 

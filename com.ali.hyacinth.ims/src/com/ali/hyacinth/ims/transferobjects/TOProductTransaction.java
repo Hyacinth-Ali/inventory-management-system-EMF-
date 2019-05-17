@@ -3,7 +3,7 @@
 
 package com.ali.hyacinth.ims.transferobjects;
 
-// line 16 "../../../../../IMSTransferObjects.ump"
+// line 17 "../../../../../IMSTransferObjects.ump"
 public class TOProductTransaction
 {
 
