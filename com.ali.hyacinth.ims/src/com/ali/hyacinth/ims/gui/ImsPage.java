@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.ali.hyacinth.ims.controller.ImsProductController;
+import com.ali.hyacinth.ims.controller.InvalidInputException;
+
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 import javax.swing.JLayeredPane;
@@ -17,8 +21,15 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ImsPage extends JFrame {
+	
+	private String error = "";
 
 	private JPanel contentPane;
 	private JPanel transactionsPanel;
@@ -26,14 +37,17 @@ public class ImsPage extends JFrame {
 	private JPanel registerCustomerPanel;
 	private JPanel productsPanel;
 	private JLayeredPane layeredPane;
-	private JLabel lblProducts;
-	private JLabel lblRegistercustomer;
+	private JLabel lblDashboard;
 	private JLabel lblAccounts;
-	private JLabel lblTransactions;
+	private JLabel lblTransaction;
+	private JLabel lblProducts;
+	private JTextField textFieldProductName;
+	private JTextField textFieldProductPrice;
+	private JTextField textFieldProductQuantiy;
 
 	/**
 	 * Launch the application.
-	 */
+	 *//*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -45,7 +59,7 @@ public class ImsPage extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
@@ -102,99 +116,99 @@ public class ImsPage extends JFrame {
 		lblWelcome.setFont(new Font("Times New Roman", Font.BOLD, 36));
 		lblWelcome.setForeground(Color.MAGENTA);
 		
-		lblProducts = new JLabel("Products");
-		lblProducts.addMouseListener(new MouseAdapter() {
+		lblDashboard = new JLabel("Dashboard");
+		lblDashboard.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				layeredPane.removeAll();
 				layeredPane.add(productsPanel);
 				layeredPane.repaint();
 				layeredPane.revalidate();
-				lblProducts.setForeground(Color.WHITE);
-				lblTransactions.setForeground(Color.GREEN);
-				lblRegistercustomer.setForeground(Color.GREEN);
+				lblDashboard.setForeground(Color.WHITE);
+				lblProducts.setForeground(Color.GREEN);
 				lblAccounts.setForeground(Color.GREEN);
+				lblTransaction.setForeground(Color.GREEN);
 			}
 		});
-		lblProducts.setForeground(Color.GREEN);
-		lblProducts.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblDashboard.setForeground(Color.GREEN);
+		lblDashboard.setFont(new Font("Tahoma", Font.BOLD, 24));
 		
-		lblTransactions = new JLabel("Transactions");
-		lblTransactions.addMouseListener(new MouseAdapter() {
+		lblProducts = new JLabel("Products");
+		lblProducts.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				layeredPane.removeAll();
 				layeredPane.add(transactionsPanel);
 				layeredPane.repaint();
 				layeredPane.revalidate();
-				lblTransactions.setForeground(Color.WHITE);
-				lblProducts.setForeground(Color.GREEN);
-				lblRegistercustomer.setForeground(Color.GREEN);
+				lblProducts.setForeground(Color.WHITE);
+				lblDashboard.setForeground(Color.GREEN);
 				lblAccounts.setForeground(Color.GREEN);
+				lblTransaction.setForeground(Color.GREEN);
 			}
 		});
-		lblTransactions.setForeground(Color.GREEN);
-		lblTransactions.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblProducts.setForeground(Color.GREEN);
+		lblProducts.setFont(new Font("Tahoma", Font.BOLD, 24));
 		
-		lblAccounts = new JLabel("Accounts");
-		lblAccounts.addMouseListener(new MouseAdapter() {
+		lblTransaction = new JLabel("Transactions");
+		lblTransaction.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				layeredPane.removeAll();
 				layeredPane.add(accountsPanel);
 				layeredPane.repaint();
 				layeredPane.revalidate();
+				lblDashboard.setForeground(Color.GREEN);
 				lblProducts.setForeground(Color.GREEN);
-				lblTransactions.setForeground(Color.GREEN);
-				lblRegistercustomer.setForeground(Color.GREEN);
-				lblAccounts.setForeground(Color.WHITE);
+				lblAccounts.setForeground(Color.GREEN);
+				lblTransaction.setForeground(Color.WHITE);
 			}
 		});
-		lblAccounts.setForeground(Color.GREEN);
-		lblAccounts.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblTransaction.setForeground(Color.GREEN);
+		lblTransaction.setFont(new Font("Tahoma", Font.BOLD, 24));
 		
-		lblRegistercustomer = new JLabel("RegisterCustomer");
-		lblRegistercustomer.addMouseListener(new MouseAdapter() {
+		lblAccounts = new JLabel("Accounts");
+		lblAccounts.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				layeredPane.removeAll();
 				layeredPane.add(registerCustomerPanel);
 				layeredPane.repaint();
 				layeredPane.revalidate();
+				lblDashboard.setForeground(Color.GREEN);
 				lblProducts.setForeground(Color.GREEN);
-				lblTransactions.setForeground(Color.GREEN);
-				lblAccounts.setForeground(Color.GREEN);
-				lblRegistercustomer.setForeground(Color.WHITE);
+				lblTransaction.setForeground(Color.GREEN);
+				lblAccounts.setForeground(Color.WHITE);
 			}
 		});
-		lblRegistercustomer.setForeground(Color.GREEN);
-		lblRegistercustomer.setFont(new Font("Tahoma", Font.BOLD, 24));
+		lblAccounts.setForeground(Color.GREEN);
+		lblAccounts.setFont(new Font("Tahoma", Font.BOLD, 24));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(53)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblRegistercustomer)
+						.addComponent(lblAccounts)
+						.addComponent(lblTransaction)
 						.addComponent(lblProducts)
-						.addComponent(lblWelcome)
-						.addComponent(lblTransactions)
-						.addComponent(lblAccounts))
-					.addContainerGap(24, Short.MAX_VALUE))
+						.addComponent(lblDashboard)
+						.addComponent(lblWelcome))
+					.addContainerGap(86, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addComponent(lblWelcome)
-					.addGap(70)
+					.addGap(40)
+					.addComponent(lblDashboard)
+					.addGap(29)
 					.addComponent(lblProducts)
-					.addGap(60)
-					.addComponent(lblTransactions)
-					.addGap(62)
+					.addGap(36)
+					.addComponent(lblTransaction)
+					.addGap(34)
 					.addComponent(lblAccounts)
-					.addGap(62)
-					.addComponent(lblRegistercustomer)
-					.addGap(163))
+					.addGap(278))
 		);
 		panel.setLayout(gl_panel);
 		
@@ -206,7 +220,7 @@ public class ImsPage extends JFrame {
 		productsPanel = new JPanel();
 		layeredPane.add(productsPanel, "name_866715194326100");
 		
-		JLabel lblProductsPanel = new JLabel("Products Panel");
+		JLabel lblProductsPanel = new JLabel("Overview\r\n");
 		GroupLayout gl_productsPanel = new GroupLayout(productsPanel);
 		gl_productsPanel.setHorizontalGroup(
 			gl_productsPanel.createParallelGroup(Alignment.LEADING)
@@ -228,21 +242,123 @@ public class ImsPage extends JFrame {
 		layeredPane.add(transactionsPanel, "name_866723336924500");
 		
 		JLabel lblTransactionPanel = new JLabel("Transaction Panel");
+		
+		JPanel panel_1 = new JPanel();
 		GroupLayout gl_transactionsPanel = new GroupLayout(transactionsPanel);
 		gl_transactionsPanel.setHorizontalGroup(
 			gl_transactionsPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_transactionsPanel.createSequentialGroup()
-					.addGap(324)
+				.addGroup(Alignment.TRAILING, gl_transactionsPanel.createSequentialGroup()
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 312, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
 					.addComponent(lblTransactionPanel)
-					.addContainerGap(437, Short.MAX_VALUE))
+					.addGap(207))
 		);
 		gl_transactionsPanel.setVerticalGroup(
 			gl_transactionsPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_transactionsPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblTransactionPanel)
-					.addContainerGap(473, Short.MAX_VALUE))
+					.addGroup(gl_transactionsPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_transactionsPanel.createSequentialGroup()
+							.addGap(203)
+							.addComponent(lblTransactionPanel))
+						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 505, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
+		
+		JLabel lblNewLabel = new JLabel("Add Product");
+		
+		textFieldProductName = new JTextField();
+		textFieldProductName.setColumns(10);
+		
+		textFieldProductPrice = new JTextField();
+		textFieldProductPrice.setColumns(10);
+		
+		textFieldProductQuantiy = new JTextField();
+		textFieldProductQuantiy.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Name");
+		
+		JLabel lblPrice = new JLabel("Price");
+		
+		JLabel lblNewLabel_2 = new JLabel("Quantity");
+		
+		JButton btnAddProduct = new JButton("ADD PRODUCT");
+		btnAddProduct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				error = "";
+				float price = 0;
+				try {
+					price = Float.parseFloat(textFieldProductPrice.getText());
+				}
+				catch (NumberFormatException e) {
+					error = "Price figure needs to be a numerical value! ";
+				}
+				int quantity = 0;
+				try {
+					quantity = Integer.parseInt(textFieldProductQuantiy.getText());
+				}
+				catch (NumberFormatException e) {
+					error = error + "Quantity figure needs to be a numerical value! ";
+				}
+				
+				String name = textFieldProductName.getText();
+				
+				try {
+					ImsProductController.createProduct(name, price, quantity);
+				} catch (InvalidInputException e) {
+					error = e.getMessage();
+				}
+				
+			}
+		});
+		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addGap(103)
+					.addComponent(lblNewLabel)
+					.addContainerGap(121, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addContainerGap()
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel_1)
+								.addComponent(lblPrice))
+							.addPreferredGap(ComponentPlacement.RELATED, 32, Short.MAX_VALUE))
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(lblNewLabel_2)
+							.addPreferredGap(ComponentPlacement.UNRELATED)))
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnAddProduct)
+						.addComponent(textFieldProductQuantiy, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldProductPrice, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldProductName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(78))
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel)
+					.addGap(18)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textFieldProductName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_1))
+					.addGap(18)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textFieldProductPrice, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblPrice))
+					.addGap(18)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textFieldProductQuantiy, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_2))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnAddProduct)
+					.addContainerGap(299, Short.MAX_VALUE))
+		);
+		panel_1.setLayout(gl_panel_1);
 		transactionsPanel.setLayout(gl_transactionsPanel);
 		
 		accountsPanel = new JPanel();

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ims="http://hyacinth.com/ims">
+  <products name="Tire" itemPrice="1245.0" quantity="100"/>
+  <products name="Tube" itemPrice="1245.0" quantity="100"/>
+  <products name="Engine" itemPrice="1245.0" quantity="100"/>
+  <products name="Mirror" itemPrice="1245.0" quantity="100"/>
+  <products name="Chain" itemPrice="1245.0" quantity="100"/>
   <managers person="//@persons.0" userName="manager1" password="123"/>
   <managers person="//@persons.1" userName="manager2" password="123"/>
+  <managers person="//@persons.2" userName="manager3" password="123456"/>
   <persons name="Ogoo" roles="manager1"/>
   <persons name="Hyacinth" roles="manager2"/>
+  <persons name="Hyacinth" roles="manager3"/>
 </ims:IMS>

@@ -164,6 +164,15 @@ public class LoginPage extends JFrame {
 				if(loggedIn) {
 					JOptionPane.showMessageDialog(ImsApplication.getFrame(), "Successfully logged in.", 
 							"Login Status", JOptionPane.CLOSED_OPTION);
+					/**
+					 * Launch the main oage.
+					 */
+					try {
+						ImsPage frame = new ImsPage();
+						frame.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
 				
 				//update visuals
