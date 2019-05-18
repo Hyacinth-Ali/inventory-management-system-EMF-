@@ -9,8 +9,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.ali.hyacinth.ims.Customer;
 import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsFactory;
-import com.ali.hyacinth.ims.Item;
-import com.ali.hyacinth.ims.ItemStatus;
 import com.ali.hyacinth.ims.Manager;
 import com.ali.hyacinth.ims.Product;
 import com.ali.hyacinth.ims.ProductTransaction;
@@ -86,11 +84,13 @@ public class ImsTransactionController {
 	 * @param managerUserName of the seller
 	 * @throws InvalidInputException
 	 */
-	public static void createTransaction(Date date, String customerID, String managerUserName) throws InvalidInputException {
+	public static void createTransaction(String customerID, String managerUserName) throws InvalidInputException {
 		String error = "";
+		//get the current date
+		Date date = ImsApplication.getIms().getCurrentDate();
 		
 		if (customerID == null || customerID.length() == 0) {
-			error = "Select customer first.";
+			error = "Please, enter the customer ID.";
 		}
 		if (managerUserName == null || managerUserName.length() == 0) {
 			error = "Select manager first.";
@@ -102,8 +102,7 @@ public class ImsTransactionController {
 		
 		IMS ims = ImsApplication.getIms();
 		Customer c = findCustomer(customerID);
-		Manager manager = findManager(managerUserName);
-		
+		Manager manager = findManager(managerUserName);		
 		
 		if (c == null) {
 			error = "The customer does not exist, register first.";
@@ -123,8 +122,8 @@ public class ImsTransactionController {
 			transaction.setBuyer(c.getPerson());
 			transaction.setSeller(manager.getPerson());
 			ims.getTransactions().add(transaction);
-			System.out.println(transaction.getId());
-			System.out.println(date);
+			ImsApplication.setCurrentTransaction(transaction);
+			ImsApplication.setCurrentCustomer(c);
 		} catch (RuntimeException e) {
 			throw new InvalidInputException(e.getMessage());
 		}
@@ -137,13 +136,24 @@ public class ImsTransactionController {
 	 * @param product to be added to a transaction.
 	 * @throws InvalidInputException
 	 */
-	public static void addTransactionProduct(Transaction transaction, Product product, int quantity) throws InvalidInputException {
+	public static void addTransactionProduct(String productName, int quantity) throws InvalidInputException {
 		String error = "";
-		if (quantity <= 0) {
+		
+		Product product = ImsProductController.findProduct(productName);
+		Transaction transaction = ImsApplication.getCurrentTransaction();
+		if (transaction == null) {
+			error = "The customer ID must be enetered before adding oroducts.";
+		} else if (quantity <= 0) {
 			error = "Quantity of items must be greater than zero.";
-		} else if(quantity > product.getQuantity()) {
-			error = "Sorry! we do not have enough product in store.";
+		} else if (product == null) {
+			error = "The product does not exist.";
 		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		if(quantity > product.getQuantity()) {
+			error = "Sorry! we do not have enough product in store.";
+		} 
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
 		}
@@ -229,7 +239,7 @@ public class ImsTransactionController {
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
 		}
-		Transaction transaction = findTransaction(id);
+		Transaction transaction = ImsApplication.getCurrentTransaction();
 		Receipt receipt = null;
 		if (transaction != null) {
 			transaction.setAmountPaid(amountPaid);

@@ -6,14 +6,14 @@
   <products name="Tubes" itemPrice="45.89" quantity="1000"/>
   <products name="Engine3" itemPrice="4589.0" quantity="78954"/>
   <products name="Block5" itemPrice="1245.0" quantity="1245"/>
-  <products name="Engine4" itemPrice="45897.0" quantity="4589"/>
+  <products name="Engine4" itemPrice="45897.0" quantity="4542" producttransactions="//@transactions.0/@producttransactions.2"/>
   <products name="Tire2" itemPrice="45.0" quantity="45"/>
   <products name="Tire5" itemPrice="457.0" quantity="4578"/>
   <products name="Chain5" itemPrice="4578.0" quantity="1245"/>
   <products name="Tube45" itemPrice="255.0" quantity="45788"/>
   <products name="Engine45" itemPrice="1245.0" quantity="4578"/>
   <products name="Tire67" itemPrice="45.0" quantity="457"/>
-  <products name="Chain56" itemPrice="245.0" quantity="789"/>
+  <products name="Chain56" itemPrice="245.0" quantity="11" producttransactions="//@transactions.0/@producttransactions.0 //@transactions.0/@producttransactions.1"/>
   <products name="Oil" itemPrice="4578.0" quantity="789"/>
   <products name="Tire345" itemPrice="1245.0" quantity="2000"/>
   <products name="Tire100" itemPrice="245.0" quantity="12456"/>
@@ -30,11 +30,11 @@
   <managers person="//@persons.0" userName="manager1" password="123"/>
   <managers person="//@persons.1" userName="manager2" password="123"/>
   <managers person="//@persons.2" userName="manager3" password="123456"/>
-  <persons name="Ogoo" roles="manager1"/>
+  <persons name="Ogoo" roles="manager1" sales="_09-y4HnCEemsfJuwApdfYw"/>
   <persons name="Hyacinth" roles="manager2"/>
   <persons name="Hyacinth" roles="manager3"/>
   <persons name="Chinwe" roles="customer10"/>
-  <persons name="Ogoo" roles="customer2"/>
+  <persons name="Ogoo" roles="customer2" purchases="_09-y4HnCEemsfJuwApdfYw"/>
   <persons name="Sophie" roles="customer3"/>
   <persons name="Dindu" roles="customer4"/>
   <persons name="Chijioke" roles="customerA"/>
@@ -49,4 +49,9 @@
   <customers person="//@persons.8" customerID="customer100"/>
   <customers person="//@persons.9" customerID="c23"/>
   <customers person="//@persons.10" customerID="dgdf"/>
+  <transactions seller="//@persons.0" buyer="//@persons.4" date="2019-05-18T00:00:00.000-0400" amountPaid="78940.0" id="_09-y4HnCEemsfJuwApdfYw">
+    <producttransactions price="171500.0" quantity="700" product="//@products.13"/>
+    <producttransactions price="19110.0" quantity="78" product="//@products.13"/>
+    <producttransactions price="2157159.0" quantity="47" product="//@products.6"/>
+  </transactions>
 </ims:IMS>

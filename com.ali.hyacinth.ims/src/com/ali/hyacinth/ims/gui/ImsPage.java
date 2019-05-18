@@ -11,6 +11,7 @@ import com.ali.hyacinth.ims.application.ImsApplication;
 import com.ali.hyacinth.ims.controller.ImsController;
 import com.ali.hyacinth.ims.controller.ImsPersonController;
 import com.ali.hyacinth.ims.controller.ImsProductController;
+import com.ali.hyacinth.ims.controller.ImsTransactionController;
 import com.ali.hyacinth.ims.controller.InvalidInputException;
 import com.ali.hyacinth.ims.controller.TOCustomer;
 import com.ali.hyacinth.ims.resource.ImsResource;
@@ -75,6 +76,7 @@ public class ImsPage extends JFrame {
 	//Products
 	private HashMap<Integer, String> products;
 	private JTable tableProducts;
+	private HashMap<Integer, String> transactionProducts;
 	
 	//Customers
 	private HashMap<Integer, String> customers;
@@ -86,6 +88,10 @@ public class ImsPage extends JFrame {
 	private JTextField textFieldUpdateCustomerName;
 	private JTextField textFieldUpdateCustomerID;
 	private JComboBox<String> comboBoxCustomer;
+	private JTextField textFieldTransactionCustomerID;
+	private JTextField textFieldTransactionProductQuantity;
+	private JComboBox<String> comboBoxTransactionProduct;
+	private JTextField textFieldAmountPaid;
 
 	/**
 	 * Launch the application.
@@ -107,6 +113,7 @@ public class ImsPage extends JFrame {
 	 * Create the frame.
 	 */
 	public ImsPage() {
+		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1145, 655);
 		contentPane = new JPanel();
@@ -115,7 +122,7 @@ public class ImsPage extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel heading = new JPanel();
-		heading.setBackground(Color.LIGHT_GRAY);
+		heading.setBackground(new Color(47, 79, 79));
 		heading.setBounds(0, 0, 1123, 91);
 		contentPane.add(heading);
 		
@@ -586,24 +593,142 @@ public class ImsPage extends JFrame {
 		
 		transactionsPanel = new JPanel();
 		layeredPane.add(transactionsPanel, "name_866726102302000");
+		transactionsPanel.setLayout(null);
 		
-		JLabel lblCustomerAccounts = new JLabel("Customer accounts");
-		GroupLayout gl_transactionsPanel = new GroupLayout(transactionsPanel);
-		gl_transactionsPanel.setHorizontalGroup(
-			gl_transactionsPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_transactionsPanel.createSequentialGroup()
-					.addGap(318)
-					.addComponent(lblCustomerAccounts)
-					.addContainerGap(443, Short.MAX_VALUE))
-		);
-		gl_transactionsPanel.setVerticalGroup(
-			gl_transactionsPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_transactionsPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblCustomerAccounts)
-					.addContainerGap(473, Short.MAX_VALUE))
-		);
-		transactionsPanel.setLayout(gl_transactionsPanel);
+		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new LineBorder(new Color(0, 0, 255)));
+		panel_3.setBounds(0, 0, 321, 509);
+		transactionsPanel.add(panel_3);
+		panel_3.setLayout(null);
+		
+		JLabel lblCustomerId_1 = new JLabel("Customer ID");
+		lblCustomerId_1.setBounds(15, 31, 98, 20);
+		panel_3.add(lblCustomerId_1);
+		
+		textFieldTransactionCustomerID = new JTextField();
+		textFieldTransactionCustomerID.setBounds(128, 28, 178, 26);
+		panel_3.add(textFieldTransactionCustomerID);
+		textFieldTransactionCustomerID.setColumns(10);
+		
+		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				error = "";
+				String customerID = textFieldTransactionCustomerID.getText();
+				if (customerID.trim().length() < 0) {
+					error = "Please enter the customer ID.";
+				}
+				if (error.length() == 0) {
+					try {
+						ImsTransactionController.createTransaction(customerID, 
+								ImsApplication.getCurrentEmployee().getUserName());
+					} catch (InvalidInputException e) {
+						error = e.getMessage();
+					}
+				}
+				refreshTransactionPanel();
+			}
+		});
+		btnOk.setBounds(128, 61, 115, 29);
+		panel_3.add(btnOk);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBounds(0, 101, 321, 10);
+		panel_3.add(separator_3);
+		
+		JLabel lblAddProductsFor = new JLabel("Add Products for Purchase");
+		lblAddProductsFor.setBounds(15, 127, 193, 20);
+		panel_3.add(lblAddProductsFor);
+		
+		JLabel lblProduct = new JLabel("Product");
+		lblProduct.setBounds(15, 178, 69, 20);
+		panel_3.add(lblProduct);
+		
+		comboBoxTransactionProduct = new JComboBox<String>();
+		comboBoxTransactionProduct.setBounds(128, 175, 178, 26);
+		panel_3.add(comboBoxTransactionProduct);
+		
+		JLabel lblQuantity_1 = new JLabel("Quantity");
+		lblQuantity_1.setBounds(15, 226, 69, 20);
+		panel_3.add(lblQuantity_1);
+		
+		textFieldTransactionProductQuantity = new JTextField();
+		textFieldTransactionProductQuantity.setBounds(128, 223, 178, 26);
+		panel_3.add(textFieldTransactionProductQuantity);
+		textFieldTransactionProductQuantity.setColumns(10);
+		
+		JButton btnAdd = new JButton("ADD");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				error = "";
+				int selectedIndex = comboBoxTransactionProduct.getSelectedIndex();
+				int quantity = 0; 
+				if (selectedIndex < 0) {
+					error = "Product needs to be selected for transaction";
+				} 
+				try {
+					quantity = Integer.parseInt(textFieldTransactionProductQuantity.getText());
+				}
+				catch (NumberFormatException e) {
+					error = "Quantity number needs to be a numerical value! ";
+				}
+				if (error.length() == 0) {
+					String productName = transactionProducts.get(selectedIndex);
+					int option = JOptionPane.showConfirmDialog(ImsApplication.getFrame(), 
+							"Confirm to add "+productName+"("+quantity+")", 
+							"Confirm adding product", JOptionPane.OK_CANCEL_OPTION);
+					if (option == 0) {
+						try {
+							ImsTransactionController.addTransactionProduct(productName, quantity);
+						} catch (InvalidInputException e1) {
+							error = e1.getMessage();
+						}
+					}
+				} 
+				refreshTransactionPanel();
+			}
+		});
+		btnAdd.setBounds(128, 265, 115, 29);
+		panel_3.add(btnAdd);
+		
+		JSeparator separator_4 = new JSeparator();
+		separator_4.setBounds(0, 309, 321, 10);
+		panel_3.add(separator_4);
+		
+		JButton btnSubmit = new JButton("SUBMIT");
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				error = "";
+				float amountPaid = 0;
+				try {
+					amountPaid = Float.parseFloat(textFieldAmountPaid.getText());
+				}
+				catch (NumberFormatException e) {
+					error = "Amount needs to be a numerical value! ";
+				}
+				if (error.length() == 0) {
+					try {
+						String customerID = ImsApplication.getCurrentCustomer().getCustomerID();
+						ImsTransactionController.purchase(customerID, amountPaid);
+					} catch (InvalidInputException e1) {
+						error = e1.getMessage();
+					}
+				}
+				refreshTransactionPanel();
+			}
+		});
+		btnSubmit.setBounds(128, 380, 115, 29);
+		panel_3.add(btnSubmit);
+		
+		JLabel lblAmoundpaid = new JLabel("AmoundPaid");
+		lblAmoundpaid.setBounds(15, 335, 115, 20);
+		panel_3.add(lblAmoundpaid);
+		
+		textFieldAmountPaid = new JTextField();
+		textFieldAmountPaid.setBounds(128, 335, 178, 26);
+		panel_3.add(textFieldAmountPaid);
+		textFieldAmountPaid.setColumns(10);
 		
 		accountsPanel = new JPanel();
 		layeredPane.add(accountsPanel, "name_866729209042000");
@@ -836,6 +961,36 @@ public class ImsPage extends JFrame {
 			
 			textFieldUpdateCustomerName.setText("");
 			textFieldUpdateCustomerID.setText("");
+			
+		}
+	}
+	
+	private void refreshTransactionPanel() {
+		lblErrorMEssage.setText(error);
+		
+		if (error == null || error.length() == 0) {
+			
+			
+			textFieldTransactionCustomerID.setText("");
+			textFieldTransactionProductQuantity.setText("");
+			
+			
+			//Update transaction
+			transactionProducts = new HashMap<Integer, String>();
+			int index = 0;
+			List<String> names = new ArrayList<String>();
+			names.clear();
+			comboBoxTransactionProduct.removeAllItems();
+			for (TOProduct p : ImsProductController.getProducts()) {
+				names.add(p.getName());
+			}
+			Collections.sort(names);
+			for (String name : names) {
+				transactionProducts.put(index, name);
+				comboBoxTransactionProduct.addItem(name);
+				index++;
+			}
+			comboBoxTransactionProduct.setSelectedIndex(-1);
 			
 		}
 	}

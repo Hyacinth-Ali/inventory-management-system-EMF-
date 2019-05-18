@@ -15,6 +15,7 @@ import com.ali.hyacinth.ims.RegularEmployee;
 import com.ali.hyacinth.ims.Supplier;
 import com.ali.hyacinth.ims.Transaction;
 
+import java.util.Calendar;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -158,6 +159,16 @@ public class IMSImpl extends MinimalEObjectImpl.Container implements IMS {
 	protected IMSImpl() {
 		super();
 	}
+	
+	public java.util.Date getCurrentDate() {
+	    java.util.Calendar cal = java.util.Calendar.getInstance();
+	    cal.set(Calendar.HOUR_OF_DAY, 0);
+	    cal.set(Calendar.MINUTE, 0);
+	    cal.set(Calendar.SECOND, 0);
+	    cal.set(Calendar.MILLISECOND, 0);
+	    java.util.Date date = cal.getTime();
+	    return date;
+	  }
 
 	/**
 	 * <!-- begin-user-doc -->

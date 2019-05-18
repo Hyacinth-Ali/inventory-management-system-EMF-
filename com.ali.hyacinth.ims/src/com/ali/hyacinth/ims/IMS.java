@@ -48,6 +48,9 @@ public interface IMS extends EObject {
 	 * @generated
 	 */
 	EList<Product> getProducts();
+	
+	//current date
+	java.util.Date getCurrentDate();
 
 	/**
 	 * Returns the value of the '<em><b>Suppliers</b></em>' containment reference list.

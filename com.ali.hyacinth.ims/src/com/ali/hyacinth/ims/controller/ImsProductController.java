@@ -82,7 +82,7 @@ public class ImsProductController {
 	 * @param name unique name of the product
 	 * @return the product.
 	 */
-	private static Product findProduct(String name) {
+	public static Product findProduct(String name) {
 		Product p = null;
 		IMS ims = ImsApplication.getIms();
 		for (Product prod : ims.getProducts()) {

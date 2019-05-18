@@ -12,6 +12,7 @@ import com.ali.hyacinth.ims.EmployeeRole;
 import com.ali.hyacinth.ims.IMS;
 import com.ali.hyacinth.ims.ImsFactory;
 import com.ali.hyacinth.ims.ImsPackage;
+import com.ali.hyacinth.ims.Transaction;
 import com.ali.hyacinth.ims.gui.LoginPage;
 import com.ali.hyacinth.ims.gui.RegisterPage;
 import com.ali.hyacinth.ims.resource.ImsResource;
@@ -23,6 +24,8 @@ public class ImsApplication {
 	private static IMS ims;
 	private static EmployeeRole currentEmployee;
 	private static JFrame frame;
+	private static Transaction currentTransaction;
+	private static Customer currentCustomer;
 
 	public static void main(String[] args) {
 		/**
@@ -113,6 +116,34 @@ public class ImsApplication {
 	 */
 	public static void setFrame(JFrame frame) {
 		ImsApplication.frame = frame;
+	}
+
+	/**
+	 * @return the currentTransaction
+	 */
+	public static Transaction getCurrentTransaction() {
+		return currentTransaction;
+	}
+
+	/**
+	 * @param currentTransaction the currentTransaction to set
+	 */
+	public static void setCurrentTransaction(Transaction transaction) {
+		currentTransaction = transaction;
+	}
+
+	/**
+	 * @return the currentCustomer
+	 */
+	public static Customer getCurrentCustomer() {
+		return currentCustomer;
+	}
+
+	/**
+	 * @param currentCustomer the currentCustomer to set
+	 */
+	public static void setCurrentCustomer(Customer currentCustomer) {
+		ImsApplication.currentCustomer = currentCustomer;
 	}
 	
 	
