@@ -4,7 +4,6 @@
   <products name="Tire" itemPrice="456.0" quantity="4578"/>
   <products name="Spokes" itemPrice="1000.0" quantity="478"/>
   <products name="Tubes" itemPrice="45.89" quantity="1000"/>
-  <products name="Engine1" itemPrice="12356.0" quantity="10000"/>
   <products name="Engine3" itemPrice="4589.0" quantity="78954"/>
   <products name="Block5" itemPrice="1245.0" quantity="1245"/>
   <products name="Engine4" itemPrice="45897.0" quantity="4589"/>
@@ -34,4 +33,20 @@
   <persons name="Ogoo" roles="manager1"/>
   <persons name="Hyacinth" roles="manager2"/>
   <persons name="Hyacinth" roles="manager3"/>
+  <persons name="Chinwe" roles="customer10"/>
+  <persons name="Ogoo" roles="customer2"/>
+  <persons name="Sophie" roles="customer3"/>
+  <persons name="Dindu" roles="customer4"/>
+  <persons name="Chijioke" roles="customerA"/>
+  <persons name="Chinwe" roles="customer100"/>
+  <persons name="Chijioke" roles="c23"/>
+  <persons name="Cger" roles="dgdf"/>
+  <customers person="//@persons.3" customerID="customer10"/>
+  <customers person="//@persons.4" customerID="customer2"/>
+  <customers person="//@persons.5" customerID="customer3"/>
+  <customers person="//@persons.6" customerID="customer4"/>
+  <customers person="//@persons.7" customerID="customerA"/>
+  <customers person="//@persons.8" customerID="customer100"/>
+  <customers person="//@persons.9" customerID="c23"/>
+  <customers person="//@persons.10" customerID="dgdf"/>
 </ims:IMS>

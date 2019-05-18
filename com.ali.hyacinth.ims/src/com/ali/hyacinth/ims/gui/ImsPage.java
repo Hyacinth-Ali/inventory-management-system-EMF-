@@ -9,8 +9,10 @@ import javax.swing.border.EmptyBorder;
 
 import com.ali.hyacinth.ims.application.ImsApplication;
 import com.ali.hyacinth.ims.controller.ImsController;
+import com.ali.hyacinth.ims.controller.ImsPersonController;
 import com.ali.hyacinth.ims.controller.ImsProductController;
 import com.ali.hyacinth.ims.controller.InvalidInputException;
+import com.ali.hyacinth.ims.controller.TOCustomer;
 import com.ali.hyacinth.ims.resource.ImsResource;
 import com.ali.hyacinth.ims.transferobjects.TOProduct;
 
@@ -70,10 +72,20 @@ public class ImsPage extends JFrame {
 	private JLabel lblErrorMEssage;
 	
 	//data elements
+	//Products
 	private HashMap<Integer, String> products;
 	private JTable tableProducts;
-	private List<String> names = new ArrayList<String>();
+	
+	//Customers
+	private HashMap<Integer, String> customers;
+	
+
 	private JButton btnLogout;
+	private JTextField textFieldCustomerName;
+	private JTextField textFieldCustomerID;
+	private JTextField textFieldUpdateCustomerName;
+	private JTextField textFieldUpdateCustomerID;
+	private JComboBox<String> comboBoxCustomer;
 
 	/**
 	 * Launch the application.
@@ -461,6 +473,7 @@ public class ImsPage extends JFrame {
 		comboBoxProduct = new JComboBox<String>();
 		comboBoxProduct.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				error = "";
 				int selectedIndex = comboBoxProduct.getSelectedIndex();
 				String productName = products.get(selectedIndex);
 				if (productName != null) {
@@ -594,24 +607,147 @@ public class ImsPage extends JFrame {
 		
 		accountsPanel = new JPanel();
 		layeredPane.add(accountsPanel, "name_866729209042000");
+		accountsPanel.setLayout(null);
 		
-		JLabel lblRegisterCustomers = new JLabel("Register Customers");
-		GroupLayout gl_accountsPanel = new GroupLayout(accountsPanel);
-		gl_accountsPanel.setHorizontalGroup(
-			gl_accountsPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_accountsPanel.createSequentialGroup()
-					.addGap(337)
-					.addComponent(lblRegisterCustomers)
-					.addContainerGap(424, Short.MAX_VALUE))
-		);
-		gl_accountsPanel.setVerticalGroup(
-			gl_accountsPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_accountsPanel.createSequentialGroup()
-					.addGap(28)
-					.addComponent(lblRegisterCustomers)
-					.addContainerGap(461, Short.MAX_VALUE))
-		);
-		accountsPanel.setLayout(gl_accountsPanel);
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new LineBorder(new Color(0, 0, 255)));
+		panel_2.setBounds(0, 0, 338, 493);
+		accountsPanel.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblRegisterCustomer = new JLabel("Register Customer");
+		lblRegisterCustomer.setFont(new Font("Segoe UI Symbol", Font.BOLD, 24));
+		lblRegisterCustomer.setForeground(new Color(0, 128, 0));
+		lblRegisterCustomer.setBounds(62, 16, 231, 30);
+		panel_2.add(lblRegisterCustomer);
+		
+		JLabel lblName = new JLabel("Name");
+		lblName.setBounds(15, 62, 69, 20);
+		panel_2.add(lblName);
+		
+		textFieldCustomerName = new JTextField();
+		textFieldCustomerName.setBounds(131, 62, 192, 26);
+		panel_2.add(textFieldCustomerName);
+		textFieldCustomerName.setColumns(10);
+		
+		JLabel lblUserName = new JLabel("Customer ID");
+		lblUserName.setBounds(15, 109, 90, 20);
+		panel_2.add(lblUserName);
+		
+		textFieldCustomerID = new JTextField();
+		textFieldCustomerID.setBounds(131, 104, 192, 26);
+		panel_2.add(textFieldCustomerID);
+		textFieldCustomerID.setColumns(10);
+		
+		JButton btnRegister = new JButton("REGISTER");
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				error = "";
+				String id = textFieldCustomerID.getText();
+				String name = textFieldCustomerName.getText();
+				try {
+					ImsPersonController.createCustomer(id, name);
+				} catch (InvalidInputException e) {
+					error = e.getMessage();
+				}
+				refreshCustomerPanel();
+			}
+		});
+		btnRegister.setBorder(new LineBorder(new Color(128, 0, 0)));
+		btnRegister.setBounds(131, 150, 115, 29);
+		panel_2.add(btnRegister);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBackground(new Color(0, 0, 255));
+		separator_2.setBorder(null);
+		separator_2.setBounds(0, 196, 338, 9);
+		panel_2.add(separator_2);
+		
+		JLabel lblCustomerDetails = new JLabel("Customer Details");
+		lblCustomerDetails.setForeground(new Color(0, 128, 0));
+		lblCustomerDetails.setFont(new Font("Segoe UI Symbol", Font.BOLD, 24));
+		lblCustomerDetails.setBounds(62, 210, 231, 30);
+		panel_2.add(lblCustomerDetails);
+		
+		comboBoxCustomer = new JComboBox<String>();
+		comboBoxCustomer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				error = "";
+				int index = comboBoxCustomer.getSelectedIndex();
+				String selectedID = customers.get(index);
+				List<TOCustomer> customers = ImsPersonController.getCustomers();
+				for (TOCustomer c : customers) {
+					if (c.getId().equals(selectedID)) {
+						textFieldUpdateCustomerName.setText(c.getName());	
+						textFieldUpdateCustomerID.setText(c.getId());	
+						}
+				}
+				//refreshCustomerPanel();
+			}
+		});
+		comboBoxCustomer.setBounds(131, 252, 192, 26);
+		panel_2.add(comboBoxCustomer);
+		
+		JLabel lblCustomer = new JLabel("Customer");
+		lblCustomer.setBounds(15, 256, 69, 20);
+		panel_2.add(lblCustomer);
+		
+		textFieldUpdateCustomerName = new JTextField();
+		textFieldUpdateCustomerName.setBounds(131, 294, 192, 26);
+		panel_2.add(textFieldUpdateCustomerName);
+		textFieldUpdateCustomerName.setColumns(10);
+		
+		JLabel lblName_1 = new JLabel("Name");
+		lblName_1.setBounds(15, 297, 69, 20);
+		panel_2.add(lblName_1);
+		
+		textFieldUpdateCustomerID = new JTextField();
+		textFieldUpdateCustomerID.setBounds(131, 336, 192, 26);
+		panel_2.add(textFieldUpdateCustomerID);
+		textFieldUpdateCustomerID.setColumns(10);
+		
+		JLabel lblCustomerId = new JLabel("Customer ID");
+		lblCustomerId.setBounds(15, 339, 101, 20);
+		panel_2.add(lblCustomerId);
+		
+		JButton btnDelete_1 = new JButton("DELETE");
+		btnDelete_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				error = "";
+				int selectedIndex = comboBoxCustomer.getSelectedIndex();
+				String id = customers.get(selectedIndex);
+				try {
+					ImsPersonController.deleteCustomer(id);
+				} catch (InvalidInputException e1) {
+					error = e1.getMessage();
+				}
+			}
+		});
+		btnDelete_1.setBorder(new LineBorder(new Color(128, 0, 0)));
+		btnDelete_1.setBounds(233, 378, 90, 29);
+		panel_2.add(btnDelete_1);
+		
+		JButton btnUpdate = new JButton("UPDATE");
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				error = "";
+				String newID = textFieldUpdateCustomerID.getText();
+				String newName = textFieldUpdateCustomerName.getText();
+				
+				int index = comboBoxCustomer.getSelectedIndex();
+				String oldID = customers.get(index);
+				try {
+					ImsPersonController.upDateCustomerName(oldID, newName);
+					ImsPersonController.upDateCustomerID(oldID, newID);
+				} catch (InvalidInputException e1) {
+					error = e1.getMessage();
+				}
+				refreshCustomerPanel();
+			}
+		});
+		btnUpdate.setBorder(new LineBorder(new Color(128, 0, 0)));
+		btnUpdate.setBounds(131, 378, 93, 29);
+		panel_2.add(btnUpdate);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(290, 312, 314, 11);
@@ -620,6 +756,7 @@ public class ImsPage extends JFrame {
 		tableProducts.setAutoCreateRowSorter(true);
 		
 		refreshProductPanel();
+		refreshCustomerPanel();
 	}
 	
 	private void refreshTable() {
@@ -648,8 +785,9 @@ public class ImsPage extends JFrame {
 			
 			//Update product
 			products = new HashMap<Integer, String>();
-			comboBoxProduct.removeAll();
+			//comboBoxProduct.removeAll();
 			int index = 0;
+			List<String> names = new ArrayList<String>();
 			names.clear();
 			comboBoxProduct.removeAllItems();
 			for (TOProduct p : ImsProductController.getProducts()) {
@@ -666,6 +804,38 @@ public class ImsPage extends JFrame {
 			textFieldUpdateProductName.setText("");
 			textFieldUpdateProductPrice.setText("");
 			textFieldUpdateProductQuantity.setText("");
+			
+		}
+	}
+	
+	private void refreshCustomerPanel() {
+		lblErrorMEssage.setText(error);
+		
+		if (error == null || error.length() == 0) {
+			
+			//populate customer page with data
+			textFieldCustomerName.setText("");
+			textFieldCustomerID.setText("");
+			
+			//Update customer
+			customers = new HashMap<Integer, String>();
+			int index = 0;
+			List<String> customerIDs = new ArrayList<String>();
+			customerIDs.clear();
+			comboBoxCustomer.removeAllItems();
+			for (TOCustomer c : ImsPersonController.getCustomers()) {
+				customerIDs.add(c.getId());
+			}
+			Collections.sort(customerIDs);
+			for (String id : customerIDs) {
+				customers.put(index, id);
+				comboBoxCustomer.addItem(id);
+				index++;
+			}
+			comboBoxCustomer.setSelectedIndex(-1);
+			
+			textFieldUpdateCustomerName.setText("");
+			textFieldUpdateCustomerID.setText("");
 			
 		}
 	}
