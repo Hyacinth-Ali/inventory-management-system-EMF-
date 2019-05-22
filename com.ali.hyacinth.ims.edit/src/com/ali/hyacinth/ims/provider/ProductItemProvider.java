@@ -48,6 +48,7 @@ public class ProductItemProvider extends NamedElementItemProvider {
 			addIdPropertyDescriptor(object);
 			addQuantityPropertyDescriptor(object);
 			addProducttransactionsPropertyDescriptor(object);
+			addTransactionsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -132,6 +133,28 @@ public class ProductItemProvider extends NamedElementItemProvider {
 				 getString("_UI_Product_producttransactions_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Product_producttransactions_feature", "_UI_Product_type"),
 				 ImsPackage.Literals.PRODUCT__PRODUCTTRANSACTIONS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Transactions feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTransactionsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Product_transactions_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Product_transactions_feature", "_UI_Product_type"),
+				 ImsPackage.Literals.PRODUCT__TRANSACTIONS,
 				 true,
 				 false,
 				 true,

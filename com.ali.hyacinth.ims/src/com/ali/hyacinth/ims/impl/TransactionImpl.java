@@ -4,6 +4,7 @@ package com.ali.hyacinth.ims.impl;
 
 import com.ali.hyacinth.ims.ImsPackage;
 import com.ali.hyacinth.ims.Person;
+import com.ali.hyacinth.ims.Product;
 import com.ali.hyacinth.ims.ProductTransaction;
 import com.ali.hyacinth.ims.Transaction;
 
@@ -22,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -40,6 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getAmountUnpaid <em>Amount Unpaid</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getProducttransactions <em>Producttransactions</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.impl.TransactionImpl#getProducts <em>Products</em>}</li>
  * </ul>
  *
  * @generated
@@ -174,6 +177,16 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	 * @ordered
 	 */
 	protected EList<ProductTransaction> producttransactions;
+
+	/**
+	 * The cached value of the '{@link #getProducts() <em>Products</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProducts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Product> products;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -436,6 +449,18 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Product> getProducts() {
+		if (products == null) {
+			products = new EObjectWithInverseResolvingEList.ManyInverse<Product>(Product.class, this, ImsPackage.TRANSACTION__PRODUCTS, ImsPackage.PRODUCT__TRANSACTIONS);
+		}
+		return products;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -448,6 +473,8 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				if (buyer != null)
 					msgs = ((InternalEObject)buyer).eInverseRemove(this, ImsPackage.PERSON__PURCHASES, Person.class, msgs);
 				return basicSetBuyer((Person)otherEnd, msgs);
+			case ImsPackage.TRANSACTION__PRODUCTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getProducts()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -466,6 +493,8 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				return basicSetBuyer(null, msgs);
 			case ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS:
 				return ((InternalEList<?>)getProducttransactions()).basicRemove(otherEnd, msgs);
+			case ImsPackage.TRANSACTION__PRODUCTS:
+				return ((InternalEList<?>)getProducts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -496,6 +525,8 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				return getId();
 			case ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS:
 				return getProducttransactions();
+			case ImsPackage.TRANSACTION__PRODUCTS:
+				return getProducts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -534,6 +565,10 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				getProducttransactions().clear();
 				getProducttransactions().addAll((Collection<? extends ProductTransaction>)newValue);
 				return;
+			case ImsPackage.TRANSACTION__PRODUCTS:
+				getProducts().clear();
+				getProducts().addAll((Collection<? extends Product>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -570,6 +605,9 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 			case ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS:
 				getProducttransactions().clear();
 				return;
+			case ImsPackage.TRANSACTION__PRODUCTS:
+				getProducts().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -598,6 +636,8 @@ public class TransactionImpl extends MinimalEObjectImpl.Container implements Tra
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case ImsPackage.TRANSACTION__PRODUCTTRANSACTIONS:
 				return producttransactions != null && !producttransactions.isEmpty();
+			case ImsPackage.TRANSACTION__PRODUCTS:
+				return products != null && !products.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

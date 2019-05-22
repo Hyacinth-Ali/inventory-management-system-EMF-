@@ -5,13 +5,11 @@ package com.ali.hyacinth.ims.impl;
 import com.ali.hyacinth.ims.ImsPackage;
 import com.ali.hyacinth.ims.Product;
 import com.ali.hyacinth.ims.ProductTransaction;
+import com.ali.hyacinth.ims.Transaction;
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -31,6 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getProducttransactions <em>Producttransactions</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getTransactions <em>Transactions</em>}</li>
  * </ul>
  *
  * @generated
@@ -97,14 +96,24 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	protected int quantity = QUANTITY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getProducttransactions() <em>Producttransactions</em>}' reference list.
+	 * The cached value of the '{@link #getProducttransactions() <em>Producttransactions</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getProducttransactions()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProductTransaction> producttransactions;
+	protected ProductTransaction producttransactions;
+
+	/**
+	 * The cached value of the '{@link #getTransactions() <em>Transactions</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTransactions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Transaction> transactions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -193,11 +202,71 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProductTransaction> getProducttransactions() {
-		if (producttransactions == null) {
-			producttransactions = new EObjectWithInverseResolvingEList<ProductTransaction>(ProductTransaction.class, this, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, ImsPackage.PRODUCT_TRANSACTION__PRODUCT);
+	public ProductTransaction getProducttransactions() {
+		if (producttransactions != null && producttransactions.eIsProxy()) {
+			InternalEObject oldProducttransactions = (InternalEObject)producttransactions;
+			producttransactions = (ProductTransaction)eResolveProxy(oldProducttransactions);
+			if (producttransactions != oldProducttransactions) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, oldProducttransactions, producttransactions));
+			}
 		}
 		return producttransactions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProductTransaction basicGetProducttransactions() {
+		return producttransactions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetProducttransactions(ProductTransaction newProducttransactions, NotificationChain msgs) {
+		ProductTransaction oldProducttransactions = producttransactions;
+		producttransactions = newProducttransactions;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, oldProducttransactions, newProducttransactions);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProducttransactions(ProductTransaction newProducttransactions) {
+		if (newProducttransactions != producttransactions) {
+			NotificationChain msgs = null;
+			if (producttransactions != null)
+				msgs = ((InternalEObject)producttransactions).eInverseRemove(this, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, ProductTransaction.class, msgs);
+			if (newProducttransactions != null)
+				msgs = ((InternalEObject)newProducttransactions).eInverseAdd(this, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, ProductTransaction.class, msgs);
+			msgs = basicSetProducttransactions(newProducttransactions, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, newProducttransactions, newProducttransactions));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Transaction> getTransactions() {
+		if (transactions == null) {
+			transactions = new EObjectWithInverseResolvingEList.ManyInverse<Transaction>(Transaction.class, this, ImsPackage.PRODUCT__TRANSACTIONS, ImsPackage.TRANSACTION__PRODUCTS);
+		}
+		return transactions;
 	}
 
 	/**
@@ -210,7 +279,11 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getProducttransactions()).basicAdd(otherEnd, msgs);
+				if (producttransactions != null)
+					msgs = ((InternalEObject)producttransactions).eInverseRemove(this, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, ProductTransaction.class, msgs);
+				return basicSetProducttransactions((ProductTransaction)otherEnd, msgs);
+			case ImsPackage.PRODUCT__TRANSACTIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTransactions()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -224,7 +297,9 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				return ((InternalEList<?>)getProducttransactions()).basicRemove(otherEnd, msgs);
+				return basicSetProducttransactions(null, msgs);
+			case ImsPackage.PRODUCT__TRANSACTIONS:
+				return ((InternalEList<?>)getTransactions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -244,7 +319,10 @@ public class ProductImpl extends NamedElementImpl implements Product {
 			case ImsPackage.PRODUCT__QUANTITY:
 				return getQuantity();
 			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				return getProducttransactions();
+				if (resolve) return getProducttransactions();
+				return basicGetProducttransactions();
+			case ImsPackage.PRODUCT__TRANSACTIONS:
+				return getTransactions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -268,8 +346,11 @@ public class ProductImpl extends NamedElementImpl implements Product {
 				setQuantity((Integer)newValue);
 				return;
 			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				getProducttransactions().clear();
-				getProducttransactions().addAll((Collection<? extends ProductTransaction>)newValue);
+				setProducttransactions((ProductTransaction)newValue);
+				return;
+			case ImsPackage.PRODUCT__TRANSACTIONS:
+				getTransactions().clear();
+				getTransactions().addAll((Collection<? extends Transaction>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -293,7 +374,10 @@ public class ProductImpl extends NamedElementImpl implements Product {
 				setQuantity(QUANTITY_EDEFAULT);
 				return;
 			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				getProducttransactions().clear();
+				setProducttransactions((ProductTransaction)null);
+				return;
+			case ImsPackage.PRODUCT__TRANSACTIONS:
+				getTransactions().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -314,7 +398,9 @@ public class ProductImpl extends NamedElementImpl implements Product {
 			case ImsPackage.PRODUCT__QUANTITY:
 				return quantity != QUANTITY_EDEFAULT;
 			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				return producttransactions != null && !producttransactions.isEmpty();
+				return producttransactions != null;
+			case ImsPackage.PRODUCT__TRANSACTIONS:
+				return transactions != null && !transactions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

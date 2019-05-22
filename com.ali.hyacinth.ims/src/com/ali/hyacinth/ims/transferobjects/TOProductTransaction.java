@@ -14,24 +14,20 @@ public class TOProductTransaction
   //TOProductTransaction Attributes
   private int quantity;
   private double price;
+  private String productName;
 
   //TOProductTransaction Associations
-  private TOProduct toProduct;
   private Receipt receipt;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public TOProductTransaction(TOProduct aToProduct)
+  public TOProductTransaction()
   {
     quantity = 0;
     price = 0;
-    boolean didAddToProduct = setToProduct(aToProduct);
-    if (!didAddToProduct)
-    {
-      throw new RuntimeException("Unable to create tOProductTransaction due to toProduct");
-    }
+    productName = null;
   }
 
   //------------------------
@@ -54,6 +50,14 @@ public class TOProductTransaction
     return wasSet;
   }
 
+  public boolean setProductName(String aProductName)
+  {
+    boolean wasSet = false;
+    productName = aProductName;
+    wasSet = true;
+    return wasSet;
+  }
+
   public int getQuantity()
   {
     return quantity;
@@ -63,10 +67,10 @@ public class TOProductTransaction
   {
     return price;
   }
-  /* Code from template association_GetOne */
-  public TOProduct getToProduct()
+
+  public String getProductName()
   {
-    return toProduct;
+    return productName;
   }
   /* Code from template association_GetOne */
   public Receipt getReceipt()
@@ -78,34 +82,6 @@ public class TOProductTransaction
   {
     boolean has = receipt != null;
     return has;
-  }
-  /* Code from template association_SetOneToOptionalOne */
-  public boolean setToProduct(TOProduct aNewToProduct)
-  {
-    boolean wasSet = false;
-    if (aNewToProduct == null)
-    {
-      //Unable to setToProduct to null, as tOProductTransaction must always be associated to a toProduct
-      return wasSet;
-    }
-    
-    TOProductTransaction existingTOProductTransaction = aNewToProduct.getTOProductTransaction();
-    if (existingTOProductTransaction != null && !equals(existingTOProductTransaction))
-    {
-      //Unable to setToProduct, the current toProduct already has a tOProductTransaction, which would be orphaned if it were re-assigned
-      return wasSet;
-    }
-    
-    TOProduct anOldToProduct = toProduct;
-    toProduct = aNewToProduct;
-    toProduct.setTOProductTransaction(this);
-
-    if (anOldToProduct != null)
-    {
-      anOldToProduct.setTOProductTransaction(null);
-    }
-    wasSet = true;
-    return wasSet;
   }
   /* Code from template association_SetOptionalOneToMany */
   public boolean setReceipt(Receipt aReceipt)
@@ -127,12 +103,6 @@ public class TOProductTransaction
 
   public void delete()
   {
-    TOProduct existingToProduct = toProduct;
-    toProduct = null;
-    if (existingToProduct != null)
-    {
-      existingToProduct.setTOProductTransaction(null);
-    }
     if (receipt != null)
     {
       Receipt placeholderReceipt = receipt;
@@ -146,8 +116,8 @@ public class TOProductTransaction
   {
     return super.toString() + "["+
             "quantity" + ":" + getQuantity()+ "," +
-            "price" + ":" + getPrice()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "toProduct = "+(getToProduct()!=null?Integer.toHexString(System.identityHashCode(getToProduct())):"null") + System.getProperties().getProperty("line.separator") +
+            "price" + ":" + getPrice()+ "," +
+            "productName" + ":" + getProductName()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "receipt = "+(getReceipt()!=null?Integer.toHexString(System.identityHashCode(getReceipt())):"null");
   }
 }

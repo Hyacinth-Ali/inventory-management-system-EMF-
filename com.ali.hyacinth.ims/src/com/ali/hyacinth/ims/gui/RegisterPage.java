@@ -65,7 +65,7 @@ public class RegisterPage extends JFrame {
 	 * Create the frame.
 	 */
 	public RegisterPage() {
-		setUndecorated(true);
+		//setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 923, 610);
 		contentPane = new JPanel();

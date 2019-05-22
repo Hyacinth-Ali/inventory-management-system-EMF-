@@ -1,8 +1,5 @@
 package com.ali.hyacinth.ims.gui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -16,8 +13,8 @@ import com.ali.hyacinth.ims.controller.InvalidInputException;
 import com.ali.hyacinth.ims.controller.TOCustomer;
 import com.ali.hyacinth.ims.resource.ImsResource;
 import com.ali.hyacinth.ims.transferobjects.TOProduct;
+import com.ali.hyacinth.ims.transferobjects.TOProductTransaction;
 
-import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
@@ -30,7 +27,6 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.print.PrinterException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -43,7 +39,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JSeparator;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
@@ -51,7 +46,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class ImsPage extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String error = "";
+	private String productTransactionName = "";
 
 	private JPanel contentPane;
 	private JPanel productsPanel;
@@ -92,6 +93,11 @@ public class ImsPage extends JFrame {
 	private JTextField textFieldTransactionProductQuantity;
 	private JComboBox<String> comboBoxTransactionProduct;
 	private JTextField textFieldAmountPaid;
+	private JLabel lblItemPrice;
+	private JTable tableTransaction;
+	private JLabel lblCurrentCustomer;
+	private JTextField textFieldUpdateQuantity;
+	private JLabel lblTotalAmount;
 
 	/**
 	 * Launch the application.
@@ -113,7 +119,7 @@ public class ImsPage extends JFrame {
 	 * Create the frame.
 	 */
 	public ImsPage() {
-		setUndecorated(true);
+		//setUndecorated(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1145, 655);
 		contentPane = new JPanel();
@@ -189,7 +195,7 @@ public class ImsPage extends JFrame {
 				lblAccounts.setBackground(new Color(85, 107, 47));
 				lblTransaction.setBackground(new Color(85, 107, 47));
 				
-				refreshTable();
+				refreshProductTable();
 			}
 		});
 		lblProducts.setForeground(Color.GREEN);
@@ -343,22 +349,29 @@ public class ImsPage extends JFrame {
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 255)));
 		
 		JScrollPane scrollPane = new JScrollPane();
+		
+		JLabel lblClickEachColumn = new JLabel("Click each column to sort the items");
+		lblClickEachColumn.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		GroupLayout gl_productsPanel = new GroupLayout(productsPanel);
 		gl_productsPanel.setHorizontalGroup(
 			gl_productsPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_productsPanel.createSequentialGroup()
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 324, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 446, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_productsPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 446, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblClickEachColumn, GroupLayout.PREFERRED_SIZE, 443, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(42, Short.MAX_VALUE))
 		);
 		gl_productsPanel.setVerticalGroup(
 			gl_productsPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_productsPanel.createSequentialGroup()
-					.addGap(16)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 450, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
 				.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+				.addGroup(gl_productsPanel.createSequentialGroup()
+					.addGap(6)
+					.addComponent(lblClickEachColumn, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 455, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		
 		tableProducts = new JTable();
@@ -374,6 +387,10 @@ public class ImsPage extends JFrame {
 				"Name", "Price", "Quantity"
 			}
 		) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 			Class[] columnTypes = new Class[] {
 				String.class, Float.class, Integer.class
 			};
@@ -453,7 +470,7 @@ public class ImsPage extends JFrame {
 				}
 				
 				refreshProductPanel();
-				refreshTable();
+				refreshProductTable();
 			}
 		});
 		panel_1.setLayout(null);
@@ -562,7 +579,7 @@ public class ImsPage extends JFrame {
 				} catch (InvalidInputException e) {
 					error = e.getMessage();
 				}
-				refreshTable();
+				refreshProductTable();
 				refreshProductPanel();
 			}
 		});
@@ -583,7 +600,7 @@ public class ImsPage extends JFrame {
 					error = er.getMessage();
 				}
 				refreshProductPanel();
-				refreshTable();
+				refreshProductTable();
 			}
 		});
 		btnDelete.setBorder(new LineBorder(new Color(128, 0, 0), 1, true));
@@ -596,8 +613,8 @@ public class ImsPage extends JFrame {
 		transactionsPanel.setLayout(null);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new LineBorder(new Color(0, 0, 255)));
 		panel_3.setBounds(0, 0, 321, 509);
+		panel_3.setBorder(new LineBorder(new Color(0, 0, 255)));
 		transactionsPanel.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -622,6 +639,8 @@ public class ImsPage extends JFrame {
 					try {
 						ImsTransactionController.createTransaction(customerID, 
 								ImsApplication.getCurrentEmployee().getUserName());
+						String cName = ImsApplication.getCurrentCustomer().getPerson().getName();
+						lblCurrentCustomer.setText(cName);
 					} catch (InvalidInputException e) {
 						error = e.getMessage();
 					}
@@ -629,7 +648,7 @@ public class ImsPage extends JFrame {
 				refreshTransactionPanel();
 			}
 		});
-		btnOk.setBounds(128, 61, 115, 29);
+		btnOk.setBounds(128, 61, 53, 29);
 		panel_3.add(btnOk);
 		
 		JSeparator separator_3 = new JSeparator();
@@ -645,6 +664,20 @@ public class ImsPage extends JFrame {
 		panel_3.add(lblProduct);
 		
 		comboBoxTransactionProduct = new JComboBox<String>();
+		comboBoxTransactionProduct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				error = "";
+				int selectedIndex = comboBoxTransactionProduct.getSelectedIndex();
+				String productName = transactionProducts.get(selectedIndex);
+				if (selectedIndex > 0) {
+					for (TOProduct p : ImsProductController.getProducts()) {
+						if (p.getName().equals(productName)) {
+							lblItemPrice.setText(""+p.getItemPrice());
+						}
+					}
+				}
+			}
+		});
 		comboBoxTransactionProduct.setBounds(128, 175, 178, 26);
 		panel_3.add(comboBoxTransactionProduct);
 		
@@ -687,6 +720,7 @@ public class ImsPage extends JFrame {
 					}
 				} 
 				refreshTransactionPanel();
+				refreshTransactionTable();
 			}
 		});
 		btnAdd.setBounds(128, 265, 115, 29);
@@ -709,8 +743,11 @@ public class ImsPage extends JFrame {
 				}
 				if (error.length() == 0) {
 					try {
-						String customerID = ImsApplication.getCurrentCustomer().getCustomerID();
-						ImsTransactionController.purchase(customerID, amountPaid);
+						int option = JOptionPane.showConfirmDialog(ImsApplication.getFrame(), "Confirm submission?", 
+								"Submission status", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+						if (option == 0) {
+							ImsTransactionController.purchase(amountPaid);
+						}
 					} catch (InvalidInputException e1) {
 						error = e1.getMessage();
 					}
@@ -729,6 +766,134 @@ public class ImsPage extends JFrame {
 		textFieldAmountPaid.setBounds(128, 335, 178, 26);
 		panel_3.add(textFieldAmountPaid);
 		textFieldAmountPaid.setColumns(10);
+		
+		lblItemPrice = new JLabel("");
+		lblItemPrice.setForeground(new Color(0, 0, 255));
+		lblItemPrice.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblItemPrice.setBounds(208, 127, 98, 32);
+		panel_3.add(lblItemPrice);
+		
+		JButton btnSignOut = new JButton("SIGN OUT");
+		btnSignOut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int option = JOptionPane.showConfirmDialog(ImsApplication.getFrame(), 
+						"Have you submitted or cleared the transaction?", "Logout confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
+				if(option == 0) {
+					ImsApplication.setCurrentCustomer(null);
+					ImsApplication.setCurrentTransaction(null);
+					JOptionPane.showMessageDialog(ImsApplication.getFrame(), "Successfully logged out.");
+					lblCurrentCustomer.setText("");
+				}
+				refreshTransactionPanel();	
+			}
+		});
+		btnSignOut.setBounds(183, 61, 123, 29);
+		panel_3.add(btnSignOut);
+		
+		JButton btnClear = new JButton("CLEAR");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				error = "";
+				int option = JOptionPane.showConfirmDialog(ImsApplication.getFrame(), 
+						"Do you really want to clear the selection?", 
+						"CLear status", JOptionPane.YES_NO_CANCEL_OPTION);
+				if (option == 0) {
+					try {
+						ImsTransactionController.clearTransactionSelections();
+					} catch (InvalidInputException e1) {
+						error = e1.getMessage();
+					}
+				}
+				refreshTransactionPanel();
+				refreshTransactionTable();
+			}
+		});
+		btnClear.setBounds(128, 427, 115, 29);
+		panel_3.add(btnClear);
+		
+		lblCurrentCustomer = new JLabel("");
+		lblCurrentCustomer.setForeground(new Color(128, 128, 128));
+		lblCurrentCustomer.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCurrentCustomer.setBounds(128, 0, 178, 20);
+		panel_3.add(lblCurrentCustomer);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			}
+		});
+		scrollPane_1.setBounds(336, 0, 479, 454);
+		transactionsPanel.add(scrollPane_1);
+		
+		tableTransaction = new JTable();
+		tableTransaction.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DefaultTableModel model = (DefaultTableModel) tableTransaction.getModel();
+				int selectedRow = tableTransaction.getSelectedRow();
+				
+				productTransactionName = model.getValueAt(selectedRow, 0).toString();
+				String quantity = model.getValueAt(selectedRow, 1).toString();
+				textFieldUpdateQuantity.setText(quantity);
+			}
+		});
+		tableTransaction.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Name", "Quantity", "Price"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, Integer.class, Float.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			boolean[] columnEditables = new boolean[] {
+				false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		scrollPane_1.setViewportView(tableTransaction);
+		
+		JButton btnUpdateQuantity = new JButton("Update Quantity");
+		btnUpdateQuantity.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				error = "";
+				int quantity = 0;
+				try {
+					quantity = Integer.parseInt(textFieldUpdateQuantity.getText());
+				}
+				catch (NumberFormatException e) {
+					error = "Quantity figure needs to be a numerical value! ";
+				}
+				error.trim();
+				if (error.length() == 0) {
+					try {
+						ImsTransactionController.updateQuantityTransaction(productTransactionName, quantity);
+					} catch (InvalidInputException e) {
+						error = e.getMessage();
+					}
+				}
+				refreshTransactionTable();
+			}
+		});
+		btnUpdateQuantity.setBounds(332, 464, 165, 29);
+		transactionsPanel.add(btnUpdateQuantity);
+		
+		textFieldUpdateQuantity = new JTextField();
+		textFieldUpdateQuantity.setBounds(512, 464, 156, 26);
+		transactionsPanel.add(textFieldUpdateQuantity);
+		textFieldUpdateQuantity.setColumns(10);
+		
+		lblTotalAmount = new JLabel("");
+		lblTotalAmount.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblTotalAmount.setBounds(683, 468, 132, 20);
+		transactionsPanel.add(lblTotalAmount);
 		
 		accountsPanel = new JPanel();
 		layeredPane.add(accountsPanel, "name_866729209042000");
@@ -880,11 +1045,16 @@ public class ImsPage extends JFrame {
 		
 		tableProducts.setAutoCreateRowSorter(true);
 		
+		JPanel receiptPanel = new JPanel();
+		layeredPane.add(receiptPanel, "name_408138955056000");
+		
 		refreshProductPanel();
 		refreshCustomerPanel();
+		refreshTransactionPanel();
+		refreshTransactionTable();
 	}
 	
-	private void refreshTable() {
+	private void refreshProductTable() {
 		
 		if (error == null || error.length() == 0) {
 			List<TOProduct> products = ImsProductController.getProducts();
@@ -893,6 +1063,25 @@ public class ImsPage extends JFrame {
 			for (TOProduct p : products) {
 				model.addRow(new Object[] {p.getName(), p.getItemPrice(), p.getQuantity()});
 			}
+		}
+		
+	}
+	
+	private void refreshTransactionTable() {
+		lblErrorMEssage.setText(error);
+		if (error == null || error.length() == 0) {
+			List<TOProductTransaction> products = ImsTransactionController.getTOProductTransaction();
+			DefaultTableModel model = (DefaultTableModel) tableTransaction.getModel();
+			model.setRowCount(0);
+			for (TOProductTransaction tp : products) {
+				model.addRow(new Object[] {tp.getProductName(), tp.getQuantity(), tp.getPrice()});
+			}
+			
+			if (ImsApplication.getCurrentTransaction() != null) {
+				lblTotalAmount.setText(""+ImsApplication.getCurrentTransaction()
+				.getTotalAmount());
+			}
+			textFieldUpdateQuantity.setText("");
 		}
 		
 	}
@@ -973,6 +1162,8 @@ public class ImsPage extends JFrame {
 			
 			textFieldTransactionCustomerID.setText("");
 			textFieldTransactionProductQuantity.setText("");
+			textFieldAmountPaid.setText("");
+			lblItemPrice.setText("");
 			
 			
 			//Update transaction
@@ -994,4 +1185,15 @@ public class ImsPage extends JFrame {
 			
 		}
 	}
+	
+	/*private TOCustomer findCustomer(String customerID) {
+		TOCustomer customer = null;
+		for (TOCustomer c : ImsPersonController.getCustomers()) {
+			if (c.getId().equals(customerID)) {
+				customer = c;
+				break;
+			}
+		}
+		return customer;
+	}*/
 }

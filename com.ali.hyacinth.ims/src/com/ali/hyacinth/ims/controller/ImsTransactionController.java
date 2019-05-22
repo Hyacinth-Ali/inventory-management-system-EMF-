@@ -89,10 +89,11 @@ public class ImsTransactionController {
 		//get the current date
 		Date date = ImsApplication.getIms().getCurrentDate();
 		
-		if (customerID == null || customerID.length() == 0) {
+		if (ImsApplication.getCurrentCustomer() != null) {
+			error = "A customer is still logged in for transaction.";
+		} else if (customerID == null || customerID.length() == 0) {
 			error = "Please, enter the customer ID.";
-		}
-		if (managerUserName == null || managerUserName.length() == 0) {
+		} else if (managerUserName == null || managerUserName.length() == 0) {
 			error = "Select manager first.";
 		}
 		
@@ -124,6 +125,8 @@ public class ImsTransactionController {
 			ims.getTransactions().add(transaction);
 			ImsApplication.setCurrentTransaction(transaction);
 			ImsApplication.setCurrentCustomer(c);
+			
+			setTransactionTotalAmount();
 		} catch (RuntimeException e) {
 			throw new InvalidInputException(e.getMessage());
 		}
@@ -137,12 +140,22 @@ public class ImsTransactionController {
 	 * @throws InvalidInputException
 	 */
 	public static void addTransactionProduct(String productName, int quantity) throws InvalidInputException {
-		String error = "";
 		
+		String error = "";
 		Product product = ImsProductController.findProduct(productName);
 		Transaction transaction = ImsApplication.getCurrentTransaction();
+		boolean productExist = false;
 		if (transaction == null) {
-			error = "The customer ID must be enetered before adding oroducts.";
+			throw new InvalidInputException("The customer ID must be enetered before adding products.");
+		}
+		for (Product p : transaction.getProducts()) {
+			if (p.equals(product)) {
+				productExist = true;
+				break;
+			}
+		}
+		if(productExist) {
+			error = "The product is already added, you edit it.";
 		} else if (quantity <= 0) {
 			error = "Quantity of items must be greater than zero.";
 		} else if (product == null) {
@@ -161,7 +174,15 @@ public class ImsTransactionController {
 		productTransaction.setProduct(product);
 		productTransaction.setQuantity(quantity);
 		productTransaction.setPrice(quantity * product.getItemPrice());
+		
+		product.setQuantity(product.getQuantity() - quantity);
+		product.setProducttransactions(productTransaction);
+		product.getTransactions().add(transaction);
+		
 		transaction.getProducttransactions().add(productTransaction);
+		transaction.getProducts().add(product);
+		
+		setTransactionTotalAmount();
 	}
 	
 	/**
@@ -187,8 +208,8 @@ public class ImsTransactionController {
 	 * @param id of the transaction.
 	 * @throws InvalidInputException 
 	 */
-	private static void setTransactionTotalAmount(String id) throws InvalidInputException {
-		Transaction transaction = findTransaction(id);
+	private static void setTransactionTotalAmount() throws InvalidInputException {
+		Transaction transaction = ImsApplication.getCurrentTransaction();
 		float totalAmount = 0.0f;
 		if (transaction != null) {
 			for (ProductTransaction productTransaction : transaction.getProducttransactions()) {
@@ -196,7 +217,7 @@ public class ImsTransactionController {
 				totalAmount += amount;
 			}
 		} else {
-			throw new InvalidInputException("The transaction does not exist.");
+			throw new InvalidInputException("There is no current transaction.");
 		}
 		
 		transaction.setTotalAmount(totalAmount);
@@ -229,17 +250,18 @@ public class ImsTransactionController {
 	 * @param amountPaid paid for the transaction
 	 * @throws InvalidInputException
 	 */
-	public static Receipt purchase(String id, float amountPaid) throws InvalidInputException {
+	public static Receipt purchase(float amountPaid) throws InvalidInputException {
 		String error = "";
-		if (id == null || id.length() == 0) {
-			error = "Please select an exisiting transaction to check out.";
+		Transaction transaction = ImsApplication.getCurrentTransaction();
+		if (transaction == null) {
+			error = "There is no current transaction!";
 		} else if (amountPaid <= 0) {
 			error = "The amount to pay cannot be zero or negative.";
 		}
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
 		}
-		Transaction transaction = ImsApplication.getCurrentTransaction();
+		
 		Receipt receipt = null;
 		if (transaction != null) {
 			transaction.setAmountPaid(amountPaid);
@@ -249,18 +271,17 @@ public class ImsTransactionController {
 			receipt.setDate(transaction.getDate());
 			try {
 				for (ProductTransaction pTransaction : transaction.getProducttransactions()) {
-					TOProduct toProduct = new TOProduct();
-					toProduct.setName(pTransaction.getProduct().getName());
-					toProduct.setItemPrice(pTransaction.getProduct().getItemPrice());
 					
-					TOProductTransaction toPTransaction = new TOProductTransaction(toProduct);
+					TOProductTransaction toPTransaction = new TOProductTransaction();
 					toPTransaction.setPrice(pTransaction.getPrice());
 					toPTransaction.setQuantity(pTransaction.getQuantity());
+					toPTransaction.setProductName(pTransaction.getProduct().getName());
 					
 					receipt.addPTransaction(toPTransaction);
 					
 					pTransaction.getProduct().setQuantity(pTransaction.getProduct().getQuantity() - 
 							pTransaction.getQuantity());
+					setTransactionTotalAmount();
 				}
 			} catch (RuntimeException e) {
 				throw new InvalidInputException(e.getMessage());
@@ -272,13 +293,40 @@ public class ImsTransactionController {
 	}
 	
 	/**
-	 * Check out a transaction.
+	 * Final step to purchase products, generate receipt.
 	 * @param transaction of the purchase
 	 * @param amountPaid paid for the transaction
 	 * @throws InvalidInputException
 	 */
-	public static Receipt checkout(String id) throws InvalidInputException {
-		Transaction transaction = findTransaction(id);
+	public static List<TOProductTransaction> getTOProductTransaction() {
+		
+		Transaction transaction = ImsApplication.getCurrentTransaction();
+		List<TOProductTransaction> productTransactions = new ArrayList<TOProductTransaction>();
+		
+		if (transaction != null) {
+			for (ProductTransaction pTransaction : transaction.getProducttransactions()) {
+				
+				TOProductTransaction toPTransaction = new TOProductTransaction();
+				toPTransaction.setPrice(pTransaction.getPrice());
+				toPTransaction.setQuantity(pTransaction.getQuantity());
+				toPTransaction.setProductName(pTransaction.getProduct().getName());
+				productTransactions.add(toPTransaction);
+			}
+		}
+		
+		return productTransactions;
+		
+	}
+	
+	/**
+	 * Check out a transaction, not yet used but review very well before using it..
+	 * @param transaction of the purchase
+	 * @param amountPaid paid for the transaction
+	 * @throws InvalidInputException
+	 */
+	public static Receipt checkout() throws InvalidInputException {
+		String error = "";
+		Transaction transaction = ImsApplication.getCurrentTransaction();
 		Receipt receipt = null;
 		if (transaction != null) {
 			receipt = new Receipt();
@@ -289,7 +337,7 @@ public class ImsTransactionController {
 					toProduct.setName(pTransaction.getProduct().getName());
 					toProduct.setItemPrice(pTransaction.getProduct().getItemPrice());
 					
-					TOProductTransaction toPTransaction = new TOProductTransaction(toProduct);
+					TOProductTransaction toPTransaction = new TOProductTransaction();
 					toPTransaction.setPrice(pTransaction.getPrice());
 					toPTransaction.setQuantity(pTransaction.getQuantity());
 					
@@ -302,6 +350,8 @@ public class ImsTransactionController {
 			}
 			receipt.setTotalAmount(totalamount);
 			receipt.setDate(transaction.getDate());
+		} else {
+			throw new InvalidInputException("There is no current transaction.");
 		}
 		
 		return receipt;
@@ -330,20 +380,69 @@ public class ImsTransactionController {
 		
 	}
 	
-	public static void updateTransaction(String id, Product product, int quantity) throws InvalidInputException {
-		Transaction transaction = findTransaction(id);
-		
+	/**
+	 * Deletes a transaction
+	 * @param id of the transaction
+	 * @throws InvalidInputException
+	 */
+	public static void clearTransactionSelections() throws InvalidInputException {
+		Transaction transaction = ImsApplication.getCurrentTransaction();
 		if (transaction != null) {
-			for (ProductTransaction productTransaction : transaction.getProducttransactions()) {
-				if (productTransaction.getProduct().equals(product)) {
-					productTransaction.setQuantity(quantity);
+			try {
+				for (ProductTransaction productTransaction : transaction.getProducttransactions()) {
+					Product p = productTransaction.getProduct();
+					p.setQuantity(p.getQuantity() + productTransaction.getQuantity());
 				}
+				EcoreUtil.deleteAll(transaction.getProducttransactions(), true);
+				transaction.getProducts().removeAll(transaction.getProducts());
+				setTransactionTotalAmount();
+			} catch (RuntimeException e) {
+				throw new InvalidInputException(e.getMessage());
 			}
 		} else {
-			throw new InvalidInputException("The transaction does not exist.");
+			throw new InvalidInputException("There is no current transaction.");
 		}
 		
+	}
+	
+	public static void updateQuantityTransaction(String productName, int quantity) throws InvalidInputException {
 		
+		String error = "";
+		Transaction transaction = ImsApplication.getCurrentTransaction();
+		Product product = ImsProductController.findProduct(productName);
+		
+		if (transaction == null) {
+			error = "The transaction does not exist.";
+		} else if(product == null) {
+			error = "The product doesn't exist for this transaction.";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		int differenceQuantity = quantity - product.getProducttransactions().getQuantity();
+		
+		product.getProducttransactions().setQuantity(quantity);	
+		product.getProducttransactions().setPrice(quantity * product.getItemPrice());
+		product.setQuantity(product.getQuantity() - differenceQuantity);
+		setTransactionTotalAmount();
+		
+	}
+	
+	public static void removeProductTransaction(String productName) throws InvalidInputException {
+		
+		String error = "";
+		Transaction transaction = ImsApplication.getCurrentTransaction();
+		Product product = ImsProductController.findProduct(productName);
+		
+		if (transaction == null) {
+			error = "There is no current transaction.";
+		} else if(product == null) {
+			error = "The product doesn't exist for this transaction.";
+		}
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		EcoreUtil.delete(product.getProducttransactions());
 	}
 
 

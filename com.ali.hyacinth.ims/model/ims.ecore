@@ -19,8 +19,10 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantity" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="producttransactions" upperBound="-1"
-        eType="#//ProductTransaction" eOpposite="#//ProductTransaction/product"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="producttransactions" eType="#//ProductTransaction"
+        eOpposite="#//ProductTransaction/product"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" upperBound="-1"
+        eType="#//Transaction" eOpposite="#//Transaction/products"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="roles" lowerBound="1" upperBound="3"
@@ -50,6 +52,8 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="producttransactions" upperBound="-1"
         eType="#//ProductTransaction" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="products" upperBound="-1"
+        eType="#//Product" eOpposite="#//Product/transactions"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Audit">
     <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" upperBound="-1"

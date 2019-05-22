@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ims="http://hyacinth.com/ims">
-  <products name="Tube" itemPrice="4000.0" quantity="100"/>
+  <products name="Tube" itemPrice="4000.0" quantity="70" producttransactions="//@transactions.7/@producttransactions.2" transactions="_aR66wHxFEem49f4fGxyqVg"/>
   <products name="Tire" itemPrice="456.0" quantity="4578"/>
   <products name="Spokes" itemPrice="1000.0" quantity="478"/>
   <products name="Tubes" itemPrice="45.89" quantity="1000"/>
   <products name="Engine3" itemPrice="4589.0" quantity="78954"/>
-  <products name="Block5" itemPrice="1245.0" quantity="1245"/>
-  <products name="Engine4" itemPrice="45897.0" quantity="4542" producttransactions="//@transactions.0/@producttransactions.2"/>
+  <products name="Engine4" itemPrice="45897.0" quantity="4526" producttransactions="//@transactions.8/@producttransactions.0" transactions="_cpDNYHxJEemxjI0W0FfgPA"/>
   <products name="Tire2" itemPrice="45.0" quantity="45"/>
   <products name="Tire5" itemPrice="457.0" quantity="4578"/>
-  <products name="Chain5" itemPrice="4578.0" quantity="1245"/>
+  <products name="Chain5" itemPrice="4578.0" quantity="1189" producttransactions="//@transactions.4/@producttransactions.0"/>
   <products name="Tube45" itemPrice="255.0" quantity="45788"/>
   <products name="Engine45" itemPrice="1245.0" quantity="4578"/>
   <products name="Tire67" itemPrice="45.0" quantity="457"/>
-  <products name="Chain56" itemPrice="245.0" quantity="11" producttransactions="//@transactions.0/@producttransactions.0 //@transactions.0/@producttransactions.1"/>
+  <products name="Chain56" itemPrice="245.0" quantity="3" producttransactions="//@transactions.7/@producttransactions.0" transactions="_aR66wHxFEem49f4fGxyqVg"/>
   <products name="Oil" itemPrice="4578.0" quantity="789"/>
-  <products name="Tire345" itemPrice="1245.0" quantity="2000"/>
+  <products name="Tire345" itemPrice="1245.0" quantity="1800" producttransactions="//@transactions.8/@producttransactions.1" transactions="_cpDNYHxJEemxjI0W0FfgPA"/>
   <products name="Tire100" itemPrice="245.0" quantity="12456"/>
   <products name="Tube789" itemPrice="245.0" quantity="7894"/>
   <products name="Tube435" itemPrice="1457.0" quantity="4578"/>
@@ -23,23 +22,23 @@
   <products name="Engine7" itemPrice="455.0" quantity="788"/>
   <products name="Engine8" itemPrice="5689.0" quantity="879"/>
   <products name="Engine9" itemPrice="478.0" quantity="789"/>
-  <products name="Engine10" itemPrice="1045.0" quantity="4569"/>
-  <products name="Engine11" itemPrice="14578.0" quantity="14589"/>
-  <products name="Engine34" itemPrice="1245.0" quantity="789"/>
+  <products name="Engine10" itemPrice="1045.0" quantity="4445" transactions="_jJpbUHxDEem09aDiBLgidw"/>
+  <products name="Engine11" itemPrice="14578.0" quantity="14587" producttransactions="//@transactions.7/@producttransactions.1" transactions="_aR66wHxFEem49f4fGxyqVg"/>
+  <products name="Engine34" itemPrice="1245.0" quantity="744" producttransactions="//@transactions.6/@producttransactions.1" transactions="_jJpbUHxDEem09aDiBLgidw"/>
   <products name="Tube18" itemPrice="145.0" quantity="789"/>
   <managers person="//@persons.0" userName="manager1" password="123"/>
   <managers person="//@persons.1" userName="manager2" password="123"/>
   <managers person="//@persons.2" userName="manager3" password="123456"/>
-  <persons name="Ogoo" roles="manager1" sales="_09-y4HnCEemsfJuwApdfYw"/>
+  <persons name="Ogoo" roles="manager1" sales="_09-y4HnCEemsfJuwApdfYw _5kfhQHwCEem3DPoWtN9Cbw _72Ko8HwCEem3DPoWtN9Cbw _d_6RQHwKEemjOZ4XF-zRbQ _lnRrQHwKEemjOZ4XF-zRbQ __pnLwHwKEemjOZ4XF-zRbQ _jJpbUHxDEem09aDiBLgidw _aR66wHxFEem49f4fGxyqVg _cpDNYHxJEemxjI0W0FfgPA"/>
   <persons name="Hyacinth" roles="manager2"/>
   <persons name="Hyacinth" roles="manager3"/>
-  <persons name="Chinwe" roles="customer10"/>
+  <persons name="Chinwe" roles="customer10" purchases="_72Ko8HwCEem3DPoWtN9Cbw"/>
   <persons name="Ogoo" roles="customer2" purchases="_09-y4HnCEemsfJuwApdfYw"/>
   <persons name="Sophie" roles="customer3"/>
   <persons name="Dindu" roles="customer4"/>
   <persons name="Chijioke" roles="customerA"/>
   <persons name="Chinwe" roles="customer100"/>
-  <persons name="Chijioke" roles="c23"/>
+  <persons name="Chijioke" roles="c23" purchases="_5kfhQHwCEem3DPoWtN9Cbw _d_6RQHwKEemjOZ4XF-zRbQ _lnRrQHwKEemjOZ4XF-zRbQ __pnLwHwKEemjOZ4XF-zRbQ _jJpbUHxDEem09aDiBLgidw _aR66wHxFEem49f4fGxyqVg _cpDNYHxJEemxjI0W0FfgPA"/>
   <persons name="Cger" roles="dgdf"/>
   <customers person="//@persons.3" customerID="customer10"/>
   <customers person="//@persons.4" customerID="customer2"/>
@@ -50,8 +49,35 @@
   <customers person="//@persons.9" customerID="c23"/>
   <customers person="//@persons.10" customerID="dgdf"/>
   <transactions seller="//@persons.0" buyer="//@persons.4" date="2019-05-18T00:00:00.000-0400" amountPaid="78940.0" id="_09-y4HnCEemsfJuwApdfYw">
-    <producttransactions price="171500.0" quantity="700" product="//@products.13"/>
-    <producttransactions price="19110.0" quantity="78" product="//@products.13"/>
-    <producttransactions price="2157159.0" quantity="47" product="//@products.6"/>
+    <producttransactions price="171500.0" quantity="700"/>
+    <producttransactions price="19110.0" quantity="78"/>
+    <producttransactions price="2157159.0" quantity="47"/>
+  </transactions>
+  <transactions seller="//@persons.0" buyer="//@persons.9" date="2019-05-21T00:00:00.000-0400" id="_5kfhQHwCEem3DPoWtN9Cbw"/>
+  <transactions seller="//@persons.0" buyer="//@persons.3" date="2019-05-21T00:00:00.000-0400" id="_72Ko8HwCEem3DPoWtN9Cbw">
+    <producttransactions price="357084.0" quantity="78"/>
+    <producttransactions price="97110.0" quantity="78"/>
+  </transactions>
+  <transactions seller="//@persons.0" buyer="//@persons.9" date="2019-05-21T00:00:00.000-0400" id="_d_6RQHwKEemjOZ4XF-zRbQ">
+    <producttransactions price="980.0" quantity="4"/>
+  </transactions>
+  <transactions seller="//@persons.0" buyer="//@persons.9" date="2019-05-21T00:00:00.000-0400" id="_lnRrQHwKEemjOZ4XF-zRbQ">
+    <producttransactions price="256368.0" quantity="56" product="//@products.8"/>
+  </transactions>
+  <transactions seller="//@persons.0" buyer="//@persons.9" date="2019-05-21T00:00:00.000-0400" amountPaid="897.0" id="__pnLwHwKEemjOZ4XF-zRbQ">
+    <producttransactions price="47025.0" quantity="45"/>
+  </transactions>
+  <transactions seller="//@persons.0" buyer="//@persons.9" date="2019-05-21T00:00:00.000-0400" totalAmount="91555.0" id="_jJpbUHxDEem09aDiBLgidw" products="//@products.22 //@products.24">
+    <producttransactions price="35530.0" quantity="34"/>
+    <producttransactions price="56025.0" quantity="45" product="//@products.24"/>
+  </transactions>
+  <transactions seller="//@persons.0" buyer="//@persons.9" date="2019-05-21T00:00:00.000-0400" totalAmount="150136.0" id="_aR66wHxFEem49f4fGxyqVg" products="//@products.12 //@products.23 //@products.0">
+    <producttransactions price="980.0" quantity="4" product="//@products.12"/>
+    <producttransactions price="29156.0" quantity="2" product="//@products.23"/>
+    <producttransactions price="120000.0" quantity="50" product="//@products.0"/>
+  </transactions>
+  <transactions seller="//@persons.0" buyer="//@persons.9" date="2019-05-22T00:00:00.000-0400" totalAmount="491676.0" amountPaid="400000.0" id="_cpDNYHxJEemxjI0W0FfgPA" products="//@products.5 //@products.14">
+    <producttransactions price="367176.0" quantity="8" product="//@products.5"/>
+    <producttransactions price="124500.0" quantity="100" product="//@products.14"/>
   </transactions>
 </ims:IMS>

@@ -64,7 +64,7 @@ public class LoginPage extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginPage() {
-		setUndecorated(true);
+		//setUndecorated(true);
 		UIManager.put("OptionPane.messageForeground", Color.green);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

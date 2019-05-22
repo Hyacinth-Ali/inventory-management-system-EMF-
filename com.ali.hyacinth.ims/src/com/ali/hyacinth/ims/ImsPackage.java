@@ -143,7 +143,7 @@ public interface ImsPackage extends EPackage {
 	int PRODUCT__QUANTITY = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Producttransactions</b></em>' reference list.
+	 * The feature id for the '<em><b>Producttransactions</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -152,13 +152,22 @@ public interface ImsPackage extends EPackage {
 	int PRODUCT__PRODUCTTRANSACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Transactions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT__TRANSACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Product</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int PRODUCT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Product</em>' class.
@@ -527,13 +536,22 @@ public interface ImsPackage extends EPackage {
 	int TRANSACTION__PRODUCTTRANSACTIONS = 7;
 
 	/**
+	 * The feature id for the '<em><b>Products</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSACTION__PRODUCTS = 8;
+
+	/**
 	 * The number of structural features of the '<em>Transaction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSACTION_FEATURE_COUNT = 8;
+	int TRANSACTION_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Transaction</em>' class.
@@ -995,15 +1013,26 @@ public interface ImsPackage extends EPackage {
 	EAttribute getProduct_Quantity();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.ali.hyacinth.ims.Product#getProducttransactions <em>Producttransactions</em>}'.
+	 * Returns the meta object for the reference '{@link com.ali.hyacinth.ims.Product#getProducttransactions <em>Producttransactions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Producttransactions</em>'.
+	 * @return the meta object for the reference '<em>Producttransactions</em>'.
 	 * @see com.ali.hyacinth.ims.Product#getProducttransactions()
 	 * @see #getProduct()
 	 * @generated
 	 */
 	EReference getProduct_Producttransactions();
+
+	/**
+	 * Returns the meta object for the reference list '{@link com.ali.hyacinth.ims.Product#getTransactions <em>Transactions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Transactions</em>'.
+	 * @see com.ali.hyacinth.ims.Product#getTransactions()
+	 * @see #getProduct()
+	 * @generated
+	 */
+	EReference getProduct_Transactions();
 
 	/**
 	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.Person <em>Person</em>}'.
@@ -1176,6 +1205,17 @@ public interface ImsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTransaction_Producttransactions();
+
+	/**
+	 * Returns the meta object for the reference list '{@link com.ali.hyacinth.ims.Transaction#getProducts <em>Products</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Products</em>'.
+	 * @see com.ali.hyacinth.ims.Transaction#getProducts()
+	 * @see #getTransaction()
+	 * @generated
+	 */
+	EReference getTransaction_Products();
 
 	/**
 	 * Returns the meta object for class '{@link com.ali.hyacinth.ims.Audit <em>Audit</em>}'.
@@ -1607,12 +1647,20 @@ public interface ImsPackage extends EPackage {
 		EAttribute PRODUCT__QUANTITY = eINSTANCE.getProduct_Quantity();
 
 		/**
-		 * The meta object literal for the '<em><b>Producttransactions</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Producttransactions</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference PRODUCT__PRODUCTTRANSACTIONS = eINSTANCE.getProduct_Producttransactions();
+
+		/**
+		 * The meta object literal for the '<em><b>Transactions</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT__TRANSACTIONS = eINSTANCE.getProduct_Transactions();
 
 		/**
 		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.PersonImpl <em>Person</em>}' class.
@@ -1749,6 +1797,14 @@ public interface ImsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRANSACTION__PRODUCTTRANSACTIONS = eINSTANCE.getTransaction_Producttransactions();
+
+		/**
+		 * The meta object literal for the '<em><b>Products</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSACTION__PRODUCTS = eINSTANCE.getTransaction_Products();
 
 		/**
 		 * The meta object literal for the '{@link com.ali.hyacinth.ims.impl.AuditImpl <em>Audit</em>}' class.

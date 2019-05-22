@@ -17,5 +17,5 @@ class TOProduct {
 class TOProductTransaction {
 	lazy Integer quantity;
 	lazy Double price;
-	0..1 -- 1 TOProduct toProduct;
+	lazy String productName;
 }

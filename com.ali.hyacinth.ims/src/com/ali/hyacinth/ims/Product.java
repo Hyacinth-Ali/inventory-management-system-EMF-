@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link com.ali.hyacinth.ims.Product#getId <em>Id</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Product#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Product#getProducttransactions <em>Producttransactions</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.Product#getTransactions <em>Transactions</em>}</li>
  * </ul>
  *
  * @see com.ali.hyacinth.ims.ImsPackage#getProduct()
@@ -103,8 +104,7 @@ public interface Product extends NamedElement {
 	void setQuantity(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Producttransactions</b></em>' reference list.
-	 * The list contents are of type {@link com.ali.hyacinth.ims.ProductTransaction}.
+	 * Returns the value of the '<em><b>Producttransactions</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link com.ali.hyacinth.ims.ProductTransaction#getProduct <em>Product</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -112,12 +112,41 @@ public interface Product extends NamedElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Producttransactions</em>' reference list.
+	 * @return the value of the '<em>Producttransactions</em>' reference.
+	 * @see #setProducttransactions(ProductTransaction)
 	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Producttransactions()
 	 * @see com.ali.hyacinth.ims.ProductTransaction#getProduct
 	 * @model opposite="product"
 	 * @generated
 	 */
-	EList<ProductTransaction> getProducttransactions();
+	ProductTransaction getProducttransactions();
+
+	/**
+	 * Sets the value of the '{@link com.ali.hyacinth.ims.Product#getProducttransactions <em>Producttransactions</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Producttransactions</em>' reference.
+	 * @see #getProducttransactions()
+	 * @generated
+	 */
+	void setProducttransactions(ProductTransaction value);
+
+	/**
+	 * Returns the value of the '<em><b>Transactions</b></em>' reference list.
+	 * The list contents are of type {@link com.ali.hyacinth.ims.Transaction}.
+	 * It is bidirectional and its opposite is '{@link com.ali.hyacinth.ims.Transaction#getProducts <em>Products</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Transactions</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Transactions</em>' reference list.
+	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Transactions()
+	 * @see com.ali.hyacinth.ims.Transaction#getProducts
+	 * @model opposite="products"
+	 * @generated
+	 */
+	EList<Transaction> getTransactions();
 
 } // Product

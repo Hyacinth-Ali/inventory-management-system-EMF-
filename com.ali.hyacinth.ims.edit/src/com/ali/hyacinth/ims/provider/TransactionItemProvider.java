@@ -69,6 +69,7 @@ public class TransactionItemProvider
 			addAmountPaidPropertyDescriptor(object);
 			addAmountUnpaidPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
+			addProductsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -223,6 +224,28 @@ public class TransactionItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Products feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addProductsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Transaction_products_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Transaction_products_feature", "_UI_Transaction_type"),
+				 ImsPackage.Literals.TRANSACTION__PRODUCTS,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

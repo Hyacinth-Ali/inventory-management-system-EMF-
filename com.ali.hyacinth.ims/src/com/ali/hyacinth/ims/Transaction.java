@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getAmountUnpaid <em>Amount Unpaid</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getId <em>Id</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Transaction#getProducttransactions <em>Producttransactions</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.Transaction#getProducts <em>Products</em>}</li>
  * </ul>
  *
  * @see com.ali.hyacinth.ims.ImsPackage#getTransaction()
@@ -233,5 +234,23 @@ public interface Transaction extends EObject {
 	 * @generated
 	 */
 	EList<ProductTransaction> getProducttransactions();
+
+	/**
+	 * Returns the value of the '<em><b>Products</b></em>' reference list.
+	 * The list contents are of type {@link com.ali.hyacinth.ims.Product}.
+	 * It is bidirectional and its opposite is '{@link com.ali.hyacinth.ims.Product#getTransactions <em>Transactions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Products</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Products</em>' reference list.
+	 * @see com.ali.hyacinth.ims.ImsPackage#getTransaction_Products()
+	 * @see com.ali.hyacinth.ims.Product#getTransactions
+	 * @model opposite="transactions"
+	 * @generated
+	 */
+	EList<Product> getProducts();
 
 } // Transaction

@@ -278,6 +278,15 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProduct_Transactions() {
+		return (EReference)productEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPerson() {
 		return personEClass;
 	}
@@ -415,6 +424,15 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 */
 	public EReference getTransaction_Producttransactions() {
 		return (EReference)transactionEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTransaction_Products() {
+		return (EReference)transactionEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -750,6 +768,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEAttribute(productEClass, PRODUCT__ID);
 		createEAttribute(productEClass, PRODUCT__QUANTITY);
 		createEReference(productEClass, PRODUCT__PRODUCTTRANSACTIONS);
+		createEReference(productEClass, PRODUCT__TRANSACTIONS);
 
 		personEClass = createEClass(PERSON);
 		createEReference(personEClass, PERSON__ROLES);
@@ -770,6 +789,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEAttribute(transactionEClass, TRANSACTION__AMOUNT_UNPAID);
 		createEAttribute(transactionEClass, TRANSACTION__ID);
 		createEReference(transactionEClass, TRANSACTION__PRODUCTTRANSACTIONS);
+		createEReference(transactionEClass, TRANSACTION__PRODUCTS);
 
 		auditEClass = createEClass(AUDIT);
 		createEReference(auditEClass, AUDIT__TRANSACTIONS);
@@ -859,7 +879,8 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEAttribute(getProduct_ItemPrice(), ecorePackage.getEFloat(), "itemPrice", null, 1, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProduct_Id(), ecorePackage.getEString(), "id", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProduct_Quantity(), ecorePackage.getEInt(), "quantity", null, 1, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProduct_Producttransactions(), this.getProductTransaction(), this.getProductTransaction_Product(), "producttransactions", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProduct_Producttransactions(), this.getProductTransaction(), this.getProductTransaction_Product(), "producttransactions", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProduct_Transactions(), this.getTransaction(), this.getTransaction_Products(), "transactions", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPerson_Roles(), this.getPersonRole(), this.getPersonRole_Person(), "roles", null, 1, 3, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -880,6 +901,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEAttribute(getTransaction_AmountUnpaid(), ecorePackage.getEFloat(), "amountUnpaid", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransaction_Id(), ecorePackage.getEString(), "id", null, 1, 1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransaction_Producttransactions(), this.getProductTransaction(), null, "producttransactions", null, 0, -1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransaction_Products(), this.getProduct(), this.getProduct_Transactions(), "products", null, 0, -1, Transaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(auditEClass, Audit.class, "Audit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAudit_Transactions(), this.getTransaction(), null, "transactions", null, 0, -1, Audit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
