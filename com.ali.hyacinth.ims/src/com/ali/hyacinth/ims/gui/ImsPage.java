@@ -12,6 +12,7 @@ import com.ali.hyacinth.ims.controller.ImsTransactionController;
 import com.ali.hyacinth.ims.controller.InvalidInputException;
 import com.ali.hyacinth.ims.controller.TOCustomer;
 import com.ali.hyacinth.ims.resource.ImsResource;
+import com.ali.hyacinth.ims.transferobjects.Receipt;
 import com.ali.hyacinth.ims.transferobjects.TOProduct;
 import com.ali.hyacinth.ims.transferobjects.TOProductTransaction;
 
@@ -27,6 +28,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.print.PrinterException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -43,6 +45,7 @@ import javax.swing.JSeparator;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JTextArea;
 
 public class ImsPage extends JFrame {
 	
@@ -98,6 +101,8 @@ public class ImsPage extends JFrame {
 	private JLabel lblCurrentCustomer;
 	private JTextField textFieldUpdateQuantity;
 	private JLabel lblTotalAmount;
+	private JTextArea textArea;
+	private JPanel receiptPanel;
 
 	/**
 	 * Launch the application.
@@ -746,7 +751,9 @@ public class ImsPage extends JFrame {
 						int option = JOptionPane.showConfirmDialog(ImsApplication.getFrame(), "Confirm submission?", 
 								"Submission status", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 						if (option == 0) {
-							ImsTransactionController.purchase(amountPaid);
+							Receipt receipt = ImsTransactionController.purchase(amountPaid);
+							showReceipt(receipt);
+							ImsApplication.setCurrentCustomer(null);
 						}
 					} catch (InvalidInputException e1) {
 						error = e1.getMessage();
@@ -1045,8 +1052,35 @@ public class ImsPage extends JFrame {
 		
 		tableProducts.setAutoCreateRowSorter(true);
 		
-		JPanel receiptPanel = new JPanel();
+		receiptPanel = new JPanel();
 		layeredPane.add(receiptPanel, "name_408138955056000");
+		receiptPanel.setLayout(null);
+		
+		JButton btnPrint = new JButton("PRINT");
+		btnPrint.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					textArea.print();
+				} catch (PrinterException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnPrint.setBounds(15, 36, 115, 29);
+		receiptPanel.add(btnPrint);
+		
+		JButton btnClose = new JButton("CLOSE");
+		btnClose.setBounds(15, 89, 115, 29);
+		receiptPanel.add(btnClose);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(169, 16, 492, 477);
+		receiptPanel.add(scrollPane_2);
+		
+		textArea = new JTextArea();
+		textArea.setEditable(false);
+		scrollPane_2.setViewportView(textArea);
 		
 		refreshProductPanel();
 		refreshCustomerPanel();
@@ -1186,14 +1220,35 @@ public class ImsPage extends JFrame {
 		}
 	}
 	
-	/*private TOCustomer findCustomer(String customerID) {
-		TOCustomer customer = null;
-		for (TOCustomer c : ImsPersonController.getCustomers()) {
-			if (c.getId().equals(customerID)) {
-				customer = c;
-				break;
-			}
+	private void showReceipt(Receipt receipt) {
+		
+		textArea.append("DE DON MOTORS CO. L.T.D\n");
+		textArea.append("IN GOD WE TRUST\n");
+		textArea.append("LET LOVE LEAD\n\n");
+		
+		textArea.append("Name: "+ ImsApplication.getCurrentCustomer().getPerson().getName()+"\n");
+		textArea.append("Date: "+ receipt.getDate()+"\n\n");
+		textArea.append("NO\t");
+		textArea.append("Product\t");
+		textArea.append("Quantity\t");
+		textArea.append("Amount\n");
+		int count = 1;
+		for (TOProductTransaction pTransaction : receipt.getPTransactions()) {
+			textArea.append(""+count+"\t");
+			textArea.append(pTransaction.getProductName()+"\t");
+			textArea.append(""+pTransaction.getQuantity()+"\t");
+			textArea.append(""+pTransaction.getPrice() * pTransaction.getQuantity()+"\n\n");
+			count++;	
 		}
-		return customer;
-	}*/
+		textArea.append("Total Amount: "+receipt.getTotalAmount());
+		
+		layeredPane.removeAll();
+		layeredPane.add(receiptPanel);
+		layeredPane.repaint();
+		layeredPane.revalidate();
+		lblDashboard.setBackground(new Color(85, 107, 47));
+		lblProducts.setBackground(new Color(85, 107, 47));
+		lblAccounts.setBackground(new Color(85, 107, 47));
+		lblTransaction.setBackground(new Color(85, 107, 47));
+	}
 }
