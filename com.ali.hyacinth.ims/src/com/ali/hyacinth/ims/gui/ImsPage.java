@@ -740,6 +740,9 @@ public class ImsPage extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				error = "";
 				float amountPaid = 0;
+				if (ImsApplication.getCurrentCustomer() == null) {
+					error = "There is no custonmer logged in.";
+				}
 				try {
 					amountPaid = Float.parseFloat(textFieldAmountPaid.getText());
 				}
@@ -754,6 +757,7 @@ public class ImsPage extends JFrame {
 							Receipt receipt = ImsTransactionController.purchase(amountPaid);
 							showReceipt(receipt);
 							ImsApplication.setCurrentCustomer(null);
+							lblCurrentCustomer.setText("");
 						}
 					} catch (InvalidInputException e1) {
 						error = e1.getMessage();
@@ -801,21 +805,27 @@ public class ImsPage extends JFrame {
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				error = "";
-				int option = JOptionPane.showConfirmDialog(ImsApplication.getFrame(), 
-						"Do you really want to clear the selection?", 
-						"CLear status", JOptionPane.YES_NO_CANCEL_OPTION);
-				if (option == 0) {
-					try {
-						ImsTransactionController.clearTransactionSelections();
-					} catch (InvalidInputException e1) {
-						error = e1.getMessage();
-					}
+				if (ImsApplication.getCurrentCustomer() == null) {
+					error = "There is no custonmer logged in.";
 				}
-				refreshTransactionPanel();
-				refreshTransactionTable();
+				if (error.length() == 0) {
+					int option = JOptionPane.showConfirmDialog(ImsApplication.getFrame(), 
+							"Do you really want to clear the selection?", 
+							"CLear status", JOptionPane.YES_NO_CANCEL_OPTION);
+					if (option == 0) {
+						try {
+							ImsTransactionController.clearTransactionSelections();
+						} catch (InvalidInputException e1) {
+							error = e1.getMessage();
+						}
+					}
+					refreshTransactionPanel();
+					refreshTransactionTable();
+				}
+				
 			}
 		});
-		btnClear.setBounds(128, 427, 115, 29);
+		btnClear.setBounds(128, 456, 115, 29);
 		panel_3.add(btnClear);
 		
 		lblCurrentCustomer = new JLabel("");
@@ -823,6 +833,22 @@ public class ImsPage extends JFrame {
 		lblCurrentCustomer.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCurrentCustomer.setBounds(128, 0, 178, 20);
 		panel_3.add(lblCurrentCustomer);
+		
+		JButton btnShowReceipt = new JButton("SHOW RECEIPT");
+		btnShowReceipt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				error = "";
+				try {
+					Receipt receipt = ImsTransactionController.purchase(1.1f);
+					showReceipt(receipt);
+				} catch (InvalidInputException e1) {
+					error = e1.getMessage();
+				}
+				refreshTransactionPanel();
+			}
+		});
+		btnShowReceipt.setBounds(128, 422, 115, 23);
+		panel_3.add(btnShowReceipt);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.addMouseListener(new MouseAdapter() {
@@ -1071,6 +1097,18 @@ public class ImsPage extends JFrame {
 		receiptPanel.add(btnPrint);
 		
 		JButton btnClose = new JButton("CLOSE");
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				layeredPane.removeAll();
+				layeredPane.add(transactionsPanel);
+				layeredPane.repaint();
+				layeredPane.revalidate();
+				lblDashboard.setBackground(new Color(85, 107, 47));
+				lblProducts.setBackground(new Color(85, 107, 47));
+				lblAccounts.setBackground(new Color(85, 107, 47));
+				lblTransaction.setBackground(Color.LIGHT_GRAY);
+			}
+		});
 		btnClose.setBounds(15, 89, 115, 29);
 		receiptPanel.add(btnClose);
 		
@@ -1221,17 +1259,20 @@ public class ImsPage extends JFrame {
 	}
 	
 	private void showReceipt(Receipt receipt) {
-		
+		textArea.setText("");
+		System.out.println(textArea.getAlignmentX());
+		textArea.setAlignmentX(CENTER_ALIGNMENT);
 		textArea.append("DE DON MOTORS CO. L.T.D\n");
 		textArea.append("IN GOD WE TRUST\n");
 		textArea.append("LET LOVE LEAD\n\n");
 		
+		textArea.setAlignmentY(LEFT_ALIGNMENT);
 		textArea.append("Name: "+ ImsApplication.getCurrentCustomer().getPerson().getName()+"\n");
 		textArea.append("Date: "+ receipt.getDate()+"\n\n");
 		textArea.append("NO\t");
 		textArea.append("Product\t");
 		textArea.append("Quantity\t");
-		textArea.append("Amount\n");
+		textArea.append("Amount\n\n");
 		int count = 1;
 		for (TOProductTransaction pTransaction : receipt.getPTransactions()) {
 			textArea.append(""+count+"\t");
@@ -1240,7 +1281,8 @@ public class ImsPage extends JFrame {
 			textArea.append(""+pTransaction.getPrice() * pTransaction.getQuantity()+"\n\n");
 			count++;	
 		}
-		textArea.append("Total Amount: "+receipt.getTotalAmount());
+		//textArea.setAlignmentY(RIGHT_ALIGNMENT);
+		textArea.append("Total Amount : "+receipt.getTotalAmount());
 		
 		layeredPane.removeAll();
 		layeredPane.add(receiptPanel);

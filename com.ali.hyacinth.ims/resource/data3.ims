@@ -22,14 +22,14 @@
   <products name="Engine7" itemPrice="455.0" quantity="788"/>
   <products name="Engine8" itemPrice="5689.0" quantity="879"/>
   <products name="Engine9" itemPrice="478.0" quantity="789"/>
-  <products name="Engine10" itemPrice="1045.0" quantity="4445" transactions="_jJpbUHxDEem09aDiBLgidw"/>
+  <products name="Engine10" itemPrice="1045.0" quantity="4441" producttransactions="//@transactions.10/@producttransactions.0" transactions="_jJpbUHxDEem09aDiBLgidw _JDhLQHzYEemf7tz9Acz9IQ"/>
   <products name="Engine11" itemPrice="14578.0" quantity="14587" producttransactions="//@transactions.7/@producttransactions.1" transactions="_aR66wHxFEem49f4fGxyqVg"/>
   <products name="Engine34" itemPrice="1245.0" quantity="744" producttransactions="//@transactions.6/@producttransactions.1" transactions="_jJpbUHxDEem09aDiBLgidw"/>
-  <products name="Tube18" itemPrice="145.0" quantity="789"/>
+  <products name="Tube18" itemPrice="145.0" quantity="721" producttransactions="//@transactions.10/@producttransactions.1" transactions="_JDhLQHzYEemf7tz9Acz9IQ"/>
   <managers person="//@persons.0" userName="manager1" password="123"/>
   <managers person="//@persons.1" userName="manager2" password="123"/>
   <managers person="//@persons.2" userName="manager3" password="123456"/>
-  <persons name="Ogoo" roles="manager1" sales="_09-y4HnCEemsfJuwApdfYw _5kfhQHwCEem3DPoWtN9Cbw _72Ko8HwCEem3DPoWtN9Cbw _d_6RQHwKEemjOZ4XF-zRbQ _lnRrQHwKEemjOZ4XF-zRbQ __pnLwHwKEemjOZ4XF-zRbQ _jJpbUHxDEem09aDiBLgidw _aR66wHxFEem49f4fGxyqVg _cpDNYHxJEemxjI0W0FfgPA _xIt70HzTEemw4eQbPTyDJw"/>
+  <persons name="Ogoo" roles="manager1" sales="_09-y4HnCEemsfJuwApdfYw _5kfhQHwCEem3DPoWtN9Cbw _72Ko8HwCEem3DPoWtN9Cbw _d_6RQHwKEemjOZ4XF-zRbQ _lnRrQHwKEemjOZ4XF-zRbQ __pnLwHwKEemjOZ4XF-zRbQ _jJpbUHxDEem09aDiBLgidw _aR66wHxFEem49f4fGxyqVg _cpDNYHxJEemxjI0W0FfgPA _xIt70HzTEemw4eQbPTyDJw _JDhLQHzYEemf7tz9Acz9IQ"/>
   <persons name="Hyacinth" roles="manager2"/>
   <persons name="Hyacinth" roles="manager3"/>
   <persons name="Chinwe" roles="customer10" purchases="_72Ko8HwCEem3DPoWtN9Cbw"/>
@@ -38,7 +38,7 @@
   <persons name="Dindu" roles="customer4"/>
   <persons name="Chijioke" roles="customerA"/>
   <persons name="Chinwe" roles="customer100"/>
-  <persons name="Chijioke" roles="c23" purchases="_5kfhQHwCEem3DPoWtN9Cbw _d_6RQHwKEemjOZ4XF-zRbQ _lnRrQHwKEemjOZ4XF-zRbQ __pnLwHwKEemjOZ4XF-zRbQ _jJpbUHxDEem09aDiBLgidw _aR66wHxFEem49f4fGxyqVg _cpDNYHxJEemxjI0W0FfgPA _xIt70HzTEemw4eQbPTyDJw"/>
+  <persons name="Chijioke" roles="c23" purchases="_5kfhQHwCEem3DPoWtN9Cbw _d_6RQHwKEemjOZ4XF-zRbQ _lnRrQHwKEemjOZ4XF-zRbQ __pnLwHwKEemjOZ4XF-zRbQ _jJpbUHxDEem09aDiBLgidw _aR66wHxFEem49f4fGxyqVg _cpDNYHxJEemxjI0W0FfgPA _xIt70HzTEemw4eQbPTyDJw _JDhLQHzYEemf7tz9Acz9IQ"/>
   <persons name="Cger" roles="dgdf"/>
   <persons name="Emmanuel" roles="c2356"/>
   <customers person="//@persons.3" customerID="customer10"/>
@@ -84,5 +84,9 @@
   </transactions>
   <transactions seller="//@persons.0" buyer="//@persons.9" date="2019-05-22T00:00:00.000-0400" totalAmount="735.0" id="_xIt70HzTEemw4eQbPTyDJw" products="//@products.12">
     <producttransactions price="735.0" quantity="3" product="//@products.12"/>
+  </transactions>
+  <transactions seller="//@persons.0" buyer="//@persons.9" date="2019-05-22T00:00:00.000-0400" totalAmount="7020.0" amountPaid="345.0" id="_JDhLQHzYEemf7tz9Acz9IQ" products="//@products.22 //@products.25">
+    <producttransactions price="2090.0" quantity="2" product="//@products.22"/>
+    <producttransactions price="4930.0" quantity="34" product="//@products.25"/>
   </transactions>
 </ims:IMS>
