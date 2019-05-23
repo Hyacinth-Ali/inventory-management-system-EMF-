@@ -16,6 +16,7 @@ public class TOTransaction
   private Date date;
   private double totalAmount;
   private double amountPaid;
+  private String id;
 
   //------------------------
   // CONSTRUCTOR
@@ -26,6 +27,7 @@ public class TOTransaction
     date = null;
     totalAmount = 0;
     amountPaid = 0;
+    id = null;
   }
 
   //------------------------
@@ -56,6 +58,14 @@ public class TOTransaction
     return wasSet;
   }
 
+  public boolean setId(String aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
+
   public Date getDate()
   {
     return date;
@@ -69,6 +79,11 @@ public class TOTransaction
   public double getAmountPaid()
   {
     return amountPaid;
+  }
+
+  public String getId()
+  {
+    return id;
   }
 
   public double getBalance()
@@ -85,6 +100,7 @@ public class TOTransaction
     return super.toString() + "["+
             "totalAmount" + ":" + getTotalAmount()+ "," +
             "amountPaid" + ":" + getAmountPaid()+ "," +
+            "id" + ":" + getId()+ "," +
             "balance" + ":" + getBalance()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null");
   }

@@ -24,14 +24,18 @@ import javax.swing.JOptionPane;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.print.PrinterException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -45,7 +49,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import javax.swing.JTextArea;
 
 public class ImsPage extends JFrame {
@@ -57,6 +63,8 @@ public class ImsPage extends JFrame {
 
 	private String error = "";
 	private String productTransactionName = "";
+	private int productIndex;
+	private int countRefresh = 1;
 
 	private JPanel contentPane;
 	private JPanel productsPanel;
@@ -85,6 +93,7 @@ public class ImsPage extends JFrame {
 	
 	//Customers
 	private HashMap<Integer, String> customers;
+	private HashMap<Integer, String> customerTransactions;
 	
 
 	private JButton btnLogout;
@@ -105,7 +114,9 @@ public class ImsPage extends JFrame {
 	private JTextArea textArea;
 	private JPanel receiptPanel;
 	private JTable tableCustomers;
-	private JTextField textFieldUpdateAmountPaid;
+	private JTextField textFieldCurrentPaid;
+	private JTextField textFieldUpdatePaid;
+	private JLabel lblTotalBalance;
 
 	/**
 	 * Launch the application.
@@ -127,8 +138,13 @@ public class ImsPage extends JFrame {
 	 * Create the frame.
 	 */
 	public ImsPage() {
-		//setUndecorated(true);		
+		//setUndecorated(true);	
 		
+		//set frame icon
+		Image iconImg = new ImageIcon(this.getClass().getResource("/motorcyclist-icon.png")).getImage();
+		setIconImage(iconImg);
+		
+		//setIconImage(/com.ali.hyacinth.ims/images/motorcycle.png);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1145, 655);
 		contentPane = new JPanel();
@@ -333,21 +349,24 @@ public class ImsPage extends JFrame {
 		dashBoardPanel = new JPanel();
 		layeredPane.add(dashBoardPanel, "name_866715194326100");
 		
-		JLabel lblProductsPanel = new JLabel("Overview\r\n");
+		JTextArea txtrWarmlyWelcomeTo = new JTextArea();
+		txtrWarmlyWelcomeTo.setForeground(new Color(128, 128, 0));
+		txtrWarmlyWelcomeTo.setFont(new Font("Monospaced", Font.PLAIN, 20));
+		txtrWarmlyWelcomeTo.setText("Warmly welcome to De Don Motors Inventory \r\nManagement Application. Please, feel free explore \r\nand thoroughly test the app and get to me with the\r\n comhrehensive feed back including bugs!");
 		GroupLayout gl_dashBoardPanel = new GroupLayout(dashBoardPanel);
 		gl_dashBoardPanel.setHorizontalGroup(
 			gl_dashBoardPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_dashBoardPanel.createSequentialGroup()
-					.addGap(322)
-					.addComponent(lblProductsPanel)
-					.addContainerGap(439, Short.MAX_VALUE))
+					.addGap(59)
+					.addComponent(txtrWarmlyWelcomeTo, GroupLayout.PREFERRED_SIZE, 639, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(132, Short.MAX_VALUE))
 		);
 		gl_dashBoardPanel.setVerticalGroup(
 			gl_dashBoardPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_dashBoardPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblProductsPanel)
-					.addContainerGap(473, Short.MAX_VALUE))
+					.addGap(65)
+					.addComponent(txtrWarmlyWelcomeTo, GroupLayout.PREFERRED_SIZE, 254, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(190, Short.MAX_VALUE))
 		);
 		dashBoardPanel.setLayout(gl_dashBoardPanel);
 		
@@ -637,7 +656,8 @@ public class ImsPage extends JFrame {
 		panel_3.add(textFieldTransactionCustomerID);
 		textFieldTransactionCustomerID.setColumns(10);
 		
-		JButton btnOk = new JButton("OK");
+		JButton btnOk = new JButton("SIGN IN");
+		btnOk.setBorder(new LineBorder(new Color(128, 0, 0)));
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				error = "";
@@ -658,7 +678,7 @@ public class ImsPage extends JFrame {
 				refreshTransactionPanel();
 			}
 		});
-		btnOk.setBounds(128, 61, 53, 29);
+		btnOk.setBounds(128, 61, 80, 29);
 		panel_3.add(btnOk);
 		
 		JSeparator separator_3 = new JSeparator();
@@ -701,6 +721,7 @@ public class ImsPage extends JFrame {
 		textFieldTransactionProductQuantity.setColumns(10);
 		
 		JButton btnAdd = new JButton("ADD");
+		btnAdd.setBorder(new LineBorder(new Color(128, 0, 0)));
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -741,6 +762,7 @@ public class ImsPage extends JFrame {
 		panel_3.add(separator_4);
 		
 		JButton btnSubmit = new JButton("SUBMIT");
+		btnSubmit.setBorder(new LineBorder(new Color(128, 0, 0)));
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				error = "";
@@ -790,6 +812,7 @@ public class ImsPage extends JFrame {
 		panel_3.add(lblItemPrice);
 		
 		JButton btnSignOut = new JButton("SIGN OUT");
+		btnSignOut.setBorder(new LineBorder(new Color(128, 0, 0)));
 		btnSignOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int option = JOptionPane.showConfirmDialog(ImsApplication.getFrame(), 
@@ -803,10 +826,11 @@ public class ImsPage extends JFrame {
 				refreshTransactionPanel();	
 			}
 		});
-		btnSignOut.setBounds(183, 61, 123, 29);
+		btnSignOut.setBounds(215, 61, 91, 29);
 		panel_3.add(btnSignOut);
 		
 		JButton btnClear = new JButton("CLEAR");
+		btnClear.setBorder(new LineBorder(new Color(128, 0, 0)));
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				error = "";
@@ -840,19 +864,26 @@ public class ImsPage extends JFrame {
 		panel_3.add(lblCurrentCustomer);
 		
 		JButton btnShowReceipt = new JButton("SHOW RECEIPT");
+		btnShowReceipt.setBorder(new LineBorder(new Color(128, 0, 0)));
 		btnShowReceipt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				error = "";
-				try {
-					Receipt receipt = ImsTransactionController.purchase(1.1f);
-					showReceipt(receipt);
-				} catch (InvalidInputException e1) {
-					error = e1.getMessage();
+				if (ImsApplication.getCurrentCustomer() == null) {
+					error = "There is no custonmer logged in.";
 				}
+				if (error.length() == 0) {
+					try {
+						Receipt receipt = ImsTransactionController.purchase();
+						showReceipt(receipt);
+					} catch (InvalidInputException e1) {
+						error = e1.getMessage();
+					}
+				}
+				
 				refreshTransactionPanel();
 			}
 		});
-		btnShowReceipt.setBounds(128, 422, 136, 23);
+		btnShowReceipt.setBounds(128, 422, 115, 29);
 		panel_3.add(btnShowReceipt);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -899,6 +930,7 @@ public class ImsPage extends JFrame {
 		scrollPane_1.setViewportView(tableTransaction);
 		
 		JButton btnUpdateQuantity = new JButton("Update");
+		btnUpdateQuantity.setBorder(new LineBorder(new Color(128, 0, 0)));
 		btnUpdateQuantity.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				error = "";
@@ -934,6 +966,7 @@ public class ImsPage extends JFrame {
 		transactionsPanel.add(lblTotalAmount);
 		
 		JButton btnRemove = new JButton("REMOVE");
+		btnRemove.setBorder(new LineBorder(new Color(128, 0, 0)));
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				error = "";
@@ -1024,6 +1057,7 @@ public class ImsPage extends JFrame {
 						textFieldUpdateCustomerName.setText(c.getName());	
 						textFieldUpdateCustomerID.setText(c.getId());
 						refreshCustomerTable();
+						countRefresh++;
 						}
 				}
 				//refreshCustomerPanel();
@@ -1103,42 +1137,81 @@ public class ImsPage extends JFrame {
 		accountsPanel.add(scrollPane_3);
 		
 		tableCustomers = new JTable();
+		tableCustomers.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				DefaultTableModel model = (DefaultTableModel) tableCustomers.getModel();
+				int selectedRow = tableCustomers.getSelectedRow();
+				
+				productIndex = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+				String amountPaid = model.getValueAt(selectedRow, 3).toString();
+				textFieldCurrentPaid.setText(amountPaid);
+			}
+		});
 		tableCustomers.setAutoCreateRowSorter(true);
 		tableCustomers.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"DATE", "TOTAL AMOUNT", "AMOUNT PAID", "BALANCE"
+				"NO", "DATE", "TOTAL AMOUNT", "AMOUNT PAID", "BALANCE"
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				Object.class, Object.class, Object.class, Float.class
+				Integer.class, Object.class, Object.class, Object.class, Float.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
 			boolean[] columnEditables = new boolean[] {
-				true, true, true, false
+				false, true, true, true, true
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
 		});
-		tableCustomers.getColumnModel().getColumn(3).setResizable(false);
+		tableCustomers.getColumnModel().getColumn(4).setResizable(false);
 		scrollPane_3.setViewportView(tableCustomers);
 		
 		JButton btnUpdate_1 = new JButton("UPDATE");
-		btnUpdate_1.setBounds(353, 453, 115, 29);
+		btnUpdate_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				error = "";
+				if (textFieldUpdateCustomerID.getText().length() == 0) {
+					error = "Please select a customer before the update.";
+				}
+				if (error.length() == 0) {
+					try {
+						String transactionID = customerTransactions.get(productIndex);
+						float newAmount = Float.parseFloat(textFieldUpdatePaid.getText());
+						ImsTransactionController.updateAmountPaidTransaction(transactionID, newAmount);
+					} catch (InvalidInputException e) {
+						error = e.getMessage();
+					}
+				}
+				refreshCustomerTable();
+			}
+		});
+		btnUpdate_1.setBounds(497, 473, 115, 20);
 		accountsPanel.add(btnUpdate_1);
 		
-		textFieldUpdateAmountPaid = new JTextField();
-		textFieldUpdateAmountPaid.setBounds(483, 453, 146, 26);
-		accountsPanel.add(textFieldUpdateAmountPaid);
-		textFieldUpdateAmountPaid.setColumns(10);
+		textFieldCurrentPaid = new JTextField();
+		textFieldCurrentPaid.setBounds(363, 448, 124, 20);
+		accountsPanel.add(textFieldCurrentPaid);
+		textFieldCurrentPaid.setColumns(10);
 		
-		JLabel lblTotalBalance = new JLabel("New label");
-		lblTotalBalance.setBounds(644, 457, 69, 20);
+		lblTotalBalance = new JLabel("");
+		lblTotalBalance.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblTotalBalance.setBounds(644, 457, 105, 20);
 		accountsPanel.add(lblTotalBalance);
+		
+		textFieldUpdatePaid = new JTextField();
+		textFieldUpdatePaid.setBounds(497, 448, 115, 20);
+		accountsPanel.add(textFieldUpdatePaid);
+		textFieldUpdatePaid.setColumns(10);
+		
+		JLabel lblCurrentPaid = new JLabel("AMOUNT PAID");
+		lblCurrentPaid.setBounds(373, 476, 101, 14);
+		accountsPanel.add(lblCurrentPaid);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(290, 312, 314, 11);
@@ -1226,14 +1299,46 @@ public class ImsPage extends JFrame {
 	
 	private void refreshCustomerTable() {
 		lblErrorMEssage.setText(error);
+		
 		if (error == null || error.length() == 0) {
+			customerTransactions = new HashMap<Integer, String>();
 			List<TOTransaction> toTransactions = 
 					ImsTransactionController.getCustomerTransactions(textFieldUpdateCustomerID.getText());
 			DefaultTableModel model = (DefaultTableModel) tableCustomers.getModel();
 			model.setRowCount(0);
-			for (TOTransaction tT : toTransactions) {
-				model.addRow(new Object[] {tT.getDate(), tT.getTotalAmount(), tT.getAmountPaid(), tT.getBalance()});
+			//set the size and alignment of NO column
+			TableColumnModel columnModel = tableCustomers.getColumnModel();
+			columnModel.getColumn(0).setPreferredWidth(6);
+			DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+			centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+			tableCustomers.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+			
+			//set the alignment of balance column
+			DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+			leftRenderer.setHorizontalAlignment(SwingConstants.LEFT);
+			tableCustomers.getColumnModel().getColumn(4).setCellRenderer(leftRenderer);
+			
+			//set the alignment of the date column
+			tableCustomers.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+			float totalBalance = 0.0f;
+			if (countRefresh > 1) {
+				productIndex = 1;
+				for (TOTransaction tT : toTransactions) {
+					Date date = tT.getDate();
+					String cleanDate = date.toString();
+					String truncateDate = cleanDate.substring(4, 10);
+					truncateDate = truncateDate + " " + cleanDate.substring(24);
+					model.addRow(new Object[] {productIndex, truncateDate, tT.getTotalAmount(), 
+							tT.getAmountPaid(), tT.getBalance()});
+					totalBalance = (float) (totalBalance + tT.getBalance());
+					customerTransactions.put(productIndex, tT.getId());
+					productIndex++;
+				}
 			}
+			
+			textFieldCurrentPaid.setText("");
+			lblTotalBalance.setText(""+totalBalance);
+			textFieldUpdatePaid.setText("");
 		}
 		
 	}
@@ -1340,7 +1445,6 @@ public class ImsPage extends JFrame {
 	
 	private void showReceipt(Receipt receipt) {
 		textArea.setText("");
-		System.out.println(textArea.getAlignmentX());
 		textArea.setAlignmentX(CENTER_ALIGNMENT);
 		textArea.append("DE DON MOTORS CO. L.T.D\n");
 		textArea.append("IN GOD WE TRUST\n");
@@ -1348,7 +1452,9 @@ public class ImsPage extends JFrame {
 		
 		textArea.setAlignmentY(LEFT_ALIGNMENT);
 		textArea.append("Name: "+ ImsApplication.getCurrentCustomer().getPerson().getName()+"\n");
-		textArea.append("Date: "+ receipt.getDate()+"\n\n");
+		String date = receipt.getDate().toString();
+		date = date.substring(0, 10) + " " + date.substring(24);
+		textArea.append("Date: "+ date +"\n\n");
 		textArea.append("NO\t");
 		textArea.append("NAME\t");
 		textArea.append("QUANTITY\t");
@@ -1365,7 +1471,10 @@ public class ImsPage extends JFrame {
 			count++;	
 		}
 		//textArea.setAlignmentY(RIGHT_ALIGNMENT);
-		textArea.append("Total Amount : "+receipt.getTotalAmount());
+		textArea.append("Total Amount : "+receipt.getTotalAmount() + "\n");
+		textArea.append("Amount Paid : "+receipt.getAmoundPaid()+ "\n");
+		float balance = (float) (receipt.getTotalAmount() - receipt.getAmoundPaid());
+		textArea.append("Balance : "+balance+ "\n");
 		
 		layeredPane.removeAll();
 		layeredPane.add(receiptPanel);

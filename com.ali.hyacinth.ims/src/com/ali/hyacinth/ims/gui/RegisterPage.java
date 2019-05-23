@@ -66,6 +66,11 @@ public class RegisterPage extends JFrame {
 	 */
 	public RegisterPage() {
 		//setUndecorated(true);
+		
+		//set frame icon
+		Image iconImg = new ImageIcon(this.getClass().getResource("/motorcyclist-icon.png")).getImage();
+		setIconImage(iconImg);
+				
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 923, 610);
 		contentPane = new JPanel();

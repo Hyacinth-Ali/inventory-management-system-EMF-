@@ -25,5 +25,6 @@ class TOTransaction {
 	lazy Date date;
 	lazy Double totalAmount;
 	lazy Double amountPaid;
+	lazy String id;
 	Double balance = {getTotalAmount() - getAmountPaid()}
 }

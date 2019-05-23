@@ -38,6 +38,7 @@ public class ImsTransactionController {
 				toTransaction.setDate(t.getDate());
 				toTransaction.setTotalAmount(t.getTotalAmount());
 				toTransaction.setAmountPaid(t.getAmountPaid());
+				toTransaction.setId(t.getId());
 				transactions.add(toTransaction);
 			}
 		} 
@@ -281,7 +282,54 @@ public class ImsTransactionController {
 			receipt = new Receipt();
 			receipt.setTotalAmount(transaction.getTotalAmount());
 			receipt.setAmoundPaid(transaction.getAmountPaid());
-			Date date = cleanDate(transaction.getDate());
+			Date date = transaction.getDate();
+			receipt.setDate(date);
+			try {
+				for (ProductTransaction pTransaction : transaction.getProducttransactions()) {
+					
+					TOProductTransaction toPTransaction = new TOProductTransaction();
+					toPTransaction.setPrice(pTransaction.getPrice());
+					toPTransaction.setQuantity(pTransaction.getQuantity());
+					toPTransaction.setProductName(pTransaction.getProduct().getName());
+					toPTransaction.setUnitPrice(pTransaction.getProduct().getItemPrice());
+					
+					receipt.addPTransaction(toPTransaction);
+					
+					pTransaction.getProduct().setQuantity(pTransaction.getProduct().getQuantity() - 
+							pTransaction.getQuantity());
+					setTransactionTotalAmount();
+				}
+			} catch (RuntimeException e) {
+				throw new InvalidInputException(e.getMessage());
+			}
+		}
+		
+		return receipt;
+		
+	}
+	
+	/**
+	 * Just to generate receipt.
+	 * @param transaction of the purchase
+	 * @param amountPaid paid for the transaction
+	 * @throws InvalidInputException
+	 */
+	public static Receipt purchase() throws InvalidInputException {
+		String error = "";
+		Transaction transaction = ImsApplication.getCurrentTransaction();
+		if (transaction == null) {
+			error = "There is no current transaction!";
+		} 
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		
+		Receipt receipt = null;
+		if (transaction != null) {
+			receipt = new Receipt();
+			receipt.setTotalAmount(transaction.getTotalAmount());
+			receipt.setAmoundPaid(transaction.getAmountPaid());
+			Date date = transaction.getDate();
 			receipt.setDate(date);
 			try {
 				for (ProductTransaction pTransaction : transaction.getProducttransactions()) {
@@ -442,6 +490,21 @@ public class ImsTransactionController {
 		product.getProducttransaction().setPrice(quantity * product.getItemPrice());
 		product.setQuantity(product.getQuantity() - differenceQuantity);
 		setTransactionTotalAmount();
+		
+	}
+	
+	public static void updateAmountPaidTransaction(String id, float newAmount) throws InvalidInputException {
+		
+		String error = "";
+		Transaction transaction = findTransaction(id);
+		
+		if (transaction == null) {
+			error = "The transaction does not exist.";
+		} 
+		if (error.length() > 0) {
+			throw new InvalidInputException(error);
+		}
+		transaction.setAmountPaid(transaction.getAmountPaid() + newAmount);
 		
 	}
 	

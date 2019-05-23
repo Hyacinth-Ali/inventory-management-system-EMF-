@@ -66,6 +66,8 @@ public class LoginPage extends JFrame {
 	public LoginPage() {
 		//setUndecorated(true);
 		UIManager.put("OptionPane.messageForeground", Color.green);
+		Image iconImg = new ImageIcon(this.getClass().getResource("/motorcyclist-icon.png")).getImage();
+		setIconImage(iconImg);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 515);
