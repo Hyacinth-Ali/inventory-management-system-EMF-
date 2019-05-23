@@ -143,13 +143,13 @@ public interface ImsPackage extends EPackage {
 	int PRODUCT__QUANTITY = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Producttransactions</b></em>' reference.
+	 * The feature id for the '<em><b>Producttransaction</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT__PRODUCTTRANSACTIONS = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int PRODUCT__PRODUCTTRANSACTION = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Transactions</b></em>' reference list.
@@ -1013,15 +1013,15 @@ public interface ImsPackage extends EPackage {
 	EAttribute getProduct_Quantity();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.ali.hyacinth.ims.Product#getProducttransactions <em>Producttransactions</em>}'.
+	 * Returns the meta object for the reference '{@link com.ali.hyacinth.ims.Product#getProducttransaction <em>Producttransaction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Producttransactions</em>'.
-	 * @see com.ali.hyacinth.ims.Product#getProducttransactions()
+	 * @return the meta object for the reference '<em>Producttransaction</em>'.
+	 * @see com.ali.hyacinth.ims.Product#getProducttransaction()
 	 * @see #getProduct()
 	 * @generated
 	 */
-	EReference getProduct_Producttransactions();
+	EReference getProduct_Producttransaction();
 
 	/**
 	 * Returns the meta object for the reference list '{@link com.ali.hyacinth.ims.Product#getTransactions <em>Transactions</em>}'.
@@ -1647,12 +1647,12 @@ public interface ImsPackage extends EPackage {
 		EAttribute PRODUCT__QUANTITY = eINSTANCE.getProduct_Quantity();
 
 		/**
-		 * The meta object literal for the '<em><b>Producttransactions</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Producttransaction</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PRODUCT__PRODUCTTRANSACTIONS = eINSTANCE.getProduct_Producttransactions();
+		EReference PRODUCT__PRODUCTTRANSACTION = eINSTANCE.getProduct_Producttransaction();
 
 		/**
 		 * The meta object literal for the '<em><b>Transactions</b></em>' reference list feature.

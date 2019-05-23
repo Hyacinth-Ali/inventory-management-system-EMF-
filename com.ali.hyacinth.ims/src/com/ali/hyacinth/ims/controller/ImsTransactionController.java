@@ -1,6 +1,7 @@
 package com.ali.hyacinth.ims.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import com.ali.hyacinth.ims.application.ImsApplication;
 import com.ali.hyacinth.ims.transferobjects.Receipt;
 import com.ali.hyacinth.ims.transferobjects.TOProduct;
 import com.ali.hyacinth.ims.transferobjects.TOProductTransaction;
+import com.ali.hyacinth.ims.transferobjects.TOTransaction;
 
 public class ImsTransactionController {
 	
@@ -26,19 +28,19 @@ public class ImsTransactionController {
 	 * @return list of transactions
 	 * @throws InvalidInputException 
 	 */
-	public static List<TOTransaction> getCustomerTransactions(String customerID) throws InvalidInputException {
+	public static List<TOTransaction> getCustomerTransactions(String customerID) {
 		
 		Customer customer = findCustomer(customerID);
 		ArrayList<TOTransaction> transactions = new ArrayList<TOTransaction>();
 		if (customer != null) {
 			for (Transaction t : customer.getPerson().getPurchases()) {
-				TOTransaction toTransaction = new TOTransaction(t.getDate(), 
-						t.getTotalAmount(), t.getAmountPaid());
+				TOTransaction toTransaction = new TOTransaction(); 
+				toTransaction.setDate(t.getDate());
+				toTransaction.setTotalAmount(t.getTotalAmount());
+				toTransaction.setAmountPaid(t.getAmountPaid());
 				transactions.add(toTransaction);
 			}
-		} else {
-			throw new InvalidInputException("The customer does not exist.");
-		}
+		} 
 		
 		return transactions;
 	}
@@ -176,7 +178,7 @@ public class ImsTransactionController {
 		productTransaction.setPrice(quantity * product.getItemPrice());
 		
 		product.setQuantity(product.getQuantity() - quantity);
-		product.setProducttransactions(productTransaction);
+		product.setProducttransaction(productTransaction);
 		product.getTransactions().add(transaction);
 		
 		transaction.getProducttransactions().add(productTransaction);
@@ -244,6 +246,17 @@ public class ImsTransactionController {
 		
 	}*/
 	
+	private static Date cleanDate(Date date) {
+	    Calendar cal = Calendar.getInstance();
+	    cal.setTimeInMillis(date.getTime());
+	    cal.set(Calendar.HOUR_OF_DAY, 0);
+	    cal.set(Calendar.MINUTE, 0);
+	    cal.set(Calendar.SECOND, 0);
+	    cal.set(Calendar.MILLISECOND, 0);
+	    java.util.Date cleanedDate = cal.getTime();
+	    return cleanedDate;
+	}
+	
 	/**
 	 * Final step to purchase products, generate receipt.
 	 * @param transaction of the purchase
@@ -268,7 +281,8 @@ public class ImsTransactionController {
 			receipt = new Receipt();
 			receipt.setTotalAmount(transaction.getTotalAmount());
 			receipt.setAmoundPaid(transaction.getAmountPaid());
-			receipt.setDate(transaction.getDate());
+			Date date = cleanDate(transaction.getDate());
+			receipt.setDate(date);
 			try {
 				for (ProductTransaction pTransaction : transaction.getProducttransactions()) {
 					
@@ -276,6 +290,7 @@ public class ImsTransactionController {
 					toPTransaction.setPrice(pTransaction.getPrice());
 					toPTransaction.setQuantity(pTransaction.getQuantity());
 					toPTransaction.setProductName(pTransaction.getProduct().getName());
+					toPTransaction.setUnitPrice(pTransaction.getProduct().getItemPrice());
 					
 					receipt.addPTransaction(toPTransaction);
 					
@@ -307,9 +322,11 @@ public class ImsTransactionController {
 			for (ProductTransaction pTransaction : transaction.getProducttransactions()) {
 				
 				TOProductTransaction toPTransaction = new TOProductTransaction();
+				//the amount of the product transaction
 				toPTransaction.setPrice(pTransaction.getPrice());
 				toPTransaction.setQuantity(pTransaction.getQuantity());
 				toPTransaction.setProductName(pTransaction.getProduct().getName());
+				toPTransaction.setUnitPrice(pTransaction.getProduct().getItemPrice());
 				productTransactions.add(toPTransaction);
 			}
 		}
@@ -419,30 +436,34 @@ public class ImsTransactionController {
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
 		}
-		int differenceQuantity = quantity - product.getProducttransactions().getQuantity();
+		int differenceQuantity = quantity - product.getProducttransaction().getQuantity();
 		
-		product.getProducttransactions().setQuantity(quantity);	
-		product.getProducttransactions().setPrice(quantity * product.getItemPrice());
+		product.getProducttransaction().setQuantity(quantity);	
+		product.getProducttransaction().setPrice(quantity * product.getItemPrice());
 		product.setQuantity(product.getQuantity() - differenceQuantity);
 		setTransactionTotalAmount();
 		
 	}
 	
-	public static void removeProductTransaction(String productName) throws InvalidInputException {
+	public static void deleteProductTransaction(String productName) throws InvalidInputException {
 		
 		String error = "";
 		Transaction transaction = ImsApplication.getCurrentTransaction();
 		Product product = ImsProductController.findProduct(productName);
 		
 		if (transaction == null) {
-			error = "There is no current transaction.";
+			error = "The transaction does not exist.";
 		} else if(product == null) {
 			error = "The product doesn't exist for this transaction.";
 		}
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
 		}
-		EcoreUtil.delete(product.getProducttransactions());
+		int quantity = product.getProducttransaction().getQuantity();
+		product.setQuantity(product.getQuantity() + quantity);
+		EcoreUtil.delete(product.getProducttransaction());
+		product.getTransactions().remove(transaction);
+		setTransactionTotalAmount();
 	}
 
 

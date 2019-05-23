@@ -15,6 +15,7 @@ import com.ali.hyacinth.ims.resource.ImsResource;
 import com.ali.hyacinth.ims.transferobjects.Receipt;
 import com.ali.hyacinth.ims.transferobjects.TOProduct;
 import com.ali.hyacinth.ims.transferobjects.TOProductTransaction;
+import com.ali.hyacinth.ims.transferobjects.TOTransaction;
 
 import java.awt.Color;
 import javax.swing.JLayeredPane;
@@ -103,6 +104,8 @@ public class ImsPage extends JFrame {
 	private JLabel lblTotalAmount;
 	private JTextArea textArea;
 	private JPanel receiptPanel;
+	private JTable tableCustomers;
+	private JTextField textFieldUpdateAmountPaid;
 
 	/**
 	 * Launch the application.
@@ -124,7 +127,8 @@ public class ImsPage extends JFrame {
 	 * Create the frame.
 	 */
 	public ImsPage() {
-		//setUndecorated(true);
+		//setUndecorated(true);		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1145, 655);
 		contentPane = new JPanel();
@@ -380,6 +384,7 @@ public class ImsPage extends JFrame {
 		);
 		
 		tableProducts = new JTable();
+		tableProducts.setAutoCreateRowSorter(true);
 		tableProducts.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -847,7 +852,7 @@ public class ImsPage extends JFrame {
 				refreshTransactionPanel();
 			}
 		});
-		btnShowReceipt.setBounds(128, 422, 115, 23);
+		btnShowReceipt.setBounds(128, 422, 136, 23);
 		panel_3.add(btnShowReceipt);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -875,17 +880,17 @@ public class ImsPage extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Name", "Quantity", "Price"
+				"NAME", "QUANTITY", "UNIT PRICE", "AMOUNT"
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				String.class, Integer.class, Float.class
+				String.class, Integer.class, Float.class, Float.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
 			boolean[] columnEditables = new boolean[] {
-				false, false, false
+				false, false, false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -893,7 +898,7 @@ public class ImsPage extends JFrame {
 		});
 		scrollPane_1.setViewportView(tableTransaction);
 		
-		JButton btnUpdateQuantity = new JButton("Update Quantity");
+		JButton btnUpdateQuantity = new JButton("Update");
 		btnUpdateQuantity.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				error = "";
@@ -915,18 +920,33 @@ public class ImsPage extends JFrame {
 				refreshTransactionTable();
 			}
 		});
-		btnUpdateQuantity.setBounds(332, 464, 165, 29);
+		btnUpdateQuantity.setBounds(470, 464, 111, 29);
 		transactionsPanel.add(btnUpdateQuantity);
 		
 		textFieldUpdateQuantity = new JTextField();
-		textFieldUpdateQuantity.setBounds(512, 464, 156, 26);
+		textFieldUpdateQuantity.setBounds(596, 465, 102, 26);
 		transactionsPanel.add(textFieldUpdateQuantity);
 		textFieldUpdateQuantity.setColumns(10);
 		
 		lblTotalAmount = new JLabel("");
 		lblTotalAmount.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblTotalAmount.setBounds(683, 468, 132, 20);
+		lblTotalAmount.setBounds(713, 468, 102, 20);
 		transactionsPanel.add(lblTotalAmount);
+		
+		JButton btnRemove = new JButton("REMOVE");
+		btnRemove.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				error = "";
+				try {
+					ImsTransactionController.deleteProductTransaction(productTransactionName);
+				} catch (InvalidInputException e) {
+					error = e.getMessage();
+				}
+				refreshTransactionTable();
+			}
+		});
+		btnRemove.setBounds(336, 464, 111, 29);
+		transactionsPanel.add(btnRemove);
 		
 		accountsPanel = new JPanel();
 		layeredPane.add(accountsPanel, "name_866729209042000");
@@ -1002,7 +1022,8 @@ public class ImsPage extends JFrame {
 				for (TOCustomer c : customers) {
 					if (c.getId().equals(selectedID)) {
 						textFieldUpdateCustomerName.setText(c.getName());	
-						textFieldUpdateCustomerID.setText(c.getId());	
+						textFieldUpdateCustomerID.setText(c.getId());
+						refreshCustomerTable();
 						}
 				}
 				//refreshCustomerPanel();
@@ -1072,11 +1093,56 @@ public class ImsPage extends JFrame {
 		btnUpdate.setBounds(131, 378, 93, 29);
 		panel_2.add(btnUpdate);
 		
+		JLabel lblTransactions = new JLabel("Transactions");
+		lblTransactions.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblTransactions.setBounds(353, 16, 239, 20);
+		accountsPanel.add(lblTransactions);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(353, 52, 433, 385);
+		accountsPanel.add(scrollPane_3);
+		
+		tableCustomers = new JTable();
+		tableCustomers.setAutoCreateRowSorter(true);
+		tableCustomers.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"DATE", "TOTAL AMOUNT", "AMOUNT PAID", "BALANCE"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				Object.class, Object.class, Object.class, Float.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			boolean[] columnEditables = new boolean[] {
+				true, true, true, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		tableCustomers.getColumnModel().getColumn(3).setResizable(false);
+		scrollPane_3.setViewportView(tableCustomers);
+		
+		JButton btnUpdate_1 = new JButton("UPDATE");
+		btnUpdate_1.setBounds(353, 453, 115, 29);
+		accountsPanel.add(btnUpdate_1);
+		
+		textFieldUpdateAmountPaid = new JTextField();
+		textFieldUpdateAmountPaid.setBounds(483, 453, 146, 26);
+		accountsPanel.add(textFieldUpdateAmountPaid);
+		textFieldUpdateAmountPaid.setColumns(10);
+		
+		JLabel lblTotalBalance = new JLabel("New label");
+		lblTotalBalance.setBounds(644, 457, 69, 20);
+		accountsPanel.add(lblTotalBalance);
+		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(290, 312, 314, 11);
 		contentPane.add(separator);
-		
-		tableProducts.setAutoCreateRowSorter(true);
 		
 		receiptPanel = new JPanel();
 		layeredPane.add(receiptPanel, "name_408138955056000");
@@ -1146,7 +1212,7 @@ public class ImsPage extends JFrame {
 			DefaultTableModel model = (DefaultTableModel) tableTransaction.getModel();
 			model.setRowCount(0);
 			for (TOProductTransaction tp : products) {
-				model.addRow(new Object[] {tp.getProductName(), tp.getQuantity(), tp.getPrice()});
+				model.addRow(new Object[] {tp.getProductName(), tp.getQuantity(), tp.getUnitPrice(), tp.getPrice()});
 			}
 			
 			if (ImsApplication.getCurrentTransaction() != null) {
@@ -1154,6 +1220,20 @@ public class ImsPage extends JFrame {
 				.getTotalAmount());
 			}
 			textFieldUpdateQuantity.setText("");
+		}
+		
+	}
+	
+	private void refreshCustomerTable() {
+		lblErrorMEssage.setText(error);
+		if (error == null || error.length() == 0) {
+			List<TOTransaction> toTransactions = 
+					ImsTransactionController.getCustomerTransactions(textFieldUpdateCustomerID.getText());
+			DefaultTableModel model = (DefaultTableModel) tableCustomers.getModel();
+			model.setRowCount(0);
+			for (TOTransaction tT : toTransactions) {
+				model.addRow(new Object[] {tT.getDate(), tT.getTotalAmount(), tT.getAmountPaid(), tT.getBalance()});
+			}
 		}
 		
 	}
@@ -1270,15 +1350,18 @@ public class ImsPage extends JFrame {
 		textArea.append("Name: "+ ImsApplication.getCurrentCustomer().getPerson().getName()+"\n");
 		textArea.append("Date: "+ receipt.getDate()+"\n\n");
 		textArea.append("NO\t");
-		textArea.append("Product\t");
-		textArea.append("Quantity\t");
-		textArea.append("Amount\n\n");
+		textArea.append("NAME\t");
+		textArea.append("QUANTITY\t");
+		textArea.append("UNIT PRICE\t");
+		textArea.append("AMOUNT\n\n");
 		int count = 1;
 		for (TOProductTransaction pTransaction : receipt.getPTransactions()) {
 			textArea.append(""+count+"\t");
 			textArea.append(pTransaction.getProductName()+"\t");
 			textArea.append(""+pTransaction.getQuantity()+"\t");
-			textArea.append(""+pTransaction.getPrice() * pTransaction.getQuantity()+"\n\n");
+			textArea.append(""+pTransaction.getUnitPrice()+"\t");
+			//textArea.append(""+pTransaction.getPrice() * pTransaction.getQuantity()+"\n\n");
+			textArea.append(""+pTransaction.getPrice()+"\n\n");
 			count++;	
 		}
 		//textArea.setAlignmentY(RIGHT_ALIGNMENT);

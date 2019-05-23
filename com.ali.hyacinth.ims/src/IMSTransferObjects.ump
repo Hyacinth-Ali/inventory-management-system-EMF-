@@ -17,5 +17,13 @@ class TOProduct {
 class TOProductTransaction {
 	lazy Integer quantity;
 	lazy Double price;
+	lazy Double unitPrice;
 	lazy String productName;
+}
+
+class TOTransaction {
+	lazy Date date;
+	lazy Double totalAmount;
+	lazy Double amountPaid;
+	Double balance = {getTotalAmount() - getAmountPaid()}
 }

@@ -269,7 +269,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProduct_Producttransactions() {
+	public EReference getProduct_Producttransaction() {
 		return (EReference)productEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -767,7 +767,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		createEAttribute(productEClass, PRODUCT__ITEM_PRICE);
 		createEAttribute(productEClass, PRODUCT__ID);
 		createEAttribute(productEClass, PRODUCT__QUANTITY);
-		createEReference(productEClass, PRODUCT__PRODUCTTRANSACTIONS);
+		createEReference(productEClass, PRODUCT__PRODUCTTRANSACTION);
 		createEReference(productEClass, PRODUCT__TRANSACTIONS);
 
 		personEClass = createEClass(PERSON);
@@ -879,7 +879,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEAttribute(getProduct_ItemPrice(), ecorePackage.getEFloat(), "itemPrice", null, 1, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProduct_Id(), ecorePackage.getEString(), "id", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProduct_Quantity(), ecorePackage.getEInt(), "quantity", null, 1, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProduct_Producttransactions(), this.getProductTransaction(), this.getProductTransaction_Product(), "producttransactions", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProduct_Producttransaction(), this.getProductTransaction(), this.getProductTransaction_Product(), "producttransaction", null, 0, 1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProduct_Transactions(), this.getTransaction(), this.getTransaction_Products(), "transactions", null, 0, -1, Product.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(personEClass, Person.class, "Person", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -941,7 +941,7 @@ public class ImsPackageImpl extends EPackageImpl implements ImsPackage {
 		initEClass(productTransactionEClass, ProductTransaction.class, "ProductTransaction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductTransaction_Price(), ecorePackage.getEFloat(), "price", null, 0, 1, ProductTransaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductTransaction_Quantity(), ecorePackage.getEInt(), "quantity", null, 0, 1, ProductTransaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProductTransaction_Product(), this.getProduct(), this.getProduct_Producttransactions(), "product", null, 1, 1, ProductTransaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProductTransaction_Product(), this.getProduct(), this.getProduct_Producttransaction(), "product", null, 1, 1, ProductTransaction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(itemStatusEEnum, ItemStatus.class, "ItemStatus");

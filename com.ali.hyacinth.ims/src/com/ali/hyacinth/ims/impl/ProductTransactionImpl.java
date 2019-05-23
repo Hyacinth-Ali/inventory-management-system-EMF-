@@ -192,9 +192,9 @@ public class ProductTransactionImpl extends MinimalEObjectImpl.Container impleme
 		if (newProduct != product) {
 			NotificationChain msgs = null;
 			if (product != null)
-				msgs = ((InternalEObject)product).eInverseRemove(this, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, Product.class, msgs);
+				msgs = ((InternalEObject)product).eInverseRemove(this, ImsPackage.PRODUCT__PRODUCTTRANSACTION, Product.class, msgs);
 			if (newProduct != null)
-				msgs = ((InternalEObject)newProduct).eInverseAdd(this, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, Product.class, msgs);
+				msgs = ((InternalEObject)newProduct).eInverseAdd(this, ImsPackage.PRODUCT__PRODUCTTRANSACTION, Product.class, msgs);
 			msgs = basicSetProduct(newProduct, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -212,7 +212,7 @@ public class ProductTransactionImpl extends MinimalEObjectImpl.Container impleme
 		switch (featureID) {
 			case ImsPackage.PRODUCT_TRANSACTION__PRODUCT:
 				if (product != null)
-					msgs = ((InternalEObject)product).eInverseRemove(this, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, Product.class, msgs);
+					msgs = ((InternalEObject)product).eInverseRemove(this, ImsPackage.PRODUCT__PRODUCTTRANSACTION, Product.class, msgs);
 				return basicSetProduct((Product)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);

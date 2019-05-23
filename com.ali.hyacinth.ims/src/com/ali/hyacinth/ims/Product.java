@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link com.ali.hyacinth.ims.Product#getItemPrice <em>Item Price</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Product#getId <em>Id</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Product#getQuantity <em>Quantity</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.Product#getProducttransactions <em>Producttransactions</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.Product#getProducttransaction <em>Producttransaction</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.Product#getTransactions <em>Transactions</em>}</li>
  * </ul>
  *
@@ -104,32 +104,32 @@ public interface Product extends NamedElement {
 	void setQuantity(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Producttransactions</b></em>' reference.
+	 * Returns the value of the '<em><b>Producttransaction</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link com.ali.hyacinth.ims.ProductTransaction#getProduct <em>Product</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Producttransactions</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Producttransaction</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Producttransactions</em>' reference.
-	 * @see #setProducttransactions(ProductTransaction)
-	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Producttransactions()
+	 * @return the value of the '<em>Producttransaction</em>' reference.
+	 * @see #setProducttransaction(ProductTransaction)
+	 * @see com.ali.hyacinth.ims.ImsPackage#getProduct_Producttransaction()
 	 * @see com.ali.hyacinth.ims.ProductTransaction#getProduct
 	 * @model opposite="product"
 	 * @generated
 	 */
-	ProductTransaction getProducttransactions();
+	ProductTransaction getProducttransaction();
 
 	/**
-	 * Sets the value of the '{@link com.ali.hyacinth.ims.Product#getProducttransactions <em>Producttransactions</em>}' reference.
+	 * Sets the value of the '{@link com.ali.hyacinth.ims.Product#getProducttransaction <em>Producttransaction</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Producttransactions</em>' reference.
-	 * @see #getProducttransactions()
+	 * @param value the new value of the '<em>Producttransaction</em>' reference.
+	 * @see #getProducttransaction()
 	 * @generated
 	 */
-	void setProducttransactions(ProductTransaction value);
+	void setProducttransaction(ProductTransaction value);
 
 	/**
 	 * Returns the value of the '<em><b>Transactions</b></em>' reference list.

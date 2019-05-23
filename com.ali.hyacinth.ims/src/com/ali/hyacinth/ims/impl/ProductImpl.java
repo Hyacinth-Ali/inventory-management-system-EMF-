@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getItemPrice <em>Item Price</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getQuantity <em>Quantity</em>}</li>
- *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getProducttransactions <em>Producttransactions</em>}</li>
+ *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getProducttransaction <em>Producttransaction</em>}</li>
  *   <li>{@link com.ali.hyacinth.ims.impl.ProductImpl#getTransactions <em>Transactions</em>}</li>
  * </ul>
  *
@@ -96,14 +96,14 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	protected int quantity = QUANTITY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getProducttransactions() <em>Producttransactions</em>}' reference.
+	 * The cached value of the '{@link #getProducttransaction() <em>Producttransaction</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProducttransactions()
+	 * @see #getProducttransaction()
 	 * @generated
 	 * @ordered
 	 */
-	protected ProductTransaction producttransactions;
+	protected ProductTransaction producttransaction;
 
 	/**
 	 * The cached value of the '{@link #getTransactions() <em>Transactions</em>}' reference list.
@@ -202,16 +202,16 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductTransaction getProducttransactions() {
-		if (producttransactions != null && producttransactions.eIsProxy()) {
-			InternalEObject oldProducttransactions = (InternalEObject)producttransactions;
-			producttransactions = (ProductTransaction)eResolveProxy(oldProducttransactions);
-			if (producttransactions != oldProducttransactions) {
+	public ProductTransaction getProducttransaction() {
+		if (producttransaction != null && producttransaction.eIsProxy()) {
+			InternalEObject oldProducttransaction = (InternalEObject)producttransaction;
+			producttransaction = (ProductTransaction)eResolveProxy(oldProducttransaction);
+			if (producttransaction != oldProducttransaction) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, oldProducttransactions, producttransactions));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ImsPackage.PRODUCT__PRODUCTTRANSACTION, oldProducttransaction, producttransaction));
 			}
 		}
-		return producttransactions;
+		return producttransaction;
 	}
 
 	/**
@@ -219,8 +219,8 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductTransaction basicGetProducttransactions() {
-		return producttransactions;
+	public ProductTransaction basicGetProducttransaction() {
+		return producttransaction;
 	}
 
 	/**
@@ -228,11 +228,11 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetProducttransactions(ProductTransaction newProducttransactions, NotificationChain msgs) {
-		ProductTransaction oldProducttransactions = producttransactions;
-		producttransactions = newProducttransactions;
+	public NotificationChain basicSetProducttransaction(ProductTransaction newProducttransaction, NotificationChain msgs) {
+		ProductTransaction oldProducttransaction = producttransaction;
+		producttransaction = newProducttransaction;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, oldProducttransactions, newProducttransactions);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT__PRODUCTTRANSACTION, oldProducttransaction, newProducttransaction);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -243,18 +243,18 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProducttransactions(ProductTransaction newProducttransactions) {
-		if (newProducttransactions != producttransactions) {
+	public void setProducttransaction(ProductTransaction newProducttransaction) {
+		if (newProducttransaction != producttransaction) {
 			NotificationChain msgs = null;
-			if (producttransactions != null)
-				msgs = ((InternalEObject)producttransactions).eInverseRemove(this, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, ProductTransaction.class, msgs);
-			if (newProducttransactions != null)
-				msgs = ((InternalEObject)newProducttransactions).eInverseAdd(this, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, ProductTransaction.class, msgs);
-			msgs = basicSetProducttransactions(newProducttransactions, msgs);
+			if (producttransaction != null)
+				msgs = ((InternalEObject)producttransaction).eInverseRemove(this, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, ProductTransaction.class, msgs);
+			if (newProducttransaction != null)
+				msgs = ((InternalEObject)newProducttransaction).eInverseAdd(this, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, ProductTransaction.class, msgs);
+			msgs = basicSetProducttransaction(newProducttransaction, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT__PRODUCTTRANSACTIONS, newProducttransactions, newProducttransactions));
+			eNotify(new ENotificationImpl(this, Notification.SET, ImsPackage.PRODUCT__PRODUCTTRANSACTION, newProducttransaction, newProducttransaction));
 	}
 
 	/**
@@ -278,10 +278,10 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				if (producttransactions != null)
-					msgs = ((InternalEObject)producttransactions).eInverseRemove(this, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, ProductTransaction.class, msgs);
-				return basicSetProducttransactions((ProductTransaction)otherEnd, msgs);
+			case ImsPackage.PRODUCT__PRODUCTTRANSACTION:
+				if (producttransaction != null)
+					msgs = ((InternalEObject)producttransaction).eInverseRemove(this, ImsPackage.PRODUCT_TRANSACTION__PRODUCT, ProductTransaction.class, msgs);
+				return basicSetProducttransaction((ProductTransaction)otherEnd, msgs);
 			case ImsPackage.PRODUCT__TRANSACTIONS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTransactions()).basicAdd(otherEnd, msgs);
 		}
@@ -296,8 +296,8 @@ public class ProductImpl extends NamedElementImpl implements Product {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				return basicSetProducttransactions(null, msgs);
+			case ImsPackage.PRODUCT__PRODUCTTRANSACTION:
+				return basicSetProducttransaction(null, msgs);
 			case ImsPackage.PRODUCT__TRANSACTIONS:
 				return ((InternalEList<?>)getTransactions()).basicRemove(otherEnd, msgs);
 		}
@@ -318,9 +318,9 @@ public class ProductImpl extends NamedElementImpl implements Product {
 				return getId();
 			case ImsPackage.PRODUCT__QUANTITY:
 				return getQuantity();
-			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				if (resolve) return getProducttransactions();
-				return basicGetProducttransactions();
+			case ImsPackage.PRODUCT__PRODUCTTRANSACTION:
+				if (resolve) return getProducttransaction();
+				return basicGetProducttransaction();
 			case ImsPackage.PRODUCT__TRANSACTIONS:
 				return getTransactions();
 		}
@@ -345,8 +345,8 @@ public class ProductImpl extends NamedElementImpl implements Product {
 			case ImsPackage.PRODUCT__QUANTITY:
 				setQuantity((Integer)newValue);
 				return;
-			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				setProducttransactions((ProductTransaction)newValue);
+			case ImsPackage.PRODUCT__PRODUCTTRANSACTION:
+				setProducttransaction((ProductTransaction)newValue);
 				return;
 			case ImsPackage.PRODUCT__TRANSACTIONS:
 				getTransactions().clear();
@@ -373,8 +373,8 @@ public class ProductImpl extends NamedElementImpl implements Product {
 			case ImsPackage.PRODUCT__QUANTITY:
 				setQuantity(QUANTITY_EDEFAULT);
 				return;
-			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				setProducttransactions((ProductTransaction)null);
+			case ImsPackage.PRODUCT__PRODUCTTRANSACTION:
+				setProducttransaction((ProductTransaction)null);
 				return;
 			case ImsPackage.PRODUCT__TRANSACTIONS:
 				getTransactions().clear();
@@ -397,8 +397,8 @@ public class ProductImpl extends NamedElementImpl implements Product {
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case ImsPackage.PRODUCT__QUANTITY:
 				return quantity != QUANTITY_EDEFAULT;
-			case ImsPackage.PRODUCT__PRODUCTTRANSACTIONS:
-				return producttransactions != null;
+			case ImsPackage.PRODUCT__PRODUCTTRANSACTION:
+				return producttransaction != null;
 			case ImsPackage.PRODUCT__TRANSACTIONS:
 				return transactions != null && !transactions.isEmpty();
 		}

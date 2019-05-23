@@ -19,7 +19,7 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantity" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="producttransactions" eType="#//ProductTransaction"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="producttransaction" eType="#//ProductTransaction"
         eOpposite="#//ProductTransaction/product"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transactions" upperBound="-1"
         eType="#//Transaction" eOpposite="#//Transaction/products"/>
@@ -121,6 +121,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="product" lowerBound="1"
-        eType="#//Product" eOpposite="#//Product/producttransactions"/>
+        eType="#//Product" eOpposite="#//Product/producttransaction"/>
   </eClassifiers>
 </ecore:EPackage>

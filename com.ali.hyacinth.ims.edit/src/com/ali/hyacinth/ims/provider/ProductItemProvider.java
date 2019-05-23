@@ -47,7 +47,7 @@ public class ProductItemProvider extends NamedElementItemProvider {
 			addItemPricePropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addQuantityPropertyDescriptor(object);
-			addProducttransactionsPropertyDescriptor(object);
+			addProducttransactionPropertyDescriptor(object);
 			addTransactionsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -120,19 +120,19 @@ public class ProductItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Producttransactions feature.
+	 * This adds a property descriptor for the Producttransaction feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addProducttransactionsPropertyDescriptor(Object object) {
+	protected void addProducttransactionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Product_producttransactions_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Product_producttransactions_feature", "_UI_Product_type"),
-				 ImsPackage.Literals.PRODUCT__PRODUCTTRANSACTIONS,
+				 getString("_UI_Product_producttransaction_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Product_producttransaction_feature", "_UI_Product_type"),
+				 ImsPackage.Literals.PRODUCT__PRODUCTTRANSACTION,
 				 true,
 				 false,
 				 true,

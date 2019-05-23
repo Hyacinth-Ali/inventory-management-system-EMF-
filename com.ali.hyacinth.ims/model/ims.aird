@@ -1075,10 +1075,10 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5u674HJ7EemVGu5TTvP_7g" sourceNode="_7sk58G4eEemOC_heKkBBxQ" targetNode="_n_mOMHEtEemzU5mBG_-wrA" beginLabel="[1..1] product" endLabel="[0..1] producttransactions">
-      <target xmi:type="ecore:EReference" href="ims.ecore#//Product/producttransactions"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_5u674HJ7EemVGu5TTvP_7g" sourceNode="_7sk58G4eEemOC_heKkBBxQ" targetNode="_n_mOMHEtEemzU5mBG_-wrA" beginLabel="[1..1] product" endLabel="[0..1] producttransaction">
+      <target xmi:type="ecore:EReference" href="ims.ecore#//Product/producttransaction"/>
       <semanticElements xmi:type="ecore:EReference" href="ims.ecore#//ProductTransaction/product"/>
-      <semanticElements xmi:type="ecore:EReference" href="ims.ecore#//Product/producttransactions"/>
+      <semanticElements xmi:type="ecore:EReference" href="ims.ecore#//Product/producttransaction"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_5u8KAHJ7EemVGu5TTvP_7g" sourceArrow="InputArrow" routingStyle="manhattan" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Bi-directional%20EC_EReference%20']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_5u8xEHJ7EemVGu5TTvP_7g" showIcon="false"/>
