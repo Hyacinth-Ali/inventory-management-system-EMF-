@@ -224,6 +224,11 @@ public class ImsPersonController {
 		if (newID == null || newID.length() == 0) {
 			error = "The ID of a customer cannot be empty";
 		}
+		for (Customer c : ImsApplication.getIms().getCustomers()) {
+			if (c.getCustomerID().equals(newID)) {
+				error = "The customer ID already exist.";
+			}
+		}
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
 		}

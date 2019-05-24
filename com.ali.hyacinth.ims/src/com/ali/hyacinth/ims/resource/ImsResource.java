@@ -11,7 +11,7 @@ import com.ali.hyacinth.ims.util.ResourceHelper;
 
 public class ImsResource {
 	
-private static String filename = "data3";
+private static String filename = "imsdata";
 	
 	public static void save(IMS ims) throws InvalidInputException {
 		try {

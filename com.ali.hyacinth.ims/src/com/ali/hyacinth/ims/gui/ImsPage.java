@@ -187,7 +187,7 @@ public class ImsPage extends JFrame {
 		lblWelcome.setForeground(Color.MAGENTA);
 		
 		lblDashboard = new JLabel("Dashboard");
-		lblDashboard.setOpaque(true);
+		//lblDashboard.setOpaque(true);
 		lblDashboard.setBackground(new Color(85, 107, 47));
 		lblDashboard.addMouseListener(new MouseAdapter() {
 			@Override
@@ -196,18 +196,18 @@ public class ImsPage extends JFrame {
 				layeredPane.add(dashBoardPanel);
 				layeredPane.repaint();
 				layeredPane.revalidate();
-				lblDashboard.setBackground(Color.LIGHT_GRAY);
-				lblProducts.setBackground(new Color(85, 107, 47));
-				lblAccounts.setBackground(new Color(85, 107, 47));
-				lblTransaction.setBackground(new Color(85, 107, 47));
+				lblDashboard.setForeground(Color.WHITE);
+				lblProducts.setForeground(Color.GREEN);
+				lblAccounts.setForeground(Color.GREEN);
+				lblTransaction.setForeground(Color.GREEN);
 			}
 		});
-		lblDashboard.setForeground(Color.GREEN);
+		lblDashboard.setForeground(Color.WHITE);
 		lblDashboard.setFont(new Font("Tahoma", Font.BOLD, 24));
 		
 		lblProducts = new JLabel("Products");
 		lblProducts.setBackground(new Color(85, 107, 47));
-		lblProducts.setOpaque(true);
+		//lblProducts.setOpaque(true);
 		lblProducts.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -215,10 +215,10 @@ public class ImsPage extends JFrame {
 				layeredPane.add(productsPanel);
 				layeredPane.repaint();
 				layeredPane.revalidate();
-				lblDashboard.setBackground(new Color(85, 107, 47));
-				lblProducts.setBackground(Color.LIGHT_GRAY);
-				lblAccounts.setBackground(new Color(85, 107, 47));
-				lblTransaction.setBackground(new Color(85, 107, 47));
+				lblDashboard.setForeground(Color.GREEN);
+				lblProducts.setForeground(Color.WHITE);
+				lblAccounts.setForeground(Color.GREEN);
+				lblTransaction.setForeground(Color.GREEN);
 				
 				refreshProductTable();
 			}
@@ -227,7 +227,7 @@ public class ImsPage extends JFrame {
 		lblProducts.setFont(new Font("Tahoma", Font.BOLD, 24));
 		
 		lblTransaction = new JLabel("Transactions");
-		lblTransaction.setOpaque(true);
+		//lblTransaction.setOpaque(true);
 		lblTransaction.setBackground(new Color(85, 107, 47));
 		lblTransaction.addMouseListener(new MouseAdapter() {
 			@Override
@@ -236,18 +236,18 @@ public class ImsPage extends JFrame {
 				layeredPane.add(transactionsPanel);
 				layeredPane.repaint();
 				layeredPane.revalidate();
-				lblDashboard.setBackground(new Color(85, 107, 47));
-				lblProducts.setBackground(new Color(85, 107, 47));
-				lblAccounts.setBackground(new Color(85, 107, 47));
-				lblTransaction.setBackground(Color.LIGHT_GRAY);
+				lblDashboard.setForeground(Color.GREEN);
+				lblProducts.setForeground(Color.GREEN);
+				lblAccounts.setForeground(Color.GREEN);
+				lblTransaction.setForeground(Color.white);
 			}
 		});
 		lblTransaction.setForeground(Color.GREEN);
 		lblTransaction.setFont(new Font("Tahoma", Font.BOLD, 24));
 		
 		lblAccounts = new JLabel("Accounts");
-		lblAccounts.setOpaque(true);
-		lblAccounts.setBackground(new Color(85, 107, 47));
+		//lblAccounts.setOpaque(true);
+		//lblAccounts.setBackground(new Color(85, 107, 47));
 		lblAccounts.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -255,10 +255,10 @@ public class ImsPage extends JFrame {
 				layeredPane.add(accountsPanel);
 				layeredPane.repaint();
 				layeredPane.revalidate();
-				lblDashboard.setBackground(new Color(85, 107, 47));
-				lblProducts.setBackground(new Color(85, 107, 47));
-				lblAccounts.setBackground(Color.LIGHT_GRAY);
-				lblTransaction.setBackground(new Color(85, 107, 47));
+				lblDashboard.setForeground(Color.GREEN);
+				lblProducts.setForeground(Color.GREEN);
+				lblAccounts.setForeground(Color.WHITE);
+				lblTransaction.setForeground(Color.GREEN);
 			}
 		});
 		lblAccounts.setForeground(Color.GREEN);
@@ -1106,8 +1106,9 @@ public class ImsPage extends JFrame {
 		panel_2.add(btnDelete_1);
 		
 		JButton btnUpdate = new JButton("UPDATE");
-		btnUpdate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnUpdate.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
 				error = "";
 				String newID = textFieldUpdateCustomerID.getText();
 				String newName = textFieldUpdateCustomerName.getText();
@@ -1121,6 +1122,23 @@ public class ImsPage extends JFrame {
 					error = e1.getMessage();
 				}
 				refreshCustomerPanel();
+			}
+		});
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*error = "";
+				String newID = textFieldUpdateCustomerID.getText();
+				String newName = textFieldUpdateCustomerName.getText();
+				
+				int index = comboBoxCustomer.getSelectedIndex();
+				String oldID = customers.get(index);
+				try {
+					ImsPersonController.upDateCustomerName(oldID, newName);
+					ImsPersonController.upDateCustomerID(oldID, newID);
+				} catch (InvalidInputException e1) {
+					error = e1.getMessage();
+				}
+				refreshCustomerPanel();*/
 			}
 		});
 		btnUpdate.setBorder(new LineBorder(new Color(128, 0, 0)));
@@ -1173,6 +1191,7 @@ public class ImsPage extends JFrame {
 		scrollPane_3.setViewportView(tableCustomers);
 		
 		JButton btnUpdate_1 = new JButton("UPDATE");
+		btnUpdate_1.setBorder(new LineBorder(new Color(128, 0, 0)));
 		btnUpdate_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				error = "";
@@ -1210,6 +1229,7 @@ public class ImsPage extends JFrame {
 		textFieldUpdatePaid.setColumns(10);
 		
 		JLabel lblCurrentPaid = new JLabel("AMOUNT PAID");
+		lblCurrentPaid.setBorder(new LineBorder(new Color(128, 0, 0)));
 		lblCurrentPaid.setBounds(373, 476, 101, 14);
 		accountsPanel.add(lblCurrentPaid);
 		

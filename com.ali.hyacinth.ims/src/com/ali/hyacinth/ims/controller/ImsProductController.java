@@ -120,9 +120,13 @@ public class ImsProductController {
 		String error = "";
 		if (oldName == null || oldName.length() == 0) {
 			error = "The name of a product cannot be empty.";
-		}
-		if (newName == null || newName.length() == 0) {
+		} else if (newName == null || newName.length() == 0) {
 			error = "Name of a product cannot be empty.";
+		} 
+		for (Product p : ImsApplication.getIms().getProducts()) {
+			if (p.getName().equals(newName)) {
+				error = "The product name already exist.";
+			}
 		}
 		if (error.length() > 0) {
 			throw new InvalidInputException(error);
