@@ -1,0 +1,891 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ims:IMS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ims="http://hyacinth.com/ims">
+  <products name="ARALDITE" itemPrice="2.5" quantity="20736"/>
+  <products name="AVATA BULB CG" itemPrice="2.2" quantity="4000"/>
+  <products name="HEAD LAMP BULB CG ORD" itemPrice="1.0" quantity="2000"/>
+  <products name="AVATA BULB GN" itemPrice="2.5" quantity="1000"/>
+  <products name="HEAD LAMP BULB GN ORD" itemPrice="1.0" quantity="4000"/>
+  <products name="AXEL BOLT CD110" itemPrice="1.5" quantity="5000"/>
+  <products name="BACK CARRIER ALOBA N/M IRON" itemPrice="36.0" quantity="560"/>
+  <products name="BACK CARRIER ALOBA RUBBER" itemPrice="40.0" quantity="100"/>
+  <products name="BACK CARRIER GN125" itemPrice="34.0" quantity="512"/>
+  <products name="BACK CARRIER CD110" itemPrice="23.0" quantity="200"/>
+  <products name="BACK CARRIER HAOJIN" itemPrice="34.0" quantity="522"/>
+  <products name="BACK FENDER CG125" itemPrice="18.0" quantity="180"/>
+  <products name="BACK FENDER CD110" itemPrice="9.0" quantity="400"/>
+  <products name="BACK FENDER GN O/M" itemPrice="18.0" quantity="512"/>
+  <products name="BACK FENDER GN125 N/M" itemPrice="22.0" quantity="400"/>
+  <products name="BACK FOOTREST ALOBA AVATA" itemPrice="9.0" quantity="2550"/>
+  <products name="BACK FOOTREST GN125 AVATA" itemPrice="4.0" quantity="3700"/>
+  <products name="BACK SEAT ALOBA" itemPrice="51.0" quantity="240"/>
+  <products name="BACK SEAT BOXER" itemPrice="55.0" quantity="12"/>
+  <products name="BACK SEAT CB125" itemPrice="65.0" quantity="224"/>
+  <products name="BACK SEAT CD110 AVATA" itemPrice="45.0" quantity="100"/>
+  <products name="BACK SEAT CG125 AVATA" itemPrice="53.0" quantity="50"/>
+  <products name="BACK SEAT CG AVATA RUBBER PLATE" itemPrice="48.0" quantity="298"/>
+  <products name="BACK SEAT GN AVATA" itemPrice="45.0" quantity="298"/>
+  <products name="BACK SEAT TRICYCLE" itemPrice="30.0" quantity="256"/>
+  <products name="BACK SHOCK ALOBA  AVATA" itemPrice="52.0" quantity="480"/>
+  <products name="BACK SHOCK BOXER  AVATA" itemPrice="60.0" quantity="430"/>
+  <products name="BACK SHOCK CB125 AVATA" itemPrice="53.0" quantity="180"/>
+  <products name="BACK SHOCK CD110" itemPrice="52.0" quantity="220"/>
+  <products name="BACK SHOCK FLETCH  AVATA" itemPrice="110.0" quantity="140"/>
+  <products name="BACK SHOCK GN125  AVATA" itemPrice="52.0" quantity="440"/>
+  <products name="BACK SHOCK GN AVATA ORG" itemPrice="75.0" quantity="340"/>
+  <products name="BACK SHOCK HAOJIN  AVATA" itemPrice="53.0" quantity="250"/>
+  <products name="BACK SHOCK CG ORD." itemPrice="35.0" quantity="140"/>
+  <products name="BACK SPENDLE CG" itemPrice="3.5" quantity="3300"/>
+  <products name="BACK SPINDLE CGL" itemPrice="3.5" quantity="1700"/>
+  <products name="BACK SPINDLE GN125" itemPrice="3.5" quantity="4000"/>
+  <products name="BATTERY 12N2.5  AVATA" itemPrice="33.0" quantity="430"/>
+  <products name="BATTERY 12N3 DRY  AVATA" itemPrice="35.0" quantity="590"/>
+  <products name="BATTERY 12N4 DRY  AVATA" itemPrice="35.0" quantity="200"/>
+  <products name="BATTERY 12N5 ACID  AVATA" itemPrice="44.0" quantity="400"/>
+  <products name="BATTERY 12N5 DRY  AVATA" itemPrice="44.0" quantity="2220"/>
+  <products name="BATTERY 12N6 ACID  AVATA" itemPrice="44.0" quantity="900"/>
+  <products name="BATTERY 12N6 DRY  AVATA" itemPrice="44.0" quantity="4000"/>
+  <products name="BATTERY 12N7 DRY AVATA" itemPrice="46.0" quantity="2000"/>
+  <products name="BATTERY 12N9 ACID  AVATA" itemPrice="53.0" quantity="1200"/>
+  <products name="BATTERY 12N9 DRY  AVATA" itemPrice="53.0" quantity="6200"/>
+  <products name="BATTERY BELT" itemPrice="0.6" quantity="10000"/>
+  <products name="BATTERY YTX14  AVATA" itemPrice="82.0" quantity="90"/>
+  <products name="BATTERY YTX9  AVATA" itemPrice="63.0" quantity="380"/>
+  <products name="BATTERY WIRE" itemPrice="1.0" quantity="10000"/>
+  <products name="BEARING 6003 AVATA" itemPrice="2.0" quantity="3600"/>
+  <products name="BEARING 6004 AVATA" itemPrice="2.6" quantity="300"/>
+  <products name="BEARING 6007 AVATA" itemPrice="5.5" quantity="3500"/>
+  <products name="BEARING 6008 AVATA" itemPrice="5.5" quantity="3320"/>
+  <products name="BEARING 6202 AVATA" itemPrice="2.0" quantity="12000"/>
+  <products name="BEARING 6203 AVATA" itemPrice="2.0" quantity="4800"/>
+  <products name="BEARING 6204 AVATA" itemPrice="3.3" quantity="10000"/>
+  <products name="BEARING 6205 AVATA" itemPrice="3.5" quantity="3200"/>
+  <products name="BEARING 6206 AVATA" itemPrice="5.0" quantity="3600"/>
+  <products name="BEARING 6300 AVATA" itemPrice="2.0" quantity="4500"/>
+  <products name="BEARING 6301 AVATA" itemPrice="2.0" quantity="25800"/>
+  <products name="BEARING 6302 AVATA" itemPrice="2.5" quantity="8700"/>
+  <products name="BEARING 6304 AVATA" itemPrice="3.5" quantity="6400"/>
+  <products name="BEARING  6004 KINGSMEN" itemPrice="2.0" quantity="6000"/>
+  <products name="BEARING  6201 KINGSMEN" itemPrice="1.5" quantity="6600"/>
+  <products name="BEARING 6202 KINGSMEN" itemPrice="1.5" quantity="10800"/>
+  <products name="BEARING 6203KINGS MEN" itemPrice="1.5" quantity="6000"/>
+  <products name="BEARING 6301 KINGSMEN" itemPrice="1.5" quantity="8400"/>
+  <products name="BRAKE &amp; LIGHT SWITCH CG" itemPrice="1.1" quantity="24000"/>
+  <products name="BRAKE CABLE BOXER AVATA" itemPrice="3.0" quantity="1700"/>
+  <products name="BRAKE CABLE CB125 AVATA" itemPrice="3.0" quantity="1600"/>
+  <products name="BRAKE CABLE CD110 AVATA" itemPrice="3.0" quantity="1500"/>
+  <products name="BRAKE CABLE CG125 AVATA" itemPrice="3.0" quantity="1800"/>
+  <products name="BRAKE FLUID 250gm" itemPrice="4.0" quantity="529"/>
+  <products name="BRAKE FLUID 500gm" itemPrice="5.0" quantity="360"/>
+  <products name="BRAKE LIVER ALOBA" itemPrice="3.0" quantity="800"/>
+  <products name="BRAKE LIVER CB125 AVATA" itemPrice="3.0" quantity="3000"/>
+  <products name="BRAKE LIVER GN125 AVATA" itemPrice="2.5" quantity="8000"/>
+  <products name="BRAKE PEDAL ALOBA  AVATA" itemPrice="8.0" quantity="1880"/>
+  <products name="BRAKE PEDAL BOXER AVATA" itemPrice="8.0" quantity="900"/>
+  <products name="BRAKE PEDAL CB AVATA" itemPrice="8.0" quantity="400"/>
+  <products name="BRAKE PEDAL CD110  AVATA" itemPrice="7.3" quantity="1050"/>
+  <products name="BRAKE PEDAL CG125  AVATA" itemPrice="7.3" quantity="1050"/>
+  <products name="BRAKE PEDAL CG FOLLOW COME" itemPrice="9.0" quantity="250"/>
+  <products name="BRAKE PEDAL GN  AVATA" itemPrice="7.3" quantity="1000"/>
+  <products name="BRAKE PEDAL CD110 ORD" itemPrice="5.5" quantity="1000"/>
+  <products name="BRAKE PEDAL CG ORD" itemPrice="5.5" quantity="1000"/>
+  <products name="BRAKE ROD CD110 LONG" itemPrice="1.7" quantity="5700"/>
+  <products name="BRAKE ROD CG125 LONG" itemPrice="1.5" quantity="3500"/>
+  <products name="BRAKE ROD GN LONG" itemPrice="1.7" quantity="10000"/>
+  <products name="BRAKE SPRING CG125" itemPrice="0.35" quantity="20800"/>
+  <products name="BRAKE SPRING GN" itemPrice="0.35" quantity="15000"/>
+  <products name="BULB SUCKET CG  AVATA" itemPrice="3.0" quantity="2000"/>
+  <products name="BULB SUCKET GN  AVATA" itemPrice="3.0" quantity="4750"/>
+  <products name="BULB SUCKET CD110" itemPrice="3.0" quantity="3000"/>
+  <products name="C.D.I COIL BOXER 150 AVATA" itemPrice="17.5" quantity="900"/>
+  <products name="C.D.I COIL CB125 AVATA" itemPrice="19.5" quantity="900"/>
+  <products name="C.D.I COIL CD110 4 PIN AVATA" itemPrice="11.0" quantity="1000"/>
+  <products name="C.D.I COIL CD110 5 PIN AVATA" itemPrice="5.5" quantity="2700"/>
+  <products name="C.D.I COIL CG125 AVATA" itemPrice="6.0" quantity="3000"/>
+  <products name="CAM SHAFT CD110 AVATA" itemPrice="9.0" quantity="1200"/>
+  <products name="CAM SHAFT CG125 AVATA" itemPrice="19.0" quantity="9708"/>
+  <products name="CAM SHAFT CG125 ZB" itemPrice="16.0" quantity="1000"/>
+  <products name="CARBURATOR CG125 AVATA" itemPrice="28.0" quantity="3272"/>
+  <products name="CARBURETOR CG125 KINGS" itemPrice="23.0" quantity="980"/>
+  <products name="CARBURETOR BOXER 150 AVATA" itemPrice="42.0" quantity="880"/>
+  <products name="CARBURETOR CB125 AVATA" itemPrice="40.0" quantity="440"/>
+  <products name="CARBURETOR CD110 AVATA" itemPrice="28.0" quantity="2320"/>
+  <products name="CARBURETOR CG150 AVATA" itemPrice="29.0" quantity="950"/>
+  <products name="CARBURETOR SITTING GN" itemPrice="3.2" quantity="1500"/>
+  <products name="CARBURETOR SITTING CG" itemPrice="3.2" quantity="600"/>
+  <products name="CARBURETOR TVS MAX AVATA" itemPrice="34.0" quantity="440"/>
+  <products name="CARBURETOR TVS STAR AVATA" itemPrice="32.0" quantity="280"/>
+  <products name="CENTER CARRIER CD110" itemPrice="11.0" quantity="11"/>
+  <products name="CENTER SPINDLE CG" itemPrice="3.0" quantity="4000"/>
+  <products name="CENTER SPINDLE GN" itemPrice="3.0" quantity="3000"/>
+  <products name="CHAIN 428 116L AVATA" itemPrice="12.0" quantity="3675"/>
+  <products name="CHAIN 428 128L  AVATA" itemPrice="13.0" quantity="1375"/>
+  <products name="CHAIN ADJUSTER CD110" itemPrice="0.9" quantity="4200"/>
+  <products name="CHAIN ADJUSTER CG" itemPrice="0.9" quantity="3600"/>
+  <products name="CHAIN ADJUSTER GN" itemPrice="1.3" quantity="9750"/>
+  <products name="CHAIN COVER ALOBA" itemPrice="6.6" quantity="600"/>
+  <products name="CHAIN COVER BOXER 150" itemPrice="30.0" quantity="220"/>
+  <products name="CHAIN COVER CB125" itemPrice="30.0" quantity="200"/>
+  <products name="CHAIN COVER CD110" itemPrice="15.0" quantity="354"/>
+  <products name="CHAIN COVER CG125" itemPrice="15.0" quantity="385"/>
+  <products name="CHAIN COVER GN" itemPrice="9.5" quantity="1575"/>
+  <products name="CHAIN LOCK" itemPrice="9.5" quantity="2750"/>
+  <products name="CLUTCH CABLE BOXER 150 AVATA" itemPrice="3.0" quantity="900"/>
+  <products name="CLUTCH CABLE CB125 AVATA" itemPrice="3.0" quantity="600"/>
+  <products name="CLUTCH CABLE CG125 AVATA" itemPrice="3.0" quantity="5600"/>
+  <products name="CLUTCH CABLE GN AVATA" itemPrice="3.0" quantity="10300"/>
+  <products name="CLUTCH DISC 5 HOLE 6 FIBER AVATA" itemPrice="13.5" quantity="700"/>
+  <products name="CLUTCH DISC 6 HOLE 6 FIBER AVATA" itemPrice="14.5" quantity="500"/>
+  <products name="CLUTCH DISC BOXER 150 AVATA" itemPrice="15.0" quantity="700"/>
+  <products name="CLUTCH DISC CG200" itemPrice="13.5" quantity="150"/>
+  <products name="CLUTCH FIBBER BM150 AVATA" itemPrice="8.5" quantity="4800"/>
+  <products name="CLUTCH FIBBER CB125 AVATA" itemPrice="6.5" quantity="2400"/>
+  <products name="CLUTCH FIBBER CD110 AVATA" itemPrice="6.0" quantity="3480"/>
+  <products name="CLUTCH FIBBER CG125 AVATA" itemPrice="6.0" quantity="5760"/>
+  <products name="CLUTCH FIBBER CG150 AVATA" itemPrice="6.0" quantity="7200"/>
+  <products name="CLUTCH FIBBER CG230 BIG FIBER AVATA" itemPrice="8.5" quantity="4080"/>
+  <products name="CLUTCH FINGER CG AVATA" itemPrice="1.5" quantity="6800"/>
+  <products name="CLUTCH GASKET CG125" itemPrice="0.8" quantity="12500"/>
+  <products name="CLUTCH HOUSING CG125 AVATA" itemPrice="21.0" quantity="1000"/>
+  <products name="CLUTCH LIVER ALOBA" itemPrice="3.0" quantity="6100"/>
+  <products name="CLUTCH LIVER CB125" itemPrice="3.0" quantity="4000"/>
+  <products name="CLUTCH LIVER GN" itemPrice="2.5" quantity="1500"/>
+  <products name="CLUTCH WIRE" itemPrice="0.5" quantity="52000"/>
+  <products name="COMP. 6 COIL CD110 AVATA" itemPrice="22.0" quantity="680"/>
+  <products name="COMP. AIR FILTER CD110" itemPrice="20.0" quantity="400"/>
+  <products name="COMP. AIR FILTERCG125" itemPrice="20.0" quantity="400"/>
+  <products name="COMP. AIR FILTER CN" itemPrice="22.0" quantity="400"/>
+  <products name="COMP. AUTOMATIC STARTER ALOBA ZB" itemPrice="36.0" quantity="600"/>
+  <products name="COMP. AUTOMATIC STARTER  CG125 ZB" itemPrice="36.0" quantity="600"/>
+  <products name="COMP. AUTOMATIC STARTER CD110  ZB" itemPrice="36.0" quantity="240"/>
+  <products name="COMP. BACK BOOT ALOBA" itemPrice="25.0" quantity="60"/>
+  <products name="COMP. BACK FENDER ALOBA" itemPrice="8.0" quantity="675"/>
+  <products name="COMP. BACK FOOTREST CD110" itemPrice="18.0" quantity="1080"/>
+  <products name="COMP. BACK FOOTREST FLETCH" itemPrice="32.0" quantity="500"/>
+  <products name="COMP. BACK HUB COVER ALOBA  AVATA" itemPrice="24.0" quantity="940"/>
+  <products name="COMP. BACK HUB COVER CD110 AVATA" itemPrice="19.0" quantity="300"/>
+  <products name="COMP. BACK HUB COVER GN125 AVATA" itemPrice="24.0" quantity="440"/>
+  <products name="COMP. BACK HUB COVER HAOJIN  AVATA" itemPrice="25.0" quantity="640"/>
+  <products name="COMP. BACK RIM ALOBA" itemPrice="140.0" quantity="169"/>
+  <products name="COMP. BACK RIM CGL" itemPrice="140.0" quantity="400"/>
+  <products name="COMP. BACK RIM GN" itemPrice="140.0" quantity="446"/>
+  <products name="COMP. BACK RIM CD110" itemPrice="120.0" quantity="100"/>
+  <products name="COMP. CHAIN BOXER 150  AVATA" itemPrice="26.0" quantity="1000"/>
+  <products name="COMP. CHAIN CB125 AVATA" itemPrice="26.0" quantity="1000"/>
+  <products name="COMP. CHAIN CD110  AVATA" itemPrice="24.0" quantity="2000"/>
+  <products name="COMP. CHAIN CG125 AVATA" itemPrice="24.0" quantity="1000"/>
+  <products name="COMP. CHAIN CGL125 AVATA" itemPrice="24.0" quantity="1360"/>
+  <products name="COMP. CHAIN GN125 AVATA" itemPrice="25.0" quantity="6920"/>
+  <products name="COMP. CHAIN HAOJUE 125 AVATA" itemPrice="26.0" quantity="400"/>
+  <products name="COMP. CHAIN TVS 160 AVATA" itemPrice="26.0" quantity="360"/>
+  <products name="COMP. CHAIN TVS 180 AVATA" itemPrice="26.0" quantity="250"/>
+  <products name="COMP. CLUTCH DISC CG200 AVATA" itemPrice="28.0" quantity="800"/>
+  <products name="COMP. CLUTCG DISC CG150 AVATA" itemPrice="26.0" quantity="1020"/>
+  <products name="COMP. CLUTCH HOUSING CG150 AVATA" itemPrice="44.0" quantity="708"/>
+  <products name="COMP. CLUTCH HOUSING CG200 AVATA" itemPrice="44.0" quantity="1536"/>
+  <products name="COMP. CLUTCH HOUSING CD110 AVATA" itemPrice="38.0" quantity="540"/>
+  <products name="COMP. COIL BOXER 150 AVATA" itemPrice="32.0" quantity="600"/>
+  <products name="COMP. COIL CB125 AVATA" itemPrice="31.0" quantity="640"/>
+  <products name="COMP. 12 COIL AVATA TRICYCLE" itemPrice="31.0" quantity="320"/>
+  <products name="COMP. COIL TVS STAR AVATA" itemPrice="26.0" quantity="320"/>
+  <products name="COMP. 11 COILAVATA TRICYCLE" itemPrice="31.0" quantity="520"/>
+  <products name="COMP. 8 COIL AVATA" itemPrice="22.0" quantity="840"/>
+  <products name="COMP. COIL PLATE CD110 2 BIG COIL AVATA" itemPrice="19.0" quantity="1040"/>
+  <products name="COMP. COIL PLATE CD110 AVATA" itemPrice="17.0" quantity="720"/>
+  <products name="COMP.8 COIL CG  ORD" itemPrice="18.0" quantity="200"/>
+  <products name="COMP. ENGINE BLOCK AP125 AVATA" itemPrice="57.0" quantity="1092"/>
+  <products name="COMP. ENGINE BLOCK AP150 AVATA" itemPrice="59.0" quantity="1176"/>
+  <products name="COMP. ENGINE BLOCK CG150 AVATA" itemPrice="59.0" quantity="384"/>
+  <products name="COMP.ENGINE BLOCK CG125 AVATA" itemPrice="57.0" quantity="1140"/>
+  <products name="COMP. ENGINE BLOCK CG200 AVATA" itemPrice="65.0" quantity="828"/>
+  <products name="COMP. ENGINE BLOCK LF155 AVATA" itemPrice="64.0" quantity="700"/>
+  <products name="COMP. ENGINE BLOCK TRICYCLE CG198 or ROYAL" itemPrice="78.0" quantity="556"/>
+  <products name="COMP ENGINE BLOCK CG 125 ZB" itemPrice="50.0" quantity="1773"/>
+  <products name="COMP.ENGINE  BLOCK CG 150 ZB" itemPrice="52.0" quantity="700"/>
+  <products name="COMP.ENGINE CG125" itemPrice="1000.0" quantity="20"/>
+  <products name="COMP.ENGINE TRICYCLE 150" itemPrice="1050.0" quantity="50"/>
+  <products name="COMP.ENGINE TRICYCLE 200" itemPrice="1100.0" quantity="30"/>
+  <products name="COMP. FRONT BRAKE POT CD110" itemPrice="46.0" quantity="260"/>
+  <products name="COMP. FRONT BRAKE POT GN" itemPrice="46.0" quantity="460"/>
+  <products name="COMP. FRONT FOOTREST ALOBA" itemPrice="18.0" quantity="1225"/>
+  <products name="COMP. FRONT FOOTREST CB125" itemPrice="16.0" quantity="1000"/>
+  <products name="COMP. FRONT FOOTREST CD110" itemPrice="14.0" quantity="450"/>
+  <products name="COMP. FRONT FOOTREST CG125" itemPrice="14.0" quantity="2640"/>
+  <products name="COMP. FRONT FOOTREST GN125" itemPrice="11.5" quantity="1625"/>
+  <products name="COMP. FRONT HUB COVER CB125" itemPrice="37.0" quantity="380"/>
+  <products name="COMP. FRONT HUB COVER CD110" itemPrice="21.0" quantity="120"/>
+  <products name="COMP. FRONT HUB COVER CGL125" itemPrice="29.0" quantity="100"/>
+  <products name="COMP. FRONT RIM ALOBA" itemPrice="100.0" quantity="110"/>
+  <products name="COMP. FRONT RIM CD110" itemPrice="100.0" quantity="103"/>
+  <products name="COMP. FRONT RIM CGL125" itemPrice="105.0" quantity="156"/>
+  <products name="COMP. FRONT RIM GN125" itemPrice="98.0" quantity="182"/>
+  <products name="COMP. FRONT SHOCK ALOBA 125" itemPrice="145.0" quantity="194"/>
+  <products name="COMP. FRONT SHOCK CD110" itemPrice="102.0" quantity="100"/>
+  <products name="COMP. FRONT SHOCK CG125" itemPrice="120.0" quantity="200"/>
+  <products name="COMP. FRONT SHOCK GN125" itemPrice="145.0" quantity="258"/>
+  <products name="COMP. GASKET BOXER AVATA" itemPrice="4.8" quantity="1200"/>
+  <products name="COMP. GASKET CB AVATA" itemPrice="4.4" quantity="1400"/>
+  <products name="COMP. GASKET CD110 AVATA" itemPrice="3.8" quantity="1100"/>
+  <products name="COMP. GASKET CG200 AVATA" itemPrice="4.4" quantity="500"/>
+  <products name="COMP. GEAR CG125 AVATA" itemPrice="41.0" quantity="370"/>
+  <products name="COMP. GEAR  CD110 AVATA" itemPrice="41.0" quantity="280"/>
+  <products name="COMP. HEAD LAMP CD110" itemPrice="44.0" quantity="490"/>
+  <products name="COMP. INNER KICK CG125 AVATA" itemPrice="11.0" quantity="1024"/>
+  <products name="COMP INNER KICK CG150" itemPrice="11.0" quantity="320"/>
+  <products name="COMP INNER KICK CG200" itemPrice="12.5" quantity="192"/>
+  <products name="COMP INNER KICK CD110 AVATA" itemPrice="10.0" quantity="580"/>
+  <products name="COMP. KEY ALOBA" itemPrice="23.0" quantity="432"/>
+  <products name="COMP. KEY CB125  AVATA" itemPrice="24.0" quantity="200"/>
+  <products name="COMP. KEY CD110 4 WIRE  AVATA" itemPrice="10.5" quantity="1150"/>
+  <products name="COMP. KEY CD110 5 WIRE  AVATA" itemPrice="12.5" quantity="1200"/>
+  <products name="COMP. KEY CD110 7 WIRE  AVATA" itemPrice="12.5" quantity="1250"/>
+  <products name="COMP. KEY CG AVATA" itemPrice="18.0" quantity="750"/>
+  <products name="COMP. KEY GN AVATA" itemPrice="19.0" quantity="1850"/>
+  <products name="COMP. LEFT MIRROR HOLDER ALOBA  AVATA" itemPrice="6.5" quantity="9400"/>
+  <products name="COMP. RIGHT MIRROR HOLDER ALOBA  AVATA" itemPrice="6.5" quantity="3000"/>
+  <products name="COMP. LEFT MIRROR HOLDER HAOJIN  AVATA" itemPrice="6.5" quantity="7000"/>
+  <products name="COMP.RIGHT MIRROW HOLDER HAOJIN AVATA" itemPrice="6.5" quantity="3000"/>
+  <products name="RIGHT MIRROW HOLDER CDII0" itemPrice="5.0" quantity="720"/>
+  <products name="COMP. MAGNETOR DISC CG125 AVATA" itemPrice="21.0" quantity="150"/>
+  <products name="COMP. MEGNETOR DISC CD110 AVATA" itemPrice="18.0" quantity="550"/>
+  <products name="COMP. OIL SEAL CD110  AVATA" itemPrice="2.8" quantity="2500"/>
+  <products name="COMP. OIL SEAL CG  AVATA" itemPrice="2.8" quantity="2000"/>
+  <products name="COMP. PLASTIC CD110" itemPrice="255.0" quantity="75"/>
+  <products name="COMP. PLASTIC KTM" itemPrice="290.0" quantity="30"/>
+  <products name="COMP. PLASTIC HAOJUE" itemPrice="370.0" quantity="16"/>
+  <products name="COMP. REAL LIGHT CG125" itemPrice="10.0" quantity="1000"/>
+  <products name="COMP REAR LIGHT CB" itemPrice="12.0" quantity="100"/>
+  <products name="COMP. REAL LIGHT HAOJUE" itemPrice="23.0" quantity="540"/>
+  <products name="COMP. REAR LIGHT CD110" itemPrice="11.0" quantity="300"/>
+  <products name="COMP. REAR LIGHT GN125 N/M" itemPrice="22.0" quantity="200"/>
+  <products name="COMP REAR LIGHT GN O/M" itemPrice="18.0" quantity="150"/>
+  <products name="COMP. REAR LIGHT ALOBA" itemPrice="10.0" quantity="400"/>
+  <products name="COMP. SEAT&amp;TANK LEATHER COVER CG" itemPrice="19.0" quantity="1500"/>
+  <products name="COMP. SEAT&amp;TANK LEATHER COVER GN" itemPrice="19.0" quantity="500"/>
+  <products name="COMP. TANK BOXER" itemPrice="135.0" quantity="9"/>
+  <products name="CO MP. TANK CB125" itemPrice="140.0" quantity="104"/>
+  <products name="COMP. TANK CG125" itemPrice="80.0" quantity="200"/>
+  <products name="COMP. TANK ALOBA" itemPrice="135.0" quantity="178"/>
+  <products name="COMP. TANK GN125" itemPrice="105.0" quantity="63"/>
+  <products name="COMP. TANK TRICYCLE" itemPrice="120.0" quantity="100"/>
+  <products name="COMP. TIMMING CHAIN CB125 AVATA" itemPrice="9.0" quantity="1327"/>
+  <products name="COMP. TIMMING CHAIN CD110  AVATA" itemPrice="8.0" quantity="2201"/>
+  <products name="COMP. TOP CYLINDER ALOBA  AVATA" itemPrice="130.0" quantity="304"/>
+  <products name="COMP. TOP CYLINDER CB125 AVATA" itemPrice="173.0" quantity="248"/>
+  <products name="COMP. TOP CYLINDER CD110 AVATA" itemPrice="64.0" quantity="408"/>
+  <products name="COMP. TOP CYLINDER CG125 AVATA" itemPrice="90.0" quantity="568"/>
+  <products name="COMP. TOP CYLINDER CG150 AVATA" itemPrice="90.0" quantity="640"/>
+  <products name="COMP. TOP CYLINDER CG200 AVATA" itemPrice="95.0" quantity="640"/>
+  <products name="COMP. TOP CYLINDER LF155 AVATA" itemPrice="145.0" quantity="40"/>
+  <products name="COMP. TOP CYLINDER YBR" itemPrice="170.0" quantity="24"/>
+  <products name="COMP. WIRE BOXER 150 AVATA" itemPrice="24.0" quantity="650"/>
+  <products name="COMP. WIRE CB125 AVATA" itemPrice="21.0" quantity="415"/>
+  <products name="COMP. WIRE CD110 AVATA" itemPrice="21.0" quantity="1150"/>
+  <products name="COMP. WIRE CG125 AVATA" itemPrice="17.5" quantity="1061"/>
+  <products name="COMP. WIRE GN125 AVATA" itemPrice="18.5" quantity="1200"/>
+  <products name="COMP. WIRE TRICYCLE  AVATA" itemPrice="24.0" quantity="720"/>
+  <products name="CRANK SHAFT AP125 AVATA" itemPrice="63.0" quantity="1200"/>
+  <products name="CRANK SHAFT BOXER  AVATA" itemPrice="68.0" quantity="468"/>
+  <products name="CRANK SHAFT CB125 AVATA" itemPrice="68.0" quantity="281"/>
+  <products name="CRANK SHAFT CD110 LONG AVATA" itemPrice="50.0" quantity="390"/>
+  <products name="CRANK SHAFT CD110 SHORT  AVATA" itemPrice="45.0" quantity="648"/>
+  <products name="CRANK SHAFT CG125 AVATA" itemPrice="63.0" quantity="1704"/>
+  <products name="CRANK SHAFT CG150 AVATA" itemPrice="63.0" quantity="1440"/>
+  <products name="CRANK SHAFT CG200 AVATA" itemPrice="80.0" quantity="636"/>
+  <products name="CRANK SHAFT HAOJUE -8 AVATA" itemPrice="83.0" quantity="270"/>
+  <products name="CRANK SHAFT LF155 AVATA" itemPrice="68.0" quantity="167"/>
+  <products name="CRASH BAR N/M" itemPrice="30.0" quantity="400"/>
+  <products name="CRASH BAR O/M" itemPrice="30.0" quantity="870"/>
+  <products name="DAMPER RUBBER CD110" itemPrice="2.0" quantity="2300"/>
+  <products name="DAMPER RUBBER CGL125" itemPrice="2.0" quantity="2500"/>
+  <products name="DAMPER RUBBER GN125" itemPrice="3.0" quantity="3100"/>
+  <products name="DOWN SHOCK CG" itemPrice="28.0" quantity="60"/>
+  <products name="DOWN SHOCK GN" itemPrice="29.0" quantity="700"/>
+  <products name="DOWN SHOCK CD110" itemPrice="26.0" quantity="200"/>
+  <products name="DOWN  SHOCK CB" itemPrice="55.0" quantity="100"/>
+  <products name="DOWN STEARING CD110" itemPrice="29.0" quantity="880"/>
+  <products name="DOWN STEARING CG125" itemPrice="19.0" quantity="400"/>
+  <products name="DOWN STEARING GN125" itemPrice="22.0" quantity="500"/>
+  <products name="ENGINE BLOCK AP125" itemPrice="48.0" quantity="408"/>
+  <products name="ENGINE BLOCK AP150 AVATA" itemPrice="49.0" quantity="84"/>
+  <products name="ENGINE BLOCK AX100 AVATA" itemPrice="64.0" quantity="320"/>
+  <products name="ENGINE BLOCK BOXER  AVATA" itemPrice="58.0" quantity="504"/>
+  <products name="ENGINE BLOCK CB125 AVATA" itemPrice="55.0" quantity="460"/>
+  <products name="ENGINE BLOCK CD100 AVATA" itemPrice="40.0" quantity="836"/>
+  <products name="ENGINE BLOCK CD110 AVATA" itemPrice="40.0" quantity="204"/>
+  <products name="ENGINE BLOCK CD110 ALUMINIUM AVATA" itemPrice="48.0" quantity="720"/>
+  <products name="ENGINE BLOCK CG125 AVATA" itemPrice="48.0" quantity="624"/>
+  <products name="ENGINE BLOCK CG150 AVATA" itemPrice="49.0" quantity="48"/>
+  <products name="ENGINE BLOCK CG175 AVATA" itemPrice="51.0" quantity="12"/>
+  <products name="ENGINE BLOCK LF200" itemPrice="65.0" quantity="600"/>
+  <products name="ENGINE BLOCK CG200 AVATA" itemPrice="52.0" quantity="528"/>
+  <products name="ENGINE BLOCK HAOJUE-8 AVATA" itemPrice="58.0" quantity="528"/>
+  <products name="ENGINE CABLE CG125 AVATA" itemPrice="3.0" quantity="2200"/>
+  <products name="ENGINE CABLE GN125 AVATA" itemPrice="3.0" quantity="1500"/>
+  <products name="ENGINE HOSE AVATA" itemPrice="1.0" quantity="3500"/>
+  <products name="ENGINE OIL BOLT" itemPrice="0.6" quantity="5000"/>
+  <products name="ENGINE VALVE BOXER  AVATA" itemPrice="5.0" quantity="1600"/>
+  <products name="ENGINE VALVE CB125" itemPrice="4.5" quantity="1700"/>
+  <products name="ENGINE VALVE CD110 AVATA" itemPrice="4.3" quantity="4000"/>
+  <products name="ENGINE VALVE CG125 AVATA" itemPrice="4.5" quantity="4700"/>
+  <products name="ENGINE VALVE CG150 AVATA" itemPrice="4.5" quantity="6250"/>
+  <products name="ENGINE VALVE CG200 AVATA" itemPrice="5.0" quantity="3400"/>
+  <products name="ENGINE VALVE COVER" itemPrice="0.9" quantity="4500"/>
+  <products name="ENGINE VALVE LF155 AVATA" itemPrice="7.7" quantity="800"/>
+  <products name="ENGINE VALVE LF200 AVATA" itemPrice="7.7" quantity="406"/>
+  <products name="EXHAUST GASKET CD110" itemPrice="0.3" quantity="5000"/>
+  <products name="EXHAUST GASKET CG125" itemPrice="0.3" quantity="35000"/>
+  <products name="EXHAUST PIPE ALOBA N/M" itemPrice="65.0" quantity="424"/>
+  <products name="EXHAUST PIPE ALOBA O/M" itemPrice="63.0" quantity="321"/>
+  <products name="EXHAUST PIPE BOXER 150" itemPrice="115.0" quantity="85"/>
+  <products name="EXHAUST PIPE CB125" itemPrice="165.0" quantity="148"/>
+  <products name="EXHAUST PIPE CD110" itemPrice="62.0" quantity="312"/>
+  <products name="EXHAUST PIPE CG125" itemPrice="63.0" quantity="264"/>
+  <products name="EXHAUST PIPE GN POWER" itemPrice="103.0" quantity="60"/>
+  <products name="EXHAUST PIPE GN125" itemPrice="64.0" quantity="728"/>
+  <products name="EXHAUST PIPE GN125 N/M" itemPrice="65.0" quantity="528"/>
+  <products name="FACING CAP ALOBA BLACK/WINE" itemPrice="9.0" quantity="950"/>
+  <products name="FACING CAP BOXER 150" itemPrice="22.0" quantity="170"/>
+  <products name="FANCY SEAT COVER ALOBA" itemPrice="9.5" quantity="400"/>
+  <products name="FANCY SEAT COVER CD110" itemPrice="9.5" quantity="800"/>
+  <products name="FANCY SEAT COVER CG125" itemPrice="9.5" quantity="1000"/>
+  <products name="FANCY SEAT COVER GN" itemPrice="9.5" quantity="700"/>
+  <products name="FANCY SET THROTHLE PIPE" itemPrice="6.5" quantity="600"/>
+  <products name="FLASHER" itemPrice="2.7" quantity="5000"/>
+  <products name="FLASHER NO ALARM AVATA" itemPrice="3.0" quantity="5000"/>
+  <products name="FOOTREST RUBBER CB125" itemPrice="3.3" quantity="500"/>
+  <products name="FOOTREST RUBBER CD110" itemPrice="2.8" quantity="4800"/>
+  <products name="FOOTREST RUBBER CG125" itemPrice="2.2" quantity="600"/>
+  <products name="FORK LAMP N/M" itemPrice="13.5" quantity="1800"/>
+  <products name="FORK LAMP 6BULB" itemPrice="14.0" quantity="4000"/>
+  <products name="FRONT BRAKE PAD GN" itemPrice="3.3" quantity="6600"/>
+  <products name="FRONT BRAKE POT CD110" itemPrice="14.0" quantity="200"/>
+  <products name="FRONT BRAKE POT GN" itemPrice="13.0" quantity="2300"/>
+  <products name="FRONT EMBLEM CD110 BLACK" itemPrice="9.0" quantity="600"/>
+  <products name="FRONT FENDER  CG125" itemPrice="19.0" quantity="600"/>
+  <products name="FRONT FENDER ALOBA" itemPrice="15.0" quantity="1625"/>
+  <products name="FRONT FENDER BOXER 150" itemPrice="16.0" quantity="325"/>
+  <products name="FRONT FENDER CD110" itemPrice="18.0" quantity="840"/>
+  <products name="FRONT FINDER GN125" itemPrice="20.0" quantity="1404"/>
+  <products name="FRONT FENDER CB125" itemPrice="19.0" quantity="100"/>
+  <products name="FRONT FENDER FLETCH" itemPrice="19.0" quantity="500"/>
+  <products name="FRONT FENDER ROYAL 150" itemPrice="19.0" quantity="75"/>
+  <products name="FRONT SHOCK ALOBA" itemPrice="100.0" quantity="420"/>
+  <products name="FRONT SHOCK BOXER 150" itemPrice="110.0" quantity="92"/>
+  <products name="FRONT SHOCK CB125" itemPrice="125.0" quantity="170"/>
+  <products name="FRONT SHOCK CG" itemPrice="68.0" quantity="200"/>
+  <products name="FRONT SHOCK GN" itemPrice="95.0" quantity="285"/>
+  <products name="FRONT SHOCK CD110" itemPrice="40.0" quantity="490"/>
+  <products name="FRONT SHOCK COVER CD110" itemPrice="10.0" quantity="450"/>
+  <products name="FRONT SHOCK OIL SEAL CB125" itemPrice="1.5" quantity="5000"/>
+  <products name="FRONT SHOCK OIL SEAL CG125 AVATA" itemPrice="1.5" quantity="11000"/>
+  <products name="FRONT SHOCK OIL SEAL GN AVATA" itemPrice="1.5" quantity="1000"/>
+  <products name="FRONT SPINDLE CG125" itemPrice="2.5" quantity="2400"/>
+  <products name="FRONT SPINDLE GN125" itemPrice="2.8" quantity="1400"/>
+  <products name="FRONT&amp;BACK SPROCKET AG100 AVATA" itemPrice="18.0" quantity="2275"/>
+  <products name="FRONT&amp;BACK SPROCKET BOXER AVATA" itemPrice="13.0" quantity="1600"/>
+  <products name="FRONT&amp;BACK SPROCKET CD110 AVATA" itemPrice="11.0" quantity="800"/>
+  <products name="FRONT&amp;BACK SPROCKET DT125 AVATA" itemPrice="16.0" quantity="625"/>
+  <products name="FRONT&amp;BACK SPROCKET GN125 AVATA" itemPrice="11.5" quantity="920"/>
+  <products name="FRONT&amp;BACK SROCKET CGL125 AVATA" itemPrice="11.5" quantity="920"/>
+  <products name="FUEL TAP CG AVATA" itemPrice="4.3" quantity="3300"/>
+  <products name="FUEL TAP GN AVATA" itemPrice="7.5" quantity="7000"/>
+  <products name="FUEL TAP TRICYCLE AVATA" itemPrice="3.9" quantity="900"/>
+  <products name="FUSE BOX" itemPrice="1.2" quantity="20000"/>
+  <products name="GEAR SLECTOR CG125 AVATA" itemPrice="20.0" quantity="420"/>
+  <products name="GEAR SLECTOR CD110 AVATA" itemPrice="20.0" quantity="200"/>
+  <products name="GREASE 500gm" itemPrice="8.0" quantity="624"/>
+  <products name="HAND PUMP LONG" itemPrice="14.0" quantity="120"/>
+  <products name="HAND PUMP SHORT" itemPrice="12.0" quantity="250"/>
+  <products name="HANDLE BAR BOXER" itemPrice="13.0" quantity="275"/>
+  <products name="HANDLE BAR CG125" itemPrice="13.0" quantity="225"/>
+  <products name="HEAD LAMP BOXER 150" itemPrice="17.0" quantity="260"/>
+  <products name="HEAD LAMP CB125" itemPrice="16.0" quantity="540"/>
+  <products name="HEAD LAMP CG LED AVATA" itemPrice="25.0" quantity="1180"/>
+  <products name="HEAD LAMP CG125 2 BULB AVATA" itemPrice="17.0" quantity="800"/>
+  <products name="HEAD LAMP CG125 ONE BULB AVATA" itemPrice="17.0" quantity="1620"/>
+  <products name="HEAD LAMP CGL125" itemPrice="16.0" quantity="500"/>
+  <products name="HEAD LAMP TRICYCLE" itemPrice="21.0" quantity="150"/>
+  <products name="HEAD LAMP FLETCH" itemPrice="25.0" quantity="800"/>
+  <products name="HEAD LAMP GN AVATA" itemPrice="21.0" quantity="720"/>
+  <products name="HEAD LAMP GN LED AVATA" itemPrice="27.0" quantity="780"/>
+  <products name="HEAD LAMP SANYA 125" itemPrice="23.0" quantity="900"/>
+  <products name="HEAD LAMP TVS MAX" itemPrice="17.0" quantity="420"/>
+  <products name="HEAD LAMP YOROBO" itemPrice="25.0" quantity="300"/>
+  <products name="HEAD LAMP HOLDER CG125" itemPrice="13.5" quantity="950"/>
+  <products name="HEAD LAMP HOLDER GN" itemPrice="11.5" quantity="875"/>
+  <products name="HORN FOLLOW COME AVATA" itemPrice="6.0" quantity="510"/>
+  <products name="HORN SMALL" itemPrice="4.2" quantity="510"/>
+  <products name="HORN MAGIC" itemPrice="19.0" quantity="30"/>
+  <products name="HORN PEGOET" itemPrice="14.0" quantity="60"/>
+  <products name="INNER GEAR BOXER  AVATA" itemPrice="8.5" quantity="560"/>
+  <products name="INNER GEAR CB125 AVATA" itemPrice="10.0" quantity="360"/>
+  <products name="INNER GEAR CD110 AVTA" itemPrice="8.5" quantity="400"/>
+  <products name="INNER GEAR CG125 AVATA" itemPrice="8.0" quantity="1150"/>
+  <products name="INNER GEAR CG200 AVATA" itemPrice="8.0" quantity="500"/>
+  <products name="INNER GEAR GN125 AVATA" itemPrice="8.0" quantity="1000"/>
+  <products name="INNER LEG SHIELD CD110 BLACK" itemPrice="25.0" quantity="810"/>
+  <products name="INNER SPROCKET CD110" itemPrice="2.6" quantity="1400"/>
+  <products name="INNER SPROCKET CG125" itemPrice="2.6" quantity="1950"/>
+  <products name="INNER&amp;OUTER BRAKE ARM GN" itemPrice="3.0" quantity="5600"/>
+  <products name="INNER&amp;OUTER BRAKE ARM CG" itemPrice="3.0" quantity="7000"/>
+  <products name="LEFT WINKER CD110" itemPrice="11.5" quantity="500"/>
+  <products name="LEFT WINKER GN AVATA" itemPrice="11.5" quantity="1200"/>
+  <products name="FANCY LED LIGHT BIG" itemPrice="5.5" quantity="2000"/>
+  <products name="FANCY LED LIGHT SMALL" itemPrice="4.5" quantity="3000"/>
+  <products name="FANCY LED LIGH NEW BIG" itemPrice="6.0" quantity="2000"/>
+  <products name="FANCY LED LIGHTNEW SMALL" itemPrice="5.0" quantity="2000"/>
+  <products name="MAGNETOR GASKET CG" itemPrice="0.5" quantity="1500"/>
+  <products name="MP3 MUSIC" itemPrice="37.0" quantity="1590"/>
+  <products name="NECK BEARING CD110 AVATA" itemPrice="6.0" quantity="900"/>
+  <products name="NECK BEARING CG125 AVATA" itemPrice="5.0" quantity="2700"/>
+  <products name="NECK BEARING GN125 AVATA" itemPrice="6.0" quantity="1800"/>
+  <products name="OIL GAGE CD110" itemPrice="0.8" quantity="2000"/>
+  <products name="OIL GAGE CG125" itemPrice="0.8" quantity="6000"/>
+  <products name="OIL 1LITER STANLEY" itemPrice="100.0" quantity="1600"/>
+  <products name="OIL 5LITTER STANLEY" itemPrice="203.0" quantity="500"/>
+  <products name="OIL PUMP CD110" itemPrice="5.0" quantity="450"/>
+  <products name="OIL PUMP CG AVATA" itemPrice="11.0" quantity="650"/>
+  <products name="OIL PUMP CUP CG125 AVATA" itemPrice="5.0" quantity="2500"/>
+  <products name="ONLY RINGS CD110 025 AVATA" itemPrice="4.7" quantity="2000"/>
+  <products name="ONLY RINGS ROYAL STD+ AVATA" itemPrice="4.7" quantity="2000"/>
+  <products name="ONLY RINGS ROYAL STD++ AVATA" itemPrice="4.7" quantity="2000"/>
+  <products name="ONLY RINGS CG125 0.25" itemPrice="4.7" quantity="3500"/>
+  <products name="ONLY RINGS ALOBA" itemPrice="4.7" quantity="6000"/>
+  <products name="ONLY RINGS CG150 0.25" itemPrice="4.7" quantity="300"/>
+  <products name="ONLY ACID 12N9" itemPrice="5.0" quantity="1500"/>
+  <products name="ONLYACID 12N6" itemPrice="5.0" quantity="2000"/>
+  <products name="OUTER GEAR ALOBA AVATA" itemPrice="6.0" quantity="2450"/>
+  <products name="OUTER GEAR CGL AVATA" itemPrice="5.0" quantity="9800"/>
+  <products name="OUTER GEAR CD110 AVATA" itemPrice="6.0" quantity="100"/>
+  <products name="OUTER GEAR GN125 AVATA" itemPrice="4.2" quantity="1300"/>
+  <products name="OUTER GEAR GN BLACK" itemPrice="4.2" quantity="200"/>
+  <products name="OUTER GEAR BOXER 150" itemPrice="6.5" quantity="1000"/>
+  <products name="OUTER GEAR TRICYCLE BIG" itemPrice="7.5" quantity="1000"/>
+  <products name="OUTER GEAR TRICYCLE SMALL" itemPrice="7.5" quantity="500"/>
+  <products name="OUTER KICK BOXER AVATA" itemPrice="9.0" quantity="500"/>
+  <products name="OUTER KICK CD110 AVATA" itemPrice="6.5" quantity="1000"/>
+  <products name="OUTER KICK CG125 AVATA" itemPrice="7.5" quantity="2400"/>
+  <products name="OUTER KICK CB125 AVATA" itemPrice="10.5" quantity="600"/>
+  <products name="OUTER KICK GN AVATA" itemPrice="7.5" quantity="3600"/>
+  <products name="OUTER KICK TRICYCLE 1 BOLT AVATA" itemPrice="11.0" quantity="2000"/>
+  <products name="OUTER KICK TRICYCLE 2 BOLT AVATA" itemPrice="12.0" quantity="1920"/>
+  <products name="OUTER LEG SHIELD CD110" itemPrice="25.0" quantity="300"/>
+  <products name="PISTON KIT ALOBA STD+  AVATA" itemPrice="11.5" quantity="1800"/>
+  <products name="PISTON KIT ALOBA STD++ AVATA" itemPrice="11.5" quantity="4300"/>
+  <products name="PISTON KIT AP150 STD+ AVATA" itemPrice="11.5" quantity="1700"/>
+  <products name="PISTON KIT AP150 STD++ AVATA" itemPrice="11.5" quantity="2600"/>
+  <products name="PISTON KIT BOXER 150 STD+ AVATA" itemPrice="13.0" quantity="1200"/>
+  <products name="PISTON KIT BOXER 150 STD++ AVATA" itemPrice="13.0" quantity="1500"/>
+  <products name="PISTON KIT TRICYCLE STD++ AVATA" itemPrice="16.5" quantity="1000"/>
+  <products name="PISTON KIT CB125 STD+ AVATA" itemPrice="11.5" quantity="1000"/>
+  <products name="PISTON KIT CB125 STD++ AVATA" itemPrice="11.5" quantity="1000"/>
+  <products name="PISTON KIT CD100 STD+ AVATA" itemPrice="10.0" quantity="1000"/>
+  <products name="PISTON KIT CD100 STD++ AVATA" itemPrice="10.0" quantity="1200"/>
+  <products name="PISTON KIT CD110 025 AVATA" itemPrice="10.0" quantity="500"/>
+  <products name="PISTON KIT CD110 STD+  AVATA" itemPrice="10.0" quantity="2400"/>
+  <products name="PISTON KIT CD110 STD++ AVATA" itemPrice="10.0" quantity="2300"/>
+  <products name="PISTON KIT CG125 STD+ AVATA" itemPrice="10.0" quantity="4200"/>
+  <products name="PISTON KIT CG125 STD++ AVATA" itemPrice="10.0" quantity="3600"/>
+  <products name="PISTON KIT CG150 STD+ AVATA" itemPrice="11.5" quantity="2400"/>
+  <products name="PISTON KIT CG150 STD++ AVATA" itemPrice="11.5" quantity="1900"/>
+  <products name="PISTON KIT CG200 STD+ AVATA" itemPrice="14.0" quantity="2000"/>
+  <products name="PISTON KIT CG200 STD++ AVATA" itemPrice="14.0" quantity="2000"/>
+  <products name="PISTON KIT HAOJUE-8 STD++ AVATA" itemPrice="13.0" quantity="500"/>
+  <products name="PISTON KIT HAOJUE-8 STD+ AVATA" itemPrice="13.0" quantity="1100"/>
+  <products name="PISTON KIT LF155 STD+ AVATA" itemPrice="14.0" quantity="1300"/>
+  <products name="PISTON KIT LF155 STD++ AVATA" itemPrice="14.0" quantity="1600"/>
+  <products name="PISTON KIT TVS 180 STD+ AVATA" itemPrice="13.5" quantity="800"/>
+  <products name="PISTON KIT TVS 180 STD++ AVATA" itemPrice="13.5" quantity="500"/>
+  <products name="PISTON KIT TVS MAX STD+ AVATA" itemPrice="10.0" quantity="500"/>
+  <products name="PISTON KIT TVS MAX STD++ AVATA" itemPrice="10.0" quantity="500"/>
+  <products name="PISTON KIT TVS STAR STD+ AVATA" itemPrice="12.0" quantity="500"/>
+  <products name="PISTON KIT TVS STAR STD++ AVATA" itemPrice="12.0" quantity="800"/>
+  <products name="PISTON KIT TVS110 STD+ AVATA" itemPrice="11.5" quantity="1400"/>
+  <products name="PISTON KIT TVS110 STD++ AVATA" itemPrice="11.5" quantity="3700"/>
+  <products name="PLUG CAP AVATA" itemPrice="1.1" quantity="5000"/>
+  <products name="PLUG SPANNER" itemPrice="1.1" quantity="2000"/>
+  <products name="POINTER BULB" itemPrice="0.4" quantity="4000"/>
+  <products name="POINTER ALOBA O/M" itemPrice="3.7" quantity="1900"/>
+  <products name="POINTER ALOBA LED" itemPrice="4.0" quantity="2000"/>
+  <products name="POINTER ALOBA RED COVER" itemPrice="3.7" quantity="2500"/>
+  <products name="POINTER BOXER 150" itemPrice="3.5" quantity="600"/>
+  <products name="POINTER CB125" itemPrice="4.0" quantity="1300"/>
+  <products name="POINTER CG125 AVATA" itemPrice="3.5" quantity="2300"/>
+  <products name="POINTER FANCY BIG" itemPrice="5.0" quantity="7800"/>
+  <products name="POINTER FANCY  N/M" itemPrice="5.0" quantity="2000"/>
+  <products name="POINTER FANCY SMALL" itemPrice="3.5" quantity="5000"/>
+  <products name="POINTER FLETCH" itemPrice="3.5" quantity="2000"/>
+  <products name="POINTER GN N/M" itemPrice="4.4" quantity="1000"/>
+  <products name="POINTER GN125 AVATA" itemPrice="4.0" quantity="3700"/>
+  <products name="POINTER HAOJIN WHITH COVER" itemPrice="3.7" quantity="1500"/>
+  <products name="POINTER HAOJUE" itemPrice="3.7" quantity="1000"/>
+  <products name="POINTER YOROBO" itemPrice="4.0" quantity="1000"/>
+  <products name="POINTER TVS STAR" itemPrice="3.0" quantity="2400"/>
+  <products name="PONITER  TVS MAX" itemPrice="3.5" quantity="2400"/>
+  <products name="REAR LIGHT TVS MAX" itemPrice="8.0" quantity="330"/>
+  <products name="REAR LIGHT TRICYCLE LED" itemPrice="11.0" quantity="150"/>
+  <products name="REAR LIGHT BM150" itemPrice="12.0" quantity="350"/>
+  <products name="RECTIFIRE  CD110 AVATA" itemPrice="6.5" quantity="800"/>
+  <products name="RECTIFIRE BOXER AVATA" itemPrice="12.5" quantity="1100"/>
+  <products name="RECTIFIRE CB125 AVATA" itemPrice="9.5" quantity="1000"/>
+  <products name="RECTIFIRE CG  ORD" itemPrice="7.5" quantity="1700"/>
+  <products name="RECTIFIRE CG125 AVATA" itemPrice="9.5" quantity="4875"/>
+  <products name="RECTIFIRE TRICYCLE  AVATA" itemPrice="11.5" quantity="2600"/>
+  <products name="RIGHT WINKER CDIIO" itemPrice="4.0" quantity="500"/>
+  <products name="ROCK ARM BOXER AVATA" itemPrice="15.5" quantity="500"/>
+  <products name="ROCK ARM CB125 AVATA" itemPrice="15.5" quantity="1100"/>
+  <products name="ROCK ARM CG125 AVATA" itemPrice="9.0" quantity="2200"/>
+  <products name="ROCK ARM CD110 AVATA" itemPrice="7.0" quantity="400"/>
+  <products name="SEAT LEATHER COVER CG AVATA" itemPrice="9.5" quantity="1000"/>
+  <products name="SEAT LEATHER COVER GN AVATA" itemPrice="9.5" quantity="1000"/>
+  <products name="SEAT AND TANK LEATHER COVER CG" itemPrice="20.0" quantity="500"/>
+  <products name="SEAT AND TANK LEATHER COVER GN" itemPrice="20.0" quantity="1000"/>
+  <products name="SEAT NET COVER" itemPrice="9.5" quantity="500"/>
+  <products name="SECURITY LOCK CHAIN" itemPrice="13.0" quantity="3000"/>
+  <products name="SET REAR FLAP AP125" itemPrice="6.5" quantity="2100"/>
+  <products name="SET REAR FLAP GN HAOJIN" itemPrice="6.5" quantity="600"/>
+  <products name="SET REAR FLAP SANYA" itemPrice="6.5" quantity="1500"/>
+  <products name="SET REAR FLAP HAOJIN BIG" itemPrice="6.5" quantity="1500"/>
+  <products name="SET MIRROR HOLDER BOXER" itemPrice="13.5" quantity="1250"/>
+  <products name="SET MIRROR HOLDER CB125" itemPrice="13.0" quantity="1000"/>
+  <products name="SET WINKER ALOBA  AVATA" itemPrice="21.0" quantity="1100"/>
+  <products name="SET WINKER BOXER  AVATA" itemPrice="18.0" quantity="600"/>
+  <products name="SET WINKER CB125 AVATA" itemPrice="14.5" quantity="400"/>
+  <products name="SET WINKER CD110 AVATA" itemPrice="14.5" quantity="100"/>
+  <products name="SET WINKER CGL125 AVATA" itemPrice="18.5" quantity="1500"/>
+  <products name="SET WINKER GN125 AVATA" itemPrice="19.5" quantity="2600"/>
+  <products name="SHOE BRAKE CG ORD" itemPrice="4.7" quantity="1280"/>
+  <products name="SHOE BRAKE CG125 AVATA" itemPrice="5.5" quantity="6900"/>
+  <products name="SHOE BRAKE CGL ORD" itemPrice="5.2" quantity="600"/>
+  <products name="SHOE BRAKE GN ZB" itemPrice="5.5" quantity="21000"/>
+  <products name="SHOE BRAKE GN125 ORD" itemPrice="5.2" quantity="16960"/>
+  <products name="SHOE BRAKE TRICYCLE BIG" itemPrice="12.5" quantity="1800"/>
+  <products name="SHOE BRAKE TRICYCLE SMALL" itemPrice="10.0" quantity="2000"/>
+  <products name="SIDE COVER AP125" itemPrice="15.0" quantity="820"/>
+  <products name="SIDE COVER BOXER" itemPrice="17.0" quantity="475"/>
+  <products name="SIDE COVER CB125" itemPrice="18.0" quantity="500"/>
+  <products name="SIDE COVER CG125" itemPrice="13.0" quantity="800"/>
+  <products name="SIDE COVER GN" itemPrice="15.0" quantity="1500"/>
+  <products name="SIDE COVER FLETCH BLACK" itemPrice="21.0" quantity="233"/>
+  <products name="SIDE COVER FLETCH RED" itemPrice="10.0" quantity="250"/>
+  <products name="SIDE COVER HJ-9" itemPrice="15.0" quantity="1540"/>
+  <products name="SIDE COVER SY125" itemPrice="14.0" quantity="400"/>
+  <products name="SIDE MIRROR ALOBA" itemPrice="15.0" quantity="847"/>
+  <products name="SIDE MIRROR CD110" itemPrice="6.5" quantity="5050"/>
+  <products name="SIDE MIRROR CG125" itemPrice="6.5" quantity="1250"/>
+  <products name="SIDE MIRROR FANCY" itemPrice="6.0" quantity="60"/>
+  <products name="SIDE MIRROR SANYA 125" itemPrice="38.0" quantity="60"/>
+  <products name="SIDE MIRROR ROYAL" itemPrice="7.0" quantity="700"/>
+  <products name="SIDE MIRROR GN" itemPrice="12.0" quantity="960"/>
+  <products name="SIDE MIRROR GN SANYA" itemPrice="6.0" quantity="300"/>
+  <products name="SILINCON" itemPrice="3.2" quantity="2900"/>
+  <products name="SPARK PLUG AVATA ORG" itemPrice="4.1" quantity="3800"/>
+  <products name="SPARK PLUG CB125 AVATA" itemPrice="2.0" quantity="9000"/>
+  <products name="SPARK PLUG CD110 AVATA" itemPrice="2.0" quantity="13800"/>
+  <products name="SPARK PLUG CG AVATA" itemPrice="2.0" quantity="42000"/>
+  <products name="SPARK PLUG LONG AVATA" itemPrice="2.2" quantity="15000"/>
+  <products name="SPARK PLUG SHORT AVATA" itemPrice="2.2" quantity="10000"/>
+  <products name="SPARK PLUG CG ORD" itemPrice="1.4" quantity="7000"/>
+  <products name="SPARK PLUG CG KINGSMEN" itemPrice="1.4" quantity="6400"/>
+  <products name="SPARK PLUG SHORT KINGSMEN" itemPrice="1.5" quantity="7200"/>
+  <products name="SPEED CABLE CD110 AVATA" itemPrice="3.0" quantity="2590"/>
+  <products name="SPEED CABLE GN AVATA" itemPrice="3.0" quantity="3000"/>
+  <products name="SPEED CABLE HAOJIN AVATA" itemPrice="3.0" quantity="3400"/>
+  <products name="SPEED CLOCK COVER CD110" itemPrice="8.5" quantity="1000"/>
+  <products name="SPEED CLOCK ALOBA AVATA" itemPrice="34.0" quantity="1500"/>
+  <products name="SPEED CLOCK BOXER 150 AVATA" itemPrice="33.0" quantity="240"/>
+  <products name="SPEED CLOCK CB125 AVATA" itemPrice="16.0" quantity="1140"/>
+  <products name="SPEED CLOCK CD110 AVATA" itemPrice="18.0" quantity="729"/>
+  <products name="SPEED CLOCK FLETCH AVATA" itemPrice="39.0" quantity="310"/>
+  <products name="SPEED CLOCK GN AVATA" itemPrice="22.0" quantity="1620"/>
+  <products name="SPEED CLOCK HAOJIN AVATA" itemPrice="24.5" quantity="1950"/>
+  <products name="SPEED CLOCK HAOJIN N/M" itemPrice="58.0" quantity="315"/>
+  <products name="SPEED CLOCK TVS MAX" itemPrice="18.0" quantity="400"/>
+  <products name="SPEED CLOCK TVS STAR" itemPrice="19.0" quantity="200"/>
+  <products name="SPEED CLOCK YOROBO AVATA" itemPrice="42.0" quantity="340"/>
+  <products name="SPEED CLOCK GLASS CD110" itemPrice="4.0" quantity="2000"/>
+  <products name="SPEED ROLLER GN125" itemPrice="6.0" quantity="1650"/>
+  <products name="SPROCKET BOLT GN AVATA" itemPrice="1.5" quantity="20000"/>
+  <products name="SPROCKET SITTING CD110" itemPrice="14.5" quantity="20"/>
+  <products name="SPROCKET SITTING CGL125 AVATA" itemPrice="15.0" quantity="1370"/>
+  <products name="SPROCKET SITTING GN  AVATA" itemPrice="16.0" quantity="1085"/>
+  <products name="SRROCKET BOLT CGL AVATA" itemPrice="1.5" quantity="3000"/>
+  <products name="STANDING SPRING CG" itemPrice="0.4" quantity="4000"/>
+  <products name="STANDING SPRING GN" itemPrice="0.4" quantity="20000"/>
+  <products name="SIDE SPRING" itemPrice="0.3" quantity="15000"/>
+  <products name="STARTER AUTOMATIC CD110 AVATA" itemPrice="7.0" quantity="500"/>
+  <products name="STARTER BUSHING CG125" itemPrice="2.5" quantity="800"/>
+  <products name="STARTER BUSHING CD110" itemPrice="2.5" quantity="980"/>
+  <products name="SWITCH KEY ALOBA AVATA" itemPrice="10.0" quantity="470"/>
+  <products name="SWITCH KEY BOXER 150 AVATA" itemPrice="13.0" quantity="920"/>
+  <products name="SWITCH KEY CB125 AVATA" itemPrice="13.5" quantity="737"/>
+  <products name="SWITCH KEY CGL125 AVATA" itemPrice="10.0" quantity="1420"/>
+  <products name="SWITCH KEY GN AVATA" itemPrice="7.5" quantity="650"/>
+  <products name="SWITCH KEY TVS MAX AVATA" itemPrice="12.5" quantity="500"/>
+  <products name="SWITCH KEY TVS STAR AVATA" itemPrice="12.5" quantity="190"/>
+  <products name="SOLE TAPE BLACK" itemPrice="1.0" quantity="11000"/>
+  <products name="TANK COIL CG125" itemPrice="7.0" quantity="1750"/>
+  <products name="TANK COVER ALOBA" itemPrice="13.5" quantity="1720"/>
+  <products name="TANK COVER BOXER" itemPrice="13.5" quantity="700"/>
+  <products name="TANK COVER CB125" itemPrice="11.0" quantity="600"/>
+  <products name="TANK COVER CG125 AVATA" itemPrice="7.5" quantity="2400"/>
+  <products name="TANK COVER GN AVATA" itemPrice="8.0" quantity="1600"/>
+  <products name="TARPET  VALVE CG AVATA" itemPrice="12.0" quantity="310"/>
+  <products name="THROTHLE CABLE CD110 AVATA" itemPrice="3.0" quantity="2560"/>
+  <products name="THROTHLE CABLE CG125 AVATA" itemPrice="3.0" quantity="6180"/>
+  <products name="THROTHLE CABE CB125 AVATA" itemPrice="3.0" quantity="2900"/>
+  <products name="THROTHLE CABLE GN125 AVATA" itemPrice="3.0" quantity="6000"/>
+  <products name="THROTTLE PIPE CG" itemPrice="3.2" quantity="500"/>
+  <products name="TIMMING CHAIN 62L AVATA" itemPrice="3.7" quantity="3900"/>
+  <products name="TIMMING CHAIN 84L AVATA" itemPrice="3.8" quantity="3200"/>
+  <products name="TIMMING CHAIN 92L AVATA" itemPrice="3.8" quantity="3500"/>
+  <products name="TIMMING HANGER CD110" itemPrice="1.0" quantity="2400"/>
+  <products name="TIRE SEALANT AVATA" itemPrice="13.0" quantity="1680"/>
+  <products name="TOP GASKET CD110 AVATA" itemPrice="0.9" quantity="7000"/>
+  <products name="TOP GASKET CG125 AVATA" itemPrice="0.9" quantity="2000"/>
+  <products name="TOP&amp;DOWN GASKET CD110 AVATA" itemPrice="1.1" quantity="2000"/>
+  <products name="TOP&amp;DOWN GASKET CG125 AVATA" itemPrice="1.1" quantity="9000"/>
+  <products name="TOP&amp;DOWN GASKET CG150 AVATA" itemPrice="1.1" quantity="10000"/>
+  <products name="UPPER STEARING CG125 AVATA" itemPrice="12.0" quantity="2400"/>
+  <products name="UPPER STEARING GN125 AVATA" itemPrice="18.0" quantity="650"/>
+  <products name="VALVE OIL SEAL CD110 AVATA" itemPrice="0.7" quantity="11000"/>
+  <products name="VALVE OIL SEAL CG125 AVATA" itemPrice="0.7" quantity="45000"/>
+  <products name="BATTERY 12N5 DRY 198" itemPrice="43.0" quantity="1500"/>
+  <products name="BATTERY 12N6 DRY 198" itemPrice="43.0" quantity="2500"/>
+  <products name="BATTERY 12N9 DRY 198" itemPrice="51.0" quantity="3200"/>
+  <products name="CLUCH CABLE CG 198" itemPrice="2.5" quantity="4000"/>
+  <products name="CLUCH CABLE GN 198" itemPrice="2.5" quantity="5000"/>
+  <products name="CLUTCH FIBER CD110 198" itemPrice="4.8" quantity="3000"/>
+  <products name="CLUTCH FIBBER CG150 198" itemPrice="5.4" quantity="3000"/>
+  <products name="CLUTCH FIBERB CG125 198" itemPrice="4.8" quantity="3000"/>
+  <products name="COMP. 6 COIL CD110 198" itemPrice="19.0" quantity="400"/>
+  <products name="COMP. 8 COIL CG125 198" itemPrice="19.0" quantity="600"/>
+  <products name="ENGINE BLOCK CG125 198" itemPrice="43.0" quantity="296"/>
+  <products name="PISTON KIT CD110 198 +" itemPrice="9.2" quantity="1300"/>
+  <products name="PISTON KIT CD110 198 ++" itemPrice="9.2" quantity="1200"/>
+  <products name="PISTON KIT CG125 STD+ 198" itemPrice="9.2" quantity="930"/>
+  <products name="PISTON KIT CG125 STD++ 198" itemPrice="9.2" quantity="390"/>
+  <products name="PISTON KIT CG150 STD+ 198" itemPrice="10.5" quantity="1020"/>
+  <products name="PISTON KIT CG150 STD++ 198" itemPrice="10.5" quantity="400"/>
+  <products name="PISTON KIT BOXER STD+ 198" itemPrice="12.0" quantity="600"/>
+  <products name="OIL PUMP CUP 198" itemPrice="4.5" quantity="395"/>
+  <products name="SPROCKET SITTING GN 198" itemPrice="15.0" quantity="700"/>
+  <products name="AIR FILTER 3CYCLE" itemPrice="15.0" quantity="300"/>
+  <products name="11 TEETH GEAR LONG" itemPrice="14.0" quantity="535"/>
+  <products name="12 TEETH GEAR LONG" itemPrice="14.0" quantity="400"/>
+  <products name="13 TEETH GEAR LONG" itemPrice="14.0" quantity="500"/>
+  <products name="12 TEETH GEAR SHORT" itemPrice="10.0" quantity="1000"/>
+  <products name="13 TEETH GEAR SHORT" itemPrice="10.0" quantity="1000"/>
+  <products name="SPINDLE" itemPrice="8.0" quantity="240"/>
+  <products name="37 TEETH  GEAR" itemPrice="22.0" quantity="88"/>
+  <products name="6008 38 TEETH GEAR N/M" itemPrice="29.0" quantity="118"/>
+  <products name="38 TEETH GEAR" itemPrice="26.0" quantity="620"/>
+  <products name="HAND CABLE LONG" itemPrice="15.0" quantity="800"/>
+  <products name="HAND CABLE SHORT" itemPrice="15.0" quantity="1500"/>
+  <products name="AXEL GEAR BOX NEW A" itemPrice="135.0" quantity="310"/>
+  <products name="AXEL GEAR BOX OLD A" itemPrice="135.0" quantity="65"/>
+  <products name="BACK HUB TRICYCLE 4 BOLT" itemPrice="40.0" quantity="229"/>
+  <products name="BACK HUB TRICYCLE 5 BOLT" itemPrice="40.0" quantity="92"/>
+  <products name="BACK NUB NEW" itemPrice="50.0" quantity="360"/>
+  <products name="BRAKE CABLE" itemPrice="4.5" quantity="1300"/>
+  <products name="BRAKE PEDAL DAYUN" itemPrice="9.5" quantity="200"/>
+  <products name="BRAKE PEDAL TRICYCLE" itemPrice="10.0" quantity="300"/>
+  <products name="BRAKE ROD LONG" itemPrice="5.0" quantity="1700"/>
+  <products name="GEAR BOX TRICYCLE AVATA" itemPrice="93.0" quantity="300"/>
+  <products name="CLUTCH CABLE A" itemPrice="4.5" quantity="1020"/>
+  <products name="CLUTCH HOUSING" itemPrice="26.0" quantity="456"/>
+  <products name="COMP. BACK AXEL 4 HOLE 103CM" itemPrice="500.0" quantity="28"/>
+  <products name="COMP. BACK AXEL 5 HOLE 103 CM" itemPrice="500.0" quantity="20"/>
+  <products name="COMP. BACK AXEL 5 HOLE 95 CM" itemPrice="500.0" quantity="10"/>
+  <products name="COMP. BACK AXEL 5 HOLE" itemPrice="400.0" quantity="10"/>
+  <products name="COMP.BACK AXEL 4 HOLE" itemPrice="400.0" quantity="10"/>
+  <products name="COMP. BACK HUB COVER BIG" itemPrice="29.0" quantity="290"/>
+  <products name="COMP. BACK HUB COVER SMALL" itemPrice="24.0" quantity="462"/>
+  <products name="COMP. FRONT SHOCK TRICYCLE" itemPrice="290.0" quantity="159"/>
+  <products name="CROSS JOINT 19*44" itemPrice="7.5" quantity="1500"/>
+  <products name="CROSS JOINT 20*50" itemPrice="7.5" quantity="2000"/>
+  <products name="CROSS JOINT 20*55" itemPrice="7.5" quantity="2000"/>
+  <products name="FRONT HUB 4 HOLE" itemPrice="35.0" quantity="240"/>
+  <products name="FRONT HUB 5 HOLE" itemPrice="42.0" quantity="366"/>
+  <products name="GEAR BOX JOINT SMALL" itemPrice="16.0" quantity="500"/>
+  <products name="GEAR BOX JOINT BIG" itemPrice="16.0" quantity="500"/>
+  <products name="EXHAUST PIPE" itemPrice="47.0" quantity="254"/>
+  <products name="REAR LIGHT" itemPrice="12.0" quantity="210"/>
+  <products name="OIL PUMP TRICYCLE" itemPrice="11.0" quantity="200"/>
+  <products name="RIM 4 HOLE QUALITY" itemPrice="50.0" quantity="72"/>
+  <products name="RIM 5 HOLE QUALTY" itemPrice="50.0" quantity="100"/>
+  <products name="SWITCH KEY TRICYCLE  BIG" itemPrice="8.5" quantity="750"/>
+  <products name="SWITCH KEY TRICYCLE  SMALL" itemPrice="6.5" quantity="3050"/>
+  <products name="THROTTLE CABLE  A" itemPrice="4.5" quantity="500"/>
+  <products name="COMP. HELPING GEAR  F" itemPrice="280.0" quantity="50"/>
+  <products name="COMP. HELPING GEAR  B" itemPrice="150.0" quantity="48"/>
+  <products name="ARMATURE TVS" itemPrice="30.0" quantity="210"/>
+  <products name="BRAKE SPRING TVS" itemPrice="0.7" quantity="1500"/>
+  <products name="CAM SHAFT TVS KING" itemPrice="21.0" quantity="300"/>
+  <products name="CARBURETOR TVS" itemPrice="50.0" quantity="200"/>
+  <products name="CLUTCH CABLE TVS KING" itemPrice="6.0" quantity="500"/>
+  <products name="CLUTCH DISC &amp; PLATE TVS KING" itemPrice="13.0" quantity="280"/>
+  <products name="CLUTCH FIBER TVS KING" itemPrice="8.0" quantity="400"/>
+  <products name="CLUTCH WIRE TVS" itemPrice="2.0" quantity="1500"/>
+  <products name="COMP. ENGINE BLOCK TVS KING" itemPrice="100.0" quantity="200"/>
+  <products name="COMP. STARTER MOTOR TVS" itemPrice="135.0" quantity="100"/>
+  <products name="ENGINE VALVE TVS KING" itemPrice="5.5" quantity="500"/>
+  <products name="GEAR CABLE  TVS KING" itemPrice="6.0" quantity="1000"/>
+  <products name="GEAR WIRE TVS" itemPrice="1.5" quantity="1000"/>
+  <products name="LEG BEARING TVS" itemPrice="5.0" quantity="500"/>
+  <products name="MAGNETORCOIL TVS" itemPrice="45.0" quantity="200"/>
+  <products name="OIL PUMP TVS" itemPrice="9.5" quantity="300"/>
+  <products name="ONLY BRUSH TVS" itemPrice="3.0" quantity="100"/>
+  <products name="ONLY RING TVS KING STD" itemPrice="5.5" quantity="400"/>
+  <products name="ONLY RINGS TVS KING STD+" itemPrice="5.5" quantity="5000"/>
+  <products name="ONLY RINGS TVS KING STD++" itemPrice="5.5" quantity="5000"/>
+  <products name="ONLY RINGS TVS KING STD+++" itemPrice="5.5" quantity="500"/>
+  <products name="ONLY RINGS TVS KING STD++++" itemPrice="5.5" quantity="5000"/>
+  <products name="PISTON KIT STD+ TVS KING" itemPrice="15.0" quantity="200"/>
+  <products name="PISTON KIT STD++ TVS KING" itemPrice="15.0" quantity="200"/>
+  <products name="PISTON KIT STD++++ TVS KING" itemPrice="15.0" quantity="300"/>
+  <products name="PISTON KIT STD+++TVS KING" itemPrice="15.0" quantity="300"/>
+  <products name="ROCKER ARM TVS" itemPrice="17.0" quantity="500"/>
+  <products name="SHAFT HOSE TVS" itemPrice="3.0" quantity="250"/>
+  <products name="SHOE BRAKE TVS KING" itemPrice="7.0" quantity="150"/>
+  <products name="SIGH LIGHT TVS" itemPrice="6.0" quantity="500"/>
+  <products name="SLIDRE BLOCK TVSKING" itemPrice="3.0" quantity="190"/>
+  <products name="THROTHLE CABLE TVS KING" itemPrice="5.5" quantity="500"/>
+  <products name="TIMING ROLLER" itemPrice="7.0" quantity="1000"/>
+  <products name="TOP&amp;DOWN GASKET TVS" itemPrice="1.5" quantity="100"/>
+  <products name="VALVE OIL SEAL TVS" itemPrice="1.0" quantity="1000"/>
+  <products name="WIPER BLADE TVS KING" itemPrice="8.0" quantity="1000"/>
+  <products name="ARMATURE BAJAJ" itemPrice="25.0" quantity="300"/>
+  <products name="BACK  BRAKE  POT BAJAJ" itemPrice="15.0" quantity="300"/>
+  <products name="BATTERY 12N36" itemPrice="175.0" quantity="32"/>
+  <products name="BENDIX BAJAJ" itemPrice="25.0" quantity="300"/>
+  <products name="BRAKE LEVER BAJAJ" itemPrice="4.5" quantity="200"/>
+  <products name="FRONT BRAKE  KIT BAJAJ" itemPrice="5.0" quantity="400"/>
+  <products name="BRAKE SWITCH BAJAJ" itemPrice="5.0" quantity="300"/>
+  <products name="CAM SHAFT BAJAJ" itemPrice="21.0" quantity="200"/>
+  <products name="CARBURETOR BAJAJ" itemPrice="50.0" quantity="200"/>
+  <products name="CARBURETOR HOSE BAJAJ" itemPrice="3.0" quantity="1000"/>
+  <products name="C.D.I BAJAJ" itemPrice="33.0" quantity="200"/>
+  <products name="CLUTCH CABLE BAJAJ" itemPrice="6.0" quantity="1000"/>
+  <products name="CLUTCH DISK BAJAJ" itemPrice="13.0" quantity="240"/>
+  <products name="CLUTCH FIBER BAJAJ" itemPrice="9.0" quantity="1000"/>
+  <products name="CLUTCH WIRE BAJAJ" itemPrice="1.5" quantity="1000"/>
+  <products name="COMP. ENGINE BLOCK BAJAJ" itemPrice="70.0" quantity="504"/>
+  <products name="COMP. BRUSH BAJAJ" itemPrice="5.0" quantity="500"/>
+  <products name="CON ROD BAJAJ" itemPrice="18.0" quantity="400"/>
+  <products name="CRANK SHAFT BAJAJ" itemPrice="77.0" quantity="200"/>
+  <products name="GEAR CABLE BAJAJ" itemPrice="5.0" quantity="1000"/>
+  <products name="GEARWIRE BAJAJ" itemPrice="1.5" quantity="1000"/>
+  <products name="GLASS BAJAJ" itemPrice="150.0" quantity="100"/>
+  <products name="HEAD LUMP BULB" itemPrice="3.5" quantity="3000"/>
+  <products name="MAGNETOR COIL BAJAJ" itemPrice="40.0" quantity="120"/>
+  <products name="MASTER KIT BAJAJ" itemPrice="5.0" quantity="1000"/>
+  <products name="OIL  SEAL 30-30-28" itemPrice="1.5" quantity="1000"/>
+  <products name="OIL PUMP BAJAJ" itemPrice="9.5" quantity="500"/>
+  <products name="OIL SEAL 22*35*7 BAJAJ" itemPrice="1.5" quantity="10000"/>
+  <products name="OIL SEAL 35-38-41" itemPrice="1.5" quantity="1000"/>
+  <products name="OILFILTER BAJAJ" itemPrice="6.0" quantity="1000"/>
+  <products name="ONLY BRUSH BAJAJ" itemPrice="4.0" quantity="500"/>
+  <products name="ONLY RING BAJAJ STD" itemPrice="5.5" quantity="500"/>
+  <products name="PISTON KIT STD++ BAJAJ" itemPrice="15.0" quantity="200"/>
+  <products name="PISTON KIT STD+++ BAJAJ" itemPrice="15.0" quantity="200"/>
+  <products name="PISTON KIT STD++++ BAJAJ" itemPrice="15.0" quantity="200"/>
+  <products name="POINTER BAJA" itemPrice="20.0" quantity="200"/>
+  <products name="ROCK ARM BAJAJ" itemPrice="15.0" quantity="500"/>
+  <products name="SHAFT HOSE BAJAJ" itemPrice="3.5" quantity="500"/>
+  <products name="SHOE BRAKE BAJAJ" itemPrice="7.0" quantity="1000"/>
+  <products name="SIGN LIGHT BAJAJ" itemPrice="6.0" quantity="200"/>
+  <products name="STOP LIGHT" itemPrice="8.0" quantity="500"/>
+  <products name="SIDE MIRROW  BAJAJ" itemPrice="10.0" quantity="200"/>
+  <products name="STARTAR RELAY BAJAJ" itemPrice="10.0" quantity="500"/>
+  <products name="SWITCH KEY BAJAJ" itemPrice="15.0" quantity="800"/>
+  <products name="TAIL LIGHT BAJA" itemPrice="20.0" quantity="200"/>
+  <products name="TARPAULINE BAJAJ" itemPrice="100.0" quantity="1000"/>
+  <products name="THROTHLE CABLE BAJAJ" itemPrice="6.0" quantity="1000"/>
+  <products name="TIMMING ADJUSTER BAJAJ" itemPrice="5.5" quantity="1000"/>
+  <products name="TIMMING CHAIN BAJAJ" itemPrice="6.0" quantity="3000"/>
+  <products name="TIMMING ROLLAR BAJAJ" itemPrice="9.0" quantity="300"/>
+  <products name="VALVE OIL SEAL BAJAJ" itemPrice="1.0" quantity="1000"/>
+  <products name="TYRE 110-90-17 DIAMOND" itemPrice="110.0" quantity="400"/>
+  <products name="TYRE 100-90-17 TUBELESS  DIAMOND" itemPrice="84.0" quantity="200"/>
+  <products name="TYRE 110-90-16 STEEL DIAMOND" itemPrice="12.0" quantity="200"/>
+  <products name="TYRE 110-90-16 SMOOTH DIAMOND" itemPrice="98.0" quantity="400"/>
+  <products name="TYRE 110-90-16 ROUGH DIAMOND" itemPrice="100.0" quantity="96"/>
+  <products name="TYRE 275-17 BACK DIAMOND" itemPrice="50.0" quantity="600"/>
+  <products name="TYRE 250-17 FRONT DIAMOND" itemPrice="39.0" quantity="500"/>
+  <products name="TYRE 250-18 FRONT DIAMOND" itemPrice="41.0" quantity="500"/>
+  <products name="TYRE 275-17 FRONT DIAMOND" itemPrice="35.0" quantity="300"/>
+  <products name="TYRE 275-18 TUBELESS DIAMOND" itemPrice="66.0" quantity="400"/>
+  <products name="TYRE 275-18 SMOOTH DIAMOND" itemPrice="50.0" quantity="600"/>
+  <products name="TYRE 275-18 ROUGH  DIAMOND" itemPrice="53.0" quantity="1800"/>
+  <products name="TYRE 275-21 DIAMOND" itemPrice="80.0" quantity="200"/>
+  <products name="TYRE 300-18 ROUGH DIAMOND" itemPrice="61.0" quantity="600"/>
+  <products name="TYRE 300-18 TUBELESS DIAMOND" itemPrice="76.0" quantity="300"/>
+  <products name="TYRE 300-18 STEEL DIAMOND" itemPrice="78.0" quantity="150"/>
+  <products name="TYRE 300-18 SMOOTH DIAMOND" itemPrice="60.0" quantity="50"/>
+  <products name="TYRE 400-8 BIG DIAMOND" itemPrice="76.0" quantity="300"/>
+  <products name="TYRE 410-18 DIAMOND" itemPrice="86.0" quantity="203"/>
+  <products name="TYRE 350-10 DIAMOND" itemPrice="40.0" quantity="250"/>
+  <products name="TYRE 275-16 DIAMOND" itemPrice="45.0" quantity="400"/>
+  <products name="TYRE 500-12 DIAMOND" itemPrice="110.0" quantity="96"/>
+  <products name="TYRE 450-12 DIAMOND" itemPrice="105.0" quantity="200"/>
+  <products name="TYRE 90-90-19 DIAMOND" itemPrice="80.0" quantity="200"/>
+  <products name="TYRE 300-18 ROUGH  R/O" itemPrice="56.0" quantity="1145"/>
+  <products name="TYRE 300-18 TUBELESS R/O" itemPrice="66.0" quantity="206"/>
+  <products name="TYRE 275-17 FRONT TUBELESS R/O" itemPrice="40.0" quantity="116"/>
+  <products name="TYRE 110-90-16 SMOOTH R/O" itemPrice="91.0" quantity="702"/>
+  <products name="TYRE 110-90-16 ROUGH R/O" itemPrice="91.0" quantity="642"/>
+  <products name="TYRE 275-18 SMOOTH R/O" itemPrice="45.0" quantity="1495"/>
+  <products name="TYRE 250-17 FRONT R/O" itemPrice="34.0" quantity="1031"/>
+  <products name="TYRE 250-18 FRONT R/O" itemPrice="35.0" quantity="492"/>
+  <products name="TYRE 275-17 FRONT R/O" itemPrice="35.0" quantity="3000"/>
+  <products name="TYRE 275-18 TUBELESS R/O" itemPrice="50.0" quantity="300"/>
+  <products name="TYRE 275-18 TUBELESS SMOOTH R/O" itemPrice="43.0" quantity="306"/>
+  <products name="TYRE 400-8 R/O" itemPrice="58.0" quantity="606"/>
+  <products name="TYRE 500-12 R/O" itemPrice="102.0" quantity="300"/>
+  <products name="TYRE 500-12 NEW R/O" itemPrice="108.0" quantity="563"/>
+  <products name="TYRE 110-70-17 RZ" itemPrice="85.0" quantity="48"/>
+  <products name="TYRE 140-70-17 RZ" itemPrice="90.0" quantity="60"/>
+  <products name="TYRE 250-17 FRONT RZ" itemPrice="30.0" quantity="1080"/>
+  <products name="TYRE 275-18 ROUGH RZ" itemPrice="38.0" quantity="700"/>
+  <products name="TYRE 300-18 SMOOTH  RZ" itemPrice="46.0" quantity="665"/>
+  <products name="TYRE 325-18 RZ" itemPrice="46.0" quantity="100"/>
+  <products name="TYRE 275/300 -18 SMOOTH  RZ" itemPrice="35.0" quantity="1300"/>
+  <products name="TYRE 350-16 RZ" itemPrice="75.0" quantity="32"/>
+  <products name="TYRE 90-90-19 RZ" itemPrice="65.0" quantity="20"/>
+  <products name="TYRE 450-12  RZ" itemPrice="80.0" quantity="143"/>
+  <products name="TYRE 410-18 RZ" itemPrice="70.0" quantity="335"/>
+  <products name="TUBE 250-17 DIAMOND" itemPrice="7.0" quantity="1200"/>
+  <products name="TUBE 250-18 DIAMOND" itemPrice="7.0" quantity="1750"/>
+  <products name="TUBE 275-17 DIAMOND" itemPrice="8.0" quantity="500"/>
+  <products name="TUBE 410-18 DIAMOND" itemPrice="10.0" quantity="875"/>
+  <products name="TUBE 450-12 DIAMOND" itemPrice="10.0" quantity="900"/>
+  <products name="TUBE 300-8 DIAMOND" itemPrice="7.0" quantity="1250"/>
+  <products name="TUBE 300-10 DIAMOND" itemPrice="7.5" quantity="1050"/>
+  <products name="TUBE 275-16 DIAMOND" itemPrice="8.0" quantity="1200"/>
+  <products name="TUBE 500-12 DIAMOND" itemPrice="10.0" quantity="90"/>
+  <products name="TUBE 275-19 DIAMOND" itemPrice="9.5" quantity="1875"/>
+  <products name="TUBE 400-8  DIAMOND" itemPrice="8.5" quantity="2225"/>
+  <products name="TUBE 110-90-17 DIAMOND" itemPrice="10.0" quantity="2000"/>
+  <products name="TUBE 250-18 JAPURE" itemPrice="6.0" quantity="150"/>
+  <products name="TUBE 250-17 JAPURE" itemPrice="6.0" quantity="300"/>
+  <products name="TUBE 250-17 AVATA" itemPrice="8.0" quantity="200"/>
+  <products name="TUBE 275-16 AVATA" itemPrice="9.0" quantity="150"/>
+  <products name="TUBE 110-90-16 R/O" itemPrice="10.5" quantity="3025"/>
+  <products name="TUBE 300-18 R/O" itemPrice="9.0" quantity="6225"/>
+  <products name="TUBE 275-17 R/O" itemPrice="8.5" quantity="3900"/>
+  <products name="TUBE 275-18 R/O" itemPrice="8.8" quantity="4000"/>
+  <products name="TUBE 400-8 R/O" itemPrice="9.0" quantity="1050"/>
+  <products name="TUBE 500-12 R/O" itemPrice="11.0" quantity="1975"/>
+  <products name="TUBE 275-19 R/O" itemPrice="9.3" quantity="1050"/>
+  <products name="TUBE 275-21R/O" itemPrice="10.5" quantity="375"/>
+  <products name="TUBE 110-90-17 R/O" itemPrice="11.0" quantity="1000"/>
+  <products name="TUBE 410-18 R/O" itemPrice="11.0" quantity="2100"/>
+  <products name="TUBE 450-12 R/O" itemPrice="11.0" quantity="1100"/>
+  <managers person="//@persons.0" userName="vitalis" password="vitalisedu4132"/>
+  <persons name="Vitalis" roles="vitalis" sales="_LLbz4I-5EemngrpxdA6fmw _VowDII_AEemwpMBGcCYFVg"/>
+  <persons name="Hyacinth" roles="cobra" purchases="_LLbz4I-5EemngrpxdA6fmw _VowDII_AEemwpMBGcCYFVg"/>
+  <customers person="//@persons.1" customerID="cobra"/>
+  <transactions seller="//@persons.0" buyer="//@persons.1" date="2019-06-15T00:00:00.000-0400" id="_LLbz4I-5EemngrpxdA6fmw"/>
+  <transactions seller="//@persons.0" buyer="//@persons.1" date="2019-06-15T00:00:00.000-0400" id="_VowDII_AEemwpMBGcCYFVg"/>
+</ims:IMS>

@@ -1,8 +1,11 @@
 package com.ali.hyacinth.ims.controller;
 
 import java.util.Date;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -15,6 +18,29 @@ import com.ali.hyacinth.ims.resource.ImsResource;
 import com.ali.hyacinth.ims.transferobjects.TOProduct;
 
 public class ImsProductController {
+	
+	public static void callCreateProduct() throws InvalidInputException {
+		String itemFile = "items/items.csv";
+		File file = new File(itemFile);
+		try {
+			Scanner input = new Scanner(file);
+			input.nextLine();
+			while (input.hasNext()) {
+				String items = input.nextLine();
+				String[] values = items.split(",");
+				String name = values[0].trim();
+				int quantity = Integer.parseInt(values[1].trim());
+				float price = Float.parseFloat(values[2].trim());
+				//System.out.println(name +" " + quantity + " " + price);
+				createProduct(name, price, quantity);
+			}
+			input.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	/**
 	 * Creates an instance of a product.
@@ -42,6 +68,7 @@ public class ImsProductController {
 		IMS ims = ImsApplication.getIms();
 		for (Product p : ims.getProducts()) {
 			if (p.getName().equals(name)) {
+				System.out.println(name);
 				throw new InvalidInputException("The product already exist.");
 			}
 		}
@@ -51,7 +78,7 @@ public class ImsProductController {
 			product.setItemPrice(price);
 			product.setQuantity(quantity);
 			ims.getProducts().add(product);
-			ImsResource.save(ims);
+			//ImsResource.save(ims);
 		} catch (RuntimeException e) {
 			throw new InvalidInputException(e.getMessage());
 		}

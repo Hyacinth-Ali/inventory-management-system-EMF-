@@ -192,6 +192,7 @@ public class ImsPage extends JFrame {
 		lblDashboard.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				error = "";
 				layeredPane.removeAll();
 				layeredPane.add(dashBoardPanel);
 				layeredPane.repaint();
@@ -211,6 +212,7 @@ public class ImsPage extends JFrame {
 		lblProducts.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				error = "";
 				layeredPane.removeAll();
 				layeredPane.add(productsPanel);
 				layeredPane.repaint();
@@ -232,6 +234,7 @@ public class ImsPage extends JFrame {
 		lblTransaction.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				error = "";
 				layeredPane.removeAll();
 				layeredPane.add(transactionsPanel);
 				layeredPane.repaint();
@@ -240,6 +243,8 @@ public class ImsPage extends JFrame {
 				lblProducts.setForeground(Color.GREEN);
 				lblAccounts.setForeground(Color.GREEN);
 				lblTransaction.setForeground(Color.white);
+				
+				refreshTransactionPanel();
 			}
 		});
 		lblTransaction.setForeground(Color.GREEN);
@@ -251,6 +256,7 @@ public class ImsPage extends JFrame {
 		lblAccounts.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				error = "";
 				layeredPane.removeAll();
 				layeredPane.add(accountsPanel);
 				layeredPane.repaint();
@@ -259,6 +265,8 @@ public class ImsPage extends JFrame {
 				lblProducts.setForeground(Color.GREEN);
 				lblAccounts.setForeground(Color.WHITE);
 				lblTransaction.setForeground(Color.GREEN);
+				
+				refreshCustomerPanel();
 			}
 		});
 		lblAccounts.setForeground(Color.GREEN);
@@ -492,7 +500,8 @@ public class ImsPage extends JFrame {
 				
 				if (error.length() == 0) {
 					try {
-						ImsProductController.createProduct(name, price, quantity);
+						//ImsProductController.createProduct(name, price, quantity);
+						ImsProductController.callCreateProduct();
 					} catch (InvalidInputException e) {
 						error = e.getMessage();
 					}
@@ -1272,10 +1281,11 @@ public class ImsPage extends JFrame {
 		receiptPanel.add(btnClose);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(169, 16, 492, 477);
+		scrollPane_2.setBounds(169, 16, 632, 477);
 		receiptPanel.add(scrollPane_2);
 		
 		textArea = new JTextArea();
+		textArea.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		textArea.setEditable(false);
 		scrollPane_2.setViewportView(textArea);
 		
@@ -1466,35 +1476,51 @@ public class ImsPage extends JFrame {
 	private void showReceipt(Receipt receipt) {
 		textArea.setText("");
 		textArea.setAlignmentX(CENTER_ALIGNMENT);
-		textArea.append("DE DON MOTORS CO. L.T.D\n");
-		textArea.append("IN GOD WE TRUST\n");
-		textArea.append("LET LOVE LEAD\n\n");
+		
+		textArea.append(" *****************************************************************\n");
+		textArea.append("	DE DON MOTORS CO. L.T.D\n");
+		textArea.append("	     IN GOD WE TRUST\n");
+		textArea.append("	      LET LOVE LEAD\n");
+		textArea.append("	            AVATA\n");
+		textArea.append(" SOLE AGENT OF AVATA SPECIAL QUALITY AND DIAMON TIRES\n");
+		textArea.append(" (Head Office: Techiman, B/A along Kintampo Road Before Toll Booth)\n");
+		textArea.append(" Box 405 Wa. U.W/R Ghana\n");
+		textArea.append(" Tel: 0243679200 / 0209380084 / 0202981814 / 0209784545 / 0553552147\n");
+		textArea.append(" Branches:\n");
+		textArea.append(" Wa Along Wa Poly Road   Kumasi Alaba Fulani Chief House\n");
+		textArea.append(" Opposite Katori");
+		textArea.append(" Tel: 0244485813 / 0246017637\n");
+		textArea.append(" Kumasi Alaba Fulani Chief House\n");
+		textArea.append(" Tel: 0551939054\n");
+		textArea.append(" Email: dedon.motors@yahoo.com / dedonmotors@gmail.com\n");
+		textArea.append(" *****************************************************************\n\n");
 		
 		textArea.setAlignmentY(LEFT_ALIGNMENT);
-		textArea.append("Name: "+ ImsApplication.getCurrentCustomer().getPerson().getName()+"\n");
+		textArea.append(" Customer Name: "+ ImsApplication.getCurrentCustomer().getPerson().getName()+"\n");
 		String date = receipt.getDate().toString();
 		date = date.substring(0, 10) + " " + date.substring(24);
-		textArea.append("Date: "+ date +"\n\n");
-		textArea.append("NO\t");
-		textArea.append("NAME\t");
+		textArea.append(" Date: "+ date +"\n");
+		textArea.append(" NO   ");
+		textArea.append("NAME\t\t");
 		textArea.append("QUANTITY\t");
 		textArea.append("UNIT PRICE\t");
-		textArea.append("AMOUNT\n\n");
+		textArea.append("AMOUNT\n");
 		int count = 1;
 		for (TOProductTransaction pTransaction : receipt.getPTransactions()) {
-			textArea.append(""+count+"\t");
+			textArea.append(" "+count+"   ");
 			textArea.append(pTransaction.getProductName()+"\t");
 			textArea.append(""+pTransaction.getQuantity()+"\t");
 			textArea.append(""+pTransaction.getUnitPrice()+"\t");
 			//textArea.append(""+pTransaction.getPrice() * pTransaction.getQuantity()+"\n\n");
-			textArea.append(""+pTransaction.getPrice()+"\n\n");
-			count++;	
+			textArea.append(""+pTransaction.getPrice()+"\n");
+			count++;
 		}
 		//textArea.setAlignmentY(RIGHT_ALIGNMENT);
-		textArea.append("Total Amount : "+receipt.getTotalAmount() + "\n");
-		textArea.append("Amount Paid : "+receipt.getAmoundPaid()+ "\n");
+		textArea.append(" \n*****************************************************************\n");
+		textArea.append(" Total Amount : "+receipt.getTotalAmount() + "\n");
+		textArea.append(" Amount Paid : "+receipt.getAmoundPaid()+ "\n");
 		float balance = (float) (receipt.getTotalAmount() - receipt.getAmoundPaid());
-		textArea.append("Balance : "+balance+ "\n");
+		textArea.append(" Balance : "+balance+ "\n");
 		
 		layeredPane.removeAll();
 		layeredPane.add(receiptPanel);

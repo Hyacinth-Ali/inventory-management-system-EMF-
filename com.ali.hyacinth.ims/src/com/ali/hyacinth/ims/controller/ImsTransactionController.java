@@ -207,7 +207,7 @@ public class ImsTransactionController {
 	}*/
 	
 	/**
-	 * Set the value of the total amount of the transaction.
+	 * Sets the value of the total amount of the transaction.
 	 * @param id of the transaction.
 	 * @throws InvalidInputException 
 	 */
